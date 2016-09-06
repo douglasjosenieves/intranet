@@ -3,31 +3,14 @@ if (!isset($_SESSION['usuario'] )) {
 header('Location: ../index.php');
 }
 
-/*require_once '../db_connect.php';
+require_once '../db_connect.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");  
 
-if (isset($_GET['id'])) {
-
-	$id = $_GET['id'];
-	# code...
-
-
-
-
-$c=0;
-$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and id='".$id."'");
-while($row =  mysql_fetch_array($resul) ) {
-                            
-// echo $row['nombre'].'<br>';;
-$cliente['cliente'][]=$row;
-$c++;
-}
-}
-*/
+ 
 
 
 ?>
@@ -38,7 +21,7 @@ $c++;
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Palntilla Blanca</title>
+	<title>Contactos Nuevos</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -91,22 +74,63 @@ $c++;
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Palntilla Blanca</a>
+					<a href="#" title="#">Contactos Nuevos</a>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="index.php">Sharpen</a></li>
-					<li class="active">Menu</li>
+			<li><a href="index.php">Sharpen</a></li>
+					<li class="active">Procesos</li>
 				</ol>
 				
 				<div class="box rte">
-					<h2 class="boxHeadline">Titulo</h2>
-					<h3 class="boxHeadlineSub">Subtitulo</h3>
+					<h2 class="boxHeadline">Contactos</h2>
+					<h3 class="boxHeadlineSub">Por asignar</h3>
 					
 					
-					<div class="row">
-						<div class="col-md-12"></div>
+				<!-- Basic table -->
+				<div class="box rte box-without-bottom-padding">
+					<h2 class="boxHeadline">Tabla de clientes</h2>
+					<h3 class="boxHeadlineSub">Nuevos</h3>
+					
+					<div class="tableWrap table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>#Id</th>
+									<th>Nombre</th>
+									<th>Email</th>
+									<th>teléfono</th>
+									<th>fecha</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+	<?php 
+			
+				$i=0;
+				$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and elaborado_por ='website'");
+				while($row =  mysql_fetch_array($resul) ) {
+				
+								
+				//echo $row['nombre'];
+				$contacto['contacto'][]=$row;
+				
+				 //$imagen = explode(';',$opciones['opciones'][0]['capture1']) ;
+				 ?>
 
+								<tr>
+									<th scope="row"><?php echo 	$contacto['contacto'][$i]['id']  ?></th>
+									<td><?php echo 	$contacto['contacto'][$i]['nombres']  ?></td>
+									<td><?php echo 	$contacto['contacto'][$i]['email']  ?></td>
+									<td><?php echo 	$contacto['contacto'][$i]['movil']  ?></td>
+									<td><span class="text-green"><strong><?php echo 	$contacto['contacto'][$i]['fecha']  ?></strong></span></td>
+								</tr>
+								
+					<?php $i++;  }?>
+							</tbody>
+						</table>
 					</div>
+				</div>
+				
   
 				
 				</div>
