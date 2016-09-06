@@ -73,6 +73,7 @@ mysql_query("SET CHARACTER_SET utf");
 		<!-- Page content -->
 		<div class="pageContent extended">
 			<div class="container">
+			<form id="formulario">
 				<h1 class="pageTitle">
 					<a href="#" title="#">Contactos Nuevos</a>
 				</h1>
@@ -82,14 +83,15 @@ mysql_query("SET CHARACTER_SET utf");
 				</ol>
 				
 				<div class="box rte">
+				
 					<h2 class="boxHeadline">Contactos</h2>
 					<h3 class="boxHeadlineSub">Por asignar</h3>
 					
 					
 				<!-- Basic table -->
 				<div class="box rte box-without-bottom-padding">
-					<h2 class="boxHeadline">Tabla de clientes</h2>
-					<h3 class="boxHeadlineSub">Nuevos</h3>
+					<h2 class="boxHeadline">Clientes por asignar</h2>
+					<h3 class="boxHeadlineSub">Departamento atención al cliente</h3>
 					
 					<div class="tableWrap table-responsive">
 						<table class="table">
@@ -98,14 +100,33 @@ mysql_query("SET CHARACTER_SET utf");
 									<th>#Id</th>
 									<th>Nombre</th>
 									<th>Email</th>
-									<th>teléfono</th>
+								 
 									<th>fecha</th>
+									<th>Asignar a:</th>
 								</tr>
 							</thead>
 							<tbody>
 								
 	<?php 
 			
+$v=0;
+	/*<option value="ESPANA">España</option>*/
+$teleo ='';
+$teleoid =array();
+				$resulv =  mysql_query("SELECT * FROM usuarios where anulado <> 1 and cargo = 'teleoperador'");
+				while($rowv =  mysql_fetch_array($resulv) ) { 
+$teleo .= '<option value="';
+$teleo .= $rowv['id'];
+$teleo .= '">';
+$teleo .= strtoupper($rowv['nombre'].' '.$rowv['apellido']);
+$teleo .= '</option>';
+$teleoid[] = $rowv['id'];
+
+            
+            //$teleoperador['teleoperador'][]=$row;
+					$v++;}
+
+
 				$i=0;
 				$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and elaborado_por ='website'");
 				while($row =  mysql_fetch_array($resul) ) {
@@ -121,8 +142,18 @@ mysql_query("SET CHARACTER_SET utf");
 									<th scope="row"><?php echo 	$contacto['contacto'][$i]['id']  ?></th>
 									<td><?php echo 	$contacto['contacto'][$i]['nombres']  ?></td>
 									<td><?php echo 	$contacto['contacto'][$i]['email']  ?></td>
-									<td><?php echo 	$contacto['contacto'][$i]['movil']  ?></td>
-									<td><span class="text-green"><strong><?php echo 	$contacto['contacto'][$i]['fecha']  ?></strong></span></td>
+							 
+									<td><?php echo 	$contacto['contacto'][$i]['fecha']  ?></td>
+									<td>
+										<select name="operador[]" data-id="<?php echo 	$contacto['contacto'][$i]['id']  ?>"  class="js-select operador">
+										<option disabled selected>- Select operador -</option>
+										<?php echo 	$teleo  ?>
+										
+								 
+									</select>
+
+
+									</td>
 								</tr>
 								
 					<?php $i++;  }?>
@@ -134,7 +165,20 @@ mysql_query("SET CHARACTER_SET utf");
   
 				
 				</div>
+
+				<div class="box rte">
+				<center>
+<?php //echo var_dump($teleoid) ?>
+<button type="button" value="" onclick="" id="random" class="btn bg-dark-gray">Random <i class="fa fa-random"></i></button>
+<button type="submit" id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary">Guardar <i class="fa fa-save"></i></button>
+						</center>
+
+
+
+					
 				</div>
+				</form>
+				</div>  <!-- containes -->
 				
 			
 			</div>
@@ -182,7 +226,68 @@ mysql_query("SET CHARACTER_SET utf");
 	<div class="visible-xs visible-sm extendedChecker"></div>
 
 
-	
+	<script>
+		
+$(document).ready(function() {
+
+
+var nombre = <?php echo json_encode($teleoid); ?>;
+
+
+ for(var i=0;i<nombre.length;i++)
+    {
+console.log(nombre[i])
+    }
+
+    function dameElOperador(i) {
+
+
+    var rand = nombre[i];
+
+    return rand	// body...
+    
+    }
+
+console.log('Total teleoperador:'+nombre.length);
+
+$('#random').on('click', function(event) {
+	event.preventDefault();
+	random();
+});
+
+function random() {
+	// body...
+
+
+numero = 0;	
+$('.operador').each(function (i) {
+// getting options from html 
+var Self = $(this);
+var id = Self.data('id');
+
+
+if (numero >= nombre.length )
+{
+numero = 0;
+
+}
+console.log('Este es el coño: '+numero);
+
+$(this).val(dameElOperador(numero)).change();
+numero++;
+
+console.log(id)
+});
+
+}
+
+});
+
+
+
+
+
+	</script>
  
  
 </body>
