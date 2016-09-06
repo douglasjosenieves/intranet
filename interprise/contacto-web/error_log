@@ -1,0 +1,6 @@
+[21-Jun-2016 12:23:04 America/Chicago] PHP Parse error:  syntax error, unexpected '$apellidos' (T_VARIABLE) in /home/cohenyaguirre/public_html/interprise/contacto-web/guardar.php on line 109
+[21-Jun-2016 12:23:05 America/Chicago] PHP Parse error:  syntax error, unexpected '$apellidos' (T_VARIABLE) in /home/cohenyaguirre/public_html/interprise/contacto-web/guardar.php on line 109
+[21-Jun-2016 12:23:06 America/Chicago] PHP Parse error:  syntax error, unexpected '$apellidos' (T_VARIABLE) in /home/cohenyaguirre/public_html/interprise/contacto-web/guardar.php on line 109
+[21-Jun-2016 12:53:51 America/Caracas] PHP Warning:  Invalid argument supplied for foreach() in /home/cohenyaguirre/public_html/interprise/contacto-web/guardar.php on line 91
+[21-Jun-2016 12:55:32 America/Caracas] PHP Warning:  Invalid argument supplied for foreach() in /home/cohenyaguirre/public_html/interprise/contacto-web/guardar.php on line 91
+[21-Jun-2016 12:57:32 America/Chicago] PHP Parse error:  syntax error, unexpected 'color' (T_STRING) in /home/cohenyaguirre/public_html/interprise/contacto-web/guardar.php on line 139
