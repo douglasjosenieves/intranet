@@ -190,30 +190,20 @@ $resul = mysql_query($qry);
 
 
 
-
+//echo $qry;
 
 
  
 
-if ($resul==1) {
   
-echo 'true';
+echo $resul ;
 
 
 
 
-}
-
-else
-{
-echo 'false'.$qry;
 
 
 
-}
-
-  
-   die;
  
 
 

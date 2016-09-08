@@ -10,7 +10,6 @@ $con = new DB_CONNECT();
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");  
 
- 
 
 
 ?>
@@ -21,7 +20,7 @@ mysql_query("SET CHARACTER_SET utf");
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Contactos Nuevos</title>
+	<title>Atencion al cliente</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -73,62 +72,49 @@ mysql_query("SET CHARACTER_SET utf");
 		<!-- Page content -->
 		<div class="pageContent extended">
 			<div class="container">
-			<form id="formulario">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Contactos Nuevos</a>
+					<a href="#" title="#">Atencion al cliente</a>
 				</h1>
 				<ol class="breadcrumb">
-			<li><a href="index.php">Sharpen</a></li>
+					<li><a href="index.php">Sharpen</a></li>
 					<li class="active">Procesos</li>
 				</ol>
 				
 				<div class="box rte">
-				
-					<h2 class="boxHeadline">Contactos</h2>
-					<h3 class="boxHeadlineSub">Por asignar</h3>
+					<h2 class="boxHeadline">Proceso de llamadas</h2>
+					<h3 class="boxHeadlineSub">Atencion al cliente</h3>
 					
 					
-				<!-- Basic table -->
-				<div class="box rte box-without-bottom-padding">
-					<h2 class="boxHeadline">Clientes por asignar</h2>
-					<h3 class="boxHeadlineSub">Departamento atención al cliente</h3>
-					
+					 <!--====================================================
+					 =            AQUI VA EL CONTENIDO DEL SITE-            =
+					 =====================================================-->
+					 
+					 <!-- Basic table -->
+				 
+								
 					<div class="tableWrap table-responsive">
 						<table class="table">
 							<thead>
 								<tr>
 									<th>#Id</th>
 									<th>Nombre</th>
-									<th>Email</th>
+									<th>Apellidos</th>
 								 
-									<th>fecha</th>
-									<th>Asignar a:</th>
+									<th>Fecha</th>
+									<th>Proceso:</th>
 								</tr>
 							</thead>
 							<tbody>
 								
 	<?php 
 			
-$v=0;
-	/*<option value="ESPANA">España</option>*/
-$teleo ='';
-$teleoid =array();
-				$resulv =  mysql_query("SELECT * FROM usuarios where anulado <> 1 and cargo = 'teleoperador'");
-				while($rowv =  mysql_fetch_array($resulv) ) { 
-$teleo .= '<option value="';
-$teleo .= $rowv['id'];
-$teleo .= '">';
-$teleo .= strtoupper($rowv['nombre'].' '.$rowv['apellido']);
-$teleo .= '</option>';
-$teleoid[] = $rowv['id'];
+ 
+$idusuario =  $_SESSION['usuario']['Id'] ;
 
-            
-            //$teleoperador['teleoperador'][]=$row;
-					$v++;}
-
+$idusuario = '5';
 
 				$i=0;
-				$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and elaborado_por ='website'");
+				$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and elaborado_por ='".$idusuario."'");
 				while($row =  mysql_fetch_array($resul) ) {
 				
 								
@@ -141,18 +127,11 @@ $teleoid[] = $rowv['id'];
 								<tr>
 									<th scope="row"><?php echo 	$contacto['contacto'][$i]['id']  ?></th>
 									<td><?php echo 	$contacto['contacto'][$i]['nombres']  ?></td>
-									<td><?php echo 	$contacto['contacto'][$i]['email']  ?></td>
+									<td><?php echo 	$contacto['contacto'][$i]['apellidos']  ?></td>
 							 
 									<td><?php echo 	$contacto['contacto'][$i]['fecha']  ?></td>
 									<td>
-										<select required name="operador[]" data-id="<?php echo 	$contacto['contacto'][$i]['id']  ?>"  class="js-select operador">
-										<option  value="" >- Seleccionar -</option>
-										<?php echo 	$teleo  ?>
-										
-								 
-									</select>
-
-<input type="hidden" value="<?php echo 	$contacto['contacto'][$i]['id']  ?>" class="id" name="id[]">
+										<a class="btn bg-red" href="ficha-contacto-editar.php?id=<?php echo 	$contacto['contacto'][$i]['id']  ?>" role="button"><i class="fa fa-eye"></i> Ver Formulario</a>
 									</td>
 								</tr>
 								
@@ -162,25 +141,15 @@ $teleoid[] = $rowv['id'];
 							</tbody>
 						</table>
 					</div>
-				</div>
+				 
 				
+					 
+					 <!--====  End of AQUI VA EL CONTENIDO DEL SITE-  ====-->
+					 
   
 				
 				</div>
-
-				<div class="box rte">
-				<center>
-<?php //echo var_dump($teleoid) ?>
-<button type="button"  value="" onclick="" id="random" class="btn bg-dark-gray">Random <i class="fa fa-random"></i></button>
-<button type="submit" id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary">Guardar <i class="fa fa-save"></i></button>
-						</center>
-
-
-
-					
 				</div>
-				</form>
-				</div>  <!-- containes -->
 				
 			
 			</div>
@@ -226,150 +195,9 @@ $teleoid[] = $rowv['id'];
  
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
-<script type="text/javascript">
 
 
-
-
-
-    
-$(document).ready(function() {
-$('#formulario').on('submit',  function(event) {
-    event.preventDefault();
-$('#boton').button('loading');
-//alert('aaa');
-
-$('.operador').each(function(index, el) {
 	
-var Self = $(this);
-var id = Self.data('id');
-var valor = Self.val();
-
-
-//console.log(id+' '+valor);
-
-});
-
-
-$.ajax({
-    url: 'envios/contactosNuevosAsignar.php',
-    type: 'POST',
- 
-    data: $('#formulario').serialize(),
-})
-.done(function(data) {
-    console.log("success");
-    console.log(data);
-    if (data==1) {
-
-swal({ 
-  title: "Good job!",
-   text: "You clicked the button!",
-    type: "success" 
-  },
-  function(){
- $('#formulario')[0].reset();
-location.reload();
-});
-
-}
-
-
-
-
-
-})
-.fail(function() {
-    console.log("error");
-})
-.always(function() {
-    console.log("complete");
-$('#boton').button('reset');
-
-});
-
-
-
-});
-
-});
-
-
-
-</script>
-
-
-
-
-<script>
-
-
-
-		
-$(document).ready(function() {
-
-
- 
-
-
-
-var nombre = <?php echo json_encode($teleoid); ?>;
-
-
- for(var i=0;i<nombre.length;i++)
-    {
-console.log(nombre[i])
-    }
-
-    function dameElOperador(i) {
-
-
-    var rand = nombre[i];
-
-    return rand	// body...
-    
-    }
-
-console.log('Total teleoperador:'+nombre.length);
-
-$('#random').on('click', function(event) {
-	event.preventDefault();
-	random();
-});
-
-function random() {
-	// body...
-
-
-numero = 0;	
-$('.operador').each(function (i) {
-// getting options from html 
-var Self = $(this);
-var id = Self.data('id');
-
-
-if (numero >= nombre.length )
-{
-numero = 0;
-
-}
-//console.log('Este es el coño: '+numero);
-
-$(this).val(dameElOperador(numero)).change();
-numero++;
-
-//console.log(id)
-});
-
-}
-
-});
-
-
-
-
-
-	</script>
  
  
 </body>

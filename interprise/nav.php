@@ -20,7 +20,7 @@
 
 					<ul>
 							<li><a href="contactosNuevos.php" title="#">Contactos Nuevos<span  id="contactos_nuevos_total1" class="label label-info"></span></a>
-							<li><a href="Att al cliente" title="#">Att al cliente</a>
+							<li><a href="attClientes.php" title="Atencion al cliente">Att al cliente</a>
 							<li><a href="seguimiento.php" title="#">Seguimientos</a>
 						<li><a href="forms-cotizaciones.php" title="#">Cotizaciones online</a>
 				<li><a href="forms-fichas-opciones.php" title="#">Fichas de Opciones</a>
@@ -48,7 +48,7 @@
 						
 					</ul>
 				</li>
-				<li><a href="calendar.html" title="#"><i class="zmdi zmdi-calendar-check zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Calendario <span class="label label-info">New</span></span></a></li>
+				<li><a href="calendario.php" title="#"><i class="zmdi zmdi-calendar-check zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Calendario <span class="label label-info">New</span></span></a></li>
 				
 				
 				<li class="sub js-submenu">

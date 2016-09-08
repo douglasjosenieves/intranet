@@ -118,20 +118,46 @@ $contactos_web[] = $row;
 								</div>
 							</div>
 
-								 <div class="col-xs-12 col-sm-4">
+								<!--  <div class="col-xs-12 col-sm-4">
 														<div class="form-group">
-															<label for="elaborado_por">Elaborado Por:</label>
-															<input  readonly type="text" required class="form-control" value="<?php echo $_SESSION['usuario']['Nombre'].' '.$_SESSION['usuario']['Apellido'] ?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
-														</div>
-													</div>
+															<label for="elaborado_por">Editado Por:</label>
+															 -->
+
+						<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
+													<!-- 	</div>
+													</div> -->
 
 
-													<div class="col-xs-12 col-sm-4">
-														<div class="form-group">
-															<label for="elaborado_por">Status del cliente:</label>
-															<input  readonly type="text" required class="form-control" value="<?php echo $contactos_web[0]['status'] ?>" name="status" id="status" placeholder="Status del cliente:">
-														</div>
-													</div>
+														<div class="col-xs-12 col-sm-4 i">
+								<div class="form-group">
+									<label>Status</label>
+									<select name="status" class="js-select ">
+									<option value="<?php echo $contactos_web[0]['status'] ?>"  selected><?php echo $contactos_web[0]['status'] ?></option>
+										<option disabled >- Select Status -</option>
+										<option value="FORMULARIO">FORMULARIO</option>
+										<option value="PROSPECTO">PROSPECTO</option>
+									   <option value="CLIENTE">CLIENTE</option>
+									   <option value="ESTUDIO">ESTUDIO</option>
+									      <option value="DESCARTADO">DESCARTADO</option>
+										 
+										 
+								 
+									</select>
+								</div>
+							</div>
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Agendar Cita Aqui <i class="fa fa-arrow-down"></i></label>
+<button type="button" class="btn bg-orange">Calendario <i class="fa fa-calendar"></i></button>
+</div>
+</div>
+
+
+
 
 
 </div>
@@ -183,7 +209,9 @@ $contactos_web[] = $row;
 								 
 									</select>
 								</div>
-							</div></div>
+							</div>
+
+							</div>
 
 
 							</div>
@@ -1411,7 +1439,7 @@ $.ajax({
 .done(function(data) {
 	console.log(data);
 	//console.log("success");
-if (data == 'true') {
+  if (data==1) {
 document.getElementById("formulario").reset();
 
  

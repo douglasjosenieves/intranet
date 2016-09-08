@@ -3,31 +3,14 @@ if (!isset($_SESSION['usuario'] )) {
 header('Location: ../index.php');
 }
 
-/*require_once '../db_connect.php';
+require_once '../db_connect.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");  
 
-if (isset($_GET['id'])) {
 
-	$id = $_GET['id'];
-	# code...
-
-
-
-
-$c=0;
-$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and id='".$id."'");
-while($row =  mysql_fetch_array($resul) ) {
-                            
-// echo $row['nombre'].'<br>';;
-$cliente['cliente'][]=$row;
-$c++;
-}
-}
-*/
 
 
 ?>
@@ -103,10 +86,13 @@ $c++;
 					<h3 class="boxHeadlineSub">Subtitulo</h3>
 					
 					
-					<div class="row">
-						<div class="col-md-12"></div>
-
-					</div>
+				 <!--====================================================
+					 =            AQUI VA EL CONTENIDO DEL SITE-            =
+					 =====================================================-->
+					 
+					 
+					 
+					 <!--====  End of AQUI VA EL CONTENIDO DEL SITE-  ====-->
   
 				
 				</div>

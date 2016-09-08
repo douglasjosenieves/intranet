@@ -93,7 +93,10 @@ header('Location: ../index.php');
 								 <div class="col-xs-12 col-sm-4">
 														<div class="form-group">
 															<label for="elaborado_por">Elaborado Por:</label>
-															<input  readonly type="text" required class="form-control" value="<?php echo $_SESSION['usuario']['Nombre'].' '.$_SESSION['usuario']['Apellido'] ?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
+							<input  readonly type="text" required class="form-control" value="<?php echo $_SESSION['usuario']['Nombre'].' '.$_SESSION['usuario']['Apellido'] ?>" name="soloParaVista" id="elaborado_por" placeholder="Elaborado Por:">
+
+
+							<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
 														</div>
 													</div>
 
@@ -101,7 +104,7 @@ header('Location: ../index.php');
 													<div class="col-xs-12 col-sm-4">
 														<div class="form-group">
 															<label for="elaborado_por">Status del cliente:</label>
-															<input  readonly type="text" required class="form-control" value="<?php echo $ficha['ficha_contacto'][0]['status'] ?>" name="status" id="status" placeholder="Status del cliente:">
+															<input  readonly type="text" required class="form-control" value="FORMULARIO"  name="status" id="status" placeholder="Status del cliente:">
 														</div>
 													</div>
 
