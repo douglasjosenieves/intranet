@@ -160,7 +160,7 @@ $(document).ready(function() {
 	header:{left:"prev,next today",center:"title",right:"month,agendaWeek,agendaDay"},
 	  events: 'async/calendario.php',
     dayClick: function() {
-        alert('a day has been clicked!');
+        alert('Agrega una cita aqui!');
     }
 });
 });
