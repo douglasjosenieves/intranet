@@ -45,6 +45,12 @@ mysql_query("SET CHARACTER_SET utf");
 	<link rel="stylesheet" href="assets/css/app.min.css">
 	
   <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<style type="text/css">
+	
+	.rte a {
+     color: #fff;
+}
+</style>
   <script>
  
 
@@ -92,7 +98,7 @@ mysql_query("SET CHARACTER_SET utf");
 					 =            AQUI VA EL CONTENIDO DEL SITE-            =
 					 =====================================================-->
 					 
-					 <div id='calendar'></div>
+					 <div id='calendario'></div>
 					 
 					 <!--====  End of AQUI VA EL CONTENIDO DEL SITE-  ====-->
   
@@ -150,7 +156,9 @@ mysql_query("SET CHARACTER_SET utf");
 	<script type="text/javascript">
 		
 $(document).ready(function() {
-	$('#calendar').fullCalendar({
+	$('#calendario').fullCalendar({
+	header:{left:"prev,next today",center:"title",right:"month,agendaWeek,agendaDay"},
+	  events: 'async/calendario.php',
     dayClick: function() {
         alert('a day has been clicked!');
     }
