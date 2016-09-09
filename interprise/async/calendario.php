@@ -17,12 +17,16 @@ mysql_query("SET CHARACTER_SET utf");
 				$i=0;
 				$resul =  mysql_query("SELECT * from calendario");
 				while($row =  mysql_fetch_array($resul) ) {
-				
+				$mysql_data = $row['allDay'];
+				// $mysql_data is tinyint value from db
+$boolean = $mysql_data ? true : false;
 			 $event_array[] = array(
             'id' => $row['id'],
             'title' => $row['titulo'],
             'start' => $row['start'],
-            'end' => $row['end']
+            'end' => $row['end'],
+            'color' => $row['color'],
+            'allDay' => $boolean
         );
 				}
 				 //$imagen = explode(';',$opciones['opciones'][0]['capture1']) ;

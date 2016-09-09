@@ -131,6 +131,7 @@ mysql_query("SET CHARACTER_SET utf");
 	<script src="assets/js/chartist.min.js"></script>
 	<script src="assets/js/moment.min.js"></script>
 	<script src="assets/js/fullcalendar.min.js"></script>
+	<script src="assets/js/lang-all.js"></script>
 	<script src="assets/js/bootstrap-datepicker.min.js"></script>
 	<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="assets/js/jquery.fullscreen.min.js"></script>
@@ -159,8 +160,10 @@ $(document).ready(function() {
 	$('#calendario').fullCalendar({
 	header:{left:"prev,next today",center:"title",right:"month,agendaWeek,agendaDay"},
 	  events: 'async/calendario.php',
+	  lang: 'es',
+	  
     dayClick: function() {
-        alert('Agrega una cita aqui!');
+        alert('a day has been clicked!');
     }
 });
 });
