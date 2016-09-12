@@ -152,7 +152,7 @@ $contactos_web[] = $row;
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Agendar Cita Aqui <i class="fa fa-arrow-down"></i></label>
-<button type="button" class="btn bg-orange">Calendario <i class="fa fa-calendar"></i></button>
+<button type="button" class="btn bg-orange" data-toggle="modal" data-target="#openAgenga">Calendario <i class="fa fa-calendar"></i></button>
 </div>
 </div>
 
@@ -1146,6 +1146,56 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
     <script src="assets/js/dropzone.js"></script>
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
+
+<div class="modal fade" id="openAgenga" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Agenda una cita</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          	<div class="col-xs-12">
+								<label for="datepicker-2-input">1)  Consulte el dia.</label>
+								<div id="datepicker-2" class="input-group date">
+									<input id="datepicker-2-input" class="form-control" placeholder="Select date" type="date"><span class="input-group-addon"><i class="fa fa-search"></i></span>
+								</div>
+							</div>
+
+
+<div class="row">
+
+<div class="col-xs-6">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Inicio:</label>
+            <input type="time" placeholder="hrs:mins" required  class="form-control" id="recipient-name">
+          </div>
+</div>
+<div class="col-xs-6">
+          <div class="form-group">
+            <label for="message-text" class="control-label">Final:</label>
+             <input type="time" placeholder="hrs:mins"  required  class="form-control" id="recipient-name">
+          </div>
+          </div>
+        
+</div>
+
+<input type="text" name="id_contactto" value="<?php echo $id ?>">
+<input type="text" name="color" value="">
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" disabled class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 </body>
 	<script type="text/javascript">

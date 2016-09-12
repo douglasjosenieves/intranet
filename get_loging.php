@@ -47,6 +47,7 @@ $telefono = $row['tel'];
 $documento = $row['documento'];
 $tipo = $row['tipo'];
 $foto = $row['foto'];
+$color = $row['color'];
 $anulado =  $row['anulado'];
 //echo $row['nombre'];
 }
@@ -64,6 +65,7 @@ $anulado =  $row['anulado'];
 'Documento' =>$documento,
 'Tipo' =>$tipo,
 'Foto' =>$foto,
+'Color' =>$color,
 'Anulado' =>$anulado);
 
 

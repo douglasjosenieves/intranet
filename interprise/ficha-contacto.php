@@ -90,15 +90,15 @@ header('Location: ../index.php');
 								</div>
 							</div>
 
-								 <div class="col-xs-12 col-sm-4">
-														<div class="form-group">
-															<label for="elaborado_por">Elaborado Por:</label>
-							<input  readonly type="text" required class="form-control" value="<?php echo $_SESSION['usuario']['Nombre'].' '.$_SESSION['usuario']['Apellido'] ?>" name="soloParaVista" id="elaborado_por" placeholder="Elaborado Por:">
+								 
+														 
+															
+							<input  readonly type="hidden" required class="form-control" value="website" name="soloParaVista" id="elaborado_por" placeholder="Elaborado Por:">
 
 
-							<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
-														</div>
-													</div>
+							<input  readonly type="hidden" required class="form-control" value="website" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
+														 
+												 
 
 
 													<div class="col-xs-12 col-sm-4">
