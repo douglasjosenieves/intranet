@@ -1151,17 +1151,18 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Agenda una cita</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span id="exampleModalLabel" aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >Agenda una cita</h4>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="formulario_agendar_cita">
           	<div class="col-xs-12">
-								<label for="datepicker-2-input">1)  Consulte el dia.</label>
+								<label for="datepicker-2-input">1)  Consulte día disponible.</label>
 								<div id="datepicker-2" class="input-group date">
-									<input id="datepicker-2-input" class="form-control" placeholder="Select date" type="date"><span class="input-group-addon"><i class="fa fa-search"></i></span>
+									<input   class="form-control" id="diaSelect" name="dia" placeholder="Select date" type="date"><span id="consultarDia" class="input-group-addon"><i class="fa fa-search" ></i></span>
 								</div>
 							</div>
+							<div id="agendados"></div>
 
 
 <div class="row">
@@ -1169,26 +1170,40 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 <div class="col-xs-6">
           <div class="form-group">
             <label for="recipient-name" class="control-label">Inicio:</label>
-            <input type="time" placeholder="hrs:mins" required  class="form-control" id="recipient-name">
+            <input type="time" placeholder="hrs:mins" name="start" required  class="form-control" id="recipient-name">
           </div>
 </div>
 <div class="col-xs-6">
           <div class="form-group">
             <label for="message-text" class="control-label">Final:</label>
-             <input type="time" placeholder="hrs:mins"  required  class="form-control" id="recipient-name">
+             <input type="time" placeholder="hrs:mins" name="end"  required  class="form-control" id="recipient-name">
           </div>
           </div>
         
 </div>
 
-<input type="text" name="id_contactto" value="<?php echo $id ?>">
-<input type="text" name="color" value="">
+<div class="col-xs-12">
+<div class="checkboxes">								
 
-        </form>
-      </div>
+
+								<label>
+									<input id="allDay" name="allDay" value="1" type="checkbox">
+									<span>Evento para todo el dia?</span>
+								</label>
+							</div>
+</div>
+<input type="hidden" name="id_contacto" value="<?php echo $id ?>">
+<input type="hidden" name="color" value="<?php echo $_SESSION['usuario']['Color']?>">
+<input type="hidden" name="titulo" value="<?php echo $contactos_web[0]['nombres'].' '.$contactos_web[0]['apellidos'] ?>">
+<input type="hidden" name="nombre" value="<?php echo $contactos_web[0]['nombres'].' '.$contactos_web[0]['apellidos'] ?>">
+
+     
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" disabled class="btn btn-primary">Agendar</button>
+     <button type="submit" id="agendar" disabled class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Agendar   </button>
+      </div>
+
+         </form>
       </div>
     </div>
   </div>
@@ -1198,6 +1213,106 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 
 
 </body>
+
+
+
+
+
+<script type="text/javascript">
+	
+$(document).ready(function() {
+	
+
+$('#formulario_agendar_cita').on('submit',  function(event) {
+	event.preventDefault();
+$('#agendar').button('loading');
+
+	$.ajax({
+		url: 'envios/calendario-insert.php',
+		type: 'POST',
+ 
+		data: $('#formulario_agendar_cita').serialize(),
+	})
+	.done(function(data) {
+		console.log("success");
+		console.log(data);
+
+if (data==1) {
+
+swal({ 
+  title: "Good job! ",
+   text: "Cita agendada con éxito...!",
+    type: "success" 
+  },
+  function(){
+$('#formulario_agendar_cita')[0].reset();
+//location.reload();
+$('#agendados').html('');
+});
+
+
+}
+
+
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+		$('#agendar').button('reset');
+	});
+	
+	/* Act on the event */
+});
+
+
+
+
+$('#consultarDia').on('click',  function(event) {
+	event.preventDefault();
+		$('#agendados').html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>Cargando...');
+	/* Act on the event */
+var diaSelect = $('#diaSelect').val();
+
+ if (diaSelect == '') {
+ 	alert('Coloque una fecha a consultar!' );
+ $('#agendados').html('');
+ return true;
+}
+
+
+ 
+
+$.ajax({
+	url: 'async/calendarioDiasDisponible.php',
+	type: 'POST',
+
+	data: {dia: diaSelect},
+})
+.done(function(data) {
+	console.log("success");
+		console.log(data);
+		$('#agendados').html(data);
+
+		$('#agendar').removeAttr('disabled');
+$('')
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+
+});
+
+});
+
+
+</script>
 	<script type="text/javascript">
 
 
