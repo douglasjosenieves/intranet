@@ -58,8 +58,9 @@ $fecha = date("Y-m-d H:i:s");
 
 
 
- 
+/* UPDATE `admin_crm`.`contactos_web` SET `verificado`='1' WHERE `id`='13';*/
 
+$resul2 = mysql_query("UPDATE `contactos_web` SET `verificado`='1' WHERE `id`=".$id_contacto.";");
 
 $resul = mysql_query("INSERT INTO `seguimiento` ( `id_contacto`, `nombres`, `apellidos`, `asunto`, `descripcion`, `categoria`, `status`, `tramitido_al_crm`, `fecha`, `elaborado_por`) 
 
