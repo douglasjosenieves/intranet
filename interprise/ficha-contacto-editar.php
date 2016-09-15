@@ -318,7 +318,7 @@ $contactos_web[] = $row;
 							<div class="col-xs-12 col-sm-12">
 								<div class="form-group">
 									<label  for="textarea1">¿Por qué escoge España como destino?</label>
-									<textarea required  id="por_que_escoge_destino_españa"  name="porque_espana" class="form-control" rows="8"> <?php echo $contactos_web[0]['porque_espana'] ?></textarea>
+									<textarea   id="por_que_escoge_destino_españa"  name="porque_espana" class="form-control" rows="8"> <?php echo $contactos_web[0]['porque_espana'] ?></textarea>
 								</div>
 							</div>
 						
@@ -335,7 +335,7 @@ $contactos_web[] = $row;
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">¿Cuál es su presupuesto para inversión?</label>
-			<input type="number" value="<?php echo $contactos_web[0]['inversion'] ?>" required class="form-control" name="inversion" id="presupuesto_a_invertir" placeholder="¿Cuál es su presupuesto para inversión?">
+			<input type="number" value="<?php echo $contactos_web[0]['inversion'] ?>"  class="form-control" name="inversion" id="presupuesto_a_invertir" placeholder="¿Cuál es su presupuesto para inversión?">
 								</div>
 							</div>
 
@@ -1323,6 +1323,8 @@ $(document).ready(function() {
 
 
 var opcion1=<?php echo json_encode($opcion_tipo_1);?>;
+
+if (opcion1!='') {
  
  //console.log(opcion1);
 
@@ -1338,8 +1340,11 @@ $('.o1[data-nombre="'+opcion1[i]+'"]').prop("checked", "checked");
     }
  
 }
+
+}
 var opcion2=<?php echo json_encode($opcion_tipo_2);?>;
 
+if (opcion2!='') {
 if (opcion2!=null) {
 for(var i=0;i<opcion2.length;i++)
     {
@@ -1352,9 +1357,13 @@ $('.o2[data-nombre="'+opcion2[i]+'"]').prop("checked", "checked");
     }
 
 }
-
+}
     var opcion3=<?php echo json_encode($opcion_tipo_3);?>;
+
+if (opcion3!='') {
 if (opcion3!=null) {
+
+
 for(var i=0;i<opcion3.length;i++)
     {
         console.log(opcion3[i]);
@@ -1365,10 +1374,11 @@ $('.o3[data-nombre="'+opcion3[i]+'"]').prop("checked", "checked");
 
     }
 
-}
+}}
 
 
     var opcion4=<?php echo json_encode($opcion_tipo_4);?>;
+    if (opcion4!='') {
 if (opcion4!=null) {
 for(var i=0;i<opcion4.length;i++)
     {
@@ -1382,8 +1392,10 @@ $('.o4[data-nombre="'+opcion4[i]+'"]').prop("checked", "checked");
 
 }
 
-
+}
+    
     var opcion5=<?php echo json_encode($opcion_tipo_5);?>;
+    if (opcion5!='') {
 if (opcion5!=null) {
 for(var i=0;i<opcion5.length;i++)
     {
@@ -1396,8 +1408,9 @@ $('.o5[data-nombre="'+opcion5[i]+'"]').prop("checked", "checked");
     }
 
 }
-
+}
     var opcion6=<?php echo json_encode($opcion_tipo_6);?>;
+    if (opcion6!='') {
 if (opcion6!=null) {
 for(var i=0;i<opcion6.length;i++)
     {
@@ -1410,12 +1423,13 @@ $('.o6[data-nombre="'+opcion6[i]+'"]').prop("checked", "checked");
     }
 
 }
-
+}
 
 
 
 var arrayJS=<?php echo json_encode($pre_info);?>;
-	
+	if (arrayJS!='') {
+	if (arrayJS!=null) {
   for(var i=0;i<arrayJS.length;i++)
     {
         console.log(arrayJS[i]);
@@ -1426,7 +1440,7 @@ $('[id="'+arrayJS[i]+'"]').prop("checked", "checked");
     }
  
 	
-
+}}
 
 
 $('#agregar_hijos').on('click',  function(event) {
@@ -1474,7 +1488,7 @@ myDropzone = new Dropzone("#dZUpload", {
     url: 'upload-documentos-contactos.php',
     dictDefaultMessage: "your custom message",
     autoProcessQueue:true, //BARRRA DE CARGA 
-    maxFilesize: 2, // MB
+    maxFilesize: 30, // MB
     maxFiles: 20, //CANTIDAD DE ARCHIVOS PERMITIDOS
     addRemoveLinks: true, ///MOSTRAR EL LINK DE REMOVER IMAGEN
     acceptedFiles: 'image/*,.pdf', //SOLO ACEPTAR IMAGEN FORMATO
