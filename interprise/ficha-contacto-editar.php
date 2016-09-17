@@ -1448,7 +1448,7 @@ $('#agregar_hijos').on('click',  function(event) {
 console.log('Le di clck a agregar hijos');
 
 
-$.get("forms-contacto-hijos-php"   ,function (dados) { 
+$.get("forms-contacto-hijos.php"   ,function (dados) { 
 $("#hijos").append(dados);});
 	/* Act on the event */
 });
