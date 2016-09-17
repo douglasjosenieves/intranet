@@ -464,9 +464,9 @@ cursor:pointer; cursor: hand
 								<tr >
 									<th>Id</th>
 									<th>Cliente</th>
-									<th>Contacto Nombre</th>
-									<th>Contacto Apellido</th>
-									<th>telf. Móvil</th>
+									<th class="hidden">Contacto Nombre</th>
+									<th class="hidden">Contacto Apellido</th>
+									<th class="hidden">telf. Móvil</th>
 									<th>email</th>
 									<th class="hidden">pais</th>
 								</tr>
@@ -493,9 +493,9 @@ cursor:pointer; cursor: hand
 								<tr class="contactos" style=" cursor: pointer; cursor: hand;">
 									<td scope="row"><?php echo $contactos_web['contactos_web'][$i]['id']; ?></td>
                                      <td><?php echo $contactos_web['contactos_web'][$i]['cliente']; ?></td>
-									<td><?php echo $contactos_web['contactos_web'][$i]['nombres']; ?></td>
-									<td><?php echo $contactos_web['contactos_web'][$i]['apellidos']; ?></td>
-									<td><?php echo $contactos_web['contactos_web'][$i]['movil']; ?></td>
+									<td class="hidden"><?php echo $contactos_web['contactos_web'][$i]['nombres']; ?></td>
+									<td class="hidden"><?php echo $contactos_web['contactos_web'][$i]['apellidos']; ?></td>
+									<td class="hidden"><?php echo $contactos_web['contactos_web'][$i]['movil']; ?></td>
 									<td><?php echo $contactos_web['contactos_web'][$i]['email']; ?></td>
 									<td class="hidden"><?php echo $contactos_web['contactos_web'][$i]['pais']; ?></td>
 									 
@@ -615,7 +615,7 @@ pais = $('td:eq(6)',this).html();
 //alert(pais);
            agregar_item_contacto(id , nombre, apellido, telefono, email,pais, cliente); 
  
-swal('Agregado '+nombre)
+swal('Agregado '+cliente)
       });
 /*=====  End of Evento que se le da al tr en el modal para seleccional los productos  ======*/
 
