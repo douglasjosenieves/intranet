@@ -60,7 +60,17 @@ mysql_query("SET CHARACTER_SET utf");
 cursor:pointer; cursor: hand
 	}
 
+.encabezado {
 
+    background: #fe5621;
+    color: #fff;
+    font-size: 25px;
+
+}
+#cliente {
+    font-weight: bold;
+	
+}
 
 </style>
 </head>
@@ -121,13 +131,20 @@ cursor:pointer; cursor: hand
 
 
 
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput"></label>
-<input type="hidden" value="<?php echo $ficha['ficha_contacto'][0]['id_contacto'] ?>" required class="form-control" name="id_contacto" id="id_contacto" placeholder="Id Contacto:">
-</div>
-</div>
 
+<input type="hidden" value="<?php echo $ficha['ficha_contacto'][0]['id_contacto'] ?>" required class="form-control" name="id_contacto" id="id_contacto" placeholder="Id Contacto:">
+
+
+<div class="col-xs-12 col-sm-6">
+	<div class="form-group">
+	<label for="basicInput">Cliente</label>
+
+   <div class="input-group">
+	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['cliente'] ?>" required class="form-control" name="cliente" id="cliente" placeholder="Cliente">
+	<div class="input-group-addon btn btn-primary btn" data-toggle="modal" data-target="#myModalContactos"><i class="fa fa-user"></i></div></div>
+
+	</div>
+	</div>
 											 
 
                                  </div>
@@ -148,13 +165,13 @@ cursor:pointer; cursor: hand
 								
 								
 								<div class="col-xs-12 col-sm-4">
-																<div class="form-group">
-																	<label id="nombre_abrir" for="basicInput">Nombres:</label>
+														<div class="form-group">
+														<label id="nombre_abrir" for="basicInput">Contacto Nombres:</abel>
 																 
 
-																	 <div class="input-group">
-											<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['nombres'] ?>" required class="form-control" name="nombre" id="nombre" placeholder="Nombres:">
-											 <div class="input-group-addon btn btn-primary btn" data-toggle="modal" data-target="#myModalContactos"><i class="fa fa-user"></i></div></div>
+																	
+											<input type="text" readonly value="<?php echo $ficha['ficha_contacto'][0]['nombres'] ?>" required class="form-control" name="nombre" id="nombre" placeholder="Contacto Nombres:">
+											
 																</div>
 															</div>
 								
@@ -162,8 +179,8 @@ cursor:pointer; cursor: hand
 								
 									<div class="col-xs-12 col-sm-4">
 																<div class="form-group">
-																	<label for="basicInput">Apellidos:</label>
-											<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['apellidos'] ?>" required class="form-control" name="apellido" id="apellido" placeholder="Apellidos:">
+																	<label for="basicInput">Contacto Apellidos:</label>
+											<input type="text" readonly value="<?php echo $ficha['ficha_contacto'][0]['apellidos'] ?>" required class="form-control" name="apellido" id="apellido" placeholder="Contacto Apellidos:">
 																</div>
 															</div>
 
@@ -173,7 +190,7 @@ cursor:pointer; cursor: hand
 							<div class="col-xs-12 col-sm-4 i">
 								<div class="form-group">
 									<label>País</label>
-									<select  required  id="pais" name="pais" class="js-select ">
+									<select disabled  required  id="pais" name="pais" class="js-select ">
 										<option value="">- Select país -</option>
 										<option value="VENEZUELA">Venezuela</option>
 										<option value="ESPANA">España</option>
@@ -195,7 +212,7 @@ cursor:pointer; cursor: hand
 							<div class="col-xs-12 col-sm-6">
 														<div class="form-group">
 															<label for="basicInput">E-mail:</label>
-									<input type="email" value="<?php echo $ficha['ficha_contacto'][0]['email'] ?>" required class="form-control" name="email" id="email" placeholder="E-mail:">
+									<input readonly type="email" value="<?php echo $ficha['ficha_contacto'][0]['email'] ?>" required class="form-control" name="email" id="email" placeholder="E-mail:">
 														</div>
 													</div>
 
@@ -203,40 +220,97 @@ cursor:pointer; cursor: hand
 													<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
 									<label for="basicInput">Teléfono móvil:</label>
-			         <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['movil'] ?>" required class="form-control" name="telefono" id="telefono" placeholder="Teléfono móvil:">
+			         <input type="text" readonly value="<?php echo $ficha['ficha_contacto'][0]['movil'] ?>" required class="form-control" name="telefono" id="telefono" placeholder="Teléfono móvil:">
 								</div>
 							</div>
 
                        </div>
 
-                       <div class="row">
-                       	
-
-
-<div class="col-xs-12 col-sm-12">
-<div class="form-group">
-									<label for="textarea-autosize">Comentarios:</label>
-									<textarea id="textarea-autosize" class="js-autogrow form-control" name="comentarios" placeholder="Please start typing and press few times 'enter'..." rows="2"></textarea>
-								</div>
-</div>
-
-                       </div>
+               
 
 	                  <hr />
+
+
+	                  <div class="row">
+	                  	
+ 
+ 
+ <div class="col-xs-12 col-sm-4">
+ <div class="form-group">
+ <label for="basicInput">Fecha de la Cotización</label>
+ <input type="date" value="<?php echo $ficha['ficha_contacto'][0]['fechaCotizacion'] ?>" required class="form-control" name="fechaCotizacion" id="fechaCotizacion" placeholder="Fecha de la Cotizacion">
+ </div>
+ </div>
+
+
+
+ 
+ <div class="col-xs-12 col-sm-4">
+ <div class="form-group">
+ <label for="basicInput">Fecha de Vencimiento</label>
+ <input type="date" value="<?php echo $ficha['ficha_contacto'][0]['fechaVencimiento'] ?>" required class="form-control" name="fechaVencimiento" id="fechaVencimiento" placeholder="Fecha de Vencimiento">
+ </div>
+ </div>
  
 
+ 
+ <div class="col-xs-12 col-sm-4">
+ <div class="form-group">
+ <label for="basicInput">Cotización #</label>
+ <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['cotizacionNumero'] ?>" required class="form-control" name="cotizacionNumero" id="cotizacionNumero" placeholder="Cotizacion #">
+ </div>
+ </div>
+ 
+ 
+
+
+	                  </div>
+
+	                  <div class="row">
+	                  	
+	                  	
+	                  	<div class="col-xs-12 col-sm-4">
+	                  	<div class="form-group">
+	                  	<label for="basicInput">Orden #</label>
+	                  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['orden'] ?>" required class="form-control" name="orden" id="orden" placeholder="Orden #">
+	                  	</div>
+	                  	</div>
+	                  	
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Descuento</label>
+<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['descuento'] ?>" required class="form-control" name="descuento" id="descuento" placeholder="Descuento">
+</div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Comentarios</label>
+<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['comentarios'] ?>" required class="form-control" name="comentarios" id="comentarios" placeholder="Comentarios">
+</div>
+</div>
+
+
+	                  </div>
+ 
+       <hr />
 <button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Servicios <i class="fa fa-plus"></i></button>
 
 <button type="button" id="remove_hijos" class="btn bg-red">Remover <i class="fa fa-eraser"></i></button>
  
 <div class="row">
-<center>
+<center  >
 <h5>
-	<div class="col-xs-12 col-sm-2">Id</div>
-		<div class="col-xs-12 col-sm-4">Servicio</div>
-			<div class="col-xs-12 col-sm-2">Cantidad</div>
-				<div class="col-xs-12 col-sm-2">Precio</div>
-					<div class="col-xs-12 col-sm-2">Subtotal</div>
+	<div class="col-xs-12 col-sm-2 encabezado">Id</div>
+		<div class="col-xs-12 col-sm-4 encabezado">Servicio</div>
+			<div class="col-xs-12 col-sm-2 encabezado">Cantidad</div>
+				<div class="col-xs-12 col-sm-2 encabezado">Precio</div>
+					<div class="col-xs-12 col-sm-2 encabezado">Subtotal</div>
 					</h5>
 
 </center>
@@ -383,16 +457,15 @@ cursor:pointer; cursor: hand
 			 
 					
 				<div class="box box-without-bottom-padding">
-					<h2 class="boxHeadline">Data Table</h2>
-					<h3 class="boxHeadlineSub">Subtitle of the table goes here</h3>
-					
+				 
 					<div class="tableWrap dataTable table-responsive js-select">
-						<table class="table js-datatable">
+						<table class="table js-datatable ">
 							<thead>
-								<tr>
+								<tr >
 									<th>Id</th>
-									<th>Nombre</th>
-									<th>Apellido</th>
+									<th>Cliente</th>
+									<th>Contacto Nombre</th>
+									<th>Contacto Apellido</th>
 									<th>telf. Móvil</th>
 									<th>email</th>
 									<th class="hidden">pais</th>
@@ -417,8 +490,9 @@ cursor:pointer; cursor: hand
 				 ?>
 
 				
-								<tr class="contactos" >
+								<tr class="contactos" style=" cursor: pointer; cursor: hand;">
 									<td scope="row"><?php echo $contactos_web['contactos_web'][$i]['id']; ?></td>
+                                     <td><?php echo $contactos_web['contactos_web'][$i]['cliente']; ?></td>
 									<td><?php echo $contactos_web['contactos_web'][$i]['nombres']; ?></td>
 									<td><?php echo $contactos_web['contactos_web'][$i]['apellidos']; ?></td>
 									<td><?php echo $contactos_web['contactos_web'][$i]['movil']; ?></td>
@@ -531,29 +605,32 @@ $("body").on("click",".contactos",function(event){
 
           
 id = $('td:eq(0)',this).html();
-nombre = $('td:eq(1)',this).html();
-apellido = $('td:eq(2)',this).html();
-telefono = $('td:eq(3)',this).html();
-email = $('td:eq(4)',this).html();
-pais = $('td:eq(5)',this).html();  
+cliente = $('td:eq(1)',this).html();
+nombre = $('td:eq(2)',this).html();
+apellido = $('td:eq(3)',this).html();
+telefono = $('td:eq(4)',this).html();
+email = $('td:eq(5)',this).html();
+pais = $('td:eq(6)',this).html();  
 
 //alert(pais);
-           agregar_item_contacto(id , nombre, apellido, telefono, email,pais); 
+           agregar_item_contacto(id , nombre, apellido, telefono, email,pais, cliente); 
  
 swal('Agregado '+nombre)
       });
 /*=====  End of Evento que se le da al tr en el modal para seleccional los productos  ======*/
 
-function agregar_item_contacto(id, nombre, apellido, telefono, email,pais) {
+function agregar_item_contacto(id, nombre, apellido, telefono, email,pais, cliente) {
 
 $('#id_contacto').val(id);
 	$('#nombre').val(nombre);
 	$('#apellido').val(apellido);
 	$('#telefono').val(telefono);
 	$('#email').val(email);
+	$('#cliente').val(cliente);
 	//$('#pais').val(pais);
 
 	$('#pais option[value='+pais+']').prop('selected', 'selected').change();
+	$('#myModalContactos').modal('hide');
 }
 
  

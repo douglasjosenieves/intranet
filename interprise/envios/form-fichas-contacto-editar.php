@@ -55,6 +55,7 @@ $ip=$_SERVER['REMOTE_ADDR'];
 
 
 $documento=$_REQUEST['documento'];
+$cliente=$_REQUEST['cliente'];
 $fecha_nacimiento=$_REQUEST['fecha_nacimiento'];
 $telefono_oficina=$_REQUEST['telefono_oficina'];
 $direccion_domicilio=$_REQUEST['direccion_domicilio'];
@@ -138,6 +139,7 @@ $qry = "UPDATE `contactos_web` SET
 `editado_fecha`= '$editado_fecha', 
 `anulado`= '$anulado', 
 `documento`= '$documento', 
+`cliente`= '$cliente', 
 `fecha_nacimiento`= '$fecha_nacimiento', 
 `telefono_oficina`= '$telefono_oficina', 
 `direccion_domicilio`= '$direccion_domicilio', 

@@ -389,6 +389,12 @@ $contactos_web[] = $row;
 							</div>
 
 
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Nombre del Cliente Fiscal</label>
+<input type="text" value="<?php echo $contactos_web[0]['cliente'] ?>" required class="form-control" name="cliente" id="cliente" placeholder="Nombre del Cliente Fiscal">
+</div>
+</div>
 
 
 							
@@ -401,20 +407,20 @@ $contactos_web[] = $row;
 
 
 														
-					<div class="col-xs-12 col-sm-4">
+					
+
+											</div>
+
+<div class="row">
+	
+<div class="col-xs-12 col-sm-4">
 												<div class="form-group">
 													<label for="basicInput">Teléfono de oficina:</label>
 							<input type="text" value="<?php echo $contactos_web[0]['telefono_oficina'] ?>" class="form-control" name="telefono_oficina" id="telefono_oficina" placeholder="Teléfono de oficina:">
 												</div>
 											</div>
 
-											</div>
-
-<div class="row">
-	
-
-
-	<div class="col-xs-12 col-sm-6">
+	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Dirección de domicilio</label>
 			<input type="text" value="<?php echo $contactos_web[0]['direccion_domicilio'] ?>"  class="form-control" name="direccion_domicilio" id="direccion_domicilio" placeholder="Dirección de domicilio">
@@ -424,7 +430,7 @@ $contactos_web[] = $row;
 
 
 							
-								<div class="col-xs-12 col-sm-6">
+								<div class="col-xs-12 col-sm-4">
 															<div class="form-group">
 																<label for="basicInput">Dirección de oficina</label>
 										<input type="text" value="<?php echo $contactos_web[0]['direccion_oficina'] ?>"  class="form-control" name="direccion_oficina" id="direccion_oficina" placeholder="Dirección de oficina">

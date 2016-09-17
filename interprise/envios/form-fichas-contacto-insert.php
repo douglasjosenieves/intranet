@@ -55,6 +55,7 @@ $ip=$_SERVER['REMOTE_ADDR'];
 
 
 $documento=$_REQUEST['documento'];
+$cliente=$_REQUEST['cliente'];
 $fecha_nacimiento=$_REQUEST['fecha_nacimiento'];
 $telefono_oficina=$_REQUEST['telefono_oficina'];
 $direccion_domicilio=$_REQUEST['direccion_domicilio'];
@@ -133,6 +134,7 @@ $resul = mysql_query("INSERT INTO `contactos_web` (
 `elaborado_por`,
 `anulado`,
 `documento`,
+`cliente`,
 `fecha_nacimiento`,
 `telefono_oficina`,
 `direccion_domicilio`,
@@ -194,6 +196,7 @@ $resul = mysql_query("INSERT INTO `contactos_web` (
 
  '$anulado',
   '$documento',
+  '$cliente',
  '$fecha_nacimiento',
  '$telefono_oficina',
  '$direccion_domicilio',
