@@ -15,7 +15,7 @@ mysql_query("SET CHARACTER_SET utf");
 
 			
 				$i=0;
-				$resul =  mysql_query("SELECT * from calendario");
+				$resul =  mysql_query("SELECT * from calendario where anulado <> 1");
 				while($row =  mysql_fetch_array($resul) ) {
 				$mysql_data = $row['allDay'];
 				// $mysql_data is tinyint value from db

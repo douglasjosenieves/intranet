@@ -1,7 +1,7 @@
 <!-- Navigation -->
 		<nav class="simpleList asideNavigation">
 			<ul>
-				<li class="active"><a href="index.php" title="#"><i class="zmdi zmdi-apps zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Dashboard</span></a></li>
+				<li class="active"><a href="index.php" title="#"><i class="zmdi zmdi-apps zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Panel de Control</span></a></li>
 				
 				
 

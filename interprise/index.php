@@ -1,10 +1,35 @@
 <?php session_start() ;
 if (!isset($_SESSION['usuario'] )) {
 header('Location: ../index.php');
+
 }
+require_once __DIR__ . '../../db_connect.php';
 
 
-?>
+
+$db = new DB_CONNECT();
+//sleep(10);
+mysql_query("SET NAMES utf8");
+mysql_query("SET CHARACTER_SET utf");  
+
+$resul =  mysql_query("SELECT distinct status, count(status) as cuenta FROM contactos_web where anulado <> 1 group by status;");
+
+ $st = 0;
+$status = array();
+ 
+while($row =  mysql_fetch_array($resul) ) {
+$status[$row['status']] = $row['cuenta'];
+ }
+
+
+ 
+ ?>
+
+
+
+
+
+
 <!doctype html>
 <html class="no-js" lang="es">
 
@@ -90,7 +115,8 @@ header('Location: ../index.php');
 				<div class="boxHeader pageBoxHeader clearfix">
 					<div class="pull-left">
 						<h1 class="pageTitle">
-							<a href="#" title="#">Dashboard</a>
+							<a href="#" title="#">Panel de control <?php// echo print_r($status) ?>
+</a>
 						</h1>
 						<ol class="breadcrumb">
 							<li><a href="index.php">Sharpen</a></li>
@@ -111,27 +137,28 @@ header('Location: ../index.php');
 					</div>
 				</div>
 				
+
 				<!-- Statsbar -->
 				<div class="statsBar">
 					<div class="row">
 						<div class="col-xs-12 col-md-3 i yellow">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Formularios</h3>
-								<div class="num" id="repFormularios">0</div>
+			<div class="num" id="repFormularios"><?php  echo (isset($status['FORMULARIO'])) ? $status['FORMULARIO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-account-box-phone"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-3 i pink">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Pros. Citados</h3>
-								<div class="num" id="repProsCitados">0</div>
+								<div class="num" id="repProsCitados"><?php  echo (isset($status['PROSPECTO CITADO'])) ? $status['PROSPECTO CITADO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-square-down"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-3 i green">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Pros. Pagados</h3>
-								<div class="num" id="repProsPagados">0</div>
+								<div class="num" id="repProsPagados"><?php  echo (isset($status['PROSPECTO PAGADO'])) ? $status['PROSPECTO PAGADO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-card"></i>
 							</a>
 						</div>
@@ -139,7 +166,7 @@ header('Location: ../index.php');
 		            <div class="col-xs-12 col-md-3 i interesados">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Interesados</h3>
-								<div class="num" id="repProsPagados">0</div>
+								<div class="num" id="repProsPagados"><?php  echo (isset($status['INTERESADO'])) ? $status['INTERESADO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-card"></i>
 							</a>
 						</div>
@@ -154,21 +181,21 @@ header('Location: ../index.php');
 						<div class="col-xs-12 col-md-4 i yellow">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Clientes</h3>
-								<div class="num" id="clientes">0</div>
+								<div class="num" id="clientes"><?php  echo (isset($status['CLIENTE'])) ? $status['CLIENTE']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-account-box-phone"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i pink">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Estudios</h3>
-								<div class="num" id="estudios">0</div>
+								<div class="num" id="estudios"><?php  echo (isset($status['ESTUDIO'])) ? $status['ESTUDIO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-square-down"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i green">
 							<a href="#" title="#" class="c">
 								<h3 class="title" id="descartados">Descartados</h3>
-								<div class="num">0</div>
+								<div class="num"><?php  echo (isset($status['DESCARTADO'])) ? $status['DESCARTADO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-card"></i>
 							</a>
 						</div>
