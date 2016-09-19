@@ -4,6 +4,11 @@
 {
 require_once __DIR__ . '../../db_connect.php';
 
+if ($id=='website') {
+$user = 'website';	# code...
+}
+
+else {
 
 /*// connecting to db
 $db = new DB_CONNECT();
@@ -24,7 +29,7 @@ $usuario[] = $row;# code...
 $userNombre = $usuario[0]['nombre'].' '.$usuario[0]['apellido'];
 
 $user =  strtoupper($userNombre);
-
+}
 
 return $user;
 

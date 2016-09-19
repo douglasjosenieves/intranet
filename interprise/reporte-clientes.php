@@ -88,6 +88,7 @@ mysql_query("SET CHARACTER_SET utf");
 										<th>Apellido</th>
 									<th>Fecha</th>
 									<th>email</th>
+									<th>Asesor</th>
 									<th>status</th>
 									<th>Procesos</th>
 								
@@ -106,7 +107,7 @@ mysql_query("SET CHARACTER_SET utf");
 
 
 	                <?php 
-
+require_once 'asesor_funtion.php';
 	                  require_once 'status_funtion.php';
 					$i=0;
 					$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1");
@@ -130,6 +131,7 @@ mysql_query("SET CHARACTER_SET utf");
 						<td><?php echo $opciones['opciones'][$i]['apellidos']; ?></td>
 					    <td><?php echo $opciones['opciones'][$i]['fecha']; ?></td>
 					    <td><?php echo $opciones['opciones'][$i]['email']; ?></td>
+					    <td><?php echo nombreAsessor($opciones['opciones'][$i]['elaborado_por']); ?></td>
 					    <td><?php echo statusColor($opciones['opciones'][$i]['status']); ?></td>
 					    <td>
 					    	

@@ -47,7 +47,15 @@
 				<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-chart zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Reportes <span class="label label-info">New</span><i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
+
+					<?php  if ($_SESSION['usuario']['Tipo'] == 'administrador') {
+
+?>
+
 					<li><a href="reporte-clientes.php" title="#">Clientes</a></li>
+
+<?php  } ?>
+
 					<li><a href="reporte-cotizaciones.php" title="#">Cotizaciones</a></li>
 						<li><a href="reporte-ficha-opciones.php" title="#">Ficha de opciones</a></li>
 						<li><a href="reporte-ficha-opciones-franquicias.php" title="#">F.D.O (Franquicias)</a></li>
