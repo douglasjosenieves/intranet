@@ -107,9 +107,11 @@ mysql_query("SET CHARACTER_SET utf");
 
 	                <?php 
 
-	                  require_once 'status_funtion.php';
+	                require_once 'status_funtion.php';
+
+	                $idusuario =  $_SESSION['usuario']['Id'] ;
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1");
+					$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and elaborado_por = '".$idusuario."'");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
@@ -130,7 +132,7 @@ mysql_query("SET CHARACTER_SET utf");
 						<td><?php echo $opciones['opciones'][$i]['apellidos']; ?></td>
 					    <td><?php echo $opciones['opciones'][$i]['fecha']; ?></td>
 					    <td><?php echo $opciones['opciones'][$i]['email']; ?></td>
-					    <td><?php echo statusColor($opciones['opciones'][$i]['status']); ?></td>
+					     <td><?php echo statusColor($opciones['opciones'][$i]['status']); ?></td>
 					    <td>
 					    	
 					 <!-- Button Extra small -->

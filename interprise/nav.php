@@ -29,6 +29,21 @@
 					</ul>
 				</li>
 
+	<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-tune zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Mi Gestión <i class="zmdi zmdi-plus plus"></i></span></div>
+
+					<ul >
+						<li><a href="reporte-clientes-usuario.php" title="Perfil del usuario">Mis clientes</a></li>
+						<li><a target="_blank" href="#" title="Perfil del usuario">Mis seguimientos</a></li>
+ 
+
+						 
+					</ul>
+				</li>
+
+
+
+
 				<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-chart zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Reportes <span class="label label-info">New</span><i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
@@ -47,7 +62,15 @@
 
 						
 					</ul>
+
+
 				</li>
+
+
+
+
+
+
 				<li><a href="calendario.php" title="#"><i class="zmdi zmdi-calendar-check zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Calendario <span class="label label-info">New</span></span></a></li>
 				
 				

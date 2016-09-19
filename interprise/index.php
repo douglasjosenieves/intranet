@@ -116,27 +116,54 @@ header('Location: ../index.php');
 					<div class="row">
 						<div class="col-xs-12 col-md-4 i yellow">
 							<a href="#" title="#" class="c">
-								<h3 class="title">LLamados</h3>
-								<div class="num">256,521</div>
+								<h3 class="title">Formularios</h3>
+								<div class="num" id="repFormularios">0</div>
 								<i class="icon zmdi zmdi-account-box-phone"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i pink">
 							<a href="#" title="#" class="c">
-								<h3 class="title">Citados</h3>
-								<div class="num">5,478,123</div>
+								<h3 class="title">Prospectos Citados</h3>
+								<div class="num" id="repProsCitados">0</div>
 								<i class="icon zmdi zmdi-square-down"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i green">
 							<a href="#" title="#" class="c">
-								<h3 class="title">Contratados</h3>
-								<div class="num">14,789</div>
+								<h3 class="title">Prospectos Pagados</h3>
+								<div class="num" id="repProsPagados">0</div>
 								<i class="icon zmdi zmdi-card"></i>
 							</a>
 						</div>
 					</div>
 				</div>
+	     
+	     <div class="statsBar2">
+					<div class="row">
+						<div class="col-xs-12 col-md-4 i yellow">
+							<a href="#" title="#" class="c">
+								<h3 class="title">Clientes</h3>
+								<div class="num" id="clientes">0</div>
+								<i class="icon zmdi zmdi-account-box-phone"></i>
+							</a>
+						</div>
+						<div class="col-xs-12 col-md-4 i pink">
+							<a href="#" title="#" class="c">
+								<h3 class="title">Estudios</h3>
+								<div class="num" id="estudios">0</div>
+								<i class="icon zmdi zmdi-square-down"></i>
+							</a>
+						</div>
+						<div class="col-xs-12 col-md-4 i green">
+							<a href="#" title="#" class="c">
+								<h3 class="title" id="descartados">Descartados</h3>
+								<div class="num">0</div>
+								<i class="icon zmdi zmdi-card"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+
 
 				<div class="row">
 					<div class="col-xs-12 col-md-6">

@@ -392,7 +392,7 @@ $contactos_web[] = $row;
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Nombre del Cliente Fiscal</label>
-<input type="text" value="<?php echo $contactos_web[0]['cliente'] ?>" required class="form-control" name="cliente" id="cliente" placeholder="Nombre del Cliente Fiscal">
+<input type="text" value="<?php echo $contactos_web[0]['cliente'] ?>"  class="form-control" name="cliente" id="cliente" placeholder="Nombre del Cliente Fiscal">
 </div>
 </div>
 
