@@ -60,17 +60,38 @@ mysql_query("SET CHARACTER_SET utf");
 cursor:pointer; cursor: hand
 	}
 
-.encabezado {
-
-    background: #fe5621;
-    color: #fff;
-    font-size: 25px;
-
-}
+ 
 #cliente {
     font-weight: bold;
 	
 }
+
+.table_naranja{
+	    background-color: #e37329!important;
+    color: #fff;
+    padding: 12px 10px;
+        border-left: 1px solid #d26b26;
+}
+
+.form-control-t {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    outline: 0;
+    /* border-color: #e6e7ed; */
+    /* border-left: 3px solid #4bae4f; */
+    font-weight: 400;
+    height: 56px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+}
+
 
 </style>
 </head>
@@ -254,13 +275,13 @@ cursor:pointer; cursor: hand
  
 
  
- <div class="col-xs-12 col-sm-4">
- <div class="form-group">
- <label for="basicInput">Cotización #</label>
- <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['cotizacionNumero'] ?>" required class="form-control" name="cotizacionNumero" id="cotizacionNumero" placeholder="Cotizacion #">
- </div>
- </div>
  
+ <div class="col-xs-12 col-sm-4">
+	                  	<div class="form-group">
+	                  	<label for="basicInput">Orden #</label>
+	                  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['orden'] ?>" required class="form-control" name="orden" id="orden" placeholder="Orden #">
+	                  	</div>
+	                  	</div>
  
 
 
@@ -269,26 +290,31 @@ cursor:pointer; cursor: hand
 	                  <div class="row">
 	                  	
 	                  	
-	                  	<div class="col-xs-12 col-sm-4">
-	                  	<div class="form-group">
-	                  	<label for="basicInput">Orden #</label>
-	                  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['orden'] ?>" required class="form-control" name="orden" id="orden" placeholder="Orden #">
-	                  	</div>
-	                  	</div>
+	                  	
 	                  	
 
 
 
 <div class="col-xs-12 col-sm-4">
-<div class="form-group">
+<div class="form-group discount-group">
 <label for="basicInput">Descuento</label>
-<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['descuento'] ?>" required class="form-control" name="descuento" id="descuento" placeholder="Descuento">
+<div class="col-lg-12 col-sm-12"><div class="input-group" >
+<input class="form-control" data-bind="value: discount, valueUpdate: 'afterkeydown'" min="0" step="any" id="discount" type="number" name="discount">
+<span class="input-group-addon" style="padding: 0px;">
+<select class="form-control" data-bind="value: is_amount_discount" id="is_amount_discount" name="is_amount_discount" style="width: 150px;">
+
+<option value="0">Porcentaje</option>
+<option value="1">Cantidad</option>
+</select></span>
 </div>
 </div>
+</div>
+
+</div>
 
 
 
-<div class="col-xs-12 col-sm-4">
+<div class="col-xs-12 col-sm-8">
 <div class="form-group">
 <label for="basicInput">Comentarios</label>
 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['comentarios'] ?>" required class="form-control" name="comentarios" id="comentarios" placeholder="Comentarios">
@@ -299,18 +325,18 @@ cursor:pointer; cursor: hand
 	                  </div>
  
        <hr />
-<button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Servicios <i class="fa fa-plus"></i></button>
+<button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Agregar Items  <i class="fa fa-plus"></i></button>
 
 <button type="button" id="remove_hijos" class="btn bg-red">Remover <i class="fa fa-eraser"></i></button>
  
 <div class="row">
 <center  >
 <h5>
-	<div class="col-xs-12 col-sm-2 encabezado">Id</div>
-		<div class="col-xs-12 col-sm-4 encabezado">Servicio</div>
-			<div class="col-xs-12 col-sm-2 encabezado">Cantidad</div>
-				<div class="col-xs-12 col-sm-2 encabezado">Precio</div>
-					<div class="col-xs-12 col-sm-2 encabezado">Subtotal</div>
+	<div class="col-xs-12 col-sm-2 table_naranja ">Id</div>
+		<div class="col-xs-12 col-sm-4 table_naranja">Servicio</div>
+			<div class="col-xs-12 col-sm-2 table_naranja">Cantidad</div>
+				<div class="col-xs-12 col-sm-2 table_naranja">Precio</div>
+					<div class="col-xs-12 col-sm-2 table_naranja">Subtotal</div>
 					</h5>
 
 </center>
@@ -325,10 +351,10 @@ cursor:pointer; cursor: hand
  	
 
  </div>
- 
+ <hr>
  <div class="row">
  	<div class="col-xs-12 col-sm-8"></div>
- 	<div class="col-xs-12 col-sm-2"><center><h3>Total parcial:</h3></center></div>
+ 	 <div class="col-xs-12 col-sm-2"> <center><h6>Total parcial:</h6></center></div>
  	
  	<div class="col-xs-12 col-sm-2">
  	<div class="form-group">
@@ -340,9 +366,24 @@ cursor:pointer; cursor: hand
 
  </div>
 
+ <div id="descuentoSession" class="row hidden" >
+ 	<div class="col-xs-12 col-sm-8"></div>
+ 	 <div class="col-xs-12 col-sm-2"> <center><h6>Descuento:</h6></center></div>
+ 	
+ 	<div class="col-xs-12 col-sm-2">
+ 	<div class="form-group">
+ 	<label for="basicInput"></label>
+ 	<input type="number" readonly value="<?php echo $ficha['ficha_contacto'][0]['descuentoReglon'] ?>" required class="form-control" name="descuentoReglon" id="descuentoReglon" placeholder="Descuento:">
+ 	</div>
+ 	</div>
+ 	
+
+ </div>
+
+
   <div class="row">
  	<div class="col-xs-12 col-sm-8"></div>
- 	<div class="col-xs-12 col-sm-2"><center><h3>Tax: <?php echo IVA ?>%</h3></center></div>
+ 	<div class="col-xs-12 col-sm-2"><center><h6>Tax: <?php echo IVA ?>%</h6></center></div>
  	
  	<div class="col-xs-12 col-sm-2">
  	<div class="form-group">
@@ -356,7 +397,7 @@ cursor:pointer; cursor: hand
 
  <div class="row">
  	<div class="col-xs-12 col-sm-8"></div>
- 	<div class="col-xs-12 col-sm-2"><center><h3>Total:</h3></center></div>
+ 	<div class="col-xs-12 col-sm-2"><center><h6>Total:</h6></center></div>
  	
  	<div class="col-xs-12 col-sm-2">
  	<div class="form-group">
@@ -596,6 +637,31 @@ cursor:pointer; cursor: hand
 	<script type="text/javascript">
 
  
+/*======================================================
+=            EVENTO PARA DETECTAR DESCUENTO            =
+======================================================*/
+
+$('#discount').on('change', function(event) {
+	event.preventDefault();
+	/* Act on the event */
+var descuento = $(this).val();
+
+if (descuento>0) {
+$("#descuentoSession").removeClass('hidden');
+
+} else {
+
+$("#descuentoSession").addClass('hidden');
+
+}
+
+
+
+});
+
+/*=====  End of EVENTO PARA DETECTAR DESCUENTO  ======*/
+
+
 /*============================================================================================
 =            Evento que se le da al tr en el modal para seleccional los productos            =
 ============================================================================================*/
@@ -689,6 +755,7 @@ $(document).ready(function() {
 $('#myModal').on('hidden.bs.modal', function () {
   total5();  // do something…
   calcula_iva();
+  Descuentos();
 })
 
 
@@ -703,6 +770,25 @@ calcula_iva();
 /*============================================================================
 =            RECORRO Y VERIFICO LOS SUBTOTALES AL HACER UN CAMBIO            =
 ============================================================================*/
+
+function Descuentos() {
+
+var sum=0;
+$('.subtotal').each(function(index, el) {
+   sum += Number($(this).val());
+	
+});
+//$('#total').val(sum);
+descuento = $('#discount').val();
+//descuento = sum * 21 /100
+$('#descuentoReglon').val(descuento);
+
+
+//totalfin = sum+iva;
+//$('#total').val(totalfin);
+
+}
+
 
 function subtotal() {
 	
@@ -742,6 +828,9 @@ $("body").on("click",".servicios",function(event){
            nombre = $('td:eq(1)',this).html();
            descripcion = $('td:eq(2)',this).html();
            precios = $('td:eq(3)',this).html();  
+
+           
+           
            agregar_item(id , nombre,precios,descripcion); 
  
 swal('Agregado '+nombre)
