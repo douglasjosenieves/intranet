@@ -294,7 +294,7 @@ $status[$row['status']] = $row['cuenta'];
 							<div class="col-xs-12">
 								<div class="box box-without-padding">
 									<div class="clearfix boxHeader">
-										<h2 class="boxTitle pull-left">Recent tasks</h2>
+										<h2 class="boxTitle pull-left">Ultimos Seguimientos</h2>
 										<div class="btn-group pull-right boxHeaderOptions">
 											<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												<i class="zmdi zmdi-more-vert"></i>
@@ -307,46 +307,8 @@ $status[$row['status']] = $row['cuenta'];
 										</div>	
 									</div>
 
-									<div class="recentTasks">
-										<div class="checkboxes checkboxes-sm">
-											<div class="i">
-												<label>
-													<input type="checkbox">
-													<span>Lorem ipsum dlores amet voluptates quidem</span>
-												</label>
-											</div>
-											<div class="i">
-												<label>
-													<input type="checkbox" checked>
-													<span>Voluptates iusto quidem harem rerum</span>
-												</label>
-											</div>
-											<div class="i">
-												<label>
-													<input type="checkbox">
-													<span>Nullam iusto ducimus 24/7</span>
-												</label>
-											</div>
-											<div class="i">
-												<label>
-													<input type="checkbox">
-													<span>Curabitur arcu massa</span>
-												</label>
-											</div>
-											<div class="i">
-												<label>
-													<input type="checkbox">
-													<span>Aenean imperdiet eros eu ante aliquet</span>
-												</label>
-											</div>
-											<div class="i">
-												<label>
-													<input type="checkbox">
-													<span>In vulputate ac turpis at pellentesque</span>
-												</label>
-											</div>
-										</div>
-									</div>
+									<?php require_once 'recientes_seguimientos.php'; ?>
+								
 								</div>
 							</div>
 						</div>
