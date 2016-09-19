@@ -111,19 +111,29 @@ $contactos_web[] = $row;
 		
 
 
- <div class="col-xs-12 col-sm-2">
-								<div class="form-group">
-									<label for="referencia">Nº Referencia</label>
-									<input type="text" value="<?php echo $id ?>" readonly required class="form-control" name="referencia" id="referencia" placeholder="Nº Referencia">
-								</div>
-							</div>
+<div class="col-xs-12 col-sm-2">
+						<div class="form-group">
+							<label for="referencia">Nº Referencia</label>
+							<input type="text" value="<?php echo $id ?>" readonly required class="form-control" name="referencia" id="referencia" placeholder="Nº Referencia">
+						</div>
+					</div>
+
+
+<?php  require_once 'asesor_funtion.php'; ?>
+
+<div class="col-xs-12 col-sm-2">
+<div class="form-group">
+<label for="basicInput">Asesor</label>
+<input type="text" value="<?php echo nombreAsessor($contactos_web[0]['elaborado_por'])?>" disabled  class="form-control" name="elaborado_por" id="elaborado_por" placeholder="Asesor">
+</div>
+</div>
 
 								<!--  <div class="col-xs-12 col-sm-4">
 														<div class="form-group">
 															<label for="elaborado_por">Editado Por:</label>
 															 -->
 
-						<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
+						<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="editado_por" id="editado_por" placeholder="Elaborado Por:">
 													<!-- 	</div>
 													</div> -->
 
@@ -135,6 +145,7 @@ $contactos_web[] = $row;
 									<option value="<?php echo $contactos_web[0]['status'] ?>"  selected><?php echo $contactos_web[0]['status'] ?></option>
 										<option disabled >- Select Status -</option>
 										<option value="FORMULARIO">FORMULARIO</option>
+										<option value="INTERESADO">INTERESADO</option>
 										<option value="PROSPECTO CITADO">PROSPECTO CITADO</option>
 										<option value="PROSPECTO PAGADO">PROSPECTO PAGADO</option>
 									   <option value="CLIENTE">CLIENTE</option>
@@ -156,6 +167,10 @@ $contactos_web[] = $row;
 <button type="button" class="btn bg-orange" data-toggle="modal" data-target="#openAgenga">Calendario <i class="fa fa-calendar"></i></button>
 </div>
 </div>
+
+
+
+
 
 
 

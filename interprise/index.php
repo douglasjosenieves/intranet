@@ -114,27 +114,38 @@ header('Location: ../index.php');
 				<!-- Statsbar -->
 				<div class="statsBar">
 					<div class="row">
-						<div class="col-xs-12 col-md-4 i yellow">
+						<div class="col-xs-12 col-md-3 i yellow">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Formularios</h3>
 								<div class="num" id="repFormularios">0</div>
 								<i class="icon zmdi zmdi-account-box-phone"></i>
 							</a>
 						</div>
-						<div class="col-xs-12 col-md-4 i pink">
+						<div class="col-xs-12 col-md-3 i pink">
 							<a href="#" title="#" class="c">
-								<h3 class="title">Prospectos Citados</h3>
+								<h3 class="title">Pros. Citados</h3>
 								<div class="num" id="repProsCitados">0</div>
 								<i class="icon zmdi zmdi-square-down"></i>
 							</a>
 						</div>
-						<div class="col-xs-12 col-md-4 i green">
+						<div class="col-xs-12 col-md-3 i green">
 							<a href="#" title="#" class="c">
-								<h3 class="title">Prospectos Pagados</h3>
+								<h3 class="title">Pros. Pagados</h3>
 								<div class="num" id="repProsPagados">0</div>
 								<i class="icon zmdi zmdi-card"></i>
 							</a>
 						</div>
+
+		            <div class="col-xs-12 col-md-3 i interesados">
+							<a href="#" title="#" class="c">
+								<h3 class="title">Interesados</h3>
+								<div class="num" id="repProsPagados">0</div>
+								<i class="icon zmdi zmdi-card"></i>
+							</a>
+						</div>
+
+
+
 					</div>
 				</div>
 	     

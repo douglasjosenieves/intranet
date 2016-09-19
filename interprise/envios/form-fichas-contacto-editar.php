@@ -42,7 +42,8 @@ $tramitido_al_crm=$_REQUEST['tramitido_al_crm'];
 $fecha=$_REQUEST['fecha'];
 $ip=$_REQUEST['ip'];
 
-$elaborado_por=$_REQUEST['elaborado_por'];
+/*$elaborado_por=$_REQUEST['elaborado_por'];*/
+
 
 
 $anulado=$_REQUEST['anulado'];
@@ -52,6 +53,9 @@ $anulado=$_REQUEST['anulado'];
 $pre_informacion = serialize($pre_informacion);
 $fecha = date("Y-m-d H:i:s");
 $ip=$_SERVER['REMOTE_ADDR'];
+
+$editado_por=$_REQUEST['editado_por'];
+$editado_fecha=$fecha ;
 
 
 $documento=$_REQUEST['documento'];
@@ -134,7 +138,7 @@ $qry = "UPDATE `contactos_web` SET
 `tramitido_al_crm`= '$tramitido_al_crm', 
 `fecha`= '$fecha', 
 `ip`= '$ip', 
-`elaborado_por`= '$elaborado_por', 
+/*`elaborado_por`= '$elaborado_por', */
 `editado_por`= '$editado_por', 
 `editado_fecha`= '$editado_fecha', 
 `anulado`= '$anulado', 

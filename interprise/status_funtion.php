@@ -5,7 +5,7 @@
 <span class="label label-success">Success</span>
 <span class="label label-info">Info</span>
 <span class="label label-warning">Warning</span>
-<span class="label label-danger">Danger</span>*/
+<span class="label label-danger">Danger</span>*/ //INTERESADO
  function statusColor($status)
 {
 	# code..
@@ -43,6 +43,10 @@ if ($status == 'ESTUDIO') {
 	$noti = '<span class="label label-default">'.$status.'</span>';
 }
 
+if ($status == 'INTERESADO') {
+
+	$noti = '<span class="label label-interesado">'.$status.'</span>';
+}
 
 
 return $noti;
