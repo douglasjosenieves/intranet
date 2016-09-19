@@ -145,21 +145,22 @@ $status[$row['status']] = $row['cuenta'];
 							<a href="#" title="#" class="c">
 								<h3 class="title">Formularios</h3>
 			<div class="num" id="repFormularios"><?php  echo (isset($status['FORMULARIO'])) ? $status['FORMULARIO']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-account-box-phone"></i>
+								<i class="icon zmdi zmdi-border-color"></i>
+								 
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-3 i pink">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Pros. Citados</h3>
 								<div class="num" id="repProsCitados"><?php  echo (isset($status['PROSPECTO CITADO'])) ? $status['PROSPECTO CITADO']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-square-down"></i>
+								<i class="icon zmdi-check"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-3 i green">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Pros. Pagados</h3>
 								<div class="num" id="repProsPagados"><?php  echo (isset($status['PROSPECTO PAGADO'])) ? $status['PROSPECTO PAGADO']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-card"></i>
+								<i class="icon zmdi zmdi-check-all"></i>
 							</a>
 						</div>
 
@@ -167,7 +168,7 @@ $status[$row['status']] = $row['cuenta'];
 							<a href="#" title="#" class="c">
 								<h3 class="title">Interesados</h3>
 								<div class="num" id="repProsPagados"><?php  echo (isset($status['INTERESADO'])) ? $status['INTERESADO']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-card"></i>
+								<i class="icon zmdi zmdi-alert-polygon"></i>
 							</a>
 						</div>
 
@@ -182,21 +183,21 @@ $status[$row['status']] = $row['cuenta'];
 							<a href="#" title="#" class="c">
 								<h3 class="title">Clientes</h3>
 								<div class="num" id="clientes"><?php  echo (isset($status['CLIENTE'])) ? $status['CLIENTE']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-account-box-phone"></i>
+								<i class="icon zmdi zmdi-account-box"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i pink">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Estudios</h3>
 								<div class="num" id="estudios"><?php  echo (isset($status['ESTUDIO'])) ? $status['ESTUDIO']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-square-down"></i>
+								<i class="icon zmdi zmdi-folder-outline"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i green">
 							<a href="#" title="#" class="c">
 								<h3 class="title" id="descartados">Descartados</h3>
 								<div class="num"><?php  echo (isset($status['DESCARTADO'])) ? $status['DESCARTADO']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-card"></i>
+								<i class="icon zmdi zmdi-block-alt"></i>
 							</a>
 						</div>
 					</div>
