@@ -1066,7 +1066,7 @@ myDropzone = new Dropzone("#dZUpload", {
     maxFilesize: 30, // MB
     maxFiles: 200, //CANTIDAD DE ARCHIVOS PERMITIDOS
     addRemoveLinks: true, ///MOSTRAR EL LINK DE REMOVER IMAGEN
-    acceptedFiles: 'image/*,.pdf,.doc,.docx', //SOLO ACEPTAR IMAGEN FORMATO
+    acceptedFiles: 'image/*,.pdf,.doc,.docx,.xlsx,.xls', //SOLO ACEPTAR IMAGEN FORMATO
     success: function (file, serverFileName) {
     fileList[i] = {"serverFileName" : serverFileName, "fileName" : file.name,"fileId" : i };
                         console.log(fileList);
