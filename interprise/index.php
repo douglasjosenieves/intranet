@@ -53,7 +53,9 @@ $status[$row['status']] = $row['cuenta'];
 		<!-- html comment <link rel="stylesheet" href="assets/css/fontello.css">-->
 	<link rel="stylesheet" href="assets/css/chartist.min.css">
 	<link rel="stylesheet" href="assets/css/app.min.css">
-	
+   
+
+   <link rel="stylesheet" type="text/css" href="chat/client/themes/default/jquery.phpfreechat.min.css" />
 	<!-- Modernizr -->
 	<script src="assets/js/modernizr-2.8.3.min.js"></script>
 
@@ -410,9 +412,17 @@ $status[$row['status']] = $row['cuenta'];
 						</div>
 					</div>
 
+
+
 					<!-- Reciente opciones -->
 			<?php require_once 'recientes_opciones_inicio.php'; ?>
 				</div>
+
+				<div class="box box-without-padding">
+
+<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
+
+			  </div>
 			</div>
 		</div>
 	</div>
@@ -437,7 +447,13 @@ $status[$row['status']] = $row['cuenta'];
 	<script src="assets/js/app.min.js"></script>
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
+	 <script src="chat/client/jquery.phpfreechat.min.js" type="text/javascript"></script>
 </body>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#mychat').phpfreechat({ serverUrl: '/chat/server' });
+		});
 
+	</script>
 <!-- Mirrored from sharpen.tomaj.sk/v1.7/html5/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 May 2016 19:05:52 GMT -->
 </html>
