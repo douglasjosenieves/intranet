@@ -55,7 +55,7 @@ $status[$row['status']] = $row['cuenta'];
 	<link rel="stylesheet" href="assets/css/app.min.css">
    
 
-   <link rel="stylesheet" type="text/css" href="chat/client/themes/default/jquery.phpfreechat.min.css" />
+   
 	<!-- Modernizr -->
 	<script src="assets/js/modernizr-2.8.3.min.js"></script>
 
@@ -447,13 +447,8 @@ $status[$row['status']] = $row['cuenta'];
 	<script src="assets/js/app.min.js"></script>
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
-	 <script src="chat/client/jquery.phpfreechat.min.js" type="text/javascript"></script>
-</body>
-	<script type="text/javascript">
-		$(document).ready(function() {
-		/*	$('#mychat').phpfreechat({ serverUrl: '/chat/server' });*/
-		});
 
-	</script>
+</body>
+
 <!-- Mirrored from sharpen.tomaj.sk/v1.7/html5/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 May 2016 19:05:52 GMT -->
 </html>
