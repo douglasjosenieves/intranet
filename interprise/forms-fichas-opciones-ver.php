@@ -207,10 +207,38 @@ $ficha['ficha_opciones'][] = $row;
 									<label>Ciudad</label>
 									<select  id="ciudad" name="ciudad" required class="js-select">
 									<option value="<?php echo $ficha['ficha_opciones'][0]['ciudad'] ?>"  selected><?php echo $ficha['ficha_opciones'][0]['ciudad'] ?></option>
-										<option value="MADRID">Madrid</option>
-										<option value="BARCELONA">Barcelona</option>
-										<option value="VALENCIA">Valencia</option>
-                                        <option value="MALAGA">Malaga</option>
+										<option value="ALICANTE">ALICANTE</option>
+<option value="ALMERIA">ALMERIA</option>
+<option value="AVILES">AVILES</option>
+<option value="BARCELONA">BARCELONA</option>
+<option value="BILBAO">BILBAO</option>
+<option value="BURGOS">BURGOS</option>
+<option value="CADIZ">CADIZ</option>
+<option value="CARTAGENA">CARTAGENA</option>
+<option value="CORDOBA">CORDOBA</option>
+<option value="GERONA">GERONA</option>
+<option value="GIJON">GIJON</option>
+<option value="GRANADA">GRANADA</option>
+<option value="HUELVA">HUELVA</option>
+<option value="ISLAS CANARIAS">ISLAS CANARIAS</option>
+<option value="ISLAS BALEARES">ISLAS BALEARES</option>
+<option value="JEREZ">JEREZ</option>
+<option value="MADRID">MADRID</option>
+<option value="MALAGA">MALAGA</option>
+<option value="MARBELLA">MARBELLA</option>
+<option value="MURCIA">MURCIA</option>
+<option value="OVIEDO">OVIEDO</option>
+<option value="PAMPLONA">PAMPLONA</option>
+<option value="RONDA">RONDA</option>
+<option value="SALAMANCA">SALAMANCA </option>
+<option value="SAN SEBASTIAN">SAN SEBASTIAN</option>
+<option value="SANTANDER">SANTANDER</option>
+<option value="SANTIAGO">SANTIAGO</option>
+<option value="SEVILLA">SEVILLA</option>
+<option value="TARRAGONA">TARRAGONA</option>
+<option value="TOLEDO">TOLEDO </option>
+<option value="VALENCIA">VALENCIA </option>
+<option value="ZARAGOZA">ZARAGOZA</option>
 										
 									</select>
 								</div>
