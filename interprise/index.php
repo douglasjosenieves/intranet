@@ -420,7 +420,7 @@ $status[$row['status']] = $row['cuenta'];
 
 				<div class="box box-without-padding">
 
-<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
+<!-- <div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div> -->
 
 			  </div>
 			</div>
@@ -451,7 +451,7 @@ $status[$row['status']] = $row['cuenta'];
 </body>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#mychat').phpfreechat({ serverUrl: '/chat/server' });
+		/*	$('#mychat').phpfreechat({ serverUrl: '/chat/server' });*/
 		});
 
 	</script>
