@@ -13,11 +13,14 @@
 						<div class="btn-group simpleList simpleListLighten messages">
 							<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="zmdi zmdi-email zmdi-hc-fw icon"></i>
-								<span class="badge">6</span>
+								<span class="badge" id="chatCount">6</span>
 							</button>
 							
-							<ul class="dropdown-menu pull-right">
-								<li>
+							<ul id="chatRapido" class="dropdown-menu pull-right">
+								
+
+
+								<!-- <li>
 									<a href="#" title="#" class="clearfix">
 										<img src="tmp/44x44-3.jpg" alt="#" width="44" height="44" class="pull-left">
 										<span class="pull-left">
@@ -26,42 +29,8 @@
 										</span>
 										<span class="pull-right">22 sec. ago</span>
 									</a>
-								</li>
-								<li>
-									<a href="#" title="#" class="clearfix">
-										<img src="tmp/44x44-1.jpg" alt="#" width="44" height="44" class="pull-left">
-										<span class="pull-left">
-											<strong class="text-gray">Jane Doe</strong><br />
-											<span class="text-gray">Aliquam non accumsan...</span>
-										</span>
-										<span class="pull-right">19 min. ago</span>
-									</a>
-								</li>
-								<li>
-									<a href="#" title="#" class="clearfix">
-										<img src="tmp/44x44-4.jpg" alt="#" width="44" height="44" class="pull-left">
-										<span class="pull-left">
-											<strong class="text-gray">Nick Doe</strong><br />
-											<span class="text-gray">Praesent non hendrerit...</span>
-										</span>
-										<span class="pull-right">1 hour ago</span>
-									</a>
-								</li>
-								<li>
-									<a href="#" title="#" class="clearfix">
-										<img src="tmp/44x44-5.jpg" alt="#" width="44" height="44" class="pull-left">
-										<span class="pull-left">
-											<strong class="text-gray">Andrew Doe</strong><br />
-											<span class="text-gray">Aliquam ligula ante magna...</span>
-										</span>
-										<span class="pull-right">21.09.2015</span>
-									</a>
-								</li>
-								<li>
-									<a href="#" title="#" class="clearfix text-center">
-										<i class="zmdi zmdi-plus-square icon"></i> <strong class="text-gray">See all</strong>
-									</a>
-								</li>
+								</li> -->
+							
 							</ul>
 						</div>
 					</li>

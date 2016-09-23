@@ -54,7 +54,7 @@ $status[$row['status']] = $row['cuenta'];
 	<link rel="stylesheet" href="assets/css/chartist.min.css">
 	<link rel="stylesheet" href="assets/css/app.min.css">
    
-
+<link rel="stylesheet" href="assets/sweetalert/sweetalert-master/dist/sweetalert.css">
    
 	<!-- Modernizr -->
 	<script src="assets/js/modernizr-2.8.3.min.js"></script>
@@ -275,10 +275,6 @@ $status[$row['status']] = $row['cuenta'];
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="col-xs-12 col-md-6">
-						<div class="row">
 							<div class="col-xs-6 ct-pie-chart">
 								<div class="box box-without-padding">
 									<div id="ct-chart-1" class="ct-perfect-fourth"></div>
@@ -293,6 +289,74 @@ $status[$row['status']] = $row['cuenta'];
 									<div class="info"><span>1,5</span>Gb/s</div>
 								</div>
 							</div>
+					</div>
+
+
+					<div class="col-xs-12 col-md-6">
+
+					<div class="col-xs-12 box">
+	<?php require_once 'usuariosGet.php'; ?>
+<div class="box box-without-padding">
+									<div class="clearfix boxHeader">
+										<h2 class="boxTitle pull-left">Chat Interno</h2>
+										<div class="btn-group pull-right boxHeaderOptions">
+											<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												<i class="zmdi zmdi-more-vert"></i>
+											</button>
+											<ul class="dropdown-menu">
+												
+												<li><a href="#" title="#"><i class="zmdi zmdi-refresh zmdi-hc-fw"></i> Refresh</a></li>
+											</ul>
+										</div>
+
+									</div>
+
+<div class="form-group">
+									<label for="textarea1">Mensajes</label>
+									<textarea id="textareaMensaje" readonly class="form-control" rows="11"> </textarea>
+								</div>
+
+<form id="formChat">
+								<div class="row">
+										<div class="col-xs-12 col-sm-12 i">
+								<div class="form-group">
+									<label>Para:</label>
+									<select name="para" required class="js-select" id="usuariosActivoSelect">
+										<option  value="">- Enviar a -</option>
+										<?php echo $teleo; ?>
+										<option value="*">TODOS</option>
+									</select>
+									
+								</div>
+							</div>
+
+								</div>
+
+
+								<div class="row">
+								<div class="col-xs-9 col-sm-9">
+								<div class="form-group">
+								 
+									<input type="text" required name="mensaje"  class="form-control" id="basicInput" placeholder="Su mensaje aqui...">
+									<input type="hidden" name="de" value="<?php echo $_SESSION['usuario']['Id']; ?>">
+								</div>
+							</div>
+
+
+							<div class="col-xs-2 col-sm-2">
+									<button type="submit" id="boton" class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Enviar <i class="fa fa-send"></i>   </button>
+
+							</div>
+
+</div>
+</form>
+
+									</div>
+
+</div> 
+						<div class="row">
+							
+					
 
 							<div class="col-xs-12">
 								<div class="box box-without-padding">
@@ -432,8 +496,8 @@ $status[$row['status']] = $row['cuenta'];
 
 	<!-- JS -->
 	<script src="assets/js/jquery-1.11.3.min.js"></script>
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/js/jquery-ui.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>	
 	<script src="assets/js/select2.min.js"></script>
 	<script src="assets/js/parsley.min.js"></script>
 	<script src="assets/js/throttle-debounce.min.js"></script>
@@ -445,10 +509,153 @@ $status[$row['status']] = $row['cuenta'];
 	<script src="assets/js/chartist.min.js"></script>
 	<script src="assets/js/jquery.fullscreen.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
-
+ <script src="assets/sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
 	<div class="visible-xs visible-sm extendedChecker"></div>
 
 </body>
 
+<script type="text/javascript">
+	/*==========================================================
+	=            Envio de un chat por el formulario            =
+	==========================================================*/
+	
+	$(document).ready(function() {
+		
+	 
+
+$('#formChat').on('submit',  function(event) {
+    event.preventDefault();
+$('#boton').button('loading');
+//alert('aaa');
+
+$.ajax({
+    url: 'envios/chat.php',
+    type: 'POST',
+ 
+    data: $('#formChat').serialize(),
+})
+.done(function(data) {
+    console.log("success");
+    console.log(data);
+    if (data==1) {
+
+swal({ 
+  title: "Enviado!",
+   text: "Su mensaje se ha enviado con exito!",
+    type: "success" 
+  },
+  function(){
+ $('#formChat')[0].reset();
+location.reload();
+});
+
+}
+ 
+})
+.fail(function() {
+    console.log("error");
+})
+.always(function() {
+    console.log("complete");
+$('#boton').button('reset');
+
+});
+
+
+
+});
+
+
+
+	});
+	
+	/*=====  End of Envio de un chat por el formulario  ======*/
+	
+	$(document).ready(function() {
+var usuarioOnline = <?php echo $_SESSION['usuario']['Id']; ?>;
+
+console.log('listo ready');
+   verificaChat() ;
+   setInterval(function(){verificaChat();},3000);
+
+  
+function verificaChat() {
+
+	$.ajax({
+		url: 'async/chat.php',
+		type: 'POST',
+	
+		data: {usuario: usuarioOnline},
+	})
+	.done(function(data) {
+		console.log("success chat comprobado");
+		//console.log(data);
+$('#chatRapido').html(data);
+ 
+//alert($('#chatRapido > li').length);
+var cuentaChat = $('#chatRapido > li').length;
+$('#chatCount').html(cuentaChat);
+
+
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+	
+	// body...
+}
+
+	});
+
+
+	/*=======================================
+	=            TexArea Mensaje            =
+	=======================================*/
+	
+	$(document).ready(function() {
+var usuarioOnline = <?php echo $_SESSION['usuario']['Id']; ?>;
+
+ 
+   verificaChatTexArea() ;
+   setInterval(function(){verificaChatTexArea();},3000);
+
+  
+function verificaChatTexArea() {
+
+	$.ajax({
+		url: 'async/chatTexarea.php',
+		type: 'POST',
+	
+		data: {usuario: usuarioOnline},
+	})
+	.done(function(data) {
+		console.log("success chatTexArea comprobado");
+		console.log(data);
+ 
+$('#textareaMensaje').text(data);
+
+
+
+
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+	
+	// body...
+}
+
+	});
+
+	
+	/*=====  End of TexArea Mensaje  ======*/
+	
+</script>
 <!-- Mirrored from sharpen.tomaj.sk/v1.7/html5/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 May 2016 19:05:52 GMT -->
 </html>
