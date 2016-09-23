@@ -150,7 +150,7 @@ $teleoid[] = $rowv['id'];
 							 
 									<td><?php echo 	$contacto['contacto'][$i]['fecha']  ?></td>
 									<td>
-										<select required name="operador[]" data-id="<?php echo 	$contacto['contacto'][$i]['id']  ?>"  class="js-select operador">
+										<select  name="operador[]" data-id="<?php echo 	$contacto['contacto'][$i]['id']  ?>"  class="js-select operador">
 										<option  value="" >- Seleccionar -</option>
 										<?php echo 	$teleo  ?>
 										

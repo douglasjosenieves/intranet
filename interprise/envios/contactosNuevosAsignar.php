@@ -21,10 +21,15 @@ $operador = $_REQUEST['operador'];
 foreach ($operador as $key => $value) {
 
 //	echo $id[$key];
-//	echo $operador[$key];
 
+if ($operador[$key] != '') {
+	# code...
+	//echo $operador[$key];
 $query = "UPDATE `contactos_web` SET `elaborado_por` = '".$operador[$key]."' WHERE `contactos_web`.`id` = '".$id[$key]."';";
 $resul = mysql_query($query);
+
+}
+
 }
  
 
