@@ -15,7 +15,7 @@ $usuario = $_REQUEST['usuario'];
 
 			
 				$i=0;
-				$resul =  mysql_query("SELECT * from chat where anulado <> 1 and visto <> 1 and id_para = $usuario order by id desc");
+				$resul =  mysql_query("SELECT * from chat where anulado <> 1 and visto <> 1 and id_para = $usuario or id_para = 0 order by id desc");
 				while($row =  mysql_fetch_array($resul) ) { ?> 
 				
 
@@ -26,7 +26,7 @@ $usuario = $_REQUEST['usuario'];
 <img src="img/usuarios/chat/<?php $usuario = usuarioFuntion ($row['id_de']) ; echo $usuario[0]['foto']  ?>" alt="#" width="44" height="44" class="pull-left">
 <span class="pull-left">
 <strong class="text-gray"><?php $usuario = usuarioFuntion ($row['id_de']) ; echo ucwords  ( $usuario[0]['nombre'].' '.$usuario[0]['apellido'] ) ?></strong><br />
-<span class="text-gray"><?php echo $row['mensaje'] ?>	</span>
+<span class="text-gray"><?php echo substr($row['mensaje'],0,32).'...'; ?>	</span>
 </span>
 <span class="pull-right"><?php  $hoy = date("M j,  g:i:s a", strtotime($row['fecha_envio']));   echo $hoy ?></span>
 </a>
@@ -38,6 +38,10 @@ $usuario = $_REQUEST['usuario'];
 
 <?php } ?>			
 
-
+<li>
+									<a href="#" onclick="lasViTodas();" title="#" class="clearfix text-center">
+										<i class="fa fa-eye"></i> <strong class="text-gray">Marcar vistas todas</strong>
+									</a>
+								</li>
 
 

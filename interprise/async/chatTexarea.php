@@ -11,11 +11,11 @@ mysql_query("SET CHARACTER_SET utf");
 require_once '../usuario_funtion.php';
 $usuario = $_REQUEST['usuario'];
 $i=0;
-				$resul =  mysql_query("SELECT * from chat where anulado <> 1 and id_para = $usuario order by id desc");
-				while($row =  mysql_fetch_array($resul) ) { ?> 
-<?php $usuario = usuarioFuntion ($row['id_de']) ; echo ucwords  ( $usuario[0]['nombre'].' '.$usuario[0]['apellido'] ); ?> 
+				$resul =  mysql_query("SELECT * from chat where anulado <> 1 and id_para = $usuario or id_para = 0 order by id desc");
+				while($row =  mysql_fetch_array($resul) ) { ?>
+<?php $usuario = usuarioFuntion ($row['id_de']) ; echo ucwords  ( $usuario[0]['nombre'].' '.$usuario[0]['apellido'] ); ?> | <?php  $hoy = date("M j,  g:i:s a", strtotime($row['fecha_envio']));   echo $hoy; ?> 
 <?php echo $row['mensaje'] ;?> 
-<?php  $hoy = date("M j,  g:i:s a", strtotime($row['fecha_envio']));   echo $hoy; ?> 
+
 <?php } ;?>			
 
 

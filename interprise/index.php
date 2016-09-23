@@ -324,7 +324,7 @@ $status[$row['status']] = $row['cuenta'];
 									<select name="para" required class="js-select" id="usuariosActivoSelect">
 										<option  value="">- Enviar a -</option>
 										<?php echo $teleo; ?>
-										<option value="*">TODOS</option>
+										<option value="0">TODOS</option>
 									</select>
 									
 								</div>
@@ -509,13 +509,13 @@ $status[$row['status']] = $row['cuenta'];
 	<script src="assets/js/chartist.min.js"></script>
 	<script src="assets/js/jquery.fullscreen.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
- <script src="assets/sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
+   <script src="assets/sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
 	<div class="visible-xs visible-sm extendedChecker"></div>
-
+	 
 </body>
 
 <script type="text/javascript">
-	/*==========================================================
+/*==========================================================
 	=            Envio de un chat por el formulario            =
 	==========================================================*/
 	
@@ -546,7 +546,7 @@ swal({
   },
   function(){
  $('#formChat')[0].reset();
-location.reload();
+//location.reload();
 });
 
 }
@@ -571,6 +571,15 @@ $('#boton').button('reset');
 	
 	/*=====  End of Envio de un chat por el formulario  ======*/
 	
+
+	/*============================================================
+	=            Consulto los mensaje del chat header            =
+	============================================================*/
+	
+	
+	
+
+	
 	$(document).ready(function() {
 var usuarioOnline = <?php echo $_SESSION['usuario']['Id']; ?>;
 
@@ -588,13 +597,21 @@ function verificaChat() {
 		data: {usuario: usuarioOnline},
 	})
 	.done(function(data) {
-		//console.log("success chat comprobado");
+		console.log("success chat comprobado");
 		//console.log(data);
 $('#chatRapido').html(data);
  
 //alert($('#chatRapido > li').length);
-var cuentaChat = $('#chatRapido > li').length;
+var cuentaChat = $('#chatRapido > li').length - 1;
+
+if (cuentaChat > 0) {
 $('#chatCount').html(cuentaChat);
+
+} else {
+
+	$('#chatCount').html('');
+}
+
 
 
 	})
@@ -610,6 +627,7 @@ $('#chatCount').html(cuentaChat);
 
 	});
 
+	/*=====  End of Consulto los mensaje del chat header  ======*/
 
 	/*=======================================
 	=            TexArea Mensaje            =
@@ -655,6 +673,37 @@ $('#textareaMensaje').text(data);
 
 	
 	/*=====  End of TexArea Mensaje  ======*/
+
+
+	/*=====================================
+	=            Las vi todas             =
+	=====================================*/
+	function lasViTodas() {
+var usuarioOnline = <?php echo $_SESSION['usuario']['Id']; ?>;
+
+$.ajax({
+	url: 'envios/chat_lasViTodas.php',
+	type: 'POST',
+	
+	data: {usuario: usuarioOnline},
+})
+.done(function(data) {
+	console.log("success Las vi todas");
+    console.log(data);
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+		
+	}
+	
+	
+	/*=====  End of Las vi todas   ======*/
+	
 	
 </script>
 <!-- Mirrored from sharpen.tomaj.sk/v1.7/html5/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 May 2016 19:05:52 GMT -->
