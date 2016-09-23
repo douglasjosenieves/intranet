@@ -22,7 +22,7 @@ $usuario = $_REQUEST['usuario'];
 
 
 
-$qry = "UPDATE `chat` SET `visto`='1' WHERE `id_para`='$usuario';";
+$qry = "UPDATE `chat` SET `visto`='1', `fecha_leido`='$fechaphp' WHERE `id_para`='$usuario';";
  
 
 $resul = mysql_query($qry);

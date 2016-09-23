@@ -22,11 +22,21 @@ $de = $_REQUEST['de'];
 $para = $_REQUEST['para'];
 $ip=$_SERVER['REMOTE_ADDR'];
 
+if ($para == '0') {
+	$qry = "INSERT INTO chat (`id_para`, `id_de`, `mensaje`, `fecha_envio`, `ip`) SELECT id , '".$de."', '".$mensaje."', '".$fechaphp."', '".$ip."' FROM usuarios where anulado <> 1;";
 
-$qry = "INSERT INTO `chat` (`id_de`, `id_para`, `mensaje`, `fecha_envio`, `ip`) 
+
+} else {
+	$qry = "INSERT INTO `chat` (`id_de`, `id_para`, `mensaje`, `fecha_envio`, `ip`) 
 
 VALUES 
 ('".$de."', '".$para."', '".$mensaje."', '".$fechaphp."','".$ip."' );";
+}
+
+
+
+
+
  
 
 $resul = mysql_query($qry);
