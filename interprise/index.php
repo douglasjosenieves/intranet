@@ -588,7 +588,7 @@ function verificaChat() {
 		data: {usuario: usuarioOnline},
 	})
 	.done(function(data) {
-		console.log("success chat comprobado");
+		//console.log("success chat comprobado");
 		//console.log(data);
 $('#chatRapido').html(data);
  
@@ -602,7 +602,7 @@ $('#chatCount').html(cuentaChat);
 		console.log("error");
 	})
 	.always(function() {
-		console.log("complete");
+	//	console.log("complete");
 	});
 	
 	// body...
@@ -632,8 +632,8 @@ function verificaChatTexArea() {
 		data: {usuario: usuarioOnline},
 	})
 	.done(function(data) {
-		console.log("success chatTexArea comprobado");
-		console.log(data);
+		//console.log("success chatTexArea comprobado");
+		//console.log(data);
  
 $('#textareaMensaje').text(data);
 
@@ -645,7 +645,7 @@ $('#textareaMensaje').text(data);
 		console.log("error");
 	})
 	.always(function() {
-		console.log("complete");
+	//	console.log("complete");
 	});
 	
 	// body...

@@ -23,7 +23,7 @@ $para = $_REQUEST['para'];
 $ip=$_SERVER['REMOTE_ADDR'];
 
 
-$qry = "INSERT INTO `intranet`.`chat` (`id_de`, `id_para`, `mensaje`, `fecha_envio`, `ip`) 
+$qry = "INSERT INTO `chat` (`id_de`, `id_para`, `mensaje`, `fecha_envio`, `ip`) 
 
 VALUES 
 ('".$de."', '".$para."', '".$mensaje."', '".$fechaphp."','".$ip."' );";

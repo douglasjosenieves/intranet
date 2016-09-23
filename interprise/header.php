@@ -13,7 +13,7 @@
 						<div class="btn-group simpleList simpleListLighten messages">
 							<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="zmdi zmdi-email zmdi-hc-fw icon"></i>
-								<span class="badge" id="chatCount">6</span>
+								<span class="badge" id="chatCount"></span>
 							</button>
 							
 							<ul id="chatRapido" class="dropdown-menu pull-right">
