@@ -161,7 +161,7 @@ $contactos_web[] = $row;
 
 
 
-<div class="col-xs-12 col-sm-4">
+<div class="col-xs-12 col-sm-2">
 <div class="form-group">
 <label for="basicInput">Agendar Cita Aqui <i class="fa fa-arrow-down"></i></label>
 <button type="button" class="btn bg-orange" data-toggle="modal" data-target="#openAgenga">Calendario <i class="fa fa-calendar"></i></button>
@@ -171,6 +171,12 @@ $contactos_web[] = $row;
 
 
 
+<div class="col-xs-12 col-sm-2">
+<div class="form-group">
+<label for="basicInput">Enviar Email <i class="fa fa-arrow-down"></i></label>
+<button type="button" class="btn bg-orange" data-toggle="modal" data-target="#openEnviarEmail">Enviar Email <i class="fa fa-send-o"></i></button>
+</div>
+</div>
 
 
 
@@ -1234,6 +1240,73 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 
 
 
+<!--=====================================
+=            Section comment  enviar email          =
+======================================-->
+<div class="modal fade" id="openEnviarEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span id="exampleModalLabel" aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >Seleccionar tipo de envío</h4>
+      </div>
+      <div class="modal-body">
+        <form id="formulario_EnvioEmail">
+           
+
+						<div class="row">
+<div id="cargando" ><center><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+<span class="sr-only">Loading...</span>Cargando...</center></div>
+
+							<div class="col-xs-12  ">
+								<div class="form-group">
+									<label>Tipo</label>
+									 <select name="tipoEmail" id="tipoEmail" class="js-select" style="width:100%;">
+								 
+										<option value="" >- Seleccione tipo -</option>
+										<option value="CITA PRESENCIAL">CITA PRESENCIAL</option>
+										<option value="CITA VIRTUAL">CITA VIRTUAL</option>
+										<option value="NO CONTACTADO">NO CONTACTADO</option>
+											 
+								 
+									</select>
+									</div>
+									</div>
+</div>	
+
+<div class="row">
+		<div class="radiobuttons" id="radioBtnCitas">
+							
+							
+						
+						</div>
+
+
+</div>
+ 
+<input type="hidden" id="id_contacto" name="id_contacto" value="<?php echo $id ?>">
+<input type="hidden" name="color" value="<?php echo $_SESSION['usuario']['Color']?>">
+<input type="hidden" name="titulo" value="<?php echo $contactos_web[0]['nombres'].' '.$contactos_web[0]['apellidos'] ?>">
+<input type="hidden" name="nombre" value="<?php echo $contactos_web[0]['nombres'].' '.$contactos_web[0]['apellidos'] ?>">
+
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+     <button type="submit" id="agendar" disabled class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Agendar   </button>
+      </div>
+
+         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--====  End of Section comment enviar email ====-->
+
+
+
 </body>
 
 
@@ -1241,6 +1314,68 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 
 
 <script type="text/javascript">
+
+
+/*===============================================
+=            Para el envio de correo            =
+===============================================*/
+
+$(document).ready(function() {
+	$('#tipoEmail').on('change', function(event) {
+		event.preventDefault();
+		//console.log($(this).val());
+	$('#cargando').hide();
+
+mivar1 = $(this).val();
+
+
+if (mivar1 == 'CITA VIRTUAL' || mivar1 == 'CITA PRESENCIAL'  ) {
+
+//console.log(mivar1);
+buscarCitas();
+
+}
+
+
+
+	});
+
+
+function buscarCitas() {
+
+var cliente = $('#id_contacto').val();
+$('#cargando').show();
+$.ajax({
+	url: 'async/calendarioEmail.php',
+	type: 'POST',
+	
+	data: {cliente: cliente},
+})
+.done(function(data) {
+	console.log("success");
+console.log(data);
+$('#radioBtnCitas').html(data);
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+	$('#cargando').hide();
+});
+
+
+
+}
+
+
+
+});
+
+/*=====  End of Para el envio de correo  ======*/
+
+
 	
 $(document).ready(function() {
 	

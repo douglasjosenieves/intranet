@@ -334,7 +334,7 @@ $status[$row['status']] = $row['cuenta'];
 
 
 								<div class="row">
-								<div class="col-xs-9 col-sm-9">
+								<div class="col-xs-12 col-sm-9">
 								<div class="form-group">
 								 
 									<input type="text" required name="mensaje"  class="form-control" id="basicInput" placeholder="Su mensaje aqui...">
@@ -343,7 +343,7 @@ $status[$row['status']] = $row['cuenta'];
 							</div>
 
 
-							<div class="col-xs-2 col-sm-2">
+							<div class="col-xs-12 col-sm-2">
 									<button type="submit" id="boton" class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Enviar <i class="fa fa-send"></i>   </button>
 
 							</div>
