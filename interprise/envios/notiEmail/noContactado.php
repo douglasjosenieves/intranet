@@ -58,9 +58,7 @@ $body .= '<br>';
 $body .= 'Le invitamos a visitar nuestro sitio web www.cohenyaguirre.es o nuestro fan page en facebook mediante el siguiente link https://www.facebook.com/cohenyaguirre/ y así conocer un poco más de quienes somos.';
 $body .= '<br>';
 $body .= '<br>';
-$body .= 'Estaremos encantados de recibirle en nuestras oficinas de Caracas. Por favor, por motivos de seguridad, indica el nombre completo  y numero de cedula de las personas que te van a acompañar para proveerles el acceso.
-Le recordamos que tenemos un máximo de 3 personas para la atención, incluyendo al titular o contacto, esto por políticas de la empresa para garantizar la calidad del servicio.
-Te esperamos en nuestras oficinas en:';
+$body .= 'Hemos intentado conversar con usted en dos ocasiones sin éxito. Por favor, tome nuestros datos de contacto para cuando tenga disponibilidad se comunica con nosotros, muy cordialmente atenderemos sus necesidades.';
 $body .= '<br>';
 $body .= '<br>';
 /*<strong></strong>*/
@@ -68,7 +66,7 @@ $body .= '<strong>Dirección:</strong> Avenida Francisco de Miranda. C.C Lido, T
 $body .= '<br>';
 $body .= '<strong>Teléfono:</strong> +58 212 905 63 04';
 $body .= '<br>';
-$body .= '<strong>Día y Hora Venezuela:</strong> '.$fechaCita.'';
+$body .= '<strong>Día y Hora Venezuela: ¡Debe solicitar cita con su asesor!</strong> ';
 $body .= '<br>';
 $body .= '<strong>Ejecutivo asignado en Caracas, Venezuela:</strong> Sr./a. '.$ejecutivoCaracas.'';
 $body .= '<br>';
@@ -118,7 +116,7 @@ $mail->From = 'contacto@cohenyaguirre.es';
 
 $mail->FromName = 'Cohen y Aguirre';
 
-$mail->Subject = 'Cita presencial programada';
+$mail->Subject = 'No contactado';
 
 $mail->AltBody = 'Citas';
 $mail->CharSet = 'UTF-8';
