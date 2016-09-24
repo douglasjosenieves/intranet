@@ -1255,7 +1255,7 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
            
 
 						<div class="row">
-<div id="cargando" ><center><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+<div id="cargando"  ><center><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 <span class="sr-only">Loading...</span>Cargando...</center></div>
 
 							<div class="col-xs-12  ">
@@ -1292,7 +1292,7 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
      
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-     <button type="submit" id="agendar" disabled class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Agendar   </button>
+     <button type="submit" id="emailsend"   class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Enviar  </button>
       </div>
 
          </form>
@@ -1321,10 +1321,12 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 ===============================================*/
 
 $(document).ready(function() {
+
+	$('#cargando').hide();
 	$('#tipoEmail').on('change', function(event) {
 		event.preventDefault();
 		//console.log($(this).val());
-	$('#cargando').hide();
+	
 
 mivar1 = $(this).val();
 
@@ -1342,7 +1344,7 @@ buscarCitas();
 
 
 function buscarCitas() {
-
+$('#cargando').show();
 var cliente = $('#id_contacto').val();
 $('#cargando').show();
 $.ajax({

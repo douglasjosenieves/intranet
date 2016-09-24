@@ -320,6 +320,7 @@ if (isset($_GET['id'])) {
 									<th>Fecha ingreso</th>
 									<th>Fecha modificado</th>
 									<th>Asunto</th>
+									<th>Categoria</th>
 									<th>Status</th>
 								</tr>
 							</thead>
@@ -328,9 +329,9 @@ if (isset($_GET['id'])) {
 
 <?php 
 
-
+require_once 'status_funtion_abierto_cerrado.php';
                     $i=0;
-                    $resul =  mysql_query("SELECT * FROM `seguimiento` where id_contacto ='".$id."' order by id desc");
+                    $resul =  mysql_query("SELECT * FROM `seguimiento` where anulado <> 1 and id_contacto ='".$id."' order by id desc");
                     while($row =  mysql_fetch_array($resul) ) {
                     
 
@@ -357,7 +358,8 @@ if (isset($_GET['id'])) {
 									<td><?php echo $contacto['contacto'][$i]['fecha']?></td>
 										<td><?php echo $contacto['contacto'][$i]['editado_fecha']?></td>
 									<td><?php echo $contacto['contacto'][$i]['asunto']?></td>
-									<td><?php echo $contacto['contacto'][$i]['status']?></td>
+										<td><?php echo $contacto['contacto'][$i]['categoria']?></td>
+									<td><?php echo statusColor($contacto['contacto'][$i]['status'])?></td>
 								</tr>
 							
 								 

@@ -7,7 +7,7 @@ require_once '../../PHPPaging.lib.php';
 
 // connecting to db
 $con = new DB_CONNECT();
-//sleep(10);
+sleep(10);
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf"); 
 
@@ -40,7 +40,7 @@ $cliente = $_REQUEST['cliente'];
 
 <label>
 <input type="radio"  name="radioCita">
-<span><?php       echo $row['titulo'].' '.$row['start']; ?></span>
+<span><?php       echo 'Día agendado: '.$row['start']; ?></span>
 </label>
 
 

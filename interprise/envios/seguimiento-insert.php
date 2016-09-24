@@ -74,7 +74,7 @@ VALUES (
 '$descripcion',
 '$categoria',
 '$status', 
-'SEGUIMIENTO',
+'S',
 '$fecha',
 '$elaborado_por');");
 
