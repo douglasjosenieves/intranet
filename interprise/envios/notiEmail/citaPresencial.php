@@ -18,7 +18,7 @@ require('PHPMailer-master/class.phpmailer.php');
 
 require('PHPMailer-master/class.smtp.php');
 
-$nombres = 'Douglas';
+/*$nombres = 'Douglas';
 $apellidos = 'Nieves';
 $email = "douglasjosenieves@gmail.com";
 $fechaCita = '24/09/2016 09:00';
@@ -26,20 +26,21 @@ $ejecutivoCaracas ='Sr. Erick Lárez';
 $ejecutivoMadrid = 'Sr. Elvin Castillo';
 $emailAsesor= 'erick.larez@cohenyaguirre.es';
 $montoCita = '45.000 BsF';
-$id_contacto= '5';
+$id_contacto= '5';*/
 
 
 
-/*$nombres = $_REQUEST['nombres'];
+$nombres = $_REQUEST['nombres'];
 $apellidos = $_REQUEST['apellidos'];
 $email = $_REQUEST['email'];
 $fechaCita = $_REQUEST['fechaCita'];
 $ejecutivoCaracas = $_REQUEST['ejecutivoCaracas'];
 $ejecutivoEmail = $_REQUEST['ejecutivoEmail'];
-$ejecutivoMadrid = 'Sr. Elvin Castillo';
-$montoCita = '45.000 BsF';
 $id_contacto=$_REQUEST['id_contacto'];
-*/
+$elaborado_por =  $_REQUEST['elaborado_por'];
+$ejecutivoMadrid = 'Elvin Castillo';
+$montoCita = '45.000 BsF';
+
 
 $nombrecompleto = $nombres.' '.$apellidos;
 //$telefono = '04141331946';
@@ -67,9 +68,9 @@ $body .= '<strong>Teléfono:</strong> +58 212 905 63 04';
 $body .= '<br>';
 $body .= '<strong>Día y Hora Venezuela:</strong> '.$fechaCita.'';
 $body .= '<br>';
-$body .= '<strong>Ejecutivo asignado en Caracas, Venezuela:</strong> '.$ejecutivoCaracas.'';
+$body .= '<strong>Ejecutivo asignado en Caracas, Venezuela:</strong> Sr.(a).'.$ejecutivoCaracas.'';
 $body .= '<br>';
-$body .= '<strong>Ejecutivo asignado en Madrid, España:</strong> Sr. '.$ejecutivoMadrid.'';
+$body .= '<strong>Ejecutivo asignado en Madrid, España:</strong> Sr.(a). '.$ejecutivoMadrid.'';
 $body .= '<br>';
 $body .= '<br>';
 $body .= 'La reunión de asesoramiento la llevará a cabo el ejecutivo asignado en Caracas. Tiene una duración de 60 minutos aproximadamente, así como un coste de '.$montoCita.'.';
@@ -137,7 +138,7 @@ $mail->Password = 'programador2016*';
 if(!$mail->Send()) {
 echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {
-echo 'Message sent!';
+//echo 'Message sent!';
 
 /*====================================================================
 =            Aqui va el inser del mensaje en seguimientos            =
@@ -146,7 +147,6 @@ $categoria='ENVIO EMAIL';
 $status='CERRADO';
 $asunto= $mail->Subject;
 $descripcion=$body;
-$elaborado_por=$ejecutivoCaracas;
 $fecha = date("Y-m-d H:i:s");
 
 

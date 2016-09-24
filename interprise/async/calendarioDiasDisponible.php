@@ -16,7 +16,7 @@ $dia = $_REQUEST['dia'];
 echo ' <strong> Dia consultado: '.$dia.'</strong><br>';
 			
 				$i=0;
-				$resul =  mysql_query("SELECT *,  time(start) as ini, time(end) as fin  FROM admin_crm.calendario where CAST(start AS DATE) = '".$dia."';");
+				$resul =  mysql_query("SELECT *,  time(start) as ini, time(end) as fin  FROM calendario where CAST(start AS DATE) = '".$dia."';");
 				while($row =  mysql_fetch_array($resul) ) {
 				$mysql_data = $row['allDay'];
 				// $mysql_data is tinyint value from db

@@ -1251,7 +1251,7 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
         <h4 class="modal-title" >Seleccionar tipo de envío</h4>
       </div>
       <div class="modal-body">
-        <form id="formulario_EnvioEmail">
+        <form id="enviarEmail">
            
 
 						<div class="row">
@@ -1284,15 +1284,31 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 
 </div>
  
-<input type="hidden" id="id_contacto" name="id_contacto" value="<?php echo $id ?>">
-<input type="hidden" name="color" value="<?php echo $_SESSION['usuario']['Color']?>">
-<input type="hidden" name="titulo" value="<?php echo $contactos_web[0]['nombres'].' '.$contactos_web[0]['apellidos'] ?>">
-<input type="hidden" name="nombre" value="<?php echo $contactos_web[0]['nombres'].' '.$contactos_web[0]['apellidos'] ?>">
+<!--  $nombres = 'Douglas';
+$apellidos = 'Nieves';
+$email = "douglasjosenieves@gmail.com";
+$fechaCita = '24/09/2016 09:00';
+$ejecutivoCaracas ='Sr. Erick Lárez';
+$ejecutivoMadrid = 'Sr. Elvin Castillo';
+$emailAsesor= 'erick.larez@cohenyaguirre.es';
+$montoCita = '45.000 BsF';
+$id_contacto= '5'; -->
 
+
+<input type="hidden" name="nombres" value="<?php echo $contactos_web[0]['nombres']?>">
+<input type="hidden" name="apellidos" value="<?php echo $contactos_web[0]['apellidos']?>">
+<input type="hidden" name="email" value="<?php echo $contactos_web[0]['email']?>">
+
+
+<input type="hidden" id="elaborado_por" name="elaborado_por" value="<?php echo $_SESSION['usuario']['Id']?>">
+<input type="hidden" id="ejecutivoCaracas" name="ejecutivoCaracas" value="<?php echo ucwords($_SESSION['usuario']['Nombre'].' '.$_SESSION['usuario']['Apellido'])?>">
+<input type="hidden" id="emailAsesor" name="emailAsesor" value="<?php echo $_SESSION['usuario']['Email']?>">
+
+<input type="hidden" id="id_contacto" name="id_contacto" value="<?php echo $id ?>">
      
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-     <button type="submit" id="emailsend"   class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Enviar  </button>
+     <button type="submit" id="emailsend" disabled  class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Enviar  </button>
       </div>
 
          </form>
@@ -1314,6 +1330,7 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 
 
 <script type="text/javascript">
+
 
 
 /*===============================================
@@ -1338,6 +1355,11 @@ buscarCitas();
 
 }
 
+else {
+$('#emailsend').removeAttr('disabled');
+
+}
+
 
 
 	});
@@ -1355,8 +1377,9 @@ $.ajax({
 })
 .done(function(data) {
 	console.log("success");
-console.log(data);
+//console.log(data);
 $('#radioBtnCitas').html(data);
+
 
 })
 .fail(function() {
@@ -1365,11 +1388,91 @@ $('#radioBtnCitas').html(data);
 .always(function() {
 	console.log("complete");
 	$('#cargando').hide();
+	$('#emailsend').removeAttr('disabled');
 });
 
 
 
 }
+
+
+
+/*==============================================================
+=            Al darle envia a formulario_EnvioEmail            =
+==============================================================*/
+
+$('#enviarEmail').on('submit', function(event) {
+	event.preventDefault();
+	
+
+
+	var elije =  $('#tipoEmail').val();
+	
+	/* Act on the event */
+
+	if (elije=='CITA PRESENCIAL') {
+
+		var archive='envios/notiEmail/citaPresencial.php'
+	} 
+
+	if (elije=='CITA VIRTUAL') {
+
+		var archive='envios/notiEmail/citaVirtual.php'
+	} 
+
+if (elije=='NO CONTACTADO') {
+
+		var archive='envios/notiEmail/noContactado.php'
+	} 
+
+
+///alert(archive);
+$('#emailsend').button('loading');
+
+$.ajax({
+	url: archive,
+	type: 'POST',
+	 
+	data: $('#enviarEmail').serialize(),
+})
+.done(function(data) {
+	console.log("success");
+	console.log(data);
+
+
+
+	if (data==1) {
+
+swal({ 
+  title: "Good job! ",
+   text: "Envio de correo con exito...!",
+    type: "success" 
+  },
+  function(){
+$('#enviarEmail')[0].reset();
+$('#openEnviarEmail').modal('hide');
+//location.reload();
+ 
+});
+
+
+}
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+	$('#emailsend').button('reset');
+});
+
+
+});
+
+/*=====  End of Al darle envia a formulario_EnvioEmail  ======*/
+
+
 
 
 
