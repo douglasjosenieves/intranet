@@ -34,7 +34,7 @@
 
 					<ul >
 						<li><a href="reporte-clientes-usuario.php" title="Perfil del usuario">Mis clientes</a></li>
-						<li><a target="_blank" href="reporte-misseguimientos.php" title="Perfil del usuario">Mis seguimientos</a></li>
+						<li><a target="" href="reporte-misseguimientos.php" title="Perfil del usuario">Mis seguimientos</a></li>
  
 
 						 
