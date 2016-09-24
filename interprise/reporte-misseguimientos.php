@@ -124,7 +124,7 @@ $idusuario =  $_SESSION['usuario']['Id'] ;
 
 
 								<tr class="">
-									<th scope="row"> <a href="seguimiento.php?editar_caso=<?php echo $contacto['contacto'][$i]['id']?>&id=<?php echo $id ;?>"> <?php echo $contacto['contacto'][$i]['id']?></a></th>
+									<th scope="row"> <a href="seguimiento.php?editar_caso=<?php echo $contacto['contacto'][$i]['id']?>&id=<?php echo $contacto['contacto'][$i]['id_contacto'] ;?>"> <?php echo $contacto['contacto'][$i]['id']?></a></th>
 									<td><?php echo $contacto['contacto'][$i]['nombres'].' '.$contacto['contacto'][$i]['apellidos']?></td>
 									<td><?php echo $contacto['contacto'][$i]['fecha']?></td>
 									<td><?php $usuario = usuarioFuntion ($contacto['contacto'][$i]['elaborado_por']); echo ucwords($usuario[0]['nombre'].' '.$usuario[0]['apellido'])?></td>
