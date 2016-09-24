@@ -97,10 +97,12 @@ mysql_query("SET CHARACTER_SET utf");
 							
 
 <?php 
-
+require_once 'usuario_funtion.php';
 require_once 'status_funtion_abierto_cerrado.php';
+
+$idusuario =  $_SESSION['usuario']['Id'] ;
                     $i=0;
-                    $resul =  mysql_query("SELECT * FROM `seguimiento` where anulado <> 1 and status = 'ABIERTO'  order by id desc");
+                    $resul =  mysql_query("SELECT * FROM `seguimiento` where anulado <> 1 and elaborado_por = '".$idusuario."' order by id desc");
                     while($row =  mysql_fetch_array($resul) ) {
                     
 
@@ -125,7 +127,7 @@ require_once 'status_funtion_abierto_cerrado.php';
 									<th scope="row"> <a href="seguimiento.php?editar_caso=<?php echo $contacto['contacto'][$i]['id']?>&id=<?php echo $id ;?>"> <?php echo $contacto['contacto'][$i]['id']?></a></th>
 									<td><?php echo $contacto['contacto'][$i]['nombres'].' '.$contacto['contacto'][$i]['apellidos']?></td>
 									<td><?php echo $contacto['contacto'][$i]['fecha']?></td>
-									<td><?php echo $contacto['contacto'][$i]['elaborado_por']?></td>
+									<td><?php $usuario = usuarioFuntion ($contacto['contacto'][$i]['elaborado_por']); echo ucwords($usuario[0]['nombre'].' '.$usuario[0]['apellido'])?></td>
 										<td><?php echo $contacto['contacto'][$i]['editado_fecha']?></td>
 									<td><?php echo $contacto['contacto'][$i]['asunto']?></td>
 										<td><?php echo $contacto['contacto'][$i]['categoria']?></td>

@@ -134,7 +134,10 @@ if (isset($_GET['id'])) {
 								 <div class="col-xs-12 col-sm-4">
 														<div class="form-group">
 															<label for="elaborado_por">Elaborado Por:</label>
-															<input  readonly type="text" required class="form-control" value="<?php echo $_SESSION['usuario']['Nombre'].' '.$_SESSION['usuario']['Apellido'] ?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
+															<input  readonly type="text" required class="form-control" value="<?php echo $_SESSION['usuario']['Nombre'].' '.$_SESSION['usuario']['Apellido'] ?>" name="soloLectura" id="elaborado_por" placeholder="Elaborado Por:">
+
+
+															<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id'] ?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
 														</div>
 													</div>
 

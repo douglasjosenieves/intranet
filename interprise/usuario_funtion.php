@@ -31,4 +31,6 @@ return $usuario;
 
 
 //echo nombreAsessor(2);
+
+//$usuario = usuarioFuntion ($contacto['contacto'][$i]['elaborado_por']); echo ucwords($usuario[0]['nombre'].' '.$usuario[0]['apellido'])
  ?>
