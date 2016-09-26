@@ -141,7 +141,7 @@ mysql_query("SET CHARACTER_SET utf");
 								Procesos <i class="fa fa-chevron-down"></i>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="ficha-contacto-editar.php?id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Editar</a></li>
+								<li><a href="ficha-contacto-editar.php?id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
 							
 						
 								

@@ -38,6 +38,7 @@ $emailAsesor = $_REQUEST['emailAsesor'];
 $fechaCita = $_REQUEST['fechaCita'];
 $ejecutivoCaracas = $_REQUEST['ejecutivoCaracas'];
 $ejecutivoEmail = $_REQUEST['ejecutivoEmail'];
+$ejecutivoTel = $_REQUEST['ejecutivoTel'];
 $id_contacto=$_REQUEST['id_contacto'];
 $elaborado_por =  $_REQUEST['elaborado_por'];
 $ejecutivoMadrid = 'Elvin Castillo';
@@ -66,34 +67,15 @@ $body .= '<strong>Dirección:</strong> Avenida Francisco de Miranda. C.C Lido, T
 $body .= '<br>';
 $body .= '<strong>Teléfono:</strong> +58 212 905 63 04';
 $body .= '<br>';
-$body .= '<strong>Día y Hora Venezuela: ¡Debe solicitar cita con su asesor!</strong> ';
-$body .= '<br>';
-$body .= '<strong>Ejecutivo asignado en Caracas, Venezuela:</strong> Sr./a. '.$ejecutivoCaracas.'';
-$body .= '<br>';
-$body .= '<strong>Ejecutivo asignado en Madrid, España:</strong> Sr./a. '.$ejecutivoMadrid.'';
 $body .= '<br>';
 $body .= '<br>';
-$body .= 'La reunión de asesoramiento la llevará a cabo el ejecutivo asignado en Caracas. Tiene una duración de 60 minutos aproximadamente, así como un coste de '.$montoCita.'.';
+
+$body .= '<strong>Esta es una cuenta no monitoreada. No responda o reenvíe correos a la misma.</strong>';
+$body .= '<br>';
+$body .= 'Ponemos a su disposición la dirección electrónica: '.$emailAsesor.' y número telefónico: '.$ejecutivoTel.' para sus comentarios.';
 $body .= '<br>';
 $body .= '<br>';
-$body .= '<br>';
-$body .= 'En caso de preferir transferencia bancaria en Venezuela, los datos son:';
-$body .= '<br>';
-$body .= '<strong>Titular:</strong> COHEN Y AGUIRRE LOBBY SOLUTIONS, C.A.';
-$body .= '<br>';
-$body .= '<strong>R.I.F.:</strong> J-40698328-4';
-$body .= '<br>';
-$body .= '<strong>Banco:</strong> BBVA Provincial';
-$body .= '<br>';
-$body .= '<strong>Número de cuenta Corriente:</strong> 0108-0100-11-0100198928';
-$body .= '<br>';
-$body .= '<br>';
-$body .= '<br>';
-$body .= 'Por motivos de planificación y agenda, el resguardo o justificante de la transferencia se enviará a '.$emailAsesor.' para confirmar la reunión en un plazo máximo de 48 horas desde la llegada de este correo.';
-$body .= '<br>';
-$body .= '<strong>Datos para la facturación;</strong>  Si la desea a nombre de una empresa, favor incluya los datos fiscales de la misma y si la desea personal, favor incluir número de cedula y una dirección corta.
-Si la transferencia la realiza desde la cuenta de un tercero, favor indíquenos el nombre del titular.
-Para cualquier duda o consulta sobre este email, no dudes en disponer de los datos de contacto en la firma del mismo.';
+
 $body .= 'Saludos cordiales,';
  
 $body .= '<br>';

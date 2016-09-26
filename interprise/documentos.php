@@ -21,7 +21,7 @@ mysql_query("SET CHARACTER_SET utf");
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Palntilla Blanca</title>
+	<title>Documentos</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -53,6 +53,7 @@ mysql_query("SET CHARACTER_SET utf");
 	 
 	<!-- Modernizr -->
 	<script src="assets/js/modernizr-2.8.3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.js"></script> 
 
 	<!-- Google fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
@@ -74,51 +75,75 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Palntilla Blanca</a>
+					<a href="#" title="#">Documentos</a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
-					<li class="active">Menu</li>
+					<li class="active">Procesos</li>
 				</ol>
 				
 				<div class="box rte">
-					<h2 class="boxHeadline">Titulo</h2>
-					<h3 class="boxHeadlineSub">Subtitulo</h3>
-<div class="row">
+					<h2 class="boxHeadline">Documentos</h2>
+					<h3 class="boxHeadlineSub">Generar documentos</h3>
+					
+										<div class="row">
+	
+		
 
 
-<div class="col-xs-12 col-sm-2">
-<div class="form-group">
-<label for="referencia">Nº Referencia</label>
-<input type="text" readonly required class="form-control" name="referencia" id="referencia" placeholder="Nº Referencia">
-</div>
-</div>
+ <div class="col-xs-12 col-sm-2">
+								<div class="form-group">
+									<label for="referencia">Nº Referencia</label>
+									<input type="text" readonly required class="form-control" name="referencia" id="referencia" placeholder="Nº Referencia">
+								</div>
+							</div>
 
-
-
-
-<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="editado_por" id="editado_por" placeholder="Elaborado Por:">
+								 
+														 
+															
+						 	<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="editado_por" id="editado_por" placeholder="Elaborado Por:">
 
 
 <?php require_once 'asesor_funtion.php'; ?>
 
+						 	
+						 	<div class="col-xs-12 col-sm-4">
+						 	<div class="form-group">
+						 	<label for="basicInput">Elaborado:</label>
+						 	<input type="text" disabled value="<?php echo nombreAsessor($_SESSION['usuario']['Id'])?>" required class="form-control" name="elaborado" id="elaborado" placeholder="Elaborado:">
+						 	</div>
+						 	</div>
+										
+
+						 
+
+ 
+
+</div>
+
+
+<div class="row" ng-app="myApp">
+	
+
 
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
-<label for="basicInput">Elaborado:</label>
-<input type="text" disabled value="<?php echo nombreAsessor($_SESSION['usuario']['Id'])?>" required class="form-control" name="elaborado" id="elaborado" placeholder="Elaborado:">
+<label for="basicInput">Fecha:</label>
+<input type="text" ng-model="name" value="2016-06-05" required class="form-control"  name="fecha" id="fecha" placeholder="Fecha:">
 </div>
 </div>
 
+   <h1>You entered: {{name}}</h1>
+<button type="button" onclick="update();" class="btn btn-warning">Update</button>
 
 </div>
-					
+			
 				 <!--====================================================
 					 =            AQUI VA EL CONTENIDO DEL SITE-            =
 					 =====================================================-->
 					 
 					 
-					 
+					 <iframe id='pdfV' style="width:100%; height: 500px" > </iframe>
 					 <!--====  End of AQUI VA EL CONTENIDO DEL SITE-  ====-->
   
 				
@@ -168,11 +193,63 @@ mysql_query("SET CHARACTER_SET utf");
 <script src='http://cdn.tinymce.com/4/tinymce.min.js'></script>
  
 
-	<div class="visible-xs visible-sm extendedChecker"></div>
+<script src="assets/pdfmake/pdfmake.min.js"></script>
+<script src="assets/pdfmake/vfs_fonts.js"></script>
 
 
+ <script type="text/javascript">
+
+
+
+var fecha = $('#fecha').val();
+
+
+ var docDefinition = {
 	
+   content: [
+     // if you don't need styles, you can use a simple string to define a paragraph
+     'This is a standard paragraph, using default style',
+
+     // using a { text: '...' } object lets you set styling properties
+     { text: 'This paragraph will have a bigger font', fontSize: 15 },
+
+     // if you set pass an array instead of a string, you'll be able
+     // to style any fragment individually
+     {
+       text: [
+         'This paragraph '+fecha+' is defined as an array of elements to make it possible to ',
+         { text: 'restyle part of it and make it bigger ', fontSize: 15 },
+         'than the rest.'
+       ]
+     }
+   ]
+ };
+
+function update() {
+
+
+	//alert('update');
+	// body...
+}
+
+  // open the PDF in a new window
+ //pdfMake.createPdf(docDefinition).open();
+
+ // print the PDF (temporarily Chrome-only)
+ //pdfMake.createPdf(docDefinition).print();
+
+ // download the PDF (temporarily Chrome-only)
+ //pdfMake.createPdf(docDefinition).download('optionalName.pdf');
+
+  
+pdfMake.createPdf(docDefinition).getDataUrl(function (outDoc) {
+document.getElementById('pdfV').src = outDoc;
+});
+
+
+
  
+ </script>
  
 </body>
 

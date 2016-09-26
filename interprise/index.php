@@ -151,6 +151,17 @@ $status[$row['status']] = $row['cuenta'];
 								 
 							</a>
 						</div>
+
+
+						     <div class="col-xs-12 col-md-3 i interesados">
+							<a href="#" title="#" class="c">
+								<h3 class="title">Interesados</h3>
+								<div class="num" id="repProsPagados"><?php  echo (isset($status['INTERESADO'])) ? $status['INTERESADO']  :  '0';  ?></div>
+								<i class="icon zmdi zmdi-alert-polygon"></i>
+							</a>
+						</div>
+
+
 						<div class="col-xs-12 col-md-3 i pink">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Pros. Citados</h3>
@@ -166,13 +177,7 @@ $status[$row['status']] = $row['cuenta'];
 							</a>
 						</div>
 
-		            <div class="col-xs-12 col-md-3 i interesados">
-							<a href="#" title="#" class="c">
-								<h3 class="title">Interesados</h3>
-								<div class="num" id="repProsPagados"><?php  echo (isset($status['INTERESADO'])) ? $status['INTERESADO']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-alert-polygon"></i>
-							</a>
-						</div>
+		       
 
 
 
@@ -180,7 +185,15 @@ $status[$row['status']] = $row['cuenta'];
 				</div>
 	     
 	     <div class="statsBar2">
-					<div class="row">
+	     	<div class="row">
+						<div class="col-xs-12 col-md-4 i yellow2">
+							<a href="#" title="#" class="c">
+								<h3 class="title">Pros. Seguimiento</h3>
+								<div class="num" id="clientes"><?php  echo (isset($status['PROSPECTO EN SEGUIMIENTO'])) ? $status['PROSPECTO EN SEGUIMIENTO']  :  '0';  ?></div>
+								<i class="icon zmdi zmdi-eye"></i>
+							</a>
+						</div>
+					
 						<div class="col-xs-12 col-md-4 i yellow">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Clientes</h3>
@@ -195,6 +208,29 @@ $status[$row['status']] = $row['cuenta'];
 								<i class="icon zmdi zmdi-folder-outline"></i>
 							</a>
 						</div>
+						
+					
+				</div>
+</div>
+
+
+	     <div class="statsBar2">
+	     	<div class="row">
+				 
+				 <div class="col-xs-12 col-md-4 i green2">
+							<a href="#" title="#" class="c">
+								<h3 class="title" id="descartados">No contactado</h3>
+								<div class="num"><?php  echo (isset($status['NO CONTACTADO'])) ? $status['NO CONTACTADO']  :  '0';  ?></div>
+								<i class="icon zmdi zmdi-phone-missed"></i>
+							</a>
+						</div>
+						<div class="col-xs-12 col-md-4 i pink2">
+							<a href="#" title="#" class="c">
+								<h3 class="title">Form. Defectuoso</h3>
+								<div class="num" id="estudios"><?php  echo (isset($status['FORMULARIO DEFECTUOSO'])) ? $status['FORMULARIO DEFECTUOSO']  :  '0';  ?></div>
+								<i class="icon zmdi zmdi-close"></i><i class="icon zmdi zmdi-text-format"></i>
+							</a>
+						</div>
 						<div class="col-xs-12 col-md-4 i green">
 							<a href="#" title="#" class="c">
 								<h3 class="title" id="descartados">Descartados</h3>
@@ -204,7 +240,7 @@ $status[$row['status']] = $row['cuenta'];
 						</div>
 					</div>
 				</div>
-
+</div>
 
 				<div class="row">
 					<div class="col-xs-12 col-md-6">

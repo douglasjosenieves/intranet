@@ -61,19 +61,13 @@ $body .= '<br>';
 $body .= '<br>';
 $body .= 'Estaremos encantados de recibirle en nuestras oficinas de Caracas. Por favor, por motivos de seguridad, indica el nombre completo  y numero de cedula de las personas que te van a acompañar para proveerles el acceso.
 Le recordamos que tenemos un máximo de 3 personas para la atención, incluyendo al titular o contacto, esto por políticas de la empresa para garantizar la calidad del servicio.
-Te esperamos en nuestras oficinas en:';
+Te esperamos en nuestras oficinas en: (<strong>Solicitar cita</strong>)';
 $body .= '<br>';
 $body .= '<br>';
 /*<strong></strong>*/
 $body .= '<strong>Dirección:</strong> Avenida Francisco de Miranda. C.C Lido, Torre D. Piso 4, Oficina 41-D.';
 $body .= '<br>';
 $body .= '<strong>Teléfono:</strong> +58 212 905 63 04';
-$body .= '<br>';
-$body .= '<strong>Día y Hora Venezuela:</strong> '.$fechaCita.'';
-$body .= '<br>';
-$body .= '<strong>Ejecutivo asignado en Caracas, Venezuela:</strong> Sr./a. '.$ejecutivoCaracas.'';
-$body .= '<br>';
-$body .= '<strong>Ejecutivo asignado en Madrid, España:</strong> Sr./a. '.$ejecutivoMadrid.'';
 $body .= '<br>';
 $body .= '<br>';
 $body .= 'La reunión de asesoramiento la llevará a cabo el ejecutivo asignado en Caracas. Tiene una duración de 60 minutos aproximadamente, así como un coste de '.$montoCita.'.';
@@ -127,7 +121,7 @@ $mail->From = 'contacto@cohenyaguirre.es';
 
 $mail->FromName = 'Cohen y Aguirre';
 
-$mail->Subject = 'Cita presencial programada';
+$mail->Subject = 'Interés en conocerlo/a';
 
 $mail->AltBody = 'Citas';
 $mail->CharSet = 'UTF-8';

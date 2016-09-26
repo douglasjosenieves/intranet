@@ -25,6 +25,7 @@
 						<li><a href="forms-cotizaciones.php" title="#">Cotizaciones online</a>
 				<li><a href="forms-fichas-opciones.php" title="#">Fichas de Opciones</a>
 				<li><a href="forms-fichas-opciones-franquicias.php" title="#">F.D.O Franquicias</a>
+				<li><a href="documentos.php" title="#">Documentos</a>
 
 					</ul>
 				</li>

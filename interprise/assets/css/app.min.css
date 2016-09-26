@@ -48,6 +48,12 @@
 .statsBar2 .i.yellow .c:hover:before{background:#5cb85c}
 
 
+.statsBar2 .i.yellow2 .c{background:#9b59b6}
+.statsBar2 .i.yellow2 .c:before{background:#8e44ad}
+.statsBar2 .i.yellow2 .c:hover{background:#9b59b6}
+.statsBar2 .i.yellow2 .c:hover:before{background:#9b59b6}
+
+
 .statsBar2 .i.pink .c{background:#2c3e50}
 .statsBar2 .i.pink .c:before{background:#34495e}
 .statsBar2 .i.pink .c:hover{background:#2c3e50}
@@ -64,9 +70,31 @@
 .statsBar2 .i.azulejo .c:hover{background:#455A64}
 .statsBar2 .i.azulejo .c:hover:before{background:#455A64}
 
+.statsBar2 .i.green2 .c{background:#e67e22}
+.statsBar2 .i.green2 .c:before{background:#d26709}
+.statsBar2 .i.green2 .c:hover{background:#e67e22}
+.statsBar2 .i.green2 .c:hover:before{background:#e67e22}
+
+
+.statsBar2 .i.pink2 .c{background:#e74c3c}
+.statsBar2 .i.pink2 .c:before{background:#e02b18}
+.statsBar2 .i.pink2 .c:hover{background:#e74c3c}
+.statsBar2 .i.pink2 .c:hover:before{background:#e74c3c}
 
 
 
 .label-interesado {
   background-color: #303F9F;
+}
+
+.label-nocontactado {
+  background-color: #e67e22;
+}
+
+.label-formulariodefectuoso {
+  background-color: #e74c3c;
+}
+
+.label-prosenseguimiento {
+  background-color: #9b59b6;
 }

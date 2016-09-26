@@ -48,7 +48,20 @@ if ($status == 'INTERESADO') {
 	$noti = '<span class="label label-interesado">'.$status.'</span>';
 }
 
+if ($status == 'NO CONTACTADO') {
 
+	$noti = '<span class="label label-nocontactado">'.$status.'</span>';
+}
+
+if ($status == 'FORMULARIO DEFECTUOSO') {
+
+	$noti = '<span class="label label-formulariodefectuoso">'.$status.'</span>';
+}
+
+if ($status == 'PROSPECTO EN SEGUIMIENTO') {
+
+	$noti = '<span class="label label-prosenseguimiento">'.$status.'</span>';
+}
 return $noti;
 }
 

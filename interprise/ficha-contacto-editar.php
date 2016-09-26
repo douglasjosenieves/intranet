@@ -145,12 +145,15 @@ $contactos_web[] = $row;
 									<option value="<?php echo $contactos_web[0]['status'] ?>"  selected><?php echo $contactos_web[0]['status'] ?></option>
 										<option disabled >- Select Status -</option>
 										<option value="FORMULARIO">FORMULARIO</option>
-										<option value="INTERESADO">INTERESADO</option>
+										<option value="INTERESADO">INTERESADO</option>								
 										<option value="PROSPECTO CITADO">PROSPECTO CITADO</option>
 										<option value="PROSPECTO PAGADO">PROSPECTO PAGADO</option>
-									   <option value="CLIENTE">CLIENTE</option>
-									   <option value="ESTUDIO">ESTUDIO</option>
-									      <option value="DESCARTADO">DESCARTADO</option>
+									    <option value="PROSPECTO EN SEGUIMIENTO">PROSPECTO EN SEGUIMIENTO</option>
+									    <option value="CLIENTE">CLIENTE</option>
+									    <option value="ESTUDIO">ESTUDIO</option>
+									    <option value="NO CONTACTADO">NO CONTACTADO</option>
+									    <option value="FORMULARIO DEFECTUOSO">FORMULARIO DEFECTUOSO</option>
+									    <option value="DESCARTADO">DESCARTADO</option>
 										 
 										 
 								 
@@ -1266,6 +1269,7 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 										<option value="" >- Seleccione tipo -</option>
 										<option value="CITA PRESENCIAL">CITA PRESENCIAL</option>
 										<option value="CITA VIRTUAL">CITA VIRTUAL</option>
+										<option value="INTERESADO">INTERESADO/A</option>
 										<option value="NO CONTACTADO">NO CONTACTADO</option>
 											 
 								 
@@ -1303,6 +1307,7 @@ $id_contacto= '5'; -->
 <input type="hidden" id="elaborado_por" name="elaborado_por" value="<?php echo $_SESSION['usuario']['Id']?>">
 <input type="hidden" id="ejecutivoCaracas" name="ejecutivoCaracas" value="<?php echo ucwords($_SESSION['usuario']['Nombre'].' '.$_SESSION['usuario']['Apellido'])?>">
 <input type="hidden" id="emailAsesor" name="emailAsesor" value="<?php echo $_SESSION['usuario']['Email']?>">
+<input type="hidden" id="ejecutivoTel" name="ejecutivoTel" value="<?php echo $_SESSION['usuario']['Telefono']?>">
 
 <input type="hidden" id="id_contacto" name="id_contacto" value="<?php echo $id ?>">
      
@@ -1425,6 +1430,13 @@ if (elije=='NO CONTACTADO') {
 		var archive='envios/notiEmail/noContactado.php'
 	} 
 
+if (elije=='INTERESADO') {
+
+		var archive='envios/notiEmail/citaInteresados.php'
+	} 
+
+
+//citaInteresados.php
 
 ///alert(archive);
 $('#emailsend').button('loading');

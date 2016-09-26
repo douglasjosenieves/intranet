@@ -22,7 +22,7 @@ $usuario = $_REQUEST['usuario'];
 
 		
 <li>
-<a href="#" title="#" class="clearfix">
+<a href="#" title="<?php echo $row['mensaje']; ?>" class="clearfix">
 <img src="img/usuarios/chat/<?php $usuario = usuarioFuntion ($row['id_de']) ; echo $usuario[0]['foto']  ?>" alt="#" width="44" height="44" class="pull-left">
 <span class="pull-left">
 <strong class="text-gray"><?php $usuario = usuarioFuntion ($row['id_de']) ; echo ucwords  ( $usuario[0]['nombre'].' '.$usuario[0]['apellido'] ) ?></strong><br />
