@@ -551,6 +551,7 @@ $status[$row['status']] = $row['cuenta'];
 </body>
 
 <script type="text/javascript">
+
 /*==========================================================
 	=            Envio de un chat por el formulario            =
 	==========================================================*/
@@ -582,6 +583,9 @@ swal({
   },
   function(){
  $('#formChat')[0].reset();
+ verificaChatTexArea() ;
+ verificaChatNotificaciones();
+  verificaChat() ;
 //location.reload();
 });
 
@@ -608,73 +612,18 @@ $('#boton').button('reset');
 	/*=====  End of Envio de un chat por el formulario  ======*/
 	
 
-	/*============================================================
-	=            Consulto los mensaje del chat header            =
-	============================================================*/
 	
-	
-	
-
-	
-	$(document).ready(function() {
-var usuarioOnline = <?php echo $_SESSION['usuario']['Id']; ?>;
-
-console.log('listo ready');
-   verificaChat() ;
-   setInterval(function(){verificaChat();},3000);
-
-  
-function verificaChat() {
-
-	$.ajax({
-		url: 'async/chat.php',
-		type: 'POST',
-	
-		data: {usuario: usuarioOnline},
-	})
-	.done(function(data) {
-		console.log("success chat comprobado");
-		//console.log(data);
-$('#chatRapido').html(data);
- 
-//alert($('#chatRapido > li').length);
-var cuentaChat = $('#chatRapido > li').length - 1;
-
-if (cuentaChat > 0) {
-$('#chatCount').html(cuentaChat);
-
-} else {
-
-	$('#chatCount').html('');
-}
-
-
-
-	})
-	.fail(function() {
-		console.log("error");
-	})
-	.always(function() {
-	//	console.log("complete");
-	});
-	
-	// body...
-}
-
-	});
-
-	/*=====  End of Consulto los mensaje del chat header  ======*/
 
 	/*=======================================
 	=            TexArea Mensaje            =
 	=======================================*/
 	
-	$(document).ready(function() {
+	
 var usuarioOnline = <?php echo $_SESSION['usuario']['Id']; ?>;
 
  
    verificaChatTexArea() ;
-   setInterval(function(){verificaChatTexArea();},3000);
+   setInterval(function(){verificaChatTexArea();},10000);
 
   
 function verificaChatTexArea() {
@@ -686,7 +635,7 @@ function verificaChatTexArea() {
 		data: {usuario: usuarioOnline},
 	})
 	.done(function(data) {
-		//console.log("success chatTexArea comprobado");
+		console.log("success chatTexArea comprobado");
 		//console.log(data);
  
 $('#textareaMensaje').text(data);
@@ -705,7 +654,7 @@ $('#textareaMensaje').text(data);
 	// body...
 }
 
-	});
+
 
 	
 	/*=====  End of TexArea Mensaje  ======*/
@@ -715,7 +664,6 @@ $('#textareaMensaje').text(data);
 =            Verifica en notificaciones            =
 ==================================================*/
 
-$(document).ready(function() {
 var usuarioOnline = <?php echo $_SESSION['usuario']['Id']; ?>;
 
  verificaChatNotificaciones();
@@ -761,7 +709,7 @@ prueba_notificacion(data['persona'][i], data['mensaje'][i])
 	// body...
 }
 
-	});
+
 
 
 /*=====  End of Verifica en notificaciones  ======*/
@@ -819,8 +767,11 @@ noti.onclick = function(event) {
 lasViTodas();
 
 }
-noti.onclose = {
- 
+noti.onclose = function(event) {
+  event.preventDefault(); // prevent the browser from focusing the Notification's tab
+  window.focus(); 
+lasViTodas();
+
 }
 setTimeout( function() { noti.close() }, 10000)
 }
@@ -829,6 +780,27 @@ setTimeout( function() { noti.close() }, 10000)
 	/*=====  End of Notificaciones en chrome  ======*/
 	
 	
+/*==================================================================
+=            Detecto cuando la ventana esta activa o no            =
+==================================================================*/
+
+
+
+	
+
+
+window.addEventListener('focus', function() {
+    //document.title = 'focused';
+   // prueba_notificacion('hola', 'como estas');
+});
+
+window.addEventListener('blur', function() {
+    //document.title = 'not focused';
+verificaChatNotificaciones();
+});
+/*=====  End of Detecto cuando la ventana esta activa o no  ======*/
+
+
 </script>
 <!-- Mirrored from sharpen.tomaj.sk/v1.7/html5/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 May 2016 19:05:52 GMT -->
 </html>
