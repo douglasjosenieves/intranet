@@ -711,6 +711,62 @@ $('#textareaMensaje').text(data);
 	/*=====  End of TexArea Mensaje  ======*/
 
 
+/*==================================================
+=            Verifica en notificaciones            =
+==================================================*/
+
+$(document).ready(function() {
+var usuarioOnline = <?php echo $_SESSION['usuario']['Id']; ?>;
+
+ verificaChatNotificaciones();
+ //setInterval(function(){verificaChatNotificaciones();},9000);
+
+  
+function verificaChatNotificaciones() {
+
+	$.ajax({
+		url: 'async/chatNotification.php',
+		type: 'POST',
+	    dataType: 'json',
+		data: {usuario: usuarioOnline},
+	})
+	.done(function(data) {
+		console.log("success Notification comprobado");
+		//console.log(data);
+ 
+ if (data!='') {
+$.each(data['mensaje'], function(i, item) {
+   /* console.log(data['persona'][i]);
+    console.log(data['mensaje'][i]);*/
+
+prueba_notificacion(data['persona'][i], data['mensaje'][i])
+
+});
+
+ }
+ 
+
+ 
+
+ 	})
+
+
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+	//	console.log("complete");
+	});
+	
+	// body...
+}
+
+	});
+
+
+/*=====  End of Verifica en notificaciones  ======*/
+
+
 	/*=====================================
 	=            Las vi todas             =
 	=====================================*/
@@ -739,6 +795,38 @@ $.ajax({
 	
 	
 	/*=====  End of Las vi todas   ======*/
+	
+
+	/*================================================
+	=            Notificaciones en chrome            =
+	================================================*/
+	//prueba_notificacion();
+	function prueba_notificacion(titulo, body) {
+if (Notification) {
+if (Notification.permission !== "granted") {
+Notification.requestPermission()
+}
+var title = titulo
+var extra = {
+icon: "img/logo-light.png",
+body: body,
+sound: 'audio/alert.mp3'
+}
+var noti = new Notification( title, extra)
+noti.onclick = function(event) {
+  event.preventDefault(); // prevent the browser from focusing the Notification's tab
+  window.focus(); 
+lasViTodas();
+
+}
+noti.onclose = {
+ 
+}
+setTimeout( function() { noti.close() }, 10000)
+}
+}
+	
+	/*=====  End of Notificaciones en chrome  ======*/
 	
 	
 </script>
