@@ -764,13 +764,13 @@ var noti = new Notification( title, extra)
 noti.onclick = function(event) {
   event.preventDefault(); // prevent the browser from focusing the Notification's tab
   window.focus(); 
-lasViTodas();
+  lasViTodas();
 
 }
 noti.onclose = function(event) {
   event.preventDefault(); // prevent the browser from focusing the Notification's tab
   window.focus(); 
-lasViTodas();
+  lasViTodas();
 
 }
 setTimeout( function() { noti.close() }, 10000)

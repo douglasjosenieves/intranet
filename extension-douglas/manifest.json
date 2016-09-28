@@ -1,0 +1,17 @@
+{
+    "name": "Cohen y aguirre",
+    "version": "5.0",
+     "manifest_version": 2,
+  "background": {
+    "page": "background.html"
+  },
+    "description": "Esta extensión solo muestra Hola mundo al hacer clic en su icono",
+ "browser_action": {
+    "default_title": "Cohen Y Aguirre",
+    "default_icon": "icon.png",
+     "permissions": [
+    "notifications"
+  ],
+    "default_popup": "popup.html"
+  }
+}
