@@ -32,7 +32,8 @@ header('Location: ../index.php');
 //echo $_SESSION['usuario']['Tipo'].$_SESSION['usuario']['Nombre'].$_SESSION['usuario']['Apellido'].'asdasdasdsas' ;
 require_once __DIR__ . '../../../db_connect.php';
 
- 
+require_once 'crear-log.php';
+write_log( $_SESSION['usuario']['Id'].' '.$_SESSION['usuario']['Nombre'].' '.$_SESSION['usuario']['Apellido'],'listado-whatapp');
 
 // connecting to db
 $con = new DB_CONNECT();
@@ -61,4 +62,3 @@ echo "</table>";
 ?>
 
 
-   

@@ -26,6 +26,9 @@
 				<li><a href="forms-fichas-opciones.php" title="#">Fichas de Opciones</a>
 				<li><a href="forms-fichas-opciones-franquicias.php" title="#">F.D.O Franquicias</a>
 				<li><a href="documentos.php" title="#">Documentos</a>
+<li><a href="listado-whatsapp.php" title="#">Listado whatsapp</a>  
+
+
 
 					</ul>
 				</li>
