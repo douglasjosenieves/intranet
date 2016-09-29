@@ -69,7 +69,7 @@ $anulado =  $row['anulado'];
 'Anulado' =>$anulado);
 
 
-  $resul =  mysql_query("UPDATE `cohenyaguirre`.`usuarios` SET `fecha_login` = '$fechaphp' WHERE `usuarios`.`id` = $id;");
+  $resul =  mysql_query("UPDATE `usuarios` SET `fecha_login` = '$fechaphp' WHERE `usuarios`.`id` = $id;");
 
 
   
@@ -93,6 +93,8 @@ $status = array(
 
 
 else {
+require_once 'crear-log.php';
+  write_log($email,'success');
 
   $_SESSION['usuario'] = $arreglo;
 
