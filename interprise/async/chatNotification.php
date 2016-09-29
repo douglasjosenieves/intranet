@@ -1,4 +1,6 @@
-<?php require_once '../../PHPPaging.lib.php';
+<?php  header('Access-Control-Allow-Origin: *');  
+
+require_once '../../PHPPaging.lib.php';
 
 // connecting to db
 //echo $_SESSION['usuario']['Tipo'].$_SESSION['usuario']['Nombre'].$_SESSION['usuario']['Apellido'] ;

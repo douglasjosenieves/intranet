@@ -1,17 +1,22 @@
 {
-    "name": "Cohen y aguirre",
-    "version": "5.0",
-     "manifest_version": 2,
-  "background": {
-    "page": "background.html"
-  },
-    "description": "Esta extensión solo muestra Hola mundo al hacer clic en su icono",
- "browser_action": {
-    "default_title": "Cohen Y Aguirre",
-    "default_icon": "icon.png",
-     "permissions": [
+  "name": "Cohen y Aguirre GEA",
+  "version": "1.1",
+  "description":
+  "Shows off desktop notifications, which are \"toast\" windows that pop up on the desktop.",
+  "icons": {"16": "16.png", "48": "48.png", "128": "128.png"},
+  "permissions": [
     "notifications"
   ],
-    "default_popup": "popup.html"
-  }
+  "options_page": "options.html",
+  "background": { "scripts": ["jquery.js","background.js"] },
+  "manifest_version": 2,
+  "browser_action": {
+    "default_icon": "icon.png"
+},
+  
+
+  // crbug.com/134315
+  "web_accessible_resources": [
+    "icon.png"
+  ]
 }
