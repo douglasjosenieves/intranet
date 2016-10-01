@@ -751,9 +751,7 @@ var tipoD = $('#is_amount_discount').val();
 
 
  
-/*
-<option value="0">Porcentaje</option>
-<option value="1">Cantidad</option>*/
+ 
 if (descuento>0) {
 var monto = $('#discount').val()
 $("#descuentoSession").removeClass('hidden');
