@@ -92,6 +92,24 @@ cursor:pointer; cursor: hand
     margin-bottom: 20px;
 }
 
+#generales_items .form-control {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    outline: 0;
+    border-color: #e6e7ed;
+     border-left: 3px solid none; 
+    font-weight: 400;
+    height: 56px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+}
 
 </style>
 </head>
@@ -126,7 +144,7 @@ cursor:pointer; cursor: hand
 				
 				<div id="generales" class="box rte">
 					<h2 class="boxHeadline">Cotizador</h2>
-					<h3 class="boxHeadlineSub">On line.</h3>
+					<h3 class="boxHeadlineSub">Encabezado</h3>
 					
 					
 
@@ -323,6 +341,14 @@ cursor:pointer; cursor: hand
 
 
 	                  </div>
+  </div> <!-- box rte -->
+<!--============================================================
+=            Aqui comienza el detalle de la factura            =
+=============================================================-->
+		<div id="generales_items" class="box rte">
+					 
+					<h3 class="boxHeadlineSub">Items</h3>
+					
  
        <hr />
 <button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Agregar Items  <i class="fa fa-plus"></i></button>
@@ -368,12 +394,26 @@ cursor:pointer; cursor: hand
 
  <div id="descuentoSession" class="row hidden" >
  	<div class="col-xs-12 col-sm-8"></div>
- 	 <div class="col-xs-12 col-sm-2"> <center><h6>Descuento:</h6></center></div>
+ 	 <div class="col-xs-12 col-sm-2"> <center><h6>Descuento(<span id="descuentoEtiqueta"></span>):</h6></center></div>
  	
  	<div class="col-xs-12 col-sm-2">
  	<div class="form-group">
  	<label for="basicInput"></label>
  	<input type="number" readonly value="<?php echo $ficha['ficha_contacto'][0]['descuentoReglon'] ?>" required class="form-control" name="descuentoReglon" id="descuentoReglon" placeholder="Descuento:">
+ 	</div>
+ 	</div>
+ 	
+
+ </div>
+
+  <div id="menosDescuentoE" class="row hidden" >
+ 	<div class="col-xs-12 col-sm-8"></div>
+ 	 <div class="col-xs-12 col-sm-2"> <center><h6> Menos Descuento:</h6></center></div>
+ 	
+ 	<div class="col-xs-12 col-sm-2">
+ 	<div class="form-group">
+ 	<label for="basicInput"></label>
+ 	<input type="number" readonly value="<?php echo $ficha['ficha_contacto'][0]['menosDescuento'] ?>" required class="form-control" name="menosDescuento" id="menosDescuento" placeholder="Menos Descuento:">
  	</div>
  	</div>
  	
@@ -408,6 +448,10 @@ cursor:pointer; cursor: hand
  	
 
  </div>
+
+
+ <!--====  End of Aqui termina el detalle de la factura  ====-->
+ 
         </div> <!-- box rte -->
 
 
@@ -641,21 +685,98 @@ cursor:pointer; cursor: hand
 =            EVENTO PARA DETECTAR DESCUENTO            =
 ======================================================*/
 
+function calculaDescuento(tipo) {
+
+	//alert(tipo);
+if (tipo==0) {
+var parcial = $('#reglon_totalparcial').val();
+var monto = $('#discount').val()
+var montoMenosDescuento = parcial * monto /100;	
+var menosDescuento = parcial - montoMenosDescuento;
+$('#descuentoReglon').val(montoMenosDescuento);
+$('#menosDescuento').val(menosDescuento );
+
+} 
+
+
+else if (tipo==1) {
+var parcial = $('#reglon_totalparcial').val();
+var monto = $('#discount').val()
+var montoMenosDescuento = parcial - monto ;	
+
+$('#descuentoReglon').val(monto);
+var uno = $('#reglon_totalparcial').val();
+
+var dos = $('#descuentoReglon').val();
+var tres = uno - dos;
+
+$('#menosDescuento').val(tres);
+//$('#menosDescuento').val(menosDescuento );
+ 
+} 
+
+else {
+$('#descuentoReglon').val('0');
+$('#menosDescuento').val('0');
+}
+}
+
+
+$('#is_amount_discount').on('change',  function(event) {
+	event.preventDefault();
+	
+var etiqueta = $(this).val();
+var monto = $('#discount').val()
+if (etiqueta==0) {
+
+$('#descuentoEtiqueta').html(monto+'%' );
+calculaDescuento(0);
+calcula_iva();
+} 
+
+if (etiqueta==1) {
+
+$('#descuentoEtiqueta').html(monto );	
+calculaDescuento(1);
+calcula_iva();
+}
+	/* Act on the event */
+});
+
 $('#discount').on('change', function(event) {
 	event.preventDefault();
 	/* Act on the event */
 var descuento = $(this).val();
+var tipoD = $('#is_amount_discount').val();
 
+
+ 
+/*
+<option value="0">Porcentaje</option>
+<option value="1">Cantidad</option>*/
 if (descuento>0) {
+var monto = $('#discount').val()
 $("#descuentoSession").removeClass('hidden');
+$("#menosDescuentoE").removeClass('hidden');
+$('#descuentoEtiqueta').html(monto);
+
+if (tipoD == 0) {
+$('#descuentoEtiqueta').html(monto+'%');
+
+}
+var tipoDescuento = $('#is_amount_discount').val();
+calculaDescuento(tipoDescuento);
 
 } else {
-
+var monto = $('#discount').val()	
+$('#descuentoEtiqueta').html(monto);
+$('#descuentoReglon').val(0);
 $("#descuentoSession").addClass('hidden');
+$("#menosDescuentoE").addClass('hidden');
 
 }
 
-
+calcula_iva();
 
 });
 
@@ -706,22 +827,47 @@ $('#id_contacto').val(id);
 =            calcula el iva            =
 ======================================*/
 function calcula_iva() {
+var descuento = $('#descuentoReglon').val();
+//alert(descuento);
+if (descuento>0) {
+ 
+//alert('paso con descuento');
 
-var sum=0;
-$('.subtotal').each(function(index, el) {
+var menos_descuento = $('#menosDescuento').val();
+
+iva = menos_descuento * 21 /100
+$('#reglon_tax').val(iva);
+
+var descu =  Number(menos_descuento);
+totalfin = descu+iva;
+$('#total').val(totalfin);
+
+
+}
+
+else {
+//alert('paso sin descuento');
+
+/*$('.subtotal').each(function(index, el) {
    sum += Number($(this).val());
 	
-});
-//$('#total').val(sum);
+});*/
 
+var sum = Number($('#reglon_totalparcial').val());
+//alert(sum);
+ 
 iva = sum * 21 /100
 $('#reglon_tax').val(iva);
 
 
 totalfin = sum+iva;
 $('#total').val(totalfin);
+ 
+
+ }
+ }
 	
-}
+ 
 
 
 /*=====  End of calcula el iva  ======*/
@@ -754,8 +900,8 @@ $(document).ready(function() {
 
 $('#myModal').on('hidden.bs.modal', function () {
   total5();  // do something…
-  calcula_iva();
-  Descuentos();
+  calcula_iva()
+  calculaDescuento($('#is_amount_discount').val());
 })
 
 
@@ -763,7 +909,9 @@ $("body").on("keyup change",".cantidad",function(event){
     event.preventDefault();
 subtotal();
 total5();
+calculaDescuento($('#is_amount_discount').val());
 calcula_iva();
+
 });
 
 
@@ -771,23 +919,7 @@ calcula_iva();
 =            RECORRO Y VERIFICO LOS SUBTOTALES AL HACER UN CAMBIO            =
 ============================================================================*/
 
-function Descuentos() {
 
-var sum=0;
-$('.subtotal').each(function(index, el) {
-   sum += Number($(this).val());
-	
-});
-//$('#total').val(sum);
-descuento = $('#discount').val();
-//descuento = sum * 21 /100
-$('#descuentoReglon').val(descuento);
-
-
-//totalfin = sum+iva;
-//$('#total').val(totalfin);
-
-}
 
 
 function subtotal() {
@@ -834,6 +966,8 @@ $("body").on("click",".servicios",function(event){
            agregar_item(id , nombre,precios,descripcion); 
  
 swal('Agregado '+nombre)
+ 
+
       });
 
 /*=====  End of Evento que se le da al tr en el modal para seleccional los productos  ======*/
