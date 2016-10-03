@@ -1187,12 +1187,35 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
       </div>
       <div class="modal-body">
         <form id="formulario_agendar_cita">
+        <label for="datepicker-2-input">Cita.</label>
+         <select name="tipo" id="tipo" required class="js-select" style="width:100%;">
+								 
+										<option value="" >- Seleccione -</option>
+										<option value="CITA PRESENCIAL">CITA PRESENCIAL</option>
+										<option value="CITA VIRTUAL">CITA VIRTUAL</option>
+									<option value="SEGUNDA CITA">SEGUNDA CITA</option>
+									<option value="CITA OFICINA ESPANA">CITA OFICINA ESPAÑA</option>		 
+								 	<option value="CITA DE SEGUIMIENTO">CITA DE SEGUIMIENTO</option>
+								 		<option value="CONTACTO DE CALENDARIO">CONTACTO DE CALENDARIO</option>
+									</select>
+									<br><br>
+
+
+<div class="form-group">
+									<label for="textarea-autosize">Descripción</label>
+									<textarea id="descripcion" name="descripcion" class="js-autogrow form-control" placeholder="Escriba comentarios sobre la cita...!" rows="2" style="overflow: hidden; word-wrap: break-word; height: 74px;"></textarea>
+								</div>
+
+							<hr>	
+
           	<div class="col-xs-12">
-								<label for="datepicker-2-input">1)  Consulte día disponible.</label>
+
+								<label for="datepicker-2-input">Consulte día disponible.</label>
 								<div id="datepicker-2" class="input-group date">
 									<input   class="form-control" id="diaSelect" name="dia" placeholder="Select date" type="date"><span id="consultarDia" class="input-group-addon"><i class="fa fa-search" ></i></span>
 								</div>
 							</div>
+
 							<div id="agendados"></div>
 
 
@@ -1223,10 +1246,14 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 								</label>
 							</div>
 </div>
+
+
 <input type="hidden" name="id_contacto" value="<?php echo $id ?>">
 <input type="hidden" name="color" value="<?php echo $_SESSION['usuario']['Color']?>">
 <input type="hidden" name="titulo" value="<?php echo $contactos_web[0]['nombres'].' '.$contactos_web[0]['apellidos'] ?>">
 <input type="hidden" name="nombre" value="<?php echo $contactos_web[0]['nombres'].' '.$contactos_web[0]['apellidos'] ?>">
+
+	
 
      
       <div class="modal-footer">
