@@ -23,9 +23,13 @@ $boolean = $mysql_data ? true : false;
 			 $event_array[] = array(
             'id' => $row['id'],
             'title' => $row['titulo'],
+            'tipo' => $row['tipo'],
+            'descripcion' => $row['descripcion'],
             'start' => $row['start'],
             'end' => $row['end'],
             'color' => $row['color'],
+            'nombre' => $row['nombre'],
+            'id_contacto' => $row['id_contacto'],
             'allDay' => $boolean
         );
 				}

@@ -111,7 +111,30 @@ mysql_query("SET CHARACTER_SET utf");
 		</div>
 	<!-- </div> -->
 	
-	
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel" style="font-weight: bold;">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn bg-dark-gray" data-dismiss="modal">Close</button>
+      
+        <button type="button" id="cancelar-cita" class="btn btn bg-red"> <i class="fa fa-ban"></i>  Cancelar cita  </button>
+  
+      </div>
+    </div>
+  </div>
+</div>
+
+
 	<!-- Search modal -->
 <?php require_once 'buscar.php'; ?>
 
@@ -162,15 +185,96 @@ $(document).ready(function() {
 	  events: 'async/calendario.php',
 	  lang: 'es',
 	  
-    dayClick: function() {
-        alert('a day has been clicked!');
+ 
+
+  eventRender: function (event, element) {
+        element.attr('href', 'javascript:void(0);');
+        element.click(function() {
+
+        	 
+
+        	
+        	$('#myModalLabel').html('<a href="ficha-contacto-editar.php?id='+event.id_contacto+'" target="_blank">'+event.id_contacto+' '+event.nombre+'</a>');
+        	
+        	$('.modal-body').html('<i class="fa fa-clock-o"></i> Inicio: ');
+            $('.modal-body').append(moment(event.start).format('MMM Do h:mm A'));
+            $(".modal-body").append('<br>');
+            $('.modal-body').append('<i class="fa fa-clock-o"></i> Fin: ');
+            
+
+            $(".modal-body").append(moment(event.end).format('MMM Do h:mm A'));
+            $(".modal-body").append('<hr>');
+            $('.modal-body').append('<CENTER><H2><strong> <i class=\"fa fa-bell\"></i>'+event.tipo+'</strong><H2> </CENTER>');
+            $('.modal-body').append('<CENTER>'+event.descripcion+'</CENTER>');
+
+$('#cancelar-cita').attr('data-id', event.id);
+            $('#myModal').modal('show');
+        });
     }
-});
+ 
+ 
 });
 
+
+
+$('#cancelar-cita').on('click',  function(event) {
+	event.preventDefault();
+	/* Act on the event */
+ 
+id = $(this).attr('data-id');
+
+//alert(id);
+
+
+$.ajax({
+	url: 'envios/calendar_anular.php',
+	type: 'POST',
+	
+	data: {id: id},
+})
+.done(function(data) {
+	console.log("success");
+
+if (data==1) {
+	swal({ 
+	  title: "Good job! ",
+	   text: "Cita cancelda con exito!",
+	    type: "success" 
+	  },
+	  function(){
+	//$('#formulario')[0].reset();
+	location.reload();
+	});
+	}
+
+
+
+	
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+
+
+});
+
+
+
+
+
+
+});
+
+
+
+
 	</script>
- 
- 
+
+
 </body>
 
 <!-- Mirrored from sharpen.tomaj.sk/v1.7/html5/forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 May 2016 19:06:56 GMT -->

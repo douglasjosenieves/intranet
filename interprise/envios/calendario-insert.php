@@ -38,6 +38,8 @@ $start=$_REQUEST['start'];
 $end=$_REQUEST['end'];
 
 $titulo=$_REQUEST['titulo'];
+$tipo=$_REQUEST['tipo'];
+$descripcion=$_REQUEST['descripcion'];
  
 $dia = $_REQUEST['dia'];
  
@@ -63,7 +65,7 @@ $inicio = $dia.' '.$horaInicio;
  
 
 
-$resul = mysql_query("INSERT INTO `calendario` (`id_contacto`, `nombre`, `start`, `end`, `color`, `titulo`, `allDay`) 
+$resul = mysql_query("INSERT INTO `calendario` (`id_contacto`, `nombre`, `start`, `end`, `color`, `titulo`, `tipo`, `descripcion`, `allDay`) 
 VALUES 
 	(
 	'".$id_contacto."', 
@@ -72,6 +74,8 @@ VALUES
 		'".$final."', 
 	    '".$color."',
 		'".$titulo."',
+		'".$tipo."',
+		'".$descripcion."',
 		'".$allDay."');");
 
 
