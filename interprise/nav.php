@@ -28,7 +28,9 @@
 				<li><a href="documentos.php" title="#">Documentos</a>
 <li><a href="listado-whatsapp.php" title="#">Listado whatsapp</a>  
 
-
+					<?php  if ($_SESSION['usuario']['Tipo'] == 'administrador') {?>
+<li><a href="contactos_admon.php" title="Administracion de contactos">Admon Contactos</a>  
+						<?php } ?>
 
 					</ul>
 				</li>
