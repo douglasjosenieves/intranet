@@ -1,4 +1,4 @@
-<?php session_start();
+<?php session_start(); error_reporting(-1);
 if (!isset($_SESSION['usuario'] )) {
 header('Location: ../index.php');
 }
@@ -112,7 +112,7 @@ $v=0;
 	/*<option value="ESPANA">España</option>*/
 $teleo ='';
 $teleoid =array();
-				$resulv =  mysql_query("SELECT * FROM usuarios where anulado <> 1 and cargo = 'teleoperador'");
+				$resulv =  mysql_query("SELECT * FROM usuarios where anulado <> 1 and cargo = 'teleoperador' ");
 				while($rowv =  mysql_fetch_array($resulv) ) { 
 $teleo .= '<option value="';
 $teleo .= $rowv['id'];
@@ -133,7 +133,7 @@ require_once 'asesor_funtion.php';
 
 	                  require_once 'status_funtion.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `contactos_web` ");
+					$resul =  mysql_query("SELECT * FROM `contactos_web` order by id desc ");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
@@ -150,7 +150,7 @@ require_once 'asesor_funtion.php';
 					
 					<tr>
 						<td> <?php echo $opciones['opciones'][$i]['id']; ?></td>
-						<td><?php echo $opciones['opciones'][$i]['nombres']; ?></td>
+						<td><?php echo  $opciones['opciones'][$i]['nombres']; ?></td>
 						<td><?php echo $opciones['opciones'][$i]['apellidos']; ?></td>
 					    
 
@@ -257,17 +257,20 @@ $checked ='';
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
 <script type="text/javascript">
-$(document).ready(function() {
+
+
+/*$(document).ready(function() {
     $('#tabla').DataTable( {
         "order": [[ 0, "desc" ]]
     } );
-} );
-	
+} );*/
+	 
  
 
 
 $(document).ready(function() {
 
+console.log('Admin que mas');
 
 $('.asesor').on('change', function(event) {
 	event.preventDefault();
