@@ -14,9 +14,16 @@ setlocale(LC_TIME, 'es_VE'); # Localiza en español es_Venezuela
 date_default_timezone_set('America/Caracas');
 $fecha = date("Y-m-d H:i:s");
 
+<<<<<<< HEAD
 require('PHPMailer-master/PHPMailerAutoload.php');
 
  
+=======
+require('PHPMailer-master/class.phpmailer.php');
+
+require('PHPMailer-master/class.smtp.php');
+
+>>>>>>> origin/master
  $nombres = 'Douglas';
 $apellidos = 'Nieves';
 $email = "douglasjosenieves@gmail.com";
@@ -108,6 +115,7 @@ $mail->AddAddress($email, $nombrecompleto);
 $mail->AddBCC("info@cohenyaguirre.tk");
 $mail->AddBCC("info@cohenyaguirre.es");
 $mail->AddBCC("ruben.arismendi@cohenyaguirre.es");
+<<<<<<< HEAD
 $mail->addReplyTo('info@cohenyaguirre.es', 'Cohen y Aguirre');
 $mail->SMTPAuth = true;
 
@@ -116,6 +124,15 @@ $mail->SMTPAuth = true;
 $mail->Username = 'contacto@cohenyaguirre.es';
 $mail->Password = 'hV1y85SP5VxjjYi';
 */
+=======
+$mail->SMTPAuth = true;
+
+/* Sustituye (CuentaDeEnvio )  por la misma cuenta que usaste en la parte superior en este caso  prueba@domitienda.com  y sustituye (ContraseñaDeEnvio)  por la contraseña que tenga dicha cuenta */
+
+$mail->Username = 'contacto@cohenyaguirre.es';
+$mail->Password = 'programador2016*';
+
+>>>>>>> origin/master
 if(!$mail->Send()) {
 echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {
