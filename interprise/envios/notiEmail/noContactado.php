@@ -115,7 +115,7 @@ $mail->SMTPAuth = true;
 /* Sustituye (CuentaDeEnvio )  por la misma cuenta que usaste en la parte superior en este caso  prueba@domitienda.com  y sustituye (ContraseñaDeEnvio)  por la contraseña que tenga dicha cuenta */
 
 $mail->Username = 'contacto@cohenyaguirre.es';
-$mail->Password = 'hV1y85SP5VxjjYi';
+$mail->Password = '';
 
 if(!$mail->Send()) {
 echo 'Mailer Error: ' . $mail->ErrorInfo;
