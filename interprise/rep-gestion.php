@@ -79,6 +79,15 @@ $teleoid[] = $rowv['id'];
 
 	<!-- Google fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+
+		<style >
+		
+.icon {
+
+	font-size: 80px;
+}
+
+	</style>
 </head>
 <body>
 	<!--[if lt IE 8]>
@@ -298,7 +307,7 @@ Fuente: GEA Systems<br>
 <div class="box userCard userCardWide">
 <div class="c">
 <a href="#" title="#" class="image">
-<img src="img/logo-light.png" alt="#" width="143" height="143">
+<i class="icon zmdi zmdi-border-color"></i>
 </a>
 <div class="info rte">
 <h4 class="name">Formularios</h4>
@@ -318,7 +327,7 @@ Fuente: GEA Systems<br>
 <div class="box userCard userCardWide">
 <div class="c">
 <a href="#" title="#" class="image">
-<img src="img/logo-light.png" alt="#" width="143" height="143">
+<i class="icon zmdi zmdi-alert-polygon"></i>
 </a>
 <div class="info rte">
 <h4 class="name">Interesados</h4>
@@ -337,7 +346,7 @@ Fuente: GEA Systems<br>
 <div class="box userCard userCardWide">
 <div class="c">
 <a href="#" title="#" class="image">
-<img src="img/logo-light.png" alt="#" width="143" height="143">
+<i class="icon fa fa-check"></i>
 </a>
 <div class="info rte">
 <h4 class="name">Pros. Citados</h4>
@@ -357,7 +366,7 @@ Fuente: GEA Systems<br>
 <div class="box userCard userCardWide">
 <div class="c">
 <a href="#" title="#" class="image">
-<img src="img/logo-light.png" alt="#" width="143" height="143">
+<i class="icon zmdi zmdi-check-all"></i>
 </a>
 <div class="info rte">
 <h4 class="name">Pros. Pagados</h4>
@@ -377,7 +386,7 @@ Fuente: GEA Systems<br>
 <div class="box userCard userCardWide">
 <div class="c">
 <a href="#" title="#" class="image">
-<img src="img/logo-light.png" alt="#" width="143" height="143">
+<i class="icon zmdi zmdi-eye"></i>
 </a>
 <div class="info rte">
 <h4 class="name">Pros. Seguimiento</h4>
@@ -397,7 +406,7 @@ Fuente: GEA Systems<br>
 <div class="box userCard userCardWide">
 <div class="c">
 <a href="#" title="#" class="image">
-<img src="img/logo-light.png" alt="#" width="143" height="143">
+<i class="icon zmdi zmdi-account-box"></i>
 </a>
 <div class="info rte">
 <h4 class="name">Clientes</h4>
@@ -416,7 +425,7 @@ Fuente: GEA Systems<br>
 <div class="box userCard userCardWide">
 <div class="c">
 <a href="#" title="#" class="image">
-<img src="img/logo-light.png" alt="#" width="143" height="143">
+	<i class="icon zmdi zmdi-folder-outline"></i>
 </a>
 <div class="info rte">
 <h4 class="name">Estudios</h4>
@@ -437,7 +446,7 @@ Fuente: GEA Systems<br>
 <div class="box userCard userCardWide">
 <div class="c">
 <a href="#" title="#" class="image">
-<img src="img/logo-light.png" alt="#" width="143" height="143">
+	<i class="icon zmdi zmdi-phone-missed"></i>
 </a>
 <div class="info rte">
 <h4 class="name">No contactado</h4>
@@ -456,7 +465,7 @@ Fuente: GEA Systems<br>
 <div class="box userCard userCardWide">
 <div class="c">
 <a href="#" title="#" class="image">
-<img src="img/logo-light.png" alt="#" width="143" height="143">
+<i class="icon zmdi zmdi-close"></i><i class="icon zmdi zmdi-text-format"></i>
 </a>
 <div class="info rte">
 <h4 class="name">Form. Defectuoso</h4>
@@ -476,7 +485,7 @@ Fuente: GEA Systems<br>
 <div class="box userCard userCardWide">
 <div class="c">
 <a href="#" title="#" class="image">
-<img src="img/logo-light.png" alt="#" width="143" height="143">
+<i class="icon zmdi zmdi-block-alt"></i>
 </a>
 <div class="info rte">
 <h4 class="name">Descartados</h4>
