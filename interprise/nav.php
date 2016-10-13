@@ -61,6 +61,7 @@
 					<li><a href="reporte-clientes.php" title="#">Clientes</a></li>
 			<li><a href="reporte-seguimientos-abiertos.php" title="#">Seguimientos<span class="label label-danger">ABIERTO</span></a></li>
 			<li><a href="rep-gestion.php" title="#">REP Gestion</a></li>
+			<li><a href="rep-gestion2.php" title="#">REP Gestion 2</a></li>
 
 <?php } ?>
 
