@@ -183,6 +183,68 @@ header('Location: ../index.php');
 						
 </div>
 
+<div class="row">
+						<div class="col-xs-12 col-sm-4">
+								<div class="form-group">
+									<label for="basicInput">Teléfono 2:</label>
+			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['movil2'] ?>" required class="form-control" name="movil2" id="movil2" placeholder="Teléfono 2:">
+								</div>
+							</div>
+
+
+<div class="col-xs-12 col-sm-8">
+							<div class="row">
+
+<div class="col-md-6">
+<div class="form-field-wrapper">
+<label for="basicInput">Viajaré mes:</label>
+<select name="mes_viaje" class="form-control">
+<option value="">- Viajaré mes -</option>
+<option value="ENERO">ENERO</option>
+<option value="FEBRERO">FEBRERO</option>
+<option value="MARZO">MARZO</option>
+<option value="ABRIL">ABRIL</option>
+<option value="MAYO">MAYO</option>
+<option value="JUNIO">JUNIO</option>
+<option value="JULIO">JULIO</option>
+<option value="AGOSTO">AGOSTO</option>
+<option value="SEPTIEMBRE">SEPTIEMBRE</option>
+<option value="OCTUBRE">OCTUBRE</option>
+<option value="NOVIEMBRE">NOVIEMBRE</option>
+<option value="DOCIEMBRE">DOCIEMBRE</option>
+</select>
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-field-wrapper">
+<label for="basicInput">Viajaré año:</label>
+<select name="anio_viaje" class="form-control">
+<option value="">- Viajaré año -</option>
+<option value="2016">2016</option>
+<option value="2017">2017</option>
+<option value="2018">2018</option>
+<option value="2019">2019</option>
+<option value="2020">2020</option>
+<option value="2021">2021</option>
+<option value="2022">2022</option>
+<option value="2023">2023</option>
+<option value="2024">2024</option>
+<option value="2025">2025</option>
+<option value="2026">2026</option>
+<option value="2027">2027</option>
+<option value="2028">2028</option>
+<option value="2029">2029</option>
+<option value="2030">2030</option>
+</select>
+</div>
+</div>
+                                </div>
+                                </div>
+
+
+												
+</div>
+
 	<hr />
 					<h2 class="boxHeadline">Pre información</h2>
 					<h3 class="boxHeadlineSub"></h3>

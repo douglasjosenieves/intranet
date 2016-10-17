@@ -86,7 +86,9 @@ $hijos_fecha_nacimiento=$_REQUEST['hijos_fecha_nacimiento'];
 $hijos_documentos=$_REQUEST['hijos_documentos'];
 $imagenes=$_REQUEST['imagenes'];
 
-
+$mes_viaje=$_REQUEST['mes_viaje'];
+$anio_viaje=$_REQUEST['anio_viaje'];
+$movil2=$_REQUEST['movil2'];
 
 
 $opcion1=$_REQUEST['opcion1'];
@@ -185,7 +187,11 @@ $qry = "UPDATE `contactos_web` SET
 `opcion6`= '$opcion6', 
 `opcion_tipo_6`= '$opcion_t_6', 
 
-`imagenes`= '$imagenes_array'
+`imagenes`= '$imagenes_array',
+
+`movil2`= '$movil2',
+`mes_viaje`= '$mes_viaje',
+`anio_viaje`= '$anio_viaje'
 
 WHERE `contactos_web`.`id` = ".$referencia.";";
  

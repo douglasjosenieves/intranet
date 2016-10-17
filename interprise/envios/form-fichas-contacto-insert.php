@@ -47,7 +47,9 @@ $elaborado_por=$_REQUEST['elaborado_por'];
 
 $anulado=$_REQUEST['anulado'];
 
-
+$mes_viaje=$_REQUEST['mes_viaje'];
+$anio_viaje=$_REQUEST['anio_viaje'];
+$movil2=$_REQUEST['movil2'];
 
 $pre_informacion = serialize($pre_informacion);
 $fecha = date("Y-m-d H:i:s");
@@ -174,8 +176,10 @@ $resul = mysql_query("INSERT INTO `contactos_web` (
 `opcion_tipo_3`,
 `opcion_tipo_4`,
 `opcion_tipo_5`,
-`opcion_tipo_6`
-
+`opcion_tipo_6`,
+`mes_viaje`,
+`anio_viaje`,
+`movil2`
 
 
 ) VALUES ( 
@@ -233,8 +237,10 @@ $resul = mysql_query("INSERT INTO `contactos_web` (
 '$opcion_t_3',
 '$opcion_t_4',
 '$opcion_t_5',
-'$opcion_t_6'
-
+'$opcion_t_6',
+'$mes_viaje',
+'$anio_viaje',
+'$movil2'
  
 
 
