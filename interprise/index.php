@@ -12,7 +12,23 @@ $db = new DB_CONNECT();
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");  
 
+$usuario = $_SESSION['usuario']['Id'];
+$filtro = $_GET['filtro'];
+
+if ($filtro=='individual') {
+	$resul =  mysql_query("SELECT distinct status, count(status) as cuenta FROM contactos_web where anulado <> 1 and elaborado_por = $usuario group by status;");
+}
+
+else
+{
+
 $resul =  mysql_query("SELECT distinct status, count(status) as cuenta FROM contactos_web where anulado <> 1 group by status;");
+
+}
+
+
+
+
 
  $st = 0;
 $status = array();
@@ -131,10 +147,9 @@ $status[$row['status']] = $row['cuenta'];
 							<i class="zmdi zmdi-more-vert"></i>
 						</button>
 						<ul class="dropdown-menu">
-							<li><a href="#" title="#"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i> Today</a></li>
-							<li><a href="#" title="#"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i> Yesterday</a></li>
-							<li><a href="#" title="#"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i> Last week</a></li>
-							<li><a href="#" title="#"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i> Last month</a></li>
+							<li><a href="?filtro=todas" title="#"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i> Todas</a></li>
+							<li><a href="?filtro=individual" title="#"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i> Mi gestión</a></li>
+							 
 						</ul>
 					</div>
 				</div>
