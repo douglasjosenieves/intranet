@@ -14,17 +14,29 @@ mysql_query("SET CHARACTER_SET utf");
 
 $usuario = $_SESSION['usuario']['Id'];
 $filtro = $_GET['filtro'];
+$asesor = $_GET['asesor'];
+
+
 
 if ($filtro=='individual') {
 	$resul =  mysql_query("SELECT distinct status, count(status) as cuenta FROM contactos_web where anulado <> 1 and elaborado_por = $usuario group by status;");
 }
 
-else
-{
+
+else {
 
 $resul =  mysql_query("SELECT distinct status, count(status) as cuenta FROM contactos_web where anulado <> 1 group by status;");
 
 }
+
+
+if($asesor != ''){
+
+$resul =  mysql_query("SELECT distinct status, count(status) as cuenta FROM contactos_web where anulado <> 1 and elaborado_por = $asesor group by status;");
+
+}
+
+ 
 
 
 
@@ -38,6 +50,23 @@ $status[$row['status']] = $row['cuenta'];
  }
 
 
+
+$v=0;
+	/*<option value="ESPANA">España</option>*/
+$teleo ='';
+$teleoid =array();
+				$resulv =  mysql_query("SELECT * FROM usuarios where anulado <> 1 and cargo = 'teleoperador'");
+				while($rowv =  mysql_fetch_array($resulv) ) { 
+$teleo .= '<li><a href="?asesor=';
+$teleo .= $rowv['id'];
+$teleo .= '"title="#"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i>';
+$teleo .= strtoupper($rowv['nombre'].' '.$rowv['apellido']);
+$teleo .= '</a></li>';
+$teleoid[] = $rowv['id'];
+
+            
+            //$teleoperador['teleoperador'][]=$row;
+					$v++;}
  
  ?>
 
@@ -149,7 +178,11 @@ $status[$row['status']] = $row['cuenta'];
 						<ul class="dropdown-menu">
 							<li><a href="?filtro=todas" title="#"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i> Todas</a></li>
 							<li><a href="?filtro=individual" title="#"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i> Mi gestión</a></li>
-							 
+							
+<?php  if ($_SESSION['usuario']['Tipo'] == 'administrador') {?>
+							 <?php echo $teleo  ?>
+<?php } ?>
+
 						</ul>
 					</div>
 				</div>
@@ -159,7 +192,7 @@ $status[$row['status']] = $row['cuenta'];
 				<div class="statsBar">
 					<div class="row">
 						<div class="col-xs-12 col-md-3 i yellow">
-							<a href="#" title="#" class="c">
+							<a href="reporte-clientes-usuario.php?status=formulario" title="#" class="c">
 								<h3 class="title">Formularios</h3>
 			<div class="num" id="repFormularios"><?php  echo (isset($status['FORMULARIO'])) ? $status['FORMULARIO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-border-color"></i>
@@ -169,8 +202,8 @@ $status[$row['status']] = $row['cuenta'];
 
 
 						     <div class="col-xs-12 col-md-3 i interesados">
-							<a href="#" title="#" class="c">
-								<h3 class="title">Interesados</h3>
+							<a href="reporte-clientes-usuario.php?status=interesados" title="#" class="c">
+								<h3 class="title">Interesado</h3>
 								<div class="num" id="repProsPagados"><?php  echo (isset($status['INTERESADO'])) ? $status['INTERESADO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-alert-polygon"></i>
 							</a>
@@ -178,14 +211,14 @@ $status[$row['status']] = $row['cuenta'];
 
 
 						<div class="col-xs-12 col-md-3 i pink">
-							<a href="#" title="#" class="c">
+							<a href="reporte-clientes-usuario.php?status=PROSPECTO CITADO" title="#" class="c">
 								<h3 class="title">Pros. Citados</h3>
 								<div class="num" id="repProsCitados"><?php  echo (isset($status['PROSPECTO CITADO'])) ? $status['PROSPECTO CITADO']  :  '0';  ?></div>
 								<i class="icon zmdi-check"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-3 i green">
-							<a href="#" title="#" class="c">
+							<a href="reporte-clientes-usuario.php?status=PROSPECTO PAGADO" title="#" class="c">
 								<h3 class="title">Pros. Pagados</h3>
 								<div class="num" id="repProsPagados"><?php  echo (isset($status['PROSPECTO PAGADO'])) ? $status['PROSPECTO PAGADO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-check-all"></i>
@@ -202,7 +235,7 @@ $status[$row['status']] = $row['cuenta'];
 	     <div class="statsBar2">
 	     	<div class="row">
 						<div class="col-xs-12 col-md-4 i yellow2">
-							<a href="#" title="#" class="c">
+							<a href="reporte-clientes-usuario.php?status=prospecto en seguimiento" title="#" class="c">
 								<h3 class="title">Pros. Seguimiento</h3>
 								<div class="num" id="clientes"><?php  echo (isset($status['PROSPECTO EN SEGUIMIENTO'])) ? $status['PROSPECTO EN SEGUIMIENTO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-eye"></i>
@@ -210,14 +243,14 @@ $status[$row['status']] = $row['cuenta'];
 						</div>
 					
 						<div class="col-xs-12 col-md-4 i yellow">
-							<a href="#" title="#" class="c">
+							<a href="reporte-clientes-usuario.php?status=cliente" title="#" class="c">
 								<h3 class="title">Clientes</h3>
 								<div class="num" id="clientes"><?php  echo (isset($status['CLIENTE'])) ? $status['CLIENTE']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-account-box"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i pink">
-							<a href="#" title="#" class="c">
+							<a href="reporte-clientes-usuario.php?status=estudio" title="#" class="c">
 								<h3 class="title">Estudios</h3>
 								<div class="num" id="estudios"><?php  echo (isset($status['ESTUDIO'])) ? $status['ESTUDIO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-folder-outline"></i>
@@ -233,21 +266,21 @@ $status[$row['status']] = $row['cuenta'];
 	     	<div class="row">
 				 
 				 <div class="col-xs-12 col-md-4 i green2">
-							<a href="#" title="#" class="c">
+							<a href="reporte-clientes-usuario.php?status=no contactado" title="#" class="c">
 								<h3 class="title" id="descartados">No contactado</h3>
 								<div class="num"><?php  echo (isset($status['NO CONTACTADO'])) ? $status['NO CONTACTADO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-phone-missed"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i pink2">
-							<a href="#" title="#" class="c">
+							<a href="reporte-clientes-usuario.php?status=formulario defectuoso" title="#" class="c">
 								<h3 class="title">Form. Defectuoso</h3>
 								<div class="num" id="estudios"><?php  echo (isset($status['FORMULARIO DEFECTUOSO'])) ? $status['FORMULARIO DEFECTUOSO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-close"></i><i class="icon zmdi zmdi-text-format"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i green">
-							<a href="#" title="#" class="c">
+							<a href="reporte-clientes-usuario.php?status=descartado" title="#" class="c">
 								<h3 class="title" id="descartados">Descartados</h3>
 								<div class="num"><?php  echo (isset($status['DESCARTADO'])) ? $status['DESCARTADO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-block-alt"></i>

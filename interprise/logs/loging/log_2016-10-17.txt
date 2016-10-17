@@ -2,3 +2,6 @@
 [2016-10-17 08:36:15.000000 ::1  - success ] douglas.nieves@cohenyaguirre.es
 [2016-10-17 10:57:38.000000 ::1  - success ] douglas.nieves@cohenyaguirre.es
 [2016-10-17 11:05:29.000000 ::1  - success ] gustavo.lopez@cohenyaguirre.es
+[2016-10-17 11:44:12.000000 ::1  - success ] douglas.nieves@cohenyaguirre.es
+[2016-10-17 12:45:21.000000 ::1  - success ] gustavo.lopez@cohenyaguirre.es
+[2016-10-17 13:02:43.000000 ::1  - success ] douglas.nieves@cohenyaguirre.es

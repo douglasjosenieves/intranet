@@ -11,7 +11,11 @@ $con = new DB_CONNECT();
 //sleep(10);
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");   
+
 ?>
+
+
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -111,7 +115,22 @@ mysql_query("SET CHARACTER_SET utf");
 
 	                $idusuario =  $_SESSION['usuario']['Id'] ;
 					$i=0;
+
+
+$status = $_REQUEST['status'];
+
+if (isset($status)) {
+
+	$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1  and elaborado_por = '".$idusuario."' and status = '".$status."'");
+	
+}
+
+else {
+
 					$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and elaborado_por = '".$idusuario."'");
+					}
+
+
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
