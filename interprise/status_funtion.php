@@ -14,6 +14,10 @@ if ($status == 'FORMULARIO') {
 	$noti = '<span class="label label-primary">'.$status.'</span>';
 }
 
+if ($status == 'LLAMAR LUEGO') {
+
+	$noti = '<span class="label label-llamarluego">'.$status.'</span>';
+}
 
 if ($status == 'CLIENTE') {
 

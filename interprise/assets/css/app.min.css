@@ -11,6 +11,11 @@
 .statsBar .i.yellow .c:hover:before{background:#337ab7}
 
 
+.statsBar .i.luego .c{background:#1abc9c}
+.statsBar .i.luego .c:before{background:#16a085}
+.statsBar .i.luego .c:hover{background:#1abc9c}
+.statsBar .i.luego .c:hover:before{background:#1abc9c}
+
 .statsBar .i.pink .c{background:#5bc0de}
 .statsBar .i.pink .c:before{background:#0c88ad}
 .statsBar .i.pink .c:hover{background:#5bc0de}
@@ -76,6 +81,12 @@
 .statsBar2 .i.green2 .c:hover:before{background:#e67e22}
 
 
+.statsBar2 .i.pagado .c{background:#FBC02D}
+.statsBar2 .i.pagado .c:before{background:#f39c12}
+.statsBar2 .i.pagado .c:hover{background:#FBC02D}
+.statsBar2 .i.pagado .c:hover:before{background:#FBC02D}
+
+
 .statsBar2 .i.pink2 .c{background:#e74c3c}
 .statsBar2 .i.pink2 .c:before{background:#e02b18}
 .statsBar2 .i.pink2 .c:hover{background:#e74c3c}
@@ -85,6 +96,11 @@
 
 .label-interesado {
   background-color: #303F9F;
+}
+
+
+.label-llamarluego {
+  background-color: #1abc9c;
 }
 
 .label-nocontactado {
