@@ -182,7 +182,7 @@ mysql_query("SET CHARACTER_SET utf");
 $(document).ready(function() {
 	$('#calendario').fullCalendar({
 	header:{left:"prev,next today",center:"title",right:"month,agendaWeek,agendaDay"},
-	  events: 'async/calendario.php',
+	  events: 'async/calendario.php?idusuario=1',
 	  lang: 'es',
 	  
  

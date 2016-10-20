@@ -208,7 +208,7 @@ $teleoid[] = $rowv['id'];
 						</div>
 
 						     <div class="col-xs-12 col-md-3 i interesados">
-							<a href="reporte-clientes-usuario.php?status=interesados" title="#" class="c">
+							<a href="reporte-clientes-usuario.php?status=interesado" title="#" class="c">
 								<h3 class="title">Interesado</h3>
 								<div class="num" id="repProsPagados"><?php  echo (isset($status['INTERESADO'])) ? $status['INTERESADO']  :  '0';  ?></div>
 								<i class="icon zmdi zmdi-alert-polygon"></i>
