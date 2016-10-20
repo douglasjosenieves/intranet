@@ -179,10 +179,12 @@ mysql_query("SET CHARACTER_SET utf");
 
 	<script type="text/javascript">
 		
+var usuario = "<?php eho  ?>";
+
 $(document).ready(function() {
 	$('#calendario').fullCalendar({
 	header:{left:"prev,next today",center:"title",right:"month,agendaWeek,agendaDay"},
-	  events: 'async/calendario.php?idusuario=1',
+	  events: 'async/calendario.php',
 	  lang: 'es',
 	  
  

@@ -17,7 +17,7 @@ $fechaphp = date("Y-m-d H:i:s");
  
 $id = $_REQUEST['id'];
 
- 
+ $id_usuario = $_REQUEST['id_usuario'];
  
 
 

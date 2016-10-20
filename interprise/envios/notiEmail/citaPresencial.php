@@ -106,13 +106,11 @@ $body .= 'Por motivos de planificación y agenda, el resguardo o justificante de
 $body .= '<br>';
 $body .= '<strong>Datos para la facturación;</strong>  Si la desea a nombre de una empresa, favor incluya los datos fiscales de la misma y si la desea personal, favor incluir número de cedula y una dirección corta.
 Si la transferencia la realiza desde la cuenta de un tercero, favor indíquenos el nombre del titular.
-Para cualquier duda o consulta sobre este email, no dudes en disponer de los datos de contacto en la firma del mismo.';
+Para cualquier duda o consulta sobre este email ponemos a su disposición la dirección electrónica: '.$emailAsesor.' y número telefónico: '.$ejecutivoTel.' para sus comentarios.';
 $body .= '<br>';
 $body .= '<br>';
 
 $body .= '<strong>Esta es una cuenta no monitoreada. No responda o reenvíe correos a la misma.</strong>';
-$body .= '<br>';
-$body .= 'Ponemos a su disposición la dirección electrónica: '.$emailAsesor.' y número telefónico: '.$ejecutivoTel.' para sus comentarios.';
 $body .= '<br>';
 $body .= '<br>';
 $body .= 'Saludos cordiales,';
