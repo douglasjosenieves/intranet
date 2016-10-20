@@ -1314,6 +1314,7 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 
 
 <input type="hidden" name="id_contacto" value="<?php echo $id ?>">
+<input type="hidden" name="id_usuario" value="<?php echo $_SESSION['usuario']['Id']; ?>">
 <input type="hidden" name="color" value="<?php echo $_SESSION['usuario']['Color']?>">
 <input type="hidden" name="titulo" value="<?php echo $contactos_web[0]['nombres'].' '.$contactos_web[0]['apellidos'] ?>">
 <input type="hidden" name="nombre" value="<?php echo $contactos_web[0]['nombres'].' '.$contactos_web[0]['apellidos'] ?>">

@@ -29,6 +29,7 @@ $fecha = date("Y-m-d H:i:s");
 //echo $_REQUEST['descripcion'];
  
 //$id=$_REQUEST['id'];
+$id_calendar=$_REQUEST['id_calendar'];
 $id_contacto=$_REQUEST['id_contacto'];
 $id_usuario=$_REQUEST['id_usuario'];
 $nombre=$_REQUEST['nombre'];
@@ -63,22 +64,21 @@ $inicio = $dia.' '.$horaInicio;
 
 
 
- 
+ $qry = "UPDATE `calendario` 
+ SET `id_contacto`='$id_contacto', 
+ `id_usuario`='$id_usuario', 
+ `nombre`='$nombre', 
+ `start`='$inicio', 
+ `end`='$final', 
+ `color`='$color', 
+ `titulo`='$titulo', 
+ `tipo`='$tipo', 
+ `descripcion`='$descripcion', 
+ `allDay`='$allDay' 
+ WHERE `id`='$id_calendar';";
 
 
-$resul = mysql_query("INSERT INTO `calendario` (`id_contacto`, `id_usuario`,  `nombre`, `start`, `end`, `color`, `titulo`, `tipo`, `descripcion`, `allDay`) 
-VALUES 
-	(
-	'".$id_contacto."', 
-	'".$id_usuario."', 
-		'".$nombre."',
-		'".$inicio."',
-		'".$final."', 
-	    '".$color."',
-		'".$titulo."',
-		'".$tipo."',
-		'".$descripcion."',
-		'".$allDay."');");
+$resul = mysql_query( $qry);
 
 
 
