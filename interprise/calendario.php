@@ -111,28 +111,104 @@ mysql_query("SET CHARACTER_SET utf");
 		</div>
 	<!-- </div> -->
 	
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 
+
+<!--===============================================
+=            PARA EDITAR FECHA DE CITA            =
+================================================-->
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel" style="font-weight: bold;">Modal title</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Agendar</h4>
       </div>
       <div class="modal-body">
-        ...
-      </div>
+     <form id="formulario_agendar_cita">
+        <label for="datepicker-2-input">Cita.</label>
+         <select name="tipo" id="tipo" required class="js-select" style="width:100%;">
+								 
+										<option value="" >- Seleccione -</option>
+										<option value="CITA PRESENCIAL">CITA PRESENCIAL</option>
+										<option value="CITA VIRTUAL">CITA VIRTUAL</option>
+									<option value="SEGUNDA CITA">SEGUNDA CITA</option>
+									<option value="CITA OFICINA ESPANA">CITA OFICINA ESPAÑA</option>		 
+								 	<option value="CITA DE SEGUIMIENTO">CITA DE SEGUIMIENTO</option>
+								 		<option value="CONTACTO DE CALENDARIO">CONTACTO DE CALENDARIO</option>
+									</select>
+									<br><br>
+
+
+<div class="form-group">
+									<label for="textarea-autosize">Descripción</label>
+									<textarea id="descripcion" name="descripcion" class="js-autogrow form-control" placeholder="Escriba comentarios sobre la cita...!" rows="2" style="overflow: hidden; word-wrap: break-word; height: 74px;"></textarea>
+								</div>
+
+							<hr>	
+
+          	<div class="col-xs-12">
+
+								<label for="datepicker-2-input">Consulte día disponible:<span class="bg-info" id="etiqueta_dia"></span></label>
+								<div id="datepicker-2" class="input-group date">
+									<input   class="form-control" id="diaSelect" name="dia" placeholder="Select date" type="date"><span id="consultarDia" class="input-group-addon"><i class="fa fa-search" ></i></span>
+								</div>
+							</div>
+
+							<div id="agendados"></div>
+
+
+<div class="row">
+
+<div class="col-xs-6">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Inicio: <span class="bg-info" id="etiqueta_start"></span></label>
+            <input type="time" placeholder="hrs:mins" name="start" required  class="form-control" id="recipient-name">
+          </div>
+</div>
+<div class="col-xs-6">
+          <div class="form-group">
+            <label for="message-text" class="control-label">Final:<span class="bg-info" id="etiqueta_end"></span></label>
+             <input type="time" placeholder="hrs:mins" name="end"  required  class="form-control" id="recipient-name">
+          </div>
+          </div>
+        
+</div>
+
+<div class="col-xs-12">
+<div class="checkboxes">								
+
+
+								<label>
+									<input id="allDay" name="allDay" value="1" type="checkbox">
+									<span>Evento para todo el dia?</span>
+								</label>
+							</div>
+</div>
+
+<input type="hidden" id="id_calendar" name="id_calendar" value="">
+<input type="hidden" id="async_contacto" name="id_contacto" value="">
+<input type="hidden" name="id_usuario" value="<?php echo $_SESSION['usuario']['Id']; ?>">
+<input type="hidden" name="color" value="<?php echo $_SESSION['usuario']['Color']?>">
+<input type="hidden" id="async_titulo"  name="titulo" value="">
+<input type="hidden" id="async_nombre"  name="nombre" value="">
+
+	
+
+     
       <div class="modal-footer">
-        <button type="button" class="btn bg-dark-gray" data-dismiss="modal">Close</button>
-      
-        <button type="button" id="cancelar-cita" class="btn btn bg-red"> <i class="fa fa-ban"></i>  Cancelar cita  </button>
-  
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+     <button type="submit" id="agendar" disabled class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Re-Agendar   </button>
+     <button type="button" id="cancelar-cita" class="btn btn bg-red"> <i class="fa fa-ban"></i>  Cancelar cita  </button>
       </div>
+
+         </form>
+      </div>
+     
     </div>
   </div>
 </div>
+
+<!--====  End of PARA EDITAR FECHA DE CITA  ====-->
 
 
 	<!-- Search modal -->
@@ -192,13 +268,23 @@ $(document).ready(function() {
   eventRender: function (event, element) {
         element.attr('href', 'javascript:void(0);');
         element.click(function() {
+        	//alert(event.start);
 
         	 
 
         	
         	$('#myModalLabel').html('<a href="ficha-contacto-editar.php?id='+event.id_contacto+'" target="_blank">'+event.id_contacto+' '+event.nombre+'</a>');
-        	
-        	$('.modal-body').html('<i class="fa fa-clock-o"></i> Inicio: ');
+        	$('#tipo').val(event.tipo).change();
+        	$('#descripcion').val(event.descripcion);
+        		$('#id_calendar').val(event.id);
+$('#async_titulo').val(event.title);
+$('#async_nombre').val(event.nombre);
+$('#async_contacto').val(event.id_contacto);
+        		
+             $('#etiqueta_dia').text(event.start);
+$('#etiqueta_start').text(event.start);
+$('#etiqueta_end').text(event.end);
+        	/*$('.modal-body').html('<i class="fa fa-clock-o"></i> Inicio: ');
             $('.modal-body').append(moment(event.start).format('MMM Do h:mm A'));
             $(".modal-body").append('<br>');
             $('.modal-body').append('<i class="fa fa-clock-o"></i> Fin: ');
@@ -208,7 +294,7 @@ $(document).ready(function() {
             $(".modal-body").append('<hr>');
             $('.modal-body').append('<CENTER><H2><strong> <i class=\"fa fa-bell\"></i>'+event.tipo+'</strong><H2> </CENTER>');
             $('.modal-body').append('<CENTER>'+event.descripcion+'</CENTER>');
-
+*/
 $('#cancelar-cita').attr('data-id', event.id);
             $('#myModal').modal('show');
         });
@@ -266,6 +352,102 @@ if (data==1) {
 
 
 
+/*=========================================
+=             consulta de dias            =
+=========================================*/
+
+$('#consultarDia').on('click',  function(event) {
+	event.preventDefault();
+		$('#agendados').html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>Cargando...');
+	/* Act on the event */
+var diaSelect = $('#diaSelect').val();
+
+ if (diaSelect == '') {
+ 	alert('Coloque una fecha a consultar!' );
+ $('#agendados').html('');
+ return true;
+}
+
+
+ 
+
+$.ajax({
+	url: 'async/calendarioDiasDisponible.php',
+	type: 'POST',
+
+	data: {dia: diaSelect},
+})
+.done(function(data) {
+	console.log("success");
+		console.log(data);
+		$('#agendados').html(data);
+
+		$('#agendar').removeAttr('disabled');
+$('')
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+
+});
+
+/*=====  End of  consulta de dias  ======*/
+
+/*======================================
+=            REAGENDAR CITA            =
+======================================*/
+
+$('#formulario_agendar_cita').on('submit',  function(event) {
+	event.preventDefault();
+$('#agendar').button('loading');
+
+	$.ajax({
+		url: 'envios/calendario-editar.php',
+		type: 'POST',
+ 
+		data: $('#formulario_agendar_cita').serialize(),
+	})
+	.done(function(data) {
+		console.log("success");
+		console.log(data);
+
+if (data==1) {
+
+swal({ 
+  title: "Good job! ",
+   text: "Cita agendada con éxito...!",
+    type: "success" 
+  },
+  function(){
+$('#formulario_agendar_cita')[0].reset();
+//location.reload();
+$('#agendados').html('');
+location.reload();
+});
+
+
+}
+
+
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+		$('#agendar').button('reset');
+	});
+	
+	/* Act on the event */
+});
+
+
+/*=====  End of REAGENDAR CITA  ======*/
 
 
 
