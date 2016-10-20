@@ -105,6 +105,7 @@ $body .= '<br>';
 $body .= '<br>';
 
 $body .= '<strong>Esta es una cuenta no monitoreada. No responda o reenvíe correos a la misma.</strong>';
+
 $body .= '<br>';
 $body .= '<br>';
 $body .= 'Saludos cordiales,';
@@ -146,7 +147,7 @@ $mail->SMTPAuth = true;
 /* Sustituye (CuentaDeEnvio )  por la misma cuenta que usaste en la parte superior en este caso  prueba@domitienda.com  y sustituye (ContraseñaDeEnvio)  por la contraseña que tenga dicha cuenta */
 
 $mail->Username = 'contacto@cohenyaguirre.es';
-$mail->Password = '';
+$mail->Password = 'tu clave';
 
 if(!$mail->Send()) {
 echo 'Mailer Error: ' . $mail->ErrorInfo;

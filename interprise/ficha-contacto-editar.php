@@ -1447,7 +1447,7 @@ mivar1 = $(this).val();
 
 if (mivar1 == 'CITA VIRTUAL' || mivar1 == 'CITA PRESENCIAL'  ) {
 
-//console.log(mivar1);
+console.log(mivar1);
 buscarCitas();
 
 }
@@ -1463,8 +1463,14 @@ $('#emailsend').removeAttr('disabled');
 
 
 function buscarCitas() {
+
+
+
 $('#cargando').show();
 var cliente = $('#id_contacto').val();
+
+//alert(cliente);
+
 $('#cargando').show();
 $.ajax({
 	url: 'async/calendarioEmail.php',
@@ -1474,7 +1480,7 @@ $.ajax({
 })
 .done(function(data) {
 	console.log("success");
-//console.log(data);
+console.log(data);
 $('#radioBtnCitas').html(data);
 
 

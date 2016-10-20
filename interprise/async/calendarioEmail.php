@@ -12,7 +12,7 @@ mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf"); 
 
 $cliente = $_REQUEST['cliente'];
-
+$cliente = '429';
 			
 				$i=0;
 				$resul =  mysql_query("SELECT * from calendario where anulado <> 1 and id_contacto = '$cliente'");
