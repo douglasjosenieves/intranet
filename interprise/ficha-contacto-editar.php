@@ -292,7 +292,7 @@ $contactos_web[] = $row;
 <option value="SEPTIEMBRE">SEPTIEMBRE</option>
 <option value="OCTUBRE">OCTUBRE</option>
 <option value="NOVIEMBRE">NOVIEMBRE</option>
-<option value="DOCIEMBRE">DICIEMBRE</option>
+<option value="DICIEMBRE">DICIEMBRE</option>
 </select>
 </div>
 </div>

@@ -211,7 +211,7 @@ header('Location: ../index.php');
 <option value="SEPTIEMBRE">SEPTIEMBRE</option>
 <option value="OCTUBRE">OCTUBRE</option>
 <option value="NOVIEMBRE">NOVIEMBRE</option>
-<option value="DOCIEMBRE">DOCIEMBRE</option>
+<option value="DICIEMBRE">DICIEMBRE</option>
 </select>
 </div>
 </div>
