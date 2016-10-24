@@ -1,11 +1,11 @@
-
+<?php require_once 'nav_define.php'; ?>
 <script type="text/javascript">var usuarioOnline = <?php echo $_SESSION['usuario']['Id']; ?>;</script>
 <header id="header" class="hidden-print">
 		<h1 class="logo">
 			<a href="#" title="#" class="js-nav-toggler">
 				<i class="icon icon-close"></i>
 			</a>
-			<a href="index.php" title="Sistema de gestion integral informatico Cohen y Aguirre"><img src="img/icon-logo.png"> <span></span></a>
+			<a href="index.php" title="Sistema de gestion integral informatico Cohen y Aguirre"><img src="<?php echo BASE_URL ?>img/icon-logo.png"> <span></span></a>
 		</h1>
 
 		<div class="pageContent">
