@@ -211,6 +211,18 @@ $resul2 = mysql_query($qry2);
 }
 
 
+if ($status=='CLIENTE') {
+
+
+
+	$qry2 = "INSERT INTO chat (`id_para`, `id_de`, `mensaje`, `fecha_envio`, `ip`) SELECT id , '".$editado_por."', '".'Cliente Nuevo: Id:'.$referencia.' Nombre:'.$nombres.' '.$apellidos."', '".$fechaphp."', '".$ip."' FROM usuarios where anulado <> 1 and tipo = 'administrador';";
+ 
+
+$resul2 = mysql_query($qry2);
+}
+
+
+
 //echo $qry;
 
 
