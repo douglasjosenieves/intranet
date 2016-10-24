@@ -602,7 +602,7 @@ $teleoid[] = $rowv['id'];
 	<script src="assets/js/Chart.min.js"></script>
 	<script src="assets/js/chartist.min.js"></script>
 	<script src="assets/js/jquery.fullscreen.min.js"></script>
-	<script src="assets/js/app_index.min.js"></script>
+	<script src="assets/js/app.min.js"></script>
    <script src="assets/sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
 	<div class="visible-xs visible-sm extendedChecker"></div>
 	 
