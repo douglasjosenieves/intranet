@@ -90,7 +90,17 @@
 
 
 
-				<li><a href="<?php echo BASE_URL ?>calendario.php" title="#"><i class="zmdi zmdi-calendar-check zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Calendario </span></a></li>
+					<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-calendar-check zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Calendario <i class="zmdi zmdi-plus plus"></i></span></div>
+                 <ul>
+					    <li><a href="<?php echo BASE_URL ?>mod_calendario/index.php" title="Perfil del usuario">Crear evento</a></li>
+						<li><a href="<?php echo BASE_URL ?>mod_calendario/ver.php" title="Perfil del usuario">Ver Calendario</a></li>
+ 
+
+						 
+					</ul>
+
+				</li>
 				
 				
 				<li class="sub js-submenu">
@@ -98,7 +108,7 @@
 
 					<ul >
 						<li><a href="<?php echo BASE_URL ?>user-profile.php" title="Perfil del usuario">Perfil del usuario</a></li>
-						<li><a target="_blank" href="documentos/preguntas-frecuentes.pdf" title="Perfil del usuario">Preguntas frecuentes</a></li>
+						<li><a  href="documentos/preguntas-frecuentes.pdf" title="Perfil del usuario">Preguntas frecuentes</a></li>
 
 							<li><a target="_blank" href="<?php echo BASE_URL ?>cumpleanos.php" title="Perfil del usuario">Cumpleaños</a></li>
 

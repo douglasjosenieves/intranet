@@ -173,7 +173,7 @@ mysql_query("SET CHARACTER_SET utf");
 	<script src="../assets/plugins/wysihtml-master/parser_rules/advanced_and_extended.js"></script>
 	<script src="../assets/plugins/ckeditor/ckeditor.js"></script>
 	<script src="../assets/sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
-	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/app_index.min.js"></script>
 <script src='http://cdn.tinymce.com/4/tinymce.min.js'></script>
  
 
