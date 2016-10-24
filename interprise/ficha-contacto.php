@@ -187,7 +187,7 @@ header('Location: ../index.php');
 						<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Teléfono 2:</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['movil2'] ?>" required class="form-control" name="movil2" id="movil2" placeholder="Teléfono 2:">
+			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['movil2'] ?>"  class="form-control" name="movil2" id="movil2" placeholder="Teléfono 2:">
 								</div>
 							</div>
 

@@ -22,6 +22,7 @@ mysql_query("SET CHARACTER_SET utf");
 $boolean = $mysql_data ? true : false;
 			 $event_array[] = array(
             'id' => $row['id'],
+            'id_usuario' => $row['id_usuario'],
             'title' => $row['titulo'],
             'tipo' => $row['tipo'],
             'descripcion' => $row['descripcion'],

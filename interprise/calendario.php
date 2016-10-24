@@ -197,8 +197,8 @@ mysql_query("SET CHARACTER_SET utf");
      
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-     <button type="submit" id="agendar" disabled class="btn btn-primary" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Re-Agendar   </button>
-     <button type="button" id="cancelar-cita" class="btn btn bg-red"> <i class="fa fa-ban"></i>  Cancelar cita  </button>
+     <button type="submit" id="agendar" disabled class="btn btn-primary btnmuestra" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Enviando...!"> Re-Agendar   </button>
+     <button type="button" id="cancelar-cita" class="btn btn bg-red btnmuestra"> <i class="fa fa-ban"></i>  Cancelar cita  </button>
       </div>
 
          </form>
@@ -255,7 +255,7 @@ mysql_query("SET CHARACTER_SET utf");
 
 	<script type="text/javascript">
 		
-var usuario = "<?php eho  ?>";
+var usuario = "<?php echo $_SESSION['usuario']['Id']  ?>";
 
 $(document).ready(function() {
 	$('#calendario').fullCalendar({
@@ -266,8 +266,19 @@ $(document).ready(function() {
  
 
   eventRender: function (event, element) {
+
+
         element.attr('href', 'javascript:void(0);');
         element.click(function() {
+
+        	if (event.id_usuario != usuario ) {
+
+$('.btnmuestra').hide();
+
+        	} else {
+        		$('.btnmuestra').show();
+
+        	}
         	//alert(event.start);
 
         	 
@@ -297,7 +308,13 @@ $('#etiqueta_end').text(event.end);
 */
 $('#cancelar-cita').attr('data-id', event.id);
             $('#myModal').modal('show');
+
+
+
         });
+    
+
+
     }
  
  
