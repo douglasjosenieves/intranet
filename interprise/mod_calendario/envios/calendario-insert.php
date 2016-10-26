@@ -62,11 +62,7 @@ $inicio = $dia.' '.$horaInicio;
 */
 
 
-
- 
-
-
-$resul = mysql_query("INSERT INTO `calendario` (`id_contacto`, `id_usuario`,  `nombre`, `start`, `end`, `color`, `titulo`, `tipo`, `descripcion`, `allDay`) 
+$qry="INSERT INTO `calendario` (`id_contacto`, `id_usuario`,  `nombre`, `start`, `end`, `color`, `titulo`, `tipo`, `descripcion`, `allDay`) 
 VALUES 
 	(
 	'".$id_contacto."', 
@@ -78,7 +74,11 @@ VALUES
 		'".$titulo."',
 		'".$tipo."',
 		'".$descripcion."',
-		'".$allDay."');");
+		'".$allDay."');";
+ 
+
+
+$resul = mysql_query($qry);
 
 
 
@@ -89,11 +89,17 @@ VALUES
 
  
 
-
+if ($resul==1) {
   
-echo $resul ;
+echo $resul;
+}
+
+else
+{
+echo 'false'.$qry;
 
 
+}
 
 
  
