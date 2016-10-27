@@ -2,7 +2,7 @@
 if (!isset($_SESSION['usuario'] )) {
 header('Location: ../index.php');
 }
-
+ 
 
 require_once __DIR__ . '../../db_connect.php';
 
@@ -131,6 +131,18 @@ $ficha['ficha_opciones'][] = $row;
 															<input  readonly type="text" required class="form-control" value="<?php echo $ficha['ficha_opciones'][0]['elaborado_por'] ?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
 														</div>
 													</div>
+
+
+													<div class="col-xs-12 col-sm-3"  style=" margin-top: 40px;color: red;font-weight: bold">
+				<div class="form-group checkboxes">
+						<label>
+							<input name="exclusivo" id="exclusivo" value="1" type="checkbox">
+							<span>Ficha Exclusiva</span>
+						</label>
+					</div>	
+
+
+					</div>
 
 
 </div>
@@ -591,6 +603,22 @@ $imagen1 = 'img/sin_imagen_disponible.jpg';
 </div>
 <div id="img"></div>
 </div>
+<hr>
+<div class="row">
+	
+
+
+	<div class="col-xs-12 col-sm-12">
+								<div class="form-group">
+									<label for="comentarios_sobre_negocio_interno">Comentario sobre el negocio (Uso comercial):</label>
+									<textarea id="comentarios_sobre_negocio_comercial" value=""  name="comentarios_sobre_negocio_comercial" class="form-control" rows="8"><?php echo $ficha['ficha_opciones'][0]['comentarios_sobre_negocio_comercial'] ?></textarea>
+								</div>
+							</div>
+						
+
+</div>
+
+
 <?php if ($_GET['editar']=='true') { ?>
 
 
@@ -678,11 +706,21 @@ $imagen1 = 'img/sin_imagen_disponible.jpg';
 
 	<script type="text/javascript">
 
- 
+$(document).ready(function() {
+var exclusivo = "<?php echo $ficha['ficha_opciones'][0]['exclusivo'] ?>";
+
+
+if (exclusivo=='1') {
+	$("#exclusivo").prop("checked", "checked");
+
+	}
+});
 
  
     Dropzone.autoDiscover = false;
 jQuery(document).ready(function() {
+
+
  var fileList = new Array;
  var i =0;
  var date = moment().format('DDMYYYY');

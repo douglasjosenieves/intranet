@@ -93,6 +93,20 @@ header('Location: ../index.php');
 													</div>
 
 
+
+<div class="col-xs-12 col-sm-6"  style=" margin-top: 40px;color: red;font-weight: bold">
+				<div class="form-group checkboxes">
+						<label>
+							<input name="exclusivo" value="1" type="checkbox">
+							<span>Ficha Exclusiva</span>
+						</label>
+					</div>	
+
+
+					</div>
+								
+
+
 </div>
 
 						<div class="row">
@@ -498,6 +512,30 @@ header('Location: ../index.php');
 
 					
 <hr />
+
+
+
+
+<div class="row">
+	
+
+
+	<div class="col-xs-12 col-sm-12">
+								<div class="form-group">
+									<label for="comentarios_sobre_negocio_interno">Comentario sobre el negocio (Uso comercial):</label>
+									<textarea id="comentarios_sobre_negocio_comercial" name="comentarios_sobre_negocio_comercial" class="form-control" rows="8"></textarea>
+								</div>
+							</div>
+						
+
+</div>
+
+
+
+
+
+
+
 						<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary">Guardar</button>
 					</form>
   

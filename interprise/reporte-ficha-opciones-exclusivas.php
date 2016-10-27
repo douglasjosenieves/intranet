@@ -65,7 +65,7 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Ficha de opciones </a>
+					<a href="#" title="#">Ficha de opciones exclusivas </a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
@@ -105,7 +105,7 @@ mysql_query("SET CHARACTER_SET utf");
 
 	                <?php 
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `form_fichas_opciones` where anulado <> 1 and exclusivo<>1");
+					$resul =  mysql_query("SELECT * FROM `form_fichas_opciones` where anulado <> 1 and exclusivo='1'");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
