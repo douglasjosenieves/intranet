@@ -531,7 +531,17 @@ header('Location: ../index.php');
 </div>
 
 
+	<label for="comentarios_sobre_negocio"><i class="fa fa-image" style="font-size: 30px;
+    color: #fe5621;"></i> Cargar imagen (REALES):</label>
+<div id="dZUpload2" class="dropzone" style=" border-color: #e6e7ed;border-left: 3px solid #4bae4f;  " >
+<div class="dz-default dz-message"></div>
+</div>
+<div id="img2"></div>
+ 
 
+
+					
+<hr />
 
 
 
@@ -694,7 +704,7 @@ document.getElementById("formulario").reset();
 
  
   $('#img :input').remove();
-
+  $('#img2 :input').remove();
 swal({ 
   title: "Good job!",
    text: "You clicked the button!",
@@ -723,6 +733,90 @@ swal({
 
 
 
+});
+
+
+
+/**
+ *
+ * Esta es la carga de imagen2
+ *
+ */
+
+
+
+
+jQuery(document).ready(function() {
+ var fileList = new Array;
+ var i =0;
+ var date = moment().format('DDMYYYY');
+//alert(date);
+ 
+  myDropzone = new Dropzone("#dZUpload2", { 
+    url: 'upload2.php',
+    dictDefaultMessage: "your custom message",
+    autoProcessQueue:true, //BARRRA DE CARGA 
+    maxFilesize: 1, // MB
+    maxFiles: 2, //CANTIDAD DE ARCHIVOS PERMITIDOS
+    addRemoveLinks: true, ///MOSTRAR EL LINK DE REMOVER IMAGEN
+    acceptedFiles: 'image/*', //SOLO ACEPTAR IMAGEN FORMATO
+    success: function (file, serverFileName) {
+    fileList[i] = {"serverFileName" : serverFileName, "fileName" : file.name,"fileId" : i };
+                        console.log(fileList);
+                        i++; 	
+   console.log(serverFileName);
+    	 swal("Good job!", "Uploas a imagen!", "success");
+ 
+    	   $('#img2').append('<div><input type="hidden" name="img2[]" value="'+serverFileName+'"id="campo2_" class="imageninput" placeholder="Texto"/></div>');
+    	  return file.previewElement.classList.add("dz-success");
+       // console.log("Sucesso");
+       // console.log(response); 'name': file.name
+
+
+    },
+     removedfile: function(file) { 
+      var _ref;
+  var rmvFile = "";
+                        for(f=0;f<fileList.length;f++){
+
+                            if(fileList[f].fileName == file.name)
+                            {
+                                rmvFile = fileList[f].serverFileName;
+                         
+                            }
+
+                        }
+
+                        if (rmvFile){
+                            $.ajax({
+                               url: "delete2.php",
+                                type: "POST",
+                                data: { "name" : rmvFile }
+                            });
+                           $('#img2 :input[value="'+rmvFile+'"]').remove();
+                        }
+                    
+
+ 
+//'#img :input[value="'+file.name+'"]').remove();
+  
+
+//$.ajax({
+//url: "delete.php",
+//type: "POST",
+//data: { 'name': file.name}
+//});
+
+return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+				
+
+    },
+
+
+ 
+  });
+
+   
 });
 
 	</script>
