@@ -633,6 +633,8 @@ if  (is_array($pre_adjunto )){
 foreach ($pre_adjunto as $key => $value) {
 	
 
+if ($value!='') {
+	
 
 
 
@@ -648,7 +650,7 @@ foreach ($pre_adjunto as $key => $value) {
 
 <input type="hidden" name="imagenes[]" value="<?php echo $value ?>" id="" data-nombre="<?php echo $value ?>" class="imageninput" placeholder="Texto">
 
-<?php } }?>
+<?php }} }?>
 
 </div>
 
@@ -1034,6 +1036,55 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
 
    
 });
+
+
+/*============================================
+=            PARAR BORRAR LA FOTO            =
+============================================*/
+
+
+$(document).ready(function() {
+	$('.borrar').on('click',  function(event) {
+	event.preventDefault();
+var archivo = $(this).attr('data-nombre');
+console.log(archivo);
+	/* Act on the event */
+
+
+$.ajax({
+	url: 'delete2.php',
+	type: 'POST',
+	
+	data: {name: archivo },
+})
+.done(function(data) {
+	console.log("success");
+	console.log(data);
+
+
+$('a[data-nombre="'+archivo+'"]').remove();
+$('.borrar[data-nombre="'+archivo+'"]').remove();
+
+$('.imageninput[data-nombre="'+archivo+'"]').remove();
+ 
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+
+
+	
+	
+});
+});
+
+/*=====  End of PARAR BORRAR LA FOTO  ======*/
+
 
 	</script>
  
