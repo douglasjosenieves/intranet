@@ -625,6 +625,35 @@ $imagen1 = 'img/sin_imagen_disponible.jpg';
 <div id="img2"></div>
  
 
+<div class="doc_ajuntos">
+<h3>Documentos adjuntos</h3>
+<?php $pre_adjunto = explode(';',$ficha['ficha_opciones'][0]['capture2']) ;
+
+if  (is_array($pre_adjunto )){
+foreach ($pre_adjunto as $key => $value) {
+	
+
+
+
+
+
+ ?>
+
+
+
+<button type="button" class="btn bg-red borrar" data-nombre="<?php echo $value ?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+
+<a class="btn btn-large  bg-green" data-nombre="<?php echo $value ?>" target="_blank"  href="file-upload/images-fopciones-reales/<?php echo $value ?>" role="button"> <i class="fa fa-download"></i> <?php echo $value ?></a>
+
+<input type="hidden" name="imagenes[]" value="<?php echo $value ?>" id="" data-nombre="<?php echo $value ?>" class="imageninput" placeholder="Texto">
+
+<?php } }?>
+
+</div>
+
+
+
 <?php if ($_GET['editar']=='true') { ?>
 
 
