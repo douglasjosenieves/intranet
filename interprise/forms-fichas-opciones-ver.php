@@ -610,7 +610,7 @@ $imagen1 = 'img/sin_imagen_disponible.jpg';
 
 	<div class="col-xs-12 col-sm-12">
 								<div class="form-group">
-									<label for="comentarios_sobre_negocio_interno">Comentario sobre el negocio (Uso comercial):</label>
+									<label for="comentarios_sobre_negocio_interno">Comentario (Visita comercial):</label>
 									<textarea id="comentarios_sobre_negocio_comercial" value=""  name="comentarios_sobre_negocio_comercial" class="form-control" rows="8"><?php echo $ficha['ficha_opciones'][0]['comentarios_sobre_negocio_comercial'] ?></textarea>
 								</div>
 							</div>
@@ -943,8 +943,8 @@ jQuery(document).ready(function() {
     url: 'upload2.php',
     dictDefaultMessage: "your custom message",
     autoProcessQueue:true, //BARRRA DE CARGA 
-    maxFilesize: 1, // MB
-    maxFiles: 2, //CANTIDAD DE ARCHIVOS PERMITIDOS
+    maxFilesize: 100, // MB
+    maxFiles: 500, //CANTIDAD DE ARCHIVOS PERMITIDOS
     addRemoveLinks: true, ///MOSTRAR EL LINK DE REMOVER IMAGEN
     acceptedFiles: 'image/*', //SOLO ACEPTAR IMAGEN FORMATO
     success: function (file, serverFileName) {
