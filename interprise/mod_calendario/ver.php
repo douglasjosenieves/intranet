@@ -284,7 +284,7 @@ $('.btnmuestra').hide();
         	 
 
         	
-        	$('#myModalLabel').html('<a href="ficha-contacto-editar.php?id='+event.id_contacto+'" target="_blank">'+event.id_contacto+' '+event.nombre+'</a>');
+        	$('#myModalLabel').html('<a href="<?php echo BASE_URL ?>ficha-contacto-editar.php?id='+event.id_contacto+'" target="_blank">'+event.id_contacto+' '+event.nombre+'</a>');
         	$('#tipo').val(event.tipo).change();
         	$('#descripcion').val(event.descripcion);
         		$('#id_calendar').val(event.id);

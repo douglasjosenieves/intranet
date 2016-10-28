@@ -56,13 +56,22 @@ $capture1=$_REQUEST['capture1'];
 $capture2=$_REQUEST['capture2'];
 $img = $_REQUEST['img'];
 
-
+$img2 = $_REQUEST['img2'];
+$comentarios_sobre_negocio_comercial=$_REQUEST['comentarios_sobre_negocio_comercial'];
+$exclusivo=$_REQUEST['exclusivo'];
 
 foreach( $img  as $key => $n ) {
  $imgArrreglo .= $img[$key].";";
 }
 
+
+foreach( $img2  as $key => $n ) {
+ $imgArrreglo2 .= $img2[$key].";";
+}
+
 $capture1=  $imgArrreglo  ;
+$capture2=  $imgArrreglo2  ;
+
 
 function codigoSiguiente(){
 
@@ -105,6 +114,8 @@ $resul = mysql_query("INSERT INTO `form_fichas_opciones` (
 `ventajas_comparativas`,
 `capture1`,
 `capture2`,
+`comentarios_sobre_negocio_comercial`,
+`exclusivo`,
 `anulado`
 
 ) VALUES ( 
@@ -134,6 +145,8 @@ $resul = mysql_query("INSERT INTO `form_fichas_opciones` (
  '$ventajas_comparativas',
  '$capture1',
  '$capture2',
+ '$comentarios_sobre_negocio_comercial',
+ '$exclusivo',
  '$anulado'
 
 );");

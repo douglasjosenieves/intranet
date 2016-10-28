@@ -56,7 +56,9 @@ $capture1=$_REQUEST['capture1'];
 $capture2=$_REQUEST['capture2'];
 $editado_por=$_REQUEST['editado_por'];
 $img = $_REQUEST['img'];
-
+$img2 = $_REQUEST['img2'];
+$comentarios_sobre_negocio_comercial=$_REQUEST['comentarios_sobre_negocio_comercial'];
+$exclusivo=$_REQUEST['exclusivo'];
 
 
 
@@ -64,8 +66,13 @@ foreach( $img  as $key => $n ) {
  $imgArrreglo .= $img[$key].";";
 }
 
-$capture1=  $imgArrreglo  ;
+foreach( $img2  as $key => $n ) {
+ $imgArrreglo2 .= $img2[$key].";";
+}
 
+
+$capture1=  $imgArrreglo  ;
+$capture2=  $imgArrreglo2  ;
  
  
 
@@ -99,6 +106,10 @@ $resul = mysql_query("UPDATE `form_fichas_opciones` SET
 `ventajas_comparativas`= '$ventajas_comparativas', 
 `capture1`= '$capture1', 
 `capture2`= '$capture2', 
+
+`comentarios_sobre_negocio_comercial`= '$comentarios_sobre_negocio_comercial', 
+`exclusivo`= '$exclusivo', 
+
 `anulado`= '$anulado'
 
 

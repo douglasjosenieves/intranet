@@ -70,7 +70,7 @@
 					<li><a href="<?php echo BASE_URL ?>reporte-cotizaciones.php" title="#">Cotizaciones</a></li>
 						<li><a href="<?php echo BASE_URL ?>reporte-ficha-opciones.php" title="#">Ficha de opciones</a></li>
 						<li><a href="<?php echo BASE_URL ?>reporte-ficha-opciones-franquicias.php" title="#">F.D.O (Franquicias)</a></li>
-
+<li><a href="<?php echo BASE_URL ?>reporte-ficha-opciones-exclusivas.php" title="#">Fichas Exclusivas</a></li>
 
 
 <!-- <li><a href="reporte-fichas-opciones-pdf.php" title="#">Ficha de opciones Pdf</a></li> -->
