@@ -1114,7 +1114,7 @@ $opcion_tipo_6 = unserialize($data['data'][0]['opcion_tipo_6']) ;
 				<center>
 
   
-<a type="button" href="../mod_seguimientos/index.php?id=<?php echo $contactos_web[0]['id'] ?>" target="_blank" value="Seguimientos" class="btn bg-orange">Seguimiento <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>
+<a type="button" href="../mod_seguimientos/index.php?id=<?php echo $data['data'][0]['id'] ?>" target="_blank" value="Seguimientos" class="btn bg-orange">Seguimiento <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>
 
 <input type="reset" value="Reset" class="btn bg-gray">
 						<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button>
