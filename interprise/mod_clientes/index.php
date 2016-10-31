@@ -3,6 +3,25 @@ if (!isset($_SESSION['usuario'] )) {
 header('Location: ../../index.php');
 }
 
+require_once '../../db_connect.php';
+// connecting to db
+$con = new DB_CONNECT();
+//sleep(10);
+mysql_query("SET NAMES utf8");
+mysql_query("SET CHARACTER_SET utf");  
+
+$id=$_GET['id'];
+ 
+if (isset($id)) {
+	# code...
+
+ $resul =  mysql_query("SELECT * FROM  contactos_web where id =$id");
+$data = array();
+while($row =  mysql_fetch_array($resul) ) {
+$data['data'][] = $row;
+}
+}
+
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -86,7 +105,7 @@ header('Location: ../../index.php');
  <div class="col-xs-12 col-sm-2">
 								<div class="form-group">
 									<label for="referencia">Nº Referencia</label>
-									<input type="text" readonly required class="form-control" name="referencia" id="referencia" placeholder="Nº Referencia">
+									<input type="text" value="<?php echo $data['data'][0]['id'] ?>" readonly required class="form-control" name="referencia" id="referencia" placeholder="Nº Referencia">
 								</div>
 							</div>
 
@@ -109,6 +128,21 @@ header('Location: ../../index.php');
 													</div>
 
 
+
+
+<div class="col-xs-12 col-sm-4 col-sm-offset-2">
+<div class="form-group">
+<label for="basicInput">Buscar:</label>
+<input type="text" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
+</div>
+
+<div >
+	<ul id="resultado_busqueda">
+		 
+	</ul>
+</div>
+</div>
+
 </div>
 						
 
@@ -129,7 +163,7 @@ header('Location: ../../index.php');
 								<div class="col-xs-12 col-sm-4">
 																<div class="form-group">
 																	<label for="basicInput">Nombres:</label>
-											<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['nombres'] ?>" required class="form-control" name="nombres" id="nombres" placeholder="Nombres:">
+											<input type="text" value="<?php echo $data['data'][0]['nombres'] ?>" required class="form-control" name="nombres" id="nombres" placeholder="Nombres:">
 																</div>
 															</div>
 								
@@ -138,7 +172,7 @@ header('Location: ../../index.php');
 									<div class="col-xs-12 col-sm-4">
 																<div class="form-group">
 																	<label for="basicInput">Apellidos:</label>
-											<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['apellidos'] ?>" required class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos:">
+											<input type="text" value="<?php echo $data['data'][0]['apellidos'] ?>" required class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos:">
 																</div>
 															</div>
 
@@ -148,8 +182,8 @@ header('Location: ../../index.php');
 							<div class="col-xs-12 col-sm-4 i">
 								<div class="form-group">
 									<label>País</label>
-									<select name="pais" class="js-select ">
-										<option disabled selected>- Select país -</option>
+									<select name="pais"  id="pais" class="js-select ">
+										<option value="">- Select país -</option>
 										<option value="VENEZUELA">Venezuela</option>
 										<option value="ESPANA">España</option>
 											<option value="USA">Usa</option>
@@ -168,7 +202,7 @@ header('Location: ../../index.php');
 							<div class="col-xs-12 col-sm-6">
 														<div class="form-group">
 															<label for="basicInput">E-mail:</label>
-									<input type="email" value="<?php echo $ficha['ficha_contacto'][0]['email'] ?>" required class="form-control" name="email" id="email" placeholder="E-mail:">
+									<input type="email" value="<?php echo $data['data'][0]['email'] ?>" required class="form-control" name="email" id="email" placeholder="E-mail:">
 														</div>
 													</div>
 
@@ -176,7 +210,7 @@ header('Location: ../../index.php');
 													<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
 									<label for="basicInput">Teléfono móvil:</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['movil'] ?>" required class="form-control" name="movil" id="movil" placeholder="Teléfono móvil:">
+			<input type="text" value="<?php echo $data['data'][0]['movil'] ?>" required class="form-control" name="movil" id="movil" placeholder="Teléfono móvil:">
 								</div>
 							</div>
 
@@ -187,7 +221,7 @@ header('Location: ../../index.php');
 						<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Teléfono 2:</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['movil2'] ?>"  class="form-control" name="movil2" id="movil2" placeholder="Teléfono 2:">
+			<input type="text" value="<?php echo $data['data'][0]['movil2'] ?>"  class="form-control" name="movil2" id="movil2" placeholder="Teléfono 2:">
 								</div>
 							</div>
 
@@ -198,7 +232,7 @@ header('Location: ../../index.php');
 <div class="col-md-6">
 <div class="form-field-wrapper">
 <label for="basicInput">Viajaré mes:</label>
-<select name="mes_viaje" class="form-control">
+<select name="mes_viaje" id="mes_viaje" class="form-control">
 <option value="">- Viajaré mes -</option>
 <option value="ENERO">ENERO</option>
 <option value="FEBRERO">FEBRERO</option>
@@ -211,14 +245,14 @@ header('Location: ../../index.php');
 <option value="SEPTIEMBRE">SEPTIEMBRE</option>
 <option value="OCTUBRE">OCTUBRE</option>
 <option value="NOVIEMBRE">NOVIEMBRE</option>
-<option value="DOCIEMBRE">DOCIEMBRE</option>
+<option value="DICIEMBRE">DICIEMBRE</option>
 </select>
 </div>
 </div>
 <div class="col-md-6">
 <div class="form-field-wrapper">
 <label for="basicInput">Viajaré año:</label>
-<select name="anio_viaje" class="form-control">
+<select name="anio_viaje" id="anio_viaje" class="form-control">
 <option value="">- Viajaré año -</option>
 <option value="2016">2016</option>
 <option value="2017">2017</option>
@@ -254,19 +288,19 @@ header('Location: ../../index.php');
 						<div class="row checkboxes">
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="pre_informacion[]" value="SOY CIUDADANO EUROPEO" type="checkbox">
+									<input name="pre_informacion[]" id="SOY CIUDADANO EUROPEO" value="SOY CIUDADANO EUROPEO" type="checkbox">
 									<span>Soy ciudadano europeo</span>
 								</label>
 							</div>
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-								<input  name="pre_informacion[]" value="PRETENDO EMIGRAR" type="checkbox">
+								<input  name="pre_informacion[]" id="PRETENDO EMIGRAR" value="PRETENDO EMIGRAR" type="checkbox">
 									<span>Pretendo emigrar en <?php echo date(Y); ?></span>
 								</label>
 							</div>
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="pre_informacion[]" value="NO SE CUANDO PODRE EMIGRAR" type="checkbox">
+									<input name="pre_informacion[]"  id="NO SE CUANDO PODRE EMIGRAR" value="NO SE CUANDO PODRE EMIGRAR" type="checkbox">
 									<span>No sé cuándo podre emigrar</span>
 								</label>
 							</div>
@@ -274,13 +308,13 @@ header('Location: ../../index.php');
 						<div class="row checkboxes">
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="pre_informacion[]" value="YA HE VENDIDO MIS PROPIEDADES" type="checkbox">
+									<input name="pre_informacion[]" id="YA HE VENDIDO MIS PROPIEDADES" value="YA HE VENDIDO MIS PROPIEDADES" type="checkbox">
 									<span>Ya he vendido mis propiedades</span>
 								</label>
 							</div>
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="pre_informacion[]"  value="ESTOY EN PROCESO DE VENTA DE MIS PROPIEDADES" type="checkbox">
+									<input name="pre_informacion[]"  id="ESTOY EN PROCESO DE VENTA DE MIS PROPIEDADES" value="ESTOY EN PROCESO DE VENTA DE MIS PROPIEDADES" type="checkbox">
 									<span>Estoy en proceso de venta de mis propiedades</span>
 								</label>
 							</div>
@@ -313,7 +347,7 @@ header('Location: ../../index.php');
 							<div class="col-xs-12 col-sm-12">
 								<div class="form-group">
 									<label  for="textarea1">¿Por qué escoge España como destino?</label>
-									<textarea required  id="por_que_escoge_destino_españa"  name="porque_espana" class="form-control" rows="8"></textarea>
+									<textarea required  id="por_que_escoge_destino_españa"  name="porque_espana" class="form-control" rows="8"><?php echo $data['data'][0]['porque_espana'] ?></textarea>
 								</div>
 							</div>
 						
@@ -330,7 +364,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">¿Cuál es su presupuesto para inversión?</label>
-			<input type="number" value="<?php echo $ficha['ficha_contacto'][0]['presupuesto_a_invertir'] ?>" required class="form-control" name="inversion" id="presupuesto_a_invertir" placeholder="¿Cuál es su presupuesto para inversión?">
+			<input type="number" value="<?php echo $data['data'][0]['inversion'] ?>" required class="form-control" name="inversion" id="presupuesto_a_invertir" placeholder="¿Cuál es su presupuesto para inversión?">
 								</div>
 							</div>
 
@@ -338,29 +372,7 @@ header('Location: ../../index.php');
 
 						</div>
 		<hr />
-						<div class="row">
-							
-	<div class="row checkboxes">
-							
-<div class="alert alert-warning">
-	
-	<strong>Nota importante!</strong> ¿Entiende usted que el mínimo propuesto de inversión es 50.000€?
-</div>
-							<div class="col-xs-12 col-sm-12 i">
-								<label>
-									<input value="SOY CIUDADANO EUROPEO" name="entiendo" value="SI"  type="checkbox">
-									<span>
-
-									Si, lo entiendo!
-
-
-
-									</span>
-								</label>
-							</div>
-							</div>
-
-						</div>
+						
 					
 
 				</div>
@@ -377,7 +389,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Documento:</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['documento'] ?>"  class="form-control" name="documento" id="documento" placeholder="Documento:">
+			<input type="text" value="<?php echo $data['data'][0]['documento'] ?>"  class="form-control" name="documento" id="documento" placeholder="Documento:">
 								</div>
 							</div>
 
@@ -386,7 +398,7 @@ header('Location: ../../index.php');
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Nombre del Cliente Fiscal</label>
-<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['cliente'] ?>"  class="form-control" name="cliente" id="cliente" placeholder="Nombre del Cliente Fiscal">
+<input type="text" value="<?php echo $data['data'][0]['cliente'] ?>"  class="form-control" name="cliente" id="cliente" placeholder="Nombre del Cliente Fiscal">
 </div>
 </div>
 
@@ -396,7 +408,7 @@ header('Location: ../../index.php');
 								<div class="col-xs-12 col-sm-4">
 															<div class="form-group">
 																<label for="basicInput">Fecha de nacimiento:</label>
-										<input type="date" value="<?php echo $ficha['ficha_contacto'][0]['fecha_nacimiento'] ?>"  class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento:">
+										<input type="date" value="<?php echo $data['data'][0]['fecha_nacimiento'] ?>"  class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento:">
 															</div>
 														</div>
 
@@ -411,14 +423,14 @@ header('Location: ../../index.php');
 					<div class="col-xs-12 col-sm-4">
 												<div class="form-group">
 													<label for="basicInput">Teléfono de oficina:</label>
-							<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['telefono_oficina'] ?>" class="form-control" name="telefono_oficina" id="telefono_oficina" placeholder="Teléfono de oficina:">
+							<input type="text" value="<?php echo $data['data'][0]['telefono_oficina'] ?>" class="form-control" name="telefono_oficina" id="telefono_oficina" placeholder="Teléfono de oficina:">
 												</div>
 											</div>
 
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Dirección de domicilio</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['direccion_domicilio'] ?>"  class="form-control" name="direccion_domicilio" id="direccion_domicilio" placeholder="Dirección de domicilio">
+			<input type="text" value="<?php echo $data['data'][0]['direccion_domicilio'] ?>"  class="form-control" name="direccion_domicilio" id="direccion_domicilio" placeholder="Dirección de domicilio">
 								</div>
 							</div>
 
@@ -428,7 +440,7 @@ header('Location: ../../index.php');
 								<div class="col-xs-12 col-sm-4">
 															<div class="form-group">
 																<label for="basicInput">Dirección de oficina</label>
-										<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['direccion_oficina'] ?>"  class="form-control" name="direccion_oficina" id="direccion_oficina" placeholder="Dirección de oficina">
+										<input type="text" value="<?php echo $data['data'][0]['direccion_oficina'] ?>"  class="form-control" name="direccion_oficina" id="direccion_oficina" placeholder="Dirección de oficina">
 															</div>
 														</div>
 
@@ -441,7 +453,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Titulación</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['titulacion'] ?>"  class="form-control" name="titulacion" id="titulacion" placeholder="Titulación">
+			<input type="text" value="<?php echo $data['data'][0]['titulacion'] ?>"  class="form-control" name="titulacion" id="titulacion" placeholder="Titulación">
 								</div>
 							</div>
 
@@ -452,7 +464,7 @@ header('Location: ../../index.php');
 							<div class="col-xs-12 col-sm-4">
 														<div class="form-group">
 															<label for="basicInput">Año de experiencia laboral</label>
-									<input type="number" value="<?php echo $ficha['ficha_contacto'][0]['anos_laboral'] ?>"  class="form-control" name="anos_laboral" id="anos_laboral" placeholder="Año de experiencia laboral">
+									<input type="number" value="<?php echo $data['data'][0]['anos_laboral'] ?>"  class="form-control" name="anos_laboral" id="anos_laboral" placeholder="Año de experiencia laboral">
 														</div>
 													</div>
 						
@@ -467,7 +479,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
 									<label for="basicInput">Monto mínimo de inversión</label>
-			<input type="number" value="<?php echo $ficha['ficha_contacto'][0]['monto_minimo_inversion'] ?>"  class="form-control" name="monto_minimo_inversion" id="monto_minimo_inversion" placeholder="Monto minimo de inversion">
+			<input type="number" value="<?php echo $data['data'][0]['monto_minimo_inversion'] ?>"  class="form-control" name="monto_minimo_inversion" id="monto_minimo_inversion" placeholder="Monto minimo de inversion">
 								</div>
 							</div>
 
@@ -476,7 +488,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
 									<label for="basicInput">Monto máximo inversión:</label>
-			<input type="number" value="<?php echo $ficha['ficha_contacto'][0]['monto_maximo_inversion'] ?>"  class="form-control" name="monto_maximo_inversion" id="monto_maximo_inversion" placeholder="Monto máximo inversión:">
+			<input type="number" value="<?php echo $data['data'][0]['monto_maximo_inversion'] ?>"  class="form-control" name="monto_maximo_inversion" id="monto_maximo_inversion" placeholder="Monto máximo inversión:">
 								</div>
 							</div>
 
@@ -493,7 +505,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Ultima visita a España</label>
-			<input type="date" value="<?php echo $ficha['ficha_contacto'][0]['ultima_visita_espana'] ?>"  class="form-control" name="ultima_visita_espana" id="ultima_visita_espana" placeholder="Ultima visita a España">
+			<input type="date" value="<?php echo $data['data'][0]['ultima_visita_espana'] ?>"  class="form-control" name="ultima_visita_espana" id="ultima_visita_espana" placeholder="Ultima visita a España">
 								</div>
 							</div>
 
@@ -502,7 +514,7 @@ header('Location: ../../index.php');
 								<div class="col-xs-12 col-sm-4">
 															<div class="form-group">
 																<label for="basicInput">Tiempo de estadía de la ultima visita</label>
-										<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['tiempo_estadia_ultima_visita'] ?>"  class="form-control" name="tiempo_estadia_ultima_visita" id="tiempo_estadia_ultima_visita" placeholder="Tiempo de estadía de la ultima visita">
+										<input type="text" value="<?php echo $data['data'][0]['tiempo_estadia_ultima_visita'] ?>"  class="form-control" name="tiempo_estadia_ultima_visita" id="tiempo_estadia_ultima_visita" placeholder="Tiempo de estadía de la ultima visita">
 															</div>
 														</div>
 
@@ -518,7 +530,7 @@ header('Location: ../../index.php');
 <div class="form-group">
 
 <label for="basicInput">Ciudades visitadas</label>
-<textarea name="ciudades__visitadas" id="ciudades__visitadas"  value="<?php echo $ficha['ficha_contacto'][0]['ciudades__visitadas'] ?>" class="form-control"  rows="3" ><?php echo $ficha['ficha_contacto'][0]['ciudades__visitadas'] ?></textarea>
+<textarea name="ciudades__visitadas" id="ciudades__visitadas"  value="<?php echo $data['data'][0]['ciudades__visitadas'] ?>" class="form-control"  rows="3" ><?php echo $data['data'][0]['ciudades__visitadas'] ?></textarea>
 
 </div>
 
@@ -528,7 +540,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Fecha estipulada de llegada a España</label>
-			<input type="date" value="<?php echo $ficha['ficha_contacto'][0]['fecha_estipulada_llegada_espana'] ?>"  class="form-control" name="fecha_estipulada_llegada_espana" id="fecha_estipulada_llegada_espana" placeholder="Fecha estipulada de llegada a España">
+			<input type="date" value="<?php echo $data['data'][0]['fecha_estipulada_llegada_espana'] ?>"  class="form-control" name="fecha_estipulada_llegada_espana" id="fecha_estipulada_llegada_espana" placeholder="Fecha estipulada de llegada a España">
 								</div>
 							</div>
 														
@@ -574,7 +586,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Nº Integrantes familiares:</label>
-			<input type="number" value="<?php echo $ficha['ficha_contacto'][0]['integrantes_familiar'] ?>"  class="form-control" name="integrantes_familiar" id="integrantes_familiar" placeholder="Nº Integrantes familiares:">
+			<input type="number" value="<?php echo $data['data'][0]['integrantes_familiar'] ?>"  class="form-control" name="integrantes_familiar" id="integrantes_familiar" placeholder="Nº Integrantes familiares:">
 								</div>
 							</div>
 
@@ -584,7 +596,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Cónyuge Nombres:</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['conyuge_nombres'] ?>"  class="form-control" name="conyuge_nombres" id="conyuge_nombres" placeholder="Conyuge Nombres:">
+			<input type="text" value="<?php echo $data['data'][0]['conyuge_nombres'] ?>"  class="form-control" name="conyuge_nombres" id="conyuge_nombres" placeholder="Conyuge Nombres:">
 								</div>
 							</div>
 
@@ -596,7 +608,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Cónyuge Apellidos:</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['conyuge_apellidos'] ?>"  class="form-control" name="conyuge_apellidos" id="conyuge_apellidos" placeholder="Cónyuge Apellidos:">
+			<input type="text" value="<?php echo $data['data'][0]['conyuge_apellidos'] ?>"  class="form-control" name="conyuge_apellidos" id="conyuge_apellidos" placeholder="Cónyuge Apellidos:">
 								</div>
 							</div>
 
@@ -613,7 +625,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Cónyuge fecha de nacimiento:</label>
-			<input type="date" value="<?php echo $ficha['ficha_contacto'][0]['conyuge_fecha_nacimiento'] ?>"  class="form-control" name="conyuge_fecha_nacimiento" id="conyuge_fecha_nacimiento" placeholder="Conyuge fecha de nacimiento:">
+			<input type="date" value="<?php echo $data['data'][0]['conyuge_fecha_nacimiento'] ?>"  class="form-control" name="conyuge_fecha_nacimiento" id="conyuge_fecha_nacimiento" placeholder="Conyuge fecha de nacimiento:">
 								</div>
 							</div>
 
@@ -621,7 +633,7 @@ header('Location: ../../index.php');
 <div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Cónyuge documento</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['conyuge_documentos'] ?>"  class="form-control" name="conyuge_documentos" id="conyuge_documentos" placeholder="Conyuge documento">
+			<input type="text" value="<?php echo $data['data'][0]['conyuge_documentos'] ?>"  class="form-control" name="conyuge_documentos" id="conyuge_documentos" placeholder="Conyuge documento">
 								</div>
 							</div>
 
@@ -631,7 +643,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Cónyuge tel. Móvil</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['conyuge_tel_movil'] ?>"  class="form-control" name="conyuge_tel_movil" id="conyuge_tel_movil" placeholder="Conyuge telf. Movil">
+			<input type="text" value="<?php echo $data['data'][0]['conyuge_tel_movil'] ?>"  class="form-control" name="conyuge_tel_movil" id="conyuge_tel_movil" placeholder="Conyuge telf. Movil">
 								</div>
 							</div>
 
@@ -645,7 +657,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Cónyuge tel. Oficina</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['conyuge_tel_oficina'] ?>"  class="form-control" name="conyuge_tel_oficina" id="conyuge_tel_oficina" placeholder="Conyuge tel. Oficina">
+			<input type="text" value="<?php echo $data['data'][0]['conyuge_tel_oficina'] ?>"  class="form-control" name="conyuge_tel_oficina" id="conyuge_tel_oficina" placeholder="Conyuge tel. Oficina">
 								</div>
 							</div>
 
@@ -655,7 +667,7 @@ header('Location: ../../index.php');
 								<div class="col-xs-12 col-sm-4">
 															<div class="form-group">
 																<label for="basicInput">Cónyuge email:</label>
-										<input type="email" value="<?php echo $ficha['ficha_contacto'][0]['conyuge_email'] ?>"  class="form-control" name="conyuge_email" id="conyuge_email" placeholder="Cónyuge email:">
+										<input type="email" value="<?php echo $data['data'][0]['conyuge_email'] ?>"  class="form-control" name="conyuge_email" id="conyuge_email" placeholder="Cónyuge email:">
 															</div>
 														</div>
 								
@@ -670,11 +682,24 @@ header('Location: ../../index.php');
 <div id="hijos" class="row">
 	
 
+<?php if ($_GET['tipo']=='editar') {
+	
+require_once 'hijos.php';
+
+}
+
+else {
+
+
+ ?>
+
+
+
 <div class="item_hijos">
 	<div class="col-xs-12 col-sm-3">
 								<div class="form-group">
 									<label for="basicInput">Hijo Nombre</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['hijos_nombre'] ?>"  class="form-control" name="hijos_nombre[]" id="hijos_nombre[]" placeholder="Hijo Nombre">
+			<input type="text" value=""  class="form-control" name="hijos_nombre[]" id="hijos_nombre[]" placeholder="Hijo Nombre">
 								</div>
 							</div>
 
@@ -683,7 +708,7 @@ header('Location: ../../index.php');
 								<div class="col-xs-12 col-sm-3">
 															<div class="form-group">
 																<label for="basicInput">Hijo Apellido</label>
-										<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['hijos_apellidos[]'] ?>"  class="form-control" name="hijos_apellidos[]" id="hijos_apellidos[]" placeholder="Hijo Apellido">
+										<input type="text" value=""  class="form-control" name="hijos_apellidos[]" id="hijos_apellidos[]" placeholder="Hijo Apellido">
 															</div>
 														</div>
 							
@@ -693,7 +718,7 @@ header('Location: ../../index.php');
 	<div class="col-xs-12 col-sm-3">
 								<div class="form-group">
 									<label for="basicInput">Hijo fecha de nacimiento</label>
-			<input type="date" value="<?php echo $ficha['ficha_contacto'][0]['hijos_fecha_nacimiento[]'] ?>"  class="form-control" name="hijos_fecha_nacimiento[]" id="hijos_fecha_nacimiento[]" placeholder="Hijo fecha de nacimiento">
+			<input type="date" value=""  class="form-control" name="hijos_fecha_nacimiento[]" id="hijos_fecha_nacimiento[]" placeholder="Hijo fecha de nacimiento">
 								</div>
 							</div>
 
@@ -703,11 +728,14 @@ header('Location: ../../index.php');
 								<div class="col-xs-12 col-sm-3">
 															<div class="form-group">
 																<label for="basicInput">Hijo documento</label>
-										<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['hijos_documentos[]'] ?>"  class="form-control" name="hijos_documentos[]" id="hijos_documentos[]" placeholder="Hijo documento">
+										<input type="text" value=""  class="form-control" name="hijos_documentos[]" id="hijos_documentos[]" placeholder="Hijo documento">
 															</div>
 														</div>
 
 </div>
+
+<?php  } ?>
+
 </div>
 							
 <div class="row" id="mas_hijos">
@@ -718,6 +746,34 @@ header('Location: ../../index.php');
 
 
 
+<hr>
+
+<div class="doc_ajuntos">
+<h3>Documentos adjuntos</h3>
+<?php $pre_adjunto = unserialize($data['data'][0]['imagenes']) ;
+
+if  (is_array($pre_adjunto )){
+foreach ($pre_adjunto as $key => $value) {
+	
+
+
+
+
+
+ ?>
+
+
+
+<button type="button" class="btn bg-red borrar" data-nombre="<?php echo $value ?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+
+<a class="btn btn-large  bg-green" data-nombre="<?php echo $value ?>" target="_blank"  href="../file-upload/contactos-documentos/<?php echo $value ?>" role="button"> <i class="fa fa-download"></i> <?php echo $value ?></a>
+
+<input type="hidden" name="imagenes[]" value="<?php echo $value ?>" id="" data-nombre="<?php echo $value ?>" class="imageninput" placeholder="Texto">
+
+<?php } }?>
+
+</div>
 <hr>
 <div class="row">
 	
@@ -767,7 +823,7 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 	<div class="col-xs-12 col-sm-4 ">
 								<div class="form-group">
 									<label>Opcion 1</label>
-									<select name="opcion1" class="js-select ">
+									<select name="opcion1" id="opcion1" class="js-select ">
 										<option disabled selected value="">- Select opción -</option>
 										
 <?php foreach ($sector_array   as $value) {
@@ -789,14 +845,14 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 <div class="row checkboxes">
 								<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_1_tipo[]" value="FRANQUICIA" type="checkbox">
+									<input class="o1"  name="opcion_1_tipo[]" data-nombre="FRANQUICIA" value="FRANQUICIA" type="checkbox">
 									<span>Franquicia</span>
 								</label>
 							</div>
 
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_1_tipo[]"  value="PYME" type="checkbox">
+									<input class="o1"  name="opcion_1_tipo[]" data-nombre="PYME" value="PYME" type="checkbox">
 									<span>PYME</span>
 								</label>
 							</div>
@@ -806,7 +862,7 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 								<div class="col-xs-12 col-sm-4 ">
 								<div class="form-group">
 									<label>Opcion 2</label>
-									<select name="opcion2" class="js-select ">
+									<select name="opcion2" id="opcion2" class="js-select ">
 											<option disabled selected value="">- Select opción -</option>
 										
 <?php foreach ($sector_array   as $value) {
@@ -825,14 +881,14 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 								<div class="row checkboxes">
 								<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_2_tipo[]" value="FRANQUICIA" type="checkbox">
+									<input class="o2"  name="opcion_2_tipo[]" data-nombre="FRANQUICIA" value="FRANQUICIA" type="checkbox">
 									<span>Franquicia</span>
 								</label>
 							</div>
 
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_2_tipo[]"  value="PYME" type="checkbox">
+									<input class="o2"  name="opcion_2_tipo[]" data-nombre="PYME" value="PYME" type="checkbox">
 									<span>PYME</span>
 								</label>
 							</div>
@@ -843,7 +899,7 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 								<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label>Opcion 3</label>
-									<select name="opcion3" class="js-select ">
+									<select name="opcion3" id="opcion3" class="js-select ">
 											<option disabled selected value="">- Select opción -</option>
 										
 <?php foreach ($sector_array   as $value) {
@@ -862,14 +918,14 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 								<div class="row checkboxes">
 								<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_3_tipo[]" value="FRANQUICIA" type="checkbox">
+									<input class="o3"  name="opcion_3_tipo[]" data-nombre="FRANQUICIA" value="FRANQUICIA" type="checkbox">
 									<span>Franquicia</span>
 								</label>
 							</div>
 
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_3_tipo[]"  value="PYME" type="checkbox">
+									<input class="o3"  name="opcion_3_tipo[]" data-nombre="PYME" value="PYME" type="checkbox">
 									<span>PYME</span>
 								</label>
 							</div>
@@ -889,7 +945,7 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 	<div class="col-xs-12 col-sm-4 ">
 								<div class="form-group">
 									<label>Opcion 4</label>
-									<select name="opcion4" class="js-select ">
+									<select name="opcion4" id="opcion4" class="js-select ">
 										<option disabled selected value="">- Select opción -</option>
 										
 <?php foreach ($sector_array   as $value) {
@@ -911,14 +967,14 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 <div class="row checkboxes">
 								<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_4_tipo[]" value="FRANQUICIA" type="checkbox">
+									<input  class="o4"  name="opcion_4_tipo[]" data-nombre="FRANQUICIA" value="FRANQUICIA" type="checkbox">
 									<span>Franquicia</span>
 								</label>
 							</div>
 
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_4_tipo[]"  value="PYME" type="checkbox">
+									<input  class="o4"  name="opcion_4_tipo[]" data-nombre="PYME" value="PYME" type="checkbox">
 									<span>PYME</span>
 								</label>
 							</div>
@@ -928,7 +984,7 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 								<div class="col-xs-12 col-sm-4 ">
 								<div class="form-group">
 									<label>Opcion 5</label>
-									<select name="opcion5" class="js-select ">
+									<select name="opcion5" id="opcion5" class="js-select ">
 											<option disabled selected value="">- Select opción -</option>
 										
 <?php foreach ($sector_array   as $value) {
@@ -947,14 +1003,14 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 								<div class="row checkboxes">
 								<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_5_tipo[]" value="FRANQUICIA" type="checkbox">
+									<input class="o5"  name="opcion_5_tipo[]" data-nombre="FRANQUICIA" value="FRANQUICIA" type="checkbox">
 									<span>Franquicia</span>
 								</label>
 							</div>
 
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_5_tipo[]"  value="PYME" type="checkbox">
+									<input class="o5"  name="opcion_5_tipo[]" data-nombre="PYME" value="PYME" type="checkbox">
 									<span>PYME</span>
 								</label>
 							</div>
@@ -965,7 +1021,7 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 								<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label>Opcion 6</label>
-									<select name="opcion6" class="js-select ">
+									<select name="opcion6" id="opcion6" class="js-select ">
 											<option disabled selected value="">- Select opción -</option>
 										
 <?php foreach ($sector_array   as $value) {
@@ -984,14 +1040,14 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 								<div class="row checkboxes">
 								<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_6_tipo[]" value="FRANQUICIA" type="checkbox">
+									<input class="o6" name="opcion_6_tipo[]" data-nombre="FRANQUICIA" value="FRANQUICIA" type="checkbox">
 									<span>Franquicia</span>
 								</label>
 							</div>
 
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input name="opcion_6_tipo[]"  value="PYME" type="checkbox">
+									<input class="o6"  name="opcion_6_tipo[]" data-nombre="PYME" value="PYME" type="checkbox">
 									<span>PYME</span>
 								</label>
 							</div>
@@ -1016,13 +1072,52 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 
 
 				<div class="box rte">
+
+<?php 
+
+ if ($_GET['tipo']=='editar') {
+ 	$botonNombre= 'Editar';
+ 	$url= 'envios/update.php';
+
+
+/*=====================================================
+=            PARA VERIFICAR LOS CHECK LINS            =
+=====================================================*/
+
+$preinfo =  unserialize( $data['data'][0]['pre_informacion'] );	
+
+
+$opcion_tipo_1 = unserialize($data['data'][0]['opcion_tipo_1']) ;
+$opcion_tipo_2 = unserialize($data['data'][0]['opcion_tipo_2']) ;
+$opcion_tipo_3 = unserialize($data['data'][0]['opcion_tipo_3']) ;
+$opcion_tipo_4 = unserialize($data['data'][0]['opcion_tipo_4']) ;
+$opcion_tipo_5 = unserialize($data['data'][0]['opcion_tipo_5']) ;
+$opcion_tipo_6 = unserialize($data['data'][0]['opcion_tipo_6']) ;
+
+/*=====  End of PARA VERIFICAR LOS CHECK LINS  ======*/
+
+
+
+
+
+
+
+ }
+
+ else{
+	$botonNombre= 'Guardar';
+	$url= 'envios/insert.php';
+
+ }
+ ?>
+
 				<center>
 
-<button type="button" value="" id="detalle_btn" class="btn bg-dark-gray">Ver Detalles <i class="fa fa-eye"></i></button>
+  
 <button type="button" value="Seguimientos" class="btn bg-orange">Seguimiento <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></button>
 
 <input type="reset" value="Reset" class="btn bg-gray">
-						<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary">Guardar <i class="fa fa-save"></i></button>
+						<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button>
 						</center>
 
 
@@ -1071,10 +1166,154 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
 
+
 </body>
 	<script type="text/javascript">
 
+$(document).ready(function() {
 
+try {
+
+var arrayJS=<?php echo json_encode($preinfo);?>;
+
+var opcion1=<?php echo json_encode($opcion_tipo_1);?>;
+ /*alert(opcion1);*/
+if (opcion1!='') {
+ 
+
+
+if (opcion1!=null) {
+for(var i=0;i<opcion1.length;i++)
+    {
+       console.log(opcion1[i]);
+   
+
+$('.o1[data-nombre="'+opcion1[i]+'"]').prop("checked", "checked");
+
+
+    }
+ 
+}
+
+}
+var opcion2=<?php echo json_encode($opcion_tipo_2);?>;
+
+if (opcion2!='') {
+if (opcion2!=null) {
+for(var i=0;i<opcion2.length;i++)
+    {
+        console.log(opcion2[i]);
+   
+
+$('.o2[data-nombre="'+opcion2[i]+'"]').prop("checked", "checked");
+
+
+    }
+
+}
+}
+    var opcion3=<?php echo json_encode($opcion_tipo_3);?>;
+
+if (opcion3!='') {
+if (opcion3!=null) {
+
+
+for(var i=0;i<opcion3.length;i++)
+    {
+        console.log(opcion3[i]);
+   
+
+$('.o3[data-nombre="'+opcion3[i]+'"]').prop("checked", "checked");
+
+
+    }
+
+}}
+
+
+    var opcion4=<?php echo json_encode($opcion_tipo_4);?>;
+    if (opcion4!='') {
+if (opcion4!=null) {
+for(var i=0;i<opcion4.length;i++)
+    {
+        console.log(opcion4[i]);
+   
+
+$('.o4[data-nombre="'+opcion4[i]+'"]').prop("checked", "checked");
+
+
+    }
+
+}
+
+}
+    
+    var opcion5=<?php echo json_encode($opcion_tipo_5);?>;
+    if (opcion5!='') {
+if (opcion5!=null) {
+for(var i=0;i<opcion5.length;i++)
+    {
+        console.log(opcion5[i]);
+   
+
+$('.o5[data-nombre="'+opcion5[i]+'"]').prop("checked", "checked");
+
+
+    }
+
+}
+}
+    var opcion6=<?php echo json_encode($opcion_tipo_6);?>;
+    if (opcion6!='') {
+if (opcion6!=null) {
+for(var i=0;i<opcion6.length;i++)
+    {
+        console.log(opcion6[i]);
+   
+
+$('.o6[data-nombre="'+opcion6[i]+'"]').prop("checked", "checked");
+
+
+    }
+
+}
+}
+
+
+
+
+ 
+
+for(var i=0;i<arrayJS.length;i++)
+{
+   //alert(arrayJS[i]);
+
+$("[id='"+arrayJS[i]+"']").prop("checked", "checked");
+
+}
+
+
+}
+catch(err) {
+   console.log(err)
+}
+ 
+
+
+
+$('.cargando').hide();
+$('#pais').val('<?php echo $data['data'][0]['pais'] ?>').change();
+$('#status').val('<?php echo $data['data'][0]['status'] ?>').change();
+$('#mes_viaje').val('<?php echo $data['data'][0]['mes_viaje'] ?>').change();
+$('#anio_viaje').val('<?php echo $data['data'][0]['anio_viaje'] ?>').change();
+
+$('#opcion1').val('<?php echo $data['data'][0]['opcion1'] ?>').change();    
+$('#opcion2').val('<?php echo $data['data'][0]['opcion2'] ?>').change();   
+$('#opcion3').val('<?php echo $data['data'][0]['opcion3'] ?>').change();   
+$('#opcion4').val('<?php echo $data['data'][0]['opcion4'] ?>').change();   
+$('#opcion5').val('<?php echo $data['data'][0]['opcion5'] ?>').change();   
+$('#opcion6').val('<?php echo $data['data'][0]['opcion6'] ?>').change();   
+});
 
  
 $(document).ready(function() {
@@ -1122,7 +1361,7 @@ jQuery(document).ready(function() {
  
  
 myDropzone = new Dropzone("#dZUpload", { 
-    url: 'upload-documentos-contactos.php',
+    url: '../upload-documentos-contactos.php',
     dictDefaultMessage: "your custom message",
     autoProcessQueue:true, //BARRRA DE CARGA 
     maxFilesize: 30, // MB
@@ -1159,7 +1398,7 @@ myDropzone = new Dropzone("#dZUpload", {
 
                         if (rmvFile){
                             $.ajax({
-                               url: "delete-documentos-contactos.php",
+                               url: "../delete-documentos-contactos.php",
                                 type: "POST",
                                 data: { "name" : rmvFile }
                             });
@@ -1188,15 +1427,7 @@ return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.p
 
 $(document).ready(function() {
 
-$('#detalles').hide();
-$('#detalle_btn').on('click', function(event) {
-	event.preventDefault();
-
-$('#detalles, #generales').toggle('slow');
-
-	/* Act on the event */
-});
-	
+ 
 
 
  
@@ -1209,7 +1440,7 @@ $('#boton').button('loading');
 console.log('Envio el formulario');
 
 $.ajax({
-	url: 'envios/insert.php',
+	 url: '<?php echo $url; ?>',
 	type: 'POST',
 	//dataType: 'json',
 	data: $('#formulario').serialize(),
@@ -1256,6 +1487,98 @@ sweetAlert("Oops...", "Something went wrong!", "error");
 
 
 });
+
+
+/*========================================
+=            Buscar             =
+========================================*/
+
+
+$(document).ready(function() {
+
+$('#buscar').on('keyup',  function(event) {
+	event.preventDefault();
+	buscarArticulos($(this).val());
+	/* Act on the event */
+});
+
+
+
+
+
+function buscarArticulos(texto) {
+
+
+$.ajax({
+	url: 'async/buscar_contacto.php',
+	type: 'POST',
+ 
+	data: {parametro: texto},
+})
+.done(function(data) {
+	console.log("success");
+	$('#resultado_busqueda').html(data);
+//alert(data);
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+	
+}
+
+});
+/*=====  End of Buscar   ======*/
+
+
+/*========================================
+=             BORRAR ADJUNTOS            =
+========================================*/
+$('.borrar').on('click',  function(event) {
+	event.preventDefault();
+var archivo = $(this).attr('data-nombre');
+console.log(archivo);
+	/* Act on the event */
+
+
+$.ajax({
+	url: '../delete-documentos-contactos.php',
+	type: 'POST',
+	
+	data: {name: archivo },
+})
+.done(function(data) {
+	console.log("success");
+	console.log(data);
+
+
+$('a[data-nombre="'+archivo+'"]').remove();
+$('.borrar[data-nombre="'+archivo+'"]').remove();
+
+$('.imageninput[data-nombre="'+archivo+'"]').remove();
+ 
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+
+
+	
+	
+});
+
+
+/*=====  End of  BORRAR ADJUNTOS  ======*/
+
 
 	</script>
 <!-- Mirrored from sharpen.tomaj.sk/v1.7/html5/wizard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 May 2016 19:06:59 GMT -->

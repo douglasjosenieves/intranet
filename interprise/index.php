@@ -98,6 +98,8 @@ $teleoid[] = $rowv['id'];
 		<!-- html comment <link rel="stylesheet" href="assets/css/fontello.css">-->
 	<link rel="stylesheet" href="assets/css/chartist.min.css">
 	<link rel="stylesheet" href="assets/css/app.min.css">
+		<link rel="stylesheet" href="assets/css/fullcalendar.min.css">
+	<link rel="stylesheet" href="assets/css/fullcalendar.print.css" media='print'>
    
 <link rel="stylesheet" href="assets/sweetalert/sweetalert-master/dist/sweetalert.css">
    
@@ -303,87 +305,13 @@ $teleoid[] = $rowv['id'];
 				<div class="row">
 					<div class="col-xs-12 col-md-6">
 						<div class="box box-without-padding">
+                    
 
-							<div class="clearfix boxHeader">
-								<h2 class="boxTitle pull-left"></h2>
-								<div class="btn-group pull-right boxHeaderOptions">
-									<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<i class="zmdi zmdi-more-vert"></i>
-									</button>
-									<ul class="dropdown-menu">
-										<li><a href="#" title="#"><i class="zmdi zmdi-time-restore zmdi-hc-fw"></i> Time span</a></li>
-										<li><a href="#" title="#"><i class="zmdi zmdi-chart zmdi-hc-fw"></i> Chart type</a></li>
-										<li><a href="#" title="#"><i class="zmdi zmdi-refresh zmdi-hc-fw"></i> Refresh</a></li>
-									</ul>
-								</div>	
-							</div>
-
-							<!-- Tabs -->
-							<ul class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#tab-item-1" aria-controls="tab-item-1" role="tab" data-toggle="tab">Countries</a></li>
-								<li role="presentation"><a href="#tab-item-2" aria-controls="tab-item-2" role="tab" data-toggle="tab">Used devices</a></li>
-							</ul>
-
-							<div class="tab-content">
-
-								<!-- Countries -->
-								<div role="tabpanel" class="tab-pane fade in active" id="tab-item-1">
-									<!-- <div id="donut-chart"></div> -->
-
-
-									<div style="padding:20px">
-										<div>
-											<canvas id="lineChart" height="195"></canvas>
-										</div>
-									</div>
-
-									<div class="row statsInfo clearfix">
-										<div class="col-xs-6 i">
-											<div class="count">256,521</div>
-											<div class="text">monthly total</div>
-										</div>
-										<div class="col-xs-6 i">
-											<div class="count">10,907</div>
-											<div class="text">today total</div>
-										</div>
-									</div>
-								</div>
-
-								<!-- Used devices -->
-								<div role="tabpanel" class="tab-pane fade" id="tab-item-2">
-									<div class="side-padding-25">
-										<p>Mauris vitae felis vel velit rutrum accumsan. Sed quis vehicula purus. In non sem bibendum, gravida nisl in, lacinia elit. Sed vel tortor ligula. Mauris consectetur massa ac tellus vestibulum tempus non et augue. Vivamus condimentum in justo eu ornare. Curabitur arcu tellus, venenatis pulvinar ultricies vitae, vulputate id enim. Fusce eros ex, venenatis sit amet magna at, tempor interdum sem. Sed at erat eget lacus condimentum ultrices a in est. Morbi vitae dolor ut ex dignissim molestie eget facilisis ligula. Phasellus ornare interdum leo, ut facilisis sem pretium ut. Vivamus semper feugiat fermentum. Nam eu maximus mi.</p>
-										<p>Proin laoreet accumsan odio interdum mattis. In et ante elementum, pharetra neque nec, maximus metus. In eu tristique risus. Vivamus tempor id sapien id lacinia. Ut tincidunt quam sed tortor lacinia, quis vulputate odio faucibus. Donec cursus vel diam a molestie. Praesent sit amet viverra diam. Phasellus eleifend blandit varius. Integer scelerisque massa vitae felis consequat blandit.</p>
-									</div>
-
-									<div class="row statsInfo clearfix">
-										<div class="col-xs-6 i">
-											<div class="count">256,521</div>
-											<div class="text">monthly total</div>
-										</div>
-										<div class="col-xs-6 i">
-											<div class="count">10,907</div>
-											<div class="text">today total</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-							<div class="col-xs-6 ct-pie-chart">
-								<div class="box box-without-padding">
-									<div id="ct-chart-1" class="ct-perfect-fourth"></div>
-									<div class="text">Free storage</div>
-									<div class="info"><span>77</span>%</div>
-								</div>
-							</div>
-							<div class="col-xs-6 ct-pie-chart">
-								<div class="box box-without-padding">
-									<div id="ct-chart-2" class="ct-perfect-fourth"></div>
-									<div class="text">Bandwidth</div>
-									<div class="info"><span>1,5</span>Gb/s</div>
-								</div>
-							</div>
+<div id='calendario'></div>
+                    </div>
+							
 					</div>
+					
 
 
 					<div class="col-xs-12 col-md-6">
@@ -603,6 +531,9 @@ $teleoid[] = $rowv['id'];
 	<script src="assets/js/chartist.min.js"></script>
 	<script src="assets/js/jquery.fullscreen.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
+	<script src="assets/js/moment.min.js"></script>
+	<script src="assets/js/fullcalendar.min.js"></script>
+		<script src="assets/js/lang-all.js"></script>
    <script src="assets/sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
 	<div class="visible-xs visible-sm extendedChecker"></div>
 	 
@@ -858,6 +789,23 @@ verificaChatNotificaciones();
 });
 /*=====  End of Detecto cuando la ventana esta activa o no  ======*/
 
+
+
+/*==================================
+=            CALENDARIO            =
+==================================*/
+
+$(document).ready(function() {
+	$('#calendario').fullCalendar({
+	header:{left:"prev,next today",center:"title",right:"month,agendaWeek,agendaDay"},
+	  events: 'mod_calendario/async/calendario.php',
+	  lang: 'es',
+	  defaultView: 'agendaDay'
+	 
+	   });
+	    });
+
+/*=====  End of CALENDARIO  ======*/
 
 </script>
 <!-- Mirrored from sharpen.tomaj.sk/v1.7/html5/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 May 2016 19:05:52 GMT -->
