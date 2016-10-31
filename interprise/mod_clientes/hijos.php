@@ -5,7 +5,7 @@ $hijos_fecha_nacimiento = unserialize( $data['data'][0]['hijos_fecha_nacimiento'
 $hijos_documentos = unserialize( $data['data'][0]['hijos_documentos'] );	
 
 
-
+if (is_array($hijos_nombre)) {
 
 foreach ($hijos_nombre  as $key => $value) {
 
@@ -59,4 +59,4 @@ foreach ($hijos_nombre  as $key => $value) {
 
 </div>
 
-<?php } ?>
+<?php } } ?>

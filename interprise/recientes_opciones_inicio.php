@@ -1,7 +1,7 @@
 		<div class="col-xs-12 col-lg-6">
 						<div class="box box-without-padding">
 							<div class="clearfix boxHeader boxHeaderBorders">
-								<h2 class="boxTitle pull-left">Recientes opciones de negocio</h2>
+								<h2 class="boxTitle pull-left">Opciones de negocio</h2>
 								<div class="btn-group pull-right boxHeaderOptions">
 									<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="zmdi zmdi-more-vert"></i>
