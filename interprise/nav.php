@@ -91,10 +91,23 @@
 
 
 					<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-calendar-check zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Calendario <i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-calendar-check zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Calendario VEN <i class="zmdi zmdi-plus plus"></i></span></div>
                  <ul>
 					    <li><a href="<?php echo BASE_URL ?>mod_calendario/index.php" title="Perfil del usuario">Crear evento</a></li>
 						<li><a href="<?php echo BASE_URL ?>mod_calendario/ver.php" title="Perfil del usuario">Ver Calendario</a></li>
+ 
+
+						 
+					</ul>
+
+				</li>
+
+
+						<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-calendar-check zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Calendario ESP<i class="zmdi zmdi-plus plus"></i></span></div>
+                 <ul>
+					    <li><a href="<?php echo BASE_URL ?>mod_calendario_esp/index.php" title="Perfil del usuario">Crear evento</a></li>
+						<li><a href="<?php echo BASE_URL ?>mod_calendario_esp/ver.php" title="Perfil del usuario">Ver Calendario</a></li>
  
 
 						 
