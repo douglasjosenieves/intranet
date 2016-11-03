@@ -68,10 +68,10 @@ $poblacion_minima=$_REQUEST['poblacion_minima'];
 $img = $_REQUEST['img'];
 
 
-
+if (is_array($img )){
 foreach( $img  as $key => $n ) {
  $imgArrreglo .= $img[$key].";";
-}
+}}
 
 $capture1=  $imgArrreglo  ;
 
@@ -87,8 +87,7 @@ $ref_siguiente=codigoSiguiente();
 
 if (isset($elaborado_por)) {
 	
-
-$resul = mysql_query("INSERT INTO `form_fichas_opciones_franquicias` (
+$qry = "INSERT INTO `form_fichas_opciones_franquicias` (
 
 `ref`,
 `fecha`,
@@ -159,7 +158,8 @@ $resul = mysql_query("INSERT INTO `form_fichas_opciones_franquicias` (
  '$poblacion_minima',
  '$anulado'
 
-);");
+);";
+$resul = mysql_query($qry);
 
 }
 //echo $resul;
@@ -175,27 +175,15 @@ $resul = mysql_query("INSERT INTO `form_fichas_opciones_franquicias` (
 
 if ($resul==1) {
   
-
-$status = array(
-
-    'type'=>'success',
-    'message'=>$nombre_contacto. ' Guardao!'
-  );
+echo $resul;
 }
 
 else
 {
+echo 'false'.$qry;
 
-$status = array(
-
-    'type'=>'failed',
-    'message'=>$nombre_contacto. 'Error!'
-  );
 
 }
-
-  echo json_encode($status);
-   die;
  
 
 

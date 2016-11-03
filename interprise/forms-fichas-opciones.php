@@ -698,9 +698,16 @@ $.ajax({
 	//dataType: 'json',
 	data: $('#formulario').serialize(),
 })
-.done(function() {
+.done(function(data) {
+
 	console.log("success");
-document.getElementById("formulario").reset();
+console.log(data);
+
+
+    if (data==1) {
+
+
+    document.getElementById("formulario").reset();
 
  
   $('#img :input').remove();
@@ -714,6 +721,32 @@ swal({
    location.reload();
    // window.location.href = 'login.html';
 });
+
+
+swal({ 
+  title: "Enviado!",
+   text: "Se ha procesado con éxito!",
+    type: "success" 
+  },
+  function(){
+ $('#formulario')[0].reset();
+location.reload();
+});
+
+}
+
+ 
+
+else {
+
+sweetAlert("Oops...", "Consulte este error con su programador!", "error");
+}
+
+
+
+
+
+
 
 
 //swal("Good job!", "You clicked the button!", "success");

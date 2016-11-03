@@ -94,6 +94,17 @@ header('Location: ../index.php');
 														</div>
 													</div>
 
+													<div class="col-xs-12 col-sm-6"  style=" margin-top: 40px;color: red;font-weight: bold">
+				<div class="form-group checkboxes">
+						<label>
+							<input name="exclusivo" value="1" type="checkbox">
+							<span>Ficha Exclusiva</span>
+						</label>
+					</div>	
+
+
+					</div>
+
 
 </div>
 
@@ -631,8 +642,14 @@ $.ajax({
 	//dataType: 'json',
 	data: $('#formulario').serialize(),
 })
-.done(function() {
+.done(function(data) {
 	console.log("success");
+	console.log(data);
+
+if (data==1) {
+
+
+	
 document.getElementById("formulario").reset();
 
  
@@ -647,6 +664,26 @@ swal({
    location.reload();
    // window.location.href = 'login.html';
 });
+
+swal({ 
+  title: "Enviado!",
+   text: "Se ha procesado con éxito!",
+    type: "success" 
+  },
+  function(){
+ $('#formulario')[0].reset();
+location.reload();
+});
+
+}
+
+ 
+
+else {
+
+sweetAlert("Oops...", "Consulte este error con su programador!", "error");
+}
+
 
 
 //swal("Good job!", "You clicked the button!", "success");

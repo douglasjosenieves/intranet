@@ -60,17 +60,28 @@ $img2 = $_REQUEST['img2'];
 $comentarios_sobre_negocio_comercial=$_REQUEST['comentarios_sobre_negocio_comercial'];
 $exclusivo=$_REQUEST['exclusivo'];
 
-foreach( $img  as $key => $n ) {
+
+ 
+if (is_array($img )){
+
+  foreach( $img  as $key => $n ) {
  $imgArrreglo .= $img[$key].";";
+}
 }
 
 
+
+if (is_array($img )){
 foreach( $img2  as $key => $n ) {
  $imgArrreglo2 .= $img2[$key].";";
 }
-
+}
 $capture1=  $imgArrreglo  ;
 $capture2=  $imgArrreglo2  ;
+  
+ 
+
+
 
 
 function codigoSiguiente(){
@@ -85,8 +96,7 @@ $ref_siguiente=codigoSiguiente();
 
 if (isset($elaborado_por)) {
 	
-
-$resul = mysql_query("INSERT INTO `form_fichas_opciones` (
+$qry = "INSERT INTO `form_fichas_opciones` (
 
 `ref`,
 `fecha`,
@@ -149,7 +159,8 @@ $resul = mysql_query("INSERT INTO `form_fichas_opciones` (
  '$exclusivo',
  '$anulado'
 
-);");
+);";
+$resul = mysql_query($qry);
 
 }
 //echo $resul;
@@ -162,31 +173,20 @@ $resul = mysql_query("INSERT INTO `form_fichas_opciones` (
 
 
  
-
 if ($resul==1) {
   
-
-$status = array(
-
-    'type'=>'success',
-    'message'=>$nombre_contacto. ' Guardao!'
-  );
+echo $resul;
 }
 
 else
 {
+echo 'false'.$qry;
 
-$status = array(
-
-    'type'=>'failed',
-    'message'=>$nombre_contacto. 'Error!'
-  );
 
 }
 
-  echo json_encode($status);
-   die;
- 
+
+
 
 
 
