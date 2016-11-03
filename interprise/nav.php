@@ -27,8 +27,8 @@
 						<li><a href="<?php echo BASE_URL ?>forms-cotizaciones.php" title="#">Cotizaciones online</a>
 				<li><a href="<?php echo BASE_URL ?>forms-fichas-opciones.php" title="#">Fichas de Opciones</a>
 				<li><a href="<?php echo BASE_URL ?>forms-fichas-opciones-franquicias.php" title="#">F.D.O Franquicias</a>
-				<li><a href="<?php echo BASE_URL ?>documentos.php" title="#">Documentos</a>
-<li><a href="<?php echo BASE_URL ?>listado-whatsapp.php" title="#">Listado whatsapp</a>  
+				<!-- <li><a href="<?php// echo BASE_URL ?>documentos.php" title="#">Documentos</a>  -->
+<li><a href="<?php echo BASE_URL ?>listado-whatsapp.php" title="#">Listado whatsapp</a>   
 
 					<?php  if ($_SESSION['usuario']['Tipo'] == 'administrador') {?>
 <li><a href="<?php echo BASE_URL ?>contactos_admon.php" title="Administracion de contactos">Admon Contactos</a>  
@@ -69,8 +69,10 @@
 
 					<li><a href="<?php echo BASE_URL ?>reporte-cotizaciones.php" title="#">Cotizaciones</a></li>
 						<li><a href="<?php echo BASE_URL ?>reporte-ficha-opciones.php" title="#">Ficha de opciones</a></li>
+						<li><a href="<?php echo BASE_URL ?>reporte-ficha-opciones-exclusivas.php" title="#">Fichas Exclusivas</a></li>
 						<li><a href="<?php echo BASE_URL ?>reporte-ficha-opciones-franquicias.php" title="#">F.D.O (Franquicias)</a></li>
-<li><a href="<?php echo BASE_URL ?>reporte-ficha-opciones-exclusivas.php" title="#">Fichas Exclusivas</a></li>
+
+<li><a href="<?php echo BASE_URL ?>reporte-ficha-opciones-franquicias-exclusivo.php" title="#">F.D.O Franquicias Ex</a></li>
 
 
 <!-- <li><a href="reporte-fichas-opciones-pdf.php" title="#">Ficha de opciones Pdf</a></li> -->

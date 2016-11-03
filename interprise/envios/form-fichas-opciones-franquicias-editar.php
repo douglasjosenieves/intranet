@@ -63,7 +63,7 @@ $inversion=$_REQUEST['inversion'];
 $royalty=$_REQUEST['royalty'];
 $contrato=$_REQUEST['contrato'];
 $poblacion_minima=$_REQUEST['poblacion_minima'];
-
+$exclusivo=$_REQUEST['exclusivo'];
 
 
 foreach( $img  as $key => $n ) {
@@ -112,6 +112,7 @@ $resul = mysql_query("UPDATE `form_fichas_opciones_franquicias` SET
 `royalty`= '$royalty', 
 `contrato`= '$contrato', 
 `poblacion_minima`= '$poblacion_minima', 
+`exclusivo`= '$exclusivo', 
 
 
 `anulado`= '$anulado'

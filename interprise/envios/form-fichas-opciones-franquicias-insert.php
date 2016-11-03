@@ -55,6 +55,8 @@ $ventajas_comparativas=$_REQUEST['ventajas_comparativas'];
 $capture1=$_REQUEST['capture1'];
 $capture2=$_REQUEST['capture2'];
 
+$exclusivo=$_REQUEST['exclusivo'];
+
 
 $canon_publicidad=$_REQUEST['canon_publicidad'];
 $canon_entrada=$_REQUEST['canon_entrada'];
@@ -121,6 +123,7 @@ $qry = "INSERT INTO `form_fichas_opciones_franquicias` (
 `royalty`,
 `contrato`,
 `poblacion_minima`,
+`exclusivo`,
 `anulado`
 
 ) VALUES ( 
@@ -156,6 +159,7 @@ $qry = "INSERT INTO `form_fichas_opciones_franquicias` (
  '$royalty',
  '$contrato',
  '$poblacion_minima',
+  '$exclusivo',
  '$anulado'
 
 );";

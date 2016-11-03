@@ -118,20 +118,31 @@ $ficha['ficha_opciones'][] = $row;
 		
 	<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Nombre'].' '.$_SESSION['usuario']['Apellido'] ?>" name="editado_por" id="editado_por" placeholder="Editado por:">
 
- <div class="col-xs-12 col-sm-4">
+ <div class="col-xs-12 col-sm-2">
 								<div class="form-group">
 									<label for="referencia">Nº Referencia</label>
 									<input type="text" readonly required class="form-control" value="<?php echo $ficha['ficha_opciones'][0]['ref'] ?>" name="ref" id="ref" placeholder="Nº Referencia">
 								</div>
 							</div>
 
-								 <div class="col-xs-12 col-sm-5">
+								 <div class="col-xs-12 col-sm-4">
 														<div class="form-group">
 															<label for="elaborado_por">Elaborado Por:</label>
 															<input  readonly type="text" required class="form-control" value="<?php echo $ficha['ficha_opciones'][0]['elaborado_por'] ?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
 														</div>
 													</div>
 
+
+												<div class="col-xs-12 col-sm-6"  style=" margin-top: 40px;color: red;font-weight: bold">
+				<div class="form-group checkboxes">
+						<label>
+							<input name="exclusivo" id="exclusivo" value="1" type="checkbox">
+							<span>Ficha Exclusiva</span>
+						</label>
+					</div>	
+
+
+					</div>
 
 </div>
 
@@ -647,7 +658,15 @@ $imagen1 = 'img/sin_imagen_disponible.jpg';
 
 
 	<script type="text/javascript">
+$(document).ready(function() {
+var exclusivo = "<?php echo $ficha['ficha_opciones'][0]['exclusivo'] ?>";
 
+
+if (exclusivo=='1') {
+	$("#exclusivo").prop("checked", "checked");
+
+	}
+});
  
 
  

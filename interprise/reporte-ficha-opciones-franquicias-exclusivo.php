@@ -105,7 +105,7 @@ mysql_query("SET CHARACTER_SET utf");
 
 	                <?php 
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `form_fichas_opciones_franquicias` where anulado <> 1 and exclusivo <> 1");
+					$resul =  mysql_query("SELECT * FROM `form_fichas_opciones_franquicias` where anulado <> 1 and exclusivo = 1");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
