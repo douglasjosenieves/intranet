@@ -55,6 +55,7 @@ $ventajas_comparativas=$_REQUEST['ventajas_comparativas'];
 $capture1=$_REQUEST['capture1'];
 $capture2=$_REQUEST['capture2'];
 $img = $_REQUEST['img'];
+$cod_postal = $_REQUEST['cod_postal'];
 
 $img2 = $_REQUEST['img2'];
 $comentarios_sobre_negocio_comercial=$_REQUEST['comentarios_sobre_negocio_comercial'];
@@ -107,6 +108,7 @@ $qry = "INSERT INTO `form_fichas_opciones` (
 `direccion`,
 `ciudad`,
 `zona`,
+`cod_postal`,
 `celular`,
 `local`,
 `nombre_contacto`,
@@ -138,6 +140,7 @@ $qry = "INSERT INTO `form_fichas_opciones` (
  '$direccion',
  '$ciudad',
  '$zona',
+ '$cod_postal',
  '$celular',
  '$local',
  '$nombre_contacto',

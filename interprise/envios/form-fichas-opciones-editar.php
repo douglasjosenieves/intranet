@@ -59,6 +59,7 @@ $img = $_REQUEST['img'];
 $img2 = $_REQUEST['img2'];
 $comentarios_sobre_negocio_comercial=$_REQUEST['comentarios_sobre_negocio_comercial'];
 $exclusivo=$_REQUEST['exclusivo'];
+$cod_postal=$_REQUEST['cod_postal'];
 
 
 
@@ -89,6 +90,7 @@ $resul = mysql_query("UPDATE `form_fichas_opciones` SET
 `direccion`= '$direccion', 
 `ciudad`= '$ciudad', 
 `zona`= '$zona', 
+`cod_postal`= '$cod_postal', 
 `celular`= '$celular', 
 `local`= '$local', 
 `nombre_contacto`= '$nombre_contacto', 
