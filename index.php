@@ -66,13 +66,13 @@ body{
 
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="email" required type="text" class="form-control" name="email" value=""
+                        <input id="email" required type="text" value="douglas.nieves@cohenyaguirre.es" class="form-control" name="email" value=""
                                placeholder="username or email">
                     </div>
 
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="clave" required type="password" class="form-control" name="clave"
+                        <input id="clave" required type="password" value="12345" class="form-control" name="clave"
                                placeholder="password">
                     </div>
 

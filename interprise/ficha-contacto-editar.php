@@ -138,7 +138,7 @@ $contactos_web[] = $row;
 													</div> -->
 
 
-														<div class="col-xs-12 col-sm-4 i">
+														<div class="col-xs-12 col-sm-2 i">
 								<div class="form-group">
 									<label>Status</label>
 									<select name="status" class="js-select ">
@@ -162,7 +162,21 @@ $contactos_web[] = $row;
 								</div>
 							</div>
 
-
+	<div class="col-xs-12 col-sm-2 i">
+								<div class="form-group">
+									<label>Procedencia (Publicitaria)</label>
+									<select name="procedencia_publicitaria"  id="procedencia_publicitaria" class="js-select ">
+										<option value="">- Seleccione -</option>
+										<option value="WEBSITE">WEBSITE</option>
+										<option value="FACEBOOK">FACEBOOK</option>
+										<option value="INSTAGRAM">INSTAGRAM</option>
+											<option value="TWITTER">TWITTER</option>
+											<option value="ZOPIM">ZOPIM</option>
+											<option value="OTRO">OTRO</option>
+								 
+									</select>
+								</div>
+							</div>
 
 
 <div class="col-xs-12 col-sm-2">
@@ -1436,6 +1450,8 @@ $id_contacto= '5'; -->
 ===============================================*/
 
 $(document).ready(function() {
+
+	$('#procedencia_publicitaria').val('<?php echo $contactos_web[0]['procedencia_publicitaria'] ?>').change();	
 
 	$('#cargando').hide();
 	$('#tipoEmail').on('change', function(event) {

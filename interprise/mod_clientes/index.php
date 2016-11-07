@@ -160,7 +160,7 @@ $data['data'][] = $row;
 							
 								
 								
-								<div class="col-xs-12 col-sm-4">
+								<div class="col-xs-12 col-sm-3">
 																<div class="form-group">
 																	<label for="basicInput">Nombres:</label>
 											<input type="text" value="<?php echo $data['data'][0]['nombres'] ?>" required class="form-control" name="nombres" id="nombres" placeholder="Nombres:">
@@ -169,7 +169,7 @@ $data['data'][] = $row;
 								
 
 								
-									<div class="col-xs-12 col-sm-4">
+									<div class="col-xs-12 col-sm-3">
 																<div class="form-group">
 																	<label for="basicInput">Apellidos:</label>
 											<input type="text" value="<?php echo $data['data'][0]['apellidos'] ?>" required class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos:">
@@ -178,8 +178,8 @@ $data['data'][] = $row;
 
 
 
-															<div class="row customSelectWrap">
-							<div class="col-xs-12 col-sm-4 i">
+															
+							<div class="col-xs-12 col-sm-3 i">
 								<div class="form-group">
 									<label>País</label>
 									<select name="pais"  id="pais" class="js-select ">
@@ -191,7 +191,28 @@ $data['data'][] = $row;
 								 
 									</select>
 								</div>
-							</div></div>
+							</div>
+
+
+
+																	
+							<div class="col-xs-12 col-sm-3 i">
+								<div class="form-group">
+									<label>Procedencia (Publicitaria)</label>
+									<select name="procedencia_publicitaria"  id="procedencia_publicitaria" class="js-select ">
+										<option value="">- Seleccione -</option>
+										<option value="WEBSITE">WEBSITE</option>
+										<option value="FACEBOOK">FACEBOOK</option>
+										<option value="INSTAGRAM">INSTAGRAM</option>
+											<option value="TWITTER">TWITTER</option>
+											<option value="ZOPIM">ZOPIM</option>
+											<option value="OTRO">OTRO</option>
+								 
+									</select>
+								</div>
+							</div>
+
+
 
 
 							</div>
@@ -1171,6 +1192,10 @@ $opcion_tipo_6 = unserialize($data['data'][0]['opcion_tipo_6']) ;
 	<script type="text/javascript">
 
 $(document).ready(function() {
+
+
+
+$('#procedencia_publicitaria').val('<?php echo $data['data'][0]['procedencia_publicitaria'] ?>').change();	
 
 try {
 

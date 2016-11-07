@@ -83,6 +83,9 @@ $hijos_apellidos=$_REQUEST['hijos_apellidos'];
 $hijos_fecha_nacimiento=$_REQUEST['hijos_fecha_nacimiento'];
 $hijos_documentos=$_REQUEST['hijos_documentos'];
 $imagenes=$_REQUEST['imagenes'];
+$procedencia_publicitaria=$_REQUEST['procedencia_publicitaria'];
+
+
 
 $opcion1=$_REQUEST['opcion1'];
 $opcion2=$_REQUEST['opcion2'];
@@ -175,7 +178,8 @@ $qry = "INSERT INTO `contactos_web` (
 `opcion_tipo_6`,
 `mes_viaje`,
 `anio_viaje`,
-`movil2`
+`movil2`,
+`procedencia_publicitaria`
 
 
 ) VALUES ( 
@@ -236,7 +240,8 @@ $qry = "INSERT INTO `contactos_web` (
 '$opcion_t_6',
 '$mes_viaje',
 '$anio_viaje',
-'$movil2'
+'$movil2',
+'$procedencia_publicitaria'
  
 
 
