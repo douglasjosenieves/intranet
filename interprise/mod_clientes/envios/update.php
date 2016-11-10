@@ -87,6 +87,9 @@ $hijos_documentos=$_REQUEST['hijos_documentos'];
 $imagenes=$_REQUEST['imagenes'];
 $procedencia_publicitaria=$_REQUEST['procedencia_publicitaria'];
 
+$clave=$_REQUEST['clave'];
+$clave = md5($clave);
+$tipo_acceso=$_REQUEST['tipo_acceso'];
 
 $mes_viaje=$_REQUEST['mes_viaje'];
 $anio_viaje=$_REQUEST['anio_viaje'];
@@ -194,7 +197,9 @@ $qry = "UPDATE `contactos_web` SET
 `movil2`= '$movil2',
 `mes_viaje`= '$mes_viaje',
 `anio_viaje`= '$anio_viaje',
-`procedencia_publicitaria`= '$procedencia_publicitaria'
+`procedencia_publicitaria`= '$procedencia_publicitaria',
+`clave`= '$clave',
+`tipo_acceso`= '$tipo_acceso'
 
 
 

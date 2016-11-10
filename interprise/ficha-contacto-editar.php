@@ -281,7 +281,7 @@ $contactos_web[] = $row;
 						<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Teléfono 2:</label>
-			<input type="text" value="<?php echo $contactos_web[0]['movil2'] ?>" required class="form-control" name="movil2" id="movil2" placeholder="Teléfono 2:">
+			<input type="text" value="<?php echo $contactos_web[0]['movil2'] ?>" class="form-control" name="movil2" id="movil2" placeholder="Teléfono 2:">
 								</div>
 							</div>
 
@@ -1195,7 +1195,40 @@ $opcion_tipo_6 = unserialize($contactos_web[0]['opcion_tipo_6']) ;
 
 
 </div><!-- FICHA DE OPCIONES -->
+		<div id="" class="box rte">
+				<h2 class="boxHeadline">Acceso Intranet.</h2>
+					<h3 class="boxHeadlineSub">Datos</h3>
 
+
+<div class="row">
+					
+					<div class="col-xs-12 col-sm-6">
+					<div class="form-group">
+					<label for="basicInput">Clave</label>
+					<input type="password" value="<?php echo $contactos_web[0]['clave'] ?>" required class="form-control" name="clave" id="clave" placeholder="Clave">
+					</div>
+					</div>
+
+
+
+<div class="col-md-6">
+<div class="form-field-wrapper">
+<label for="basicInput">Tipo de acceso:</label>
+<select name="tipo_acceso" id="tipo_acceso" class="form-control">
+<option value="">- Tipo de acceso -</option>
+<option value="STANDAR">STANDAR</option>
+<option value="DELUXE">DELUXE</option>
+ 
+</select>
+</div>
+</div>
+         
+
+
+					
+
+					</div>
+</div>
 </div> <!-- CIERRO LOS DIV OCULTOS -->
 
 
@@ -1452,7 +1485,7 @@ $id_contacto= '5'; -->
 $(document).ready(function() {
 
 	$('#procedencia_publicitaria').val('<?php echo $contactos_web[0]['procedencia_publicitaria'] ?>').change();	
-
+$('#tipo_acceso').val('<?php echo $contactos_web[0]['tipo_acceso'] ?>').change();
 	$('#cargando').hide();
 	$('#tipoEmail').on('change', function(event) {
 		event.preventDefault();

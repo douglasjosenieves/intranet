@@ -85,6 +85,15 @@ $hijos_documentos=$_REQUEST['hijos_documentos'];
 $imagenes=$_REQUEST['imagenes'];
 $procedencia_publicitaria=$_REQUEST['procedencia_publicitaria'];
 
+$clave=$_REQUEST['clave'];
+
+$clave = md5($clave);
+
+$tipo_acceso=$_REQUEST['tipo_acceso'];
+
+
+
+
 
 
 $opcion1=$_REQUEST['opcion1'];
@@ -179,8 +188,9 @@ $qry = "INSERT INTO `contactos_web` (
 `mes_viaje`,
 `anio_viaje`,
 `movil2`,
-`procedencia_publicitaria`
-
+`procedencia_publicitaria`,
+`clave`,
+`tipo_acceso`
 
 ) VALUES ( 
   '$id',
@@ -241,8 +251,9 @@ $qry = "INSERT INTO `contactos_web` (
 '$mes_viaje',
 '$anio_viaje',
 '$movil2',
-'$procedencia_publicitaria'
- 
+'$procedencia_publicitaria',
+ '$clave',
+ '$tipo_acceso'
 
 
 );";
