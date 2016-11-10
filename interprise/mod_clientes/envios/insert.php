@@ -86,9 +86,7 @@ $imagenes=$_REQUEST['imagenes'];
 $procedencia_publicitaria=$_REQUEST['procedencia_publicitaria'];
 
 $clave=$_REQUEST['clave'];
-
 $clave = md5($clave);
-
 $tipo_acceso=$_REQUEST['tipo_acceso'];
 
 

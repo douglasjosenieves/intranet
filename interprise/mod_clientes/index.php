@@ -1101,7 +1101,7 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 					<div class="col-xs-12 col-sm-6">
 					<div class="form-group">
 					<label for="basicInput">Clave</label>
-					<input type="password" value="<?php echo $data['data'][0]['clave'] ?>" required class="form-control" name="clave" id="clave" placeholder="Clave">
+					<input type="password" value="<?php echo $data['data'][0]['clave'] ?>" class="form-control" name="clave" id="clave" placeholder="Clave">
 					</div>
 					</div>
 
