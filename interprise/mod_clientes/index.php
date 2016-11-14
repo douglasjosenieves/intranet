@@ -179,7 +179,7 @@ $data['data'][] = $row;
 
 
 															
-							<div class="col-xs-12 col-sm-3 i">
+							<div class="col-xs-12 col-sm-2 i">
 								<div class="form-group">
 									<label>País</label>
 									<select name="pais"  id="pais" class="js-select ">
@@ -196,7 +196,7 @@ $data['data'][] = $row;
 
 
 																	
-							<div class="col-xs-12 col-sm-3 i">
+							<div class="col-xs-12 col-sm-2 i">
 								<div class="form-group">
 									<label>Procedencia (Publicitaria)</label>
 									<select name="procedencia_publicitaria"  id="procedencia_publicitaria" class="js-select ">
@@ -207,6 +207,19 @@ $data['data'][] = $row;
 											<option value="TWITTER">TWITTER</option>
 											<option value="ZOPIM">ZOPIM</option>
 											<option value="OTRO">OTRO</option>
+								 
+									</select>
+								</div>
+							</div>
+
+		<div class="col-xs-12 col-sm-2 i">
+								<div class="form-group">
+									<label>Tipo de cartera</label>
+									<select name="tipo_cartera"  id="tipo_cartera" class="js-select ">
+										<option value="">- Seleccione -</option>
+										<option value="VENEZUELA">VENEZUELA</option>
+										<option value="ESPAÑA">ESPAÑA</option>
+							 
 								 
 									</select>
 								</div>
@@ -1234,7 +1247,7 @@ $(document).ready(function() {
 
 $('#procedencia_publicitaria').val('<?php echo $data['data'][0]['procedencia_publicitaria'] ?>').change();	
 $('#tipo_acceso').val('<?php echo $data['data'][0]['tipo_acceso'] ?>').change();
-
+$('#tipo_cartera').val('<?php echo $data['data'][0]['tipo_cartera'] ?>').change();
 
 try {
 

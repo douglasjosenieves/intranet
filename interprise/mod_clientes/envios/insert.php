@@ -88,6 +88,7 @@ $procedencia_publicitaria=$_REQUEST['procedencia_publicitaria'];
 $clave=$_REQUEST['clave'];
 $clave = md5($clave);
 $tipo_acceso=$_REQUEST['tipo_acceso'];
+$tipo_cartera=$_REQUEST['tipo_cartera'];
 
 
 
@@ -188,7 +189,8 @@ $qry = "INSERT INTO `contactos_web` (
 `movil2`,
 `procedencia_publicitaria`,
 `clave`,
-`tipo_acceso`
+`tipo_acceso`,
+`tipo_cartera`
 
 ) VALUES ( 
   '$id',
@@ -251,7 +253,8 @@ $qry = "INSERT INTO `contactos_web` (
 '$movil2',
 '$procedencia_publicitaria',
  '$clave',
- '$tipo_acceso'
+ '$tipo_acceso',
+  '$tipo_cartera'
 
 
 );";

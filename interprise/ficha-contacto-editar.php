@@ -138,7 +138,39 @@ $contactos_web[] = $row;
 													</div> -->
 
 
-														<div class="col-xs-12 col-sm-2 i">
+									
+
+
+<div class="col-xs-12 col-sm-2">
+<div class="form-group">
+<label for="basicInput">Agendar Cita Aqui <i class="fa fa-arrow-down"></i></label>
+<button type="button" class="btn bg-orange" data-toggle="modal" data-target="#openAgenga">Calendario <i class="fa fa-calendar"></i></button>
+</div>
+</div>
+
+
+
+
+<div class="col-xs-12 col-sm-2">
+<div class="form-group">
+<label for="basicInput">Enviar Email <i class="fa fa-arrow-down"></i></label>
+<button type="button" class="btn bg-orange" data-toggle="modal" data-target="#openEnviarEmail">Enviar Email <i class="fa fa-send-o"></i></button>
+</div>
+</div>
+
+
+
+
+
+</div>
+						
+
+
+<div class="row">
+	
+
+
+						<div class="col-xs-12 col-sm-2 i">
 								<div class="form-group">
 									<label>Status</label>
 									<select name="status" class="js-select ">
@@ -179,30 +211,23 @@ $contactos_web[] = $row;
 							</div>
 
 
-<div class="col-xs-12 col-sm-2">
-<div class="form-group">
-<label for="basicInput">Agendar Cita Aqui <i class="fa fa-arrow-down"></i></label>
-<button type="button" class="btn bg-orange" data-toggle="modal" data-target="#openAgenga">Calendario <i class="fa fa-calendar"></i></button>
-</div>
-</div>
 
-
-
-
-<div class="col-xs-12 col-sm-2">
-<div class="form-group">
-<label for="basicInput">Enviar Email <i class="fa fa-arrow-down"></i></label>
-<button type="button" class="btn bg-orange" data-toggle="modal" data-target="#openEnviarEmail">Enviar Email <i class="fa fa-send-o"></i></button>
-</div>
-</div>
-
-
+							<div class="col-xs-12 col-sm-2 i">
+								<div class="form-group">
+									<label>Tipo de cartera</label>
+									<select name="tipo_cartera"  id="tipo_cartera" class="js-select ">
+										<option value="">- Seleccione -</option>
+										<option value="VENEZUELA">VENEZUELA</option>
+										<option value="ESPAÑA">ESPAÑA</option>
+							 
+								 
+									</select>
+								</div>
+							</div>
 
 
 
 </div>
-						
-
 
 						<div class="row">
 							
@@ -1486,6 +1511,7 @@ $(document).ready(function() {
 
 	$('#procedencia_publicitaria').val('<?php echo $contactos_web[0]['procedencia_publicitaria'] ?>').change();	
 $('#tipo_acceso').val('<?php echo $contactos_web[0]['tipo_acceso'] ?>').change();
+$('#tipo_cartera').val('<?php echo $contactos_web[0]['tipo_cartera'] ?>').change();
 	$('#cargando').hide();
 	$('#tipoEmail').on('change', function(event) {
 		event.preventDefault();
