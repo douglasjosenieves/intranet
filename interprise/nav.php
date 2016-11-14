@@ -64,7 +64,7 @@
 <li><a href="<?php echo BASE_URL ?>mod_clientes/reporte_clientes_status.php" title="#">Clientes por status</a></li>
 <li><a href="<?php echo BASE_URL ?>mod_clientes/reporte_clientes_cartera.php" title="#">Clientes por cartera</a></li>
 <li><a href="<?php echo BASE_URL ?>mod_clientes/reporte_clientes_procedencia.php" title="#">Clientes por procedencia</a></li>
-
+<li><a href="<?php echo BASE_URL ?>mod_clientes/reporte_clientes_dias_transcurrido.php" title="#">Clientes por dias transcurrido</a></li>
 			 
 			<li><a href="<?php echo BASE_URL ?>reporte-seguimientos-abiertos.php" title="#">Seguimientos<span class="label label-danger">ABIERTO</span></a></li>
 			<li><a href="<?php echo BASE_URL ?>rep-gestion.php" title="#">REP Gestion</a></li>
