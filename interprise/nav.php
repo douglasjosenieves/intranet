@@ -32,6 +32,9 @@
 
 					<?php  if ($_SESSION['usuario']['Tipo'] == 'administrador') {?>
 <li><a href="<?php echo BASE_URL ?>contactos_admon.php" title="Administracion de contactos">Admon Contactos</a>  
+<li><a href="<?php echo BASE_URL ?>/mod_servicios/index.php" title="Servicios">Servicios</a>  	
+<li><a href="<?php echo BASE_URL ?>/mod_facturacion/index.php" title="Servicios">Facturación</a>  						
+
 						<?php } ?>
 
 					</ul>
@@ -69,6 +72,8 @@
 			<li><a href="<?php echo BASE_URL ?>reporte-seguimientos-abiertos.php" title="#">Seguimientos<span class="label label-danger">ABIERTO</span></a></li>
 			<li><a href="<?php echo BASE_URL ?>rep-gestion.php" title="#">REP Gestion</a></li>
 			<li><a href="<?php echo BASE_URL ?>rep-gestion2.php" title="#">REP Gestion 2</a></li>
+			<li><a href="<?php echo BASE_URL ?>/mod_servicios/reporte.php" title="Servicios">Servicios</a>  	</li>
+				<li><a href="<?php echo BASE_URL ?>/mod_facturacion/reporte.php" title="Servicios">Facturación</a>  	</li>
 
 <?php } ?>
 
