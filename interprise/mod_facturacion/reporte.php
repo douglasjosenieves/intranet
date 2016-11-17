@@ -90,7 +90,7 @@ mysql_query("SET CHARACTER_SET utf");
 									<th>fecha</th>
 									<th>Orden</th>
 									 
-								 
+								 <th>Estado</th>
 									<th>Procesos</th>
 								
 								</tr>
@@ -111,12 +111,19 @@ mysql_query("SET CHARACTER_SET utf");
 require_once '../asesor_funtion.php';
 	                  require_once '../status_estado.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `factura` where anulado <> 1");
+					$resul =  mysql_query("SELECT * FROM `factura`");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
 					// echo $row['nombre'];
 					$opciones['opciones'][]=$row;
+
+					if ($opciones['opciones'][$i]['anulado']!=1) {
+						$estado = 'ACTIVO';
+					} else {
+						$estado = 'ANULADO';
+					}
+					
 					
 					  
 					 ?>
@@ -132,7 +139,7 @@ require_once '../asesor_funtion.php';
 						<td><?php echo $opciones['opciones'][$i]['enc_cliente']; ?></td>
 					    <td><?php echo $opciones['opciones'][$i]['fecha']; ?></td>
 					    <td><?php echo $opciones['opciones'][$i]['enc_orden']; ?></td>
-					   
+					     <td><?php echo statusestado($estado); ?></td>
 			 
 					    <td>
 					    	

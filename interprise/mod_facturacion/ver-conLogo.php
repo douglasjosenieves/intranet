@@ -22,14 +22,6 @@ $data['data'][] = $row;
 }
 }
 
-
-if ($data['data'][0]['anulado']!=1) {
-						$estado = 'ACTIVO';
-					} else {
-						$estado = 'ANULADO';
-					}
-
-
 $reg_id_uns =  unserialize($data['data'][0]['reg_id']);
 $reg_nombre_uns =  unserialize($data['data'][0]['reg_nombre']);
 $reg_descripcion_uns =  unserialize($data['data'][0]['reg_descripcion']);
@@ -198,39 +190,13 @@ $totalPagar = FormateaNumeros($subtotalSum+ $iva_s);
 
 </div>
 
-<?php    require_once '../status_estado.php'; ?>
- <div class="row">
- 	<div class="col-xs-12 col-sm-4 i">
-								<div class="form-group">
-									<label>El documento se encuentra: <?php echo statusestado($estado); ?></label>
-									<select id="anular" class="js-select">
-										<option value="">- Seleccione -</option>
-										<option value="1">ANULADO</option>
-										<option value="0">ACTIVADO</option>
-								 
-									</select>
-								</div>
-							</div>
+
+ 
 
 
 
- </div>
 
-<div class="row">
-	
-	<div class="col-xs-12 col-sm-4 i">
-							 <a href="reporte.php" id="salir" type="button" class="btn bg-green"> <i class="fa fa-reply"></i>Salir</a>
-							</div>
 </div>
- 	
-
- </div>
-
-
-
-
-
-
 			
 				 <!--====================================================
 					 =            AQUI VA EL CONTENIDO DEL SITE-            =
@@ -295,8 +261,6 @@ $totalPagar = FormateaNumeros($subtotalSum+ $iva_s);
 
  <script type="text/javascript">
 
-
-
 var id = '<?php echo $data['data'][0]['id'] ?>';
 var enc_cliente = '<?php echo $data['data'][0]['enc_cliente'] ?>';
 var enc_cliente_documento = '<?php echo $data['data'][0]['enc_cliente_documento'] ?>';
@@ -349,7 +313,7 @@ var docDefinition = {
 	content: [
 		
 
-/*  {
+  {
        image: logo,
 		width: 150
     },
@@ -359,11 +323,11 @@ var docDefinition = {
 { text: emp_dir, fontSize: 8 ,  alignment: 'left'},
 { text: emp_tel, fontSize: 8,  alignment: 'left'},
 { text: emp_email, fontSize: 8,  alignment: 'left'},
-{ text: emp_web, fontSize: 8,  alignment: 'left'},*/
+{ text: emp_web, fontSize: 8,  alignment: 'left'},
 	 
  
 
-{ text: 'Número de Control # '+id+'', style:'header' ,  alignment: 'right',margin: [ 0, 20, 0, 0 ]},		
+{ text: 'Factura # '+id+'', style:'header' ,  alignment: 'right',margin: [ 0, 20, 0, 0 ]},		
                
 
 { text: 'Para: '+enc_cliente+' '+enc_cliente_documento, fontSize: 12, bold: true ,  alignment: 'right',margin: [ 0, 5, 0, 0 ]},
@@ -479,8 +443,6 @@ document.getElementById('pdfV').src = outDoc;
 
 $(document).ready(function() {
 
-
-
 $('#buscar').on('keyup',  function(event) {
 	event.preventDefault();
 	buscarArticulos($(this).val());
@@ -518,63 +480,6 @@ $.ajax({
 
 });
 /*=====  End of Buscar   ======*/
-
-
-/*========================================
-=            Anular Ducumento            =
-========================================*/
-
-$('#anular').on('change', function(event) {
-	event.preventDefault();
-
-	var valor = $(this).val();
-	//alert('vAs a anular un ducumento!');
-
-$.ajax({
-	url: 'envios/anular.php',
-	type: 'POST',
-
-	data: {referencia: id, anulado:valor},
-})
-.done(function(data) {
-	console.log("success");
-	console.log(data);
-
-	    if (data==1) {
-
-swal({ 
-  title: "Enviado!",
-   text: "Se ha procesado con éxito!",
-    type: "success" 
-  },
-  function(){
-
-location.reload();
-});
-
-}
-
- 
-
-else {
-
-sweetAlert("Oops...", "Consulte este error con su programador!", "error");
-}
-})
-.fail(function() {
-	console.log("error");
-})
-.always(function() {
-	console.log("complete");
-});
-
-
-});
-
-
-
-/*=====  End of Anular Ducumento  ======*/
-
 
  </script>
  

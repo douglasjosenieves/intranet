@@ -22,7 +22,7 @@ $resul =  mysql_query("SELECT * FROM  servicios where anulado <> 1 and nombre li
 				
 								
 				//echo $row['nombre'];
-				$opciones['contacto'][]=$row;
+				$opciones['data'][]=$row;
 				
 				 //$imagen = explode(';',$opciones['opciones'][0]['capture1']) ;
 				 ?>
@@ -32,10 +32,10 @@ $resul =  mysql_query("SELECT * FROM  servicios where anulado <> 1 and nombre li
 
 
 
-	<a href="#" class="arti st" data-index="<?php echo $index?>" data-id="<?php echo $opciones['contacto'][$i]['id']?>" data-nombre="<?php echo $opciones['contacto'][$i]['nombre']?>" data-descripcion="<?php echo $opciones['contacto'][$i]['descripcion']?>" data-precio="<?php echo $opciones['contacto'][$i]['precio']?>" >
+	<a href="#" class="arti st" data-index="<?php echo $index?>" data-id="<?php echo $opciones['data'][$i]['id']?>" data-nombre="<?php echo $opciones['data'][$i]['nombre']?>" data-descripcion="<?php echo $opciones['data'][$i]['descripcion']?>" data-precio="<?php echo $opciones['data'][$i]['precio']?>" >
 
 
-	<?php echo $opciones['contacto'][$i]['id'] .' '.$opciones['contacto'][$i]['nombre'].': '.$opciones['contacto'][$i]['cantidad']  ?>
+	<?php echo $opciones['data'][$i]['id'] .' '.$opciones['data'][$i]['nombre'].': '.$opciones['data'][$i]['cantidad']  ?>
 		
 
 </a>

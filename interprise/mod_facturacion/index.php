@@ -242,7 +242,7 @@ $data['data'][] = $row;
 	
 
 
-<div class="col-xs-12 col-sm-3">
+<div class="col-xs-12 col-sm-1">
 <div class="form-group">
 
 <input type="text" readonly value="<?php echo $art['reg'][0]['reg_id'] ?>" required class="form-control reg_id" name="reg_id[]" id="reg_id" placeholder="Id">
@@ -252,7 +252,7 @@ $data['data'][] = $row;
 
 
 
-<div class="col-xs-12 col-sm-6">
+<div class="col-xs-12 col-sm-4">
 <div class="form-group">
 
 <input type="text" name="reg_nombre[]"  autocomplete="off" id="reg_nombre" required  class="form-control buscaritems" />
@@ -272,10 +272,37 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-2">
 <div class="form-group">
 
-<input type="text" value="<?php echo $art['reg'][0]['reg_cantidad'] ?>" required class="form-control" name="reg_cantidad[]" id="reg_cantidad" placeholder="Cantidad">
+<input type="number" value="<?php echo $art['reg'][0]['reg_cantidad'] ?>" required class="form-control cantidad" name="reg_cantidad[]" id="reg_cantidad" placeholder="Cantidad">
+
+
+
 </div>
 
 </div>
+
+<div class="col-xs-12 col-sm-2">
+<div class="form-group">
+
+<input type="number" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
+
+
+</div>
+
+</div>
+
+
+
+<div class="col-xs-12 col-sm-2">
+<div class="form-group">
+
+<input type="text" value="<?php echo $art['reg'][0]['reg_subtotal'] ?>"  class="form-control subtotal"  name="reg_subtotal[]" id="reg_subtotal" placeholder="subtotal">
+
+
+</div>
+
+</div>
+
+
 
 <div class="col-xs-12 col-sm-1">
 <div class="form-group">
@@ -293,7 +320,7 @@ $data['data'][] = $row;
 
 <button id="agregar-row" type="button" class="btn bg-green">+ Agregar Items</button>
  
-
+<!-- <button id="subtotal-sum" type="button" class="btn bg-green">+ sumar sub total</button> -->
 
 				
 	</div> <!-- boxreta -->	 
@@ -386,7 +413,7 @@ $(document).ready(function() {
 
 $('#formulario').on('submit',  function(event) {
     event.preventDefault();
- 
+   sumarSubTotales();
 
  $('.reg_id').each(function(idx, el) {
     console.log($(this).val()); 

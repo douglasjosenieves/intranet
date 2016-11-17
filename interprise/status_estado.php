@@ -17,7 +17,7 @@ if ($status == 'ACTIVO') {
 }
 
 
-if ($status == 'PAUSADO') {
+if ($status == 'PAUSADO' or $status == 'ANULADO'  ) {
 
 	$noti = '<span class="label label-danger">'.$status.'</span>';
 }

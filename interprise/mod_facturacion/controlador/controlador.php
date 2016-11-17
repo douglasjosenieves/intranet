@@ -79,8 +79,9 @@ var index = Self.data('index');
 $('.itemsrow:eq( '+index +' ) input[name="reg_nombre[]"]').val(nombre);
 $('.itemsrow:eq( '+index +' ) input[name="reg_id[]"]').val(id);
 $('.itemsrow:eq( '+index +' ) input[name="reg_descripcion[]"]').val(descripcion);
-$('.itemsrow:eq( '+index +' ) input[name="reg_cantidad[]"]').focus();
 
+$('.itemsrow:eq( '+index +' ) input[name="reg_cantidad[]"]').focus();
+$('.itemsrow:eq( '+index +' ) input[name="reg_precio[]"]').val(precio);
 
 
 var Self = $('.itemsrow ul').hide();
@@ -195,7 +196,7 @@ $.ajax({
   url: '../mod_servicios/async/buscar_detalle.php',
   type: 'POST',
  
-  data: {parametro: texto,index: index},
+  data: {parametro: texto, index: index},
 })
 .done(function(data) {
   console.log("success");
@@ -223,12 +224,53 @@ $.ajax({
  
 
 /*========================================================
-=            Valida el producto en el listado            =
+=            sumar sub totales            =
 ========================================================*/
 
+$('#subtotal-sum').on('click', function(event) {
+  event.preventDefault();
+  sumarSubTotales();
+  /* Act on the event */
+});
 
 
-/*=====  End of Valida el producto en el listado  ======*/
+function sumarSubTotales(argument) {
+
+
+ 
+
+
+
+$('.subtotal').each(function () {
+
+var index = $( ".subtotal" ).index( this );
+// getting options from html 
+var Self = $(this);
+var cantidad = $( ".cantidad:eq( "+index +" )" ).val();
+var precio = $( ".precio:eq( "+index +" )" ).val();
+var subtotal = cantidad * precio;
+$( ".subtotal:eq( "+index +" )" ).val(subtotal);
+console.log(index, cantidad );
+
+
+
+
+});
+ 
+
+  
+}
+
+ $("body").on("keyup",".cantidad,.precio",function(event){
+event.preventDefault();
+sumarSubTotales();
+  
+
+  /* Act on the event */
+});
+
+
+/*=====  End of sumar sub totales  ======*/
 
 
 
