@@ -33,7 +33,7 @@ $idusuario=$_REQUEST['usuario'];
 
 
 				<li>
-									<a href="#" title="#" class="clearfix">
+									<a href="reporte-clientes-usuario.php" title="#" class="clearfix">
 										<span class="pull-left"><i class="zmdi zmdi-accounts-add zmdi-hc-fw icon"></i> <span class="label label-info">Nuevo</span> <?php echo $opciones['contacto'][$i]['nombres']  ?></span>
 										<span class="pull-right info"><?php echo $opciones['contacto'][$i]['fecha']  ?></span>
 									</a>

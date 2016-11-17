@@ -202,7 +202,7 @@ $qry = "INSERT INTO `contactos_web` (
  '$pre_informacion',
  '$porque_espana',
  '$inversion',
- '$status',
+ 'FORMULARIO',
  '$tramitido_al_crm',
  '$fecha',
  '$ip',

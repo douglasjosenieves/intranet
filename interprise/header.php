@@ -58,7 +58,7 @@
 <li>
 						<div class="btn-group simpleList list-sm">
 							<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="zmdi zmdi-flag zmdi-hc-fw icon"></i>
+								<i class="zmdi zmdi-notifications-active zmdi-hc-fw icon"></i>
 								<span id="contactos_nuevos_total_user" class="badge"></span>
 							</button>
 
