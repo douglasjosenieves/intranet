@@ -53,6 +53,26 @@
 						</div>
 					</li>
 
+
+
+<li>
+						<div class="btn-group simpleList list-sm">
+							<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="zmdi zmdi-flag zmdi-hc-fw icon"></i>
+								<span id="contactos_nuevos_total_user" class="badge"></span>
+							</button>
+
+							<ul id="contactos_nuevos_user" class="dropdown-menu pull-right">
+							
+								
+							
+							</ul>
+
+						</div>
+					</li>
+
+
+
 						<li>
 						<a href="#"  id="reload" title="Refrescar">
 					<i class="zmdi zmdi-refresh-sync icon"></i>
@@ -74,3 +94,11 @@
 			</div>
 		</div>
 	</header>
+
+	<script type="text/javascript">
+		
+var usuario_id = "<?php echo $_SESSION['usuario']['Id'] ?>";
+
+
+
+	</script>
