@@ -283,7 +283,7 @@ $total_total =  $data['data'][0]['total_total'];
 	<script src="../assets/plugins/wysihtml-master/parser_rules/advanced_and_extended.js"></script>
 	<script src="../assets/plugins/ckeditor/ckeditor.js"></script>
 	<script src="../assets/sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
-	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/app_index.min.js"></script>
 <script src='http:../assets/tinymce/tinymce.min.js'></script>
  
 
