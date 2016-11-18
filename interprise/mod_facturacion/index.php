@@ -283,7 +283,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-2">
 <div class="form-group">
 
-<input type="number" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
+<input type="text" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
 
 
 </div>
@@ -295,7 +295,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-2">
 <div class="form-group">
 
-<input type="text" value="<?php echo $art['reg'][0]['reg_subtotal'] ?>"  class="form-control subtotal"  name="reg_subtotal[]" id="reg_subtotal" placeholder="subtotal">
+<input type="text" value="<?php echo $art['reg'][0]['reg_subtotal'] ?>"  readonly  class="form-control subtotal"  name="reg_subtotal[]" id="reg_subtotal" placeholder="subtotal">
 
 
 </div>
@@ -317,10 +317,40 @@ $data['data'][] = $row;
 
 </div><!-- Container Items -->
 
+<div class="hidden">
+<input type="text" value="" readonly class="form-control"  name="total_parcial" id="total_parcial" placeholder="total_parcial" style="font-weight: bold;">
+<input type="text" value="" readonly  class="form-control"  name="total_tax" id="total_tax" placeholder="total_tax" style="font-weight: bold;">
+<input type="text" value="" readonly class="form-control"  name="total_total" id="total_total" placeholder="total_total" style="font-weight: bold;">
+</div>
 
+<div class="row">
+	
+	<div class="col-md-6"></div>
+	<div class="col-md-6" style="font-size: 16px;font-weight: bold;">
+		
+<div class="row">
+	
+	<div class="col-md-6">TOTAL PARCIAL</div>
+	<div class="col-md-6" id="e_total_parcial">0</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-md-6">TOTAL TAX U/O IVA</div>
+	<div class="col-md-6" id="e_total_tax" >0</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-md-6">TOTAL A CANCELAR</div>
+	<div class="col-md-6" id="e_total_total" >0</div>
+</div>
+
+	</div>
+</div>
 <button id="agregar-row" type="button" class="btn bg-green">+ Agregar Items</button>
  
-<!-- <button id="subtotal-sum" type="button" class="btn bg-green">+ sumar sub total</button> -->
+<!--  <button id="subtotal-sum" type="button" class="btn bg-green">+ sumar sub total</button>  -->
 
 				
 	</div> <!-- boxreta -->	 
@@ -384,7 +414,7 @@ $data['data'][] = $row;
 	<script src="../assets/plugins/wysihtml-master/parser_rules/advanced_and_extended.js"></script>
 	<script src="../assets/plugins/ckeditor/ckeditor.js"></script>
 	<script src="../assets/sweetalert/sweetalert-master/dist/sweetalert.min.js"></script>
-	<script src="../assets/js/app_index.min.js"></script>
+	<script src="../assets/js/app.min.js"></script>
 	  <script src="../assets/js/dropzone.js"></script>
 <script src='http:../assets/tinymce/tinymce.min.js'></script>
  

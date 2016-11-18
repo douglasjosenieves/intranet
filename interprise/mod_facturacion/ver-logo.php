@@ -349,7 +349,7 @@ var docDefinition = {
 	content: [
 		
 
-/*  {
+   {
        image: logo,
 		width: 150
     },
@@ -359,7 +359,7 @@ var docDefinition = {
 { text: emp_dir, fontSize: 8 ,  alignment: 'left'},
 { text: emp_tel, fontSize: 8,  alignment: 'left'},
 { text: emp_email, fontSize: 8,  alignment: 'left'},
-{ text: emp_web, fontSize: 8,  alignment: 'left'},*/
+{ text: emp_web, fontSize: 8,  alignment: 'left'},
 	 
  
 
@@ -411,10 +411,10 @@ var docDefinition = {
 
       layout: {
                                                         hLineWidth: function(i, node) {
-                                                                return (i === 0 || i === node.table.body.length) ? 0 : 0;
+                                                                return (i === 0 || i === node.table.body.length) ? 2 : 1;
                                                         },
                                                         vLineWidth: function(i, node) {
-                                                                return (i === 0 || i === node.table.widths.length) ? 0 : 0;
+                                                                return (i === 0 || i === node.table.widths.length) ? 2 : 1;
                                                         },
                                                         hLineColor: function(i, node) {
                                                                 return (i === 0 || i === node.table.body.length) ? 'black' : 'gray';

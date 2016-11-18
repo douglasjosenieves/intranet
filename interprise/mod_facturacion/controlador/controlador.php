@@ -249,7 +249,10 @@ var Self = $(this);
 var cantidad = $( ".cantidad:eq( "+index +" )" ).val();
 var precio = $( ".precio:eq( "+index +" )" ).val();
 var subtotal = cantidad * precio;
-$( ".subtotal:eq( "+index +" )" ).val(subtotal);
+$( ".subtotal:eq( "+index +" )" ).val(roundToTwo(subtotal));
+
+ 
+
 console.log(index, cantidad );
 
 
@@ -257,11 +260,27 @@ console.log(index, cantidad );
 
 });
  
+var total_parcial = 0;
+$('.subtotal').each(function(){
+    total_parcial += parseFloat(this.value);
+});
 
+$('#total_parcial').val(roundToTwo(total_parcial));
+$('#e_total_parcial').text(roundToTwo(total_parcial));
   
+var iva = total_parcial*12/100
+$('#total_tax').val(roundToTwo(iva));
+$('#e_total_tax').text(roundToTwo(iva));
+
+
+var total_total = total_parcial + iva;
+
+$('#total_total').val(roundToTwo(total_total));
+$('#e_total_total').text(roundToTwo(total_total));
 }
 
- $("body").on("keyup",".cantidad,.precio",function(event){
+
+ $("body").on("change",".cantidad,.precio",function(event){
 event.preventDefault();
 sumarSubTotales();
   
@@ -273,7 +292,9 @@ sumarSubTotales();
 /*=====  End of sumar sub totales  ======*/
 
 
-
+function roundToTwo(num) {    
+    return +(Math.round(num + "e+2")  + "e-2");
+}
   
 
 

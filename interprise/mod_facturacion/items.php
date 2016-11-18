@@ -43,7 +43,7 @@
 <div class="col-xs-12 col-sm-2">
 <div class="form-group">
 
-<input type="number" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
+<input type="text" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
 
 
 </div>
@@ -55,7 +55,7 @@
 <div class="col-xs-12 col-sm-2">
 <div class="form-group">
 
-<input type="text" value="<?php echo $art['reg'][0]['reg_subtotal'] ?>"  class="form-control subtotal"  name="reg_subtotal[]" id="reg_subtotal" placeholder="subtotal">
+<input type="text" value="<?php echo $art['reg'][0]['reg_subtotal'] ?>" readonly  class="form-control subtotal"  name="reg_subtotal[]" id="reg_subtotal" placeholder="subtotal">
 
 
 </div>
