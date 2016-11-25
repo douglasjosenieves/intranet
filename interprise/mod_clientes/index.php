@@ -834,7 +834,7 @@ foreach ($pre_adjunto as $key => $value) {
 
 <?php 
 
-$sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos', 'Artes Gráficas', 'Asegurador', 'Comercio', 'Construcción', 'Decoración', 'Deportes', 'Dietética', 'Electrónica', 'Estética / Cosmética', 'Farmacia', 'Financiero', 'Ganadería', 'Industria Alimentaria', 'Industria Textil', 'Informática', 'Inmobiliario', 'Moda', 'Ocio/Tiempo Libre', 'Restauración', 'Servicios', 'Transporte');
+$sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos', 'Artes Gráficas', 'Asegurador', 'Comercio', 'Construcción', 'Decoración', 'Deportes', 'Dietética', 'Electrónica', 'Estética / Cosmética', 'Farmacia', 'Financiero', 'Ganadería', 'Industria Alimentaria', 'Industria Textil', 'Informática', 'Inmobiliario', 'Moda', 'Ocio/Tiempo Libre', 'Restauración', 'Servicios', 'Transporte', 'Sanidad');
  ?>
 
 
