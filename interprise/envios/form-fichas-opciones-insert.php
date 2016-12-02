@@ -14,6 +14,8 @@
 
 
 require_once __DIR__ . '../../../db_connect.php';
+
+
 //sleep(2);
  
 // connecting to db
@@ -61,18 +63,21 @@ $img2 = $_REQUEST['img2'];
 $comentarios_sobre_negocio_comercial=$_REQUEST['comentarios_sobre_negocio_comercial'];
 $exclusivo=$_REQUEST['exclusivo'];
 
+require_once 'thumbail.php';
 
  
 if (is_array($img )){
 
   foreach( $img  as $key => $n ) {
+
+  	crearThumbnail('../file-upload/'.$img[$key], '../file-upload/tumb/'.$img[$key], 40,40);
  $imgArrreglo .= $img[$key].";";
 }
 }
 
 
 
-if (is_array($img )){
+if (is_array($img2 )){
 foreach( $img2  as $key => $n ) {
  $imgArrreglo2 .= $img2[$key].";";
 }

@@ -85,6 +85,14 @@ $hijos_documentos=$_REQUEST['hijos_documentos'];
 $imagenes=$_REQUEST['imagenes'];
 $procedencia_publicitaria=$_REQUEST['procedencia_publicitaria'];
 
+
+$clave=$_REQUEST['clave'];
+
+$tipo_acceso=$_REQUEST['tipo_acceso'];
+$tipo_cartera=$_REQUEST['tipo_cartera'];
+
+
+
 $opcion1=$_REQUEST['opcion1'];
 $opcion2=$_REQUEST['opcion2'];
 $opcion3=$_REQUEST['opcion3'];
@@ -177,9 +185,11 @@ $qry = "INSERT INTO `contactos_web` (
 `mes_viaje`,
 `anio_viaje`,
 `movil2`,
-`procedencia_publicitaria`
+`procedencia_publicitaria`,
+`clave`,
+`tipo_acceso`,
+`tipo_cartera`
 
-s
 ) VALUES ( 
   '$id',
  '$nombres',
@@ -239,11 +249,14 @@ s
 '$mes_viaje',
 '$anio_viaje',
 '$movil2',
-'$procedencia_publicitaria'
- 
+'$procedencia_publicitaria',
+ '$clave',
+ '$tipo_acceso',
+  '$tipo_cartera'
 
 
 );";
+
 
  
 

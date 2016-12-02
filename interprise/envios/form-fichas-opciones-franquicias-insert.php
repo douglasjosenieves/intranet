@@ -68,10 +68,12 @@ $poblacion_minima=$_REQUEST['poblacion_minima'];
 
 
 $img = $_REQUEST['img'];
+require_once 'thumbail.php';
 
 
 if (is_array($img )){
 foreach( $img  as $key => $n ) {
+	crearThumbnail('../file-upload/'.$img[$key], '../file-upload/tumb/'.$img[$key], 40,40);
  $imgArrreglo .= $img[$key].";";
 }}
 

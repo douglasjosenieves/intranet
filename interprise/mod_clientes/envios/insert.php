@@ -86,11 +86,11 @@ $imagenes=$_REQUEST['imagenes'];
 $procedencia_publicitaria=$_REQUEST['procedencia_publicitaria'];
 
 $clave=$_REQUEST['clave'];
-$clave = md5($clave);
+
 $tipo_acceso=$_REQUEST['tipo_acceso'];
 $tipo_cartera=$_REQUEST['tipo_cartera'];
 
-$clave='827ccb0eea8a706c4c34a16891f84e7b';
+
 
 
 
