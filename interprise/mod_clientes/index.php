@@ -1125,7 +1125,7 @@ $sector_array  = array  ('Agricultura', 'Alimentación', 'Animales Domésticos',
 <label for="basicInput">Tipo de acceso:</label>
 <select name="tipo_acceso" id="tipo_acceso" class="form-control">
 <option value="">- Tipo de acceso -</option>
-<option value="STANDAR">STANDAR</option>
+<option value="STANDARD">STANDARD</option>
 <option value="DELUXE">DELUXE</option>
  
 </select>
