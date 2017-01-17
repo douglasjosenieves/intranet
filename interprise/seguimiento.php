@@ -527,8 +527,25 @@ $(document).ready(function() {
 
 $('#formulario').on('submit', function(e){
 e.preventDefault();
+ 
 
- content();
+swal({
+  title: "Verificar la ortografía?",
+  text: "El seguimiento será guardado en la base de datos y el mismo podrá ser visualizado por otros usuarios y por el cliente, recuerde antes de guardar verificar la ortografía y gramática del mismo!",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#4bae4f",
+  confirmButtonText: "Si, continuar con esto!",
+  cancelButtonText: "No, cancelar!",
+  closeOnConfirm: false,
+  closeOnCancel: false
+},
+function(isConfirm){
+  if (isConfirm) {
+    swal("Enviado!", "Continuar.", "success");
+      
+  
+content();
 
 
 
@@ -594,6 +611,18 @@ swal({
 	console.log("complete");
 	$('#boton').button('reset');
 });
+
+
+  } else {
+    swal("Cancelado", "Cancelar. :)", "error");
+     return false;
+  }
+});
+
+ 
+
+
+ 
 
 });
 
