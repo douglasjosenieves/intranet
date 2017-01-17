@@ -118,7 +118,7 @@ $v=0;
 	/*<option value="ESPANA">España</option>*/
 $teleo ='';
 $teleoid =array();
-				$resulv =  mysql_query("SELECT * FROM usuarios where anulado <> 1 and cargo = 'teleoperador'");
+				$resulv =  mysql_query("SELECT * FROM usuarios where anulado <> 1 ");
 				while($rowv =  mysql_fetch_array($resulv) ) { 
 $teleo .= '<option value="';
 $teleo .= $rowv['id'];
