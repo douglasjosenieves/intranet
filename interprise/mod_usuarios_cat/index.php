@@ -24,26 +24,6 @@ $data['data'][] = $row;
 }
 
 
- 
-			
-$v=0;
-	/*<option value="ESPANA">España</option>*/
-$cat ='';
- 
-				$resulv =  mysql_query("SELECT * FROM usuarios_cat where anulado <> 1 ");
-				while($rowv =  mysql_fetch_array($resulv) ) { 
-$cat .= '<option value="';
-$cat .= $rowv['id'];
-$cat .= '">';
-$cat .= strtoupper($rowv['nombre']);
-$cat .= '</option>';
- 
-
-            
-            //$teleoperador['teleoperador'][]=$row;
-					$v++;}
-
-
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -179,31 +159,18 @@ $cat .= '</option>';
 
 
  	
- 	<div class="col-xs-12 col-sm-4">
+  
+ 	
+ 	
+ 	<div class="col-xs-12 col-sm-8">
  	<div class="form-group">
- 	<label for="basicInput">Apellido</label>
- 	<input type="text" value="<?php echo $data['data'][0]['apellido'] ?>" required class="form-control" name="apellido" id="apellido" placeholder="Apellido">
+ 	<label for="basicInput">Descripción</label>
+ 	<input type="text" value="<?php echo $data['data'][0]['descripcion'] ?>" required class="form-control" name="descripcion" id="descripcion" placeholder="Descripción">
  	</div>
  	</div>
  	
 
-<div class="col-xs-12 col-sm-3 i">
-<div class="form-group">
-<label>Sexo?</label>
-<select id="sexo"  required name="sexo" class="js-select ">
- <option value="" >- Select -</option>
  
-<option value="F">FEMENINO</option>
-<option value="M">MASCULINO</option>								
-
- 
-
-
-
-</select>
-</div>
-</div>
-
 
 
 
@@ -214,138 +181,13 @@ $cat .= '</option>';
  </div>
 
 
- <div class="row">
- 	
-
-
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Telefono</label>
-<input type="text" value="<?php echo $data['data'][0]['tel'] ?>" class="form-control" name="tel" id="tel" placeholder="Telefono">
-</div>
-</div>
-
-
-
-
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Foto Url mujer.jpg | hombre.jpg</label>
-<input type="text" value="<?php echo $data['data'][0]['foto'] ?>" class="form-control" name="foto" id="foto" placeholder="Foto">
-</div>
-</div>
+  
 
 
 
 
 
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Color #fff </label>
-<input type="text" value="<?php echo $data['data'][0]['color'] ?>" class="form-control" name="color" id="color" placeholder="Color">
-</div>
-</div>
 
-
-
-
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Pais</label>
-<input type="text" value="<?php echo $data['data'][0]['pais'] ?>" class="form-control" name="pais" id="pais" placeholder="Pais">
-</div>
-</div>
-
-
- </div>
-
-
-<div class="row">
-	
-
-
-	
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Email (Usuario del Gea)</label>
-<input type="email" value="<?php echo $data['data'][0]['email'] ?>" required class="form-control" name="email" id="email" placeholder="Email">
-</div>
-</div>
-	
-
-
-
-	
-	<div class="col-xs-12 col-sm-6">
-	<div class="form-group">
-	<label for="basicInput">Clave</label>
-	<?php  if ($_GET['tipo']=='editar') { $readonly = 'readonly'; ?>
-	<input type="text" <?php echo $readonly ?> value="<?php echo $data['data'][0]['clave'] ?>" required class="form-control" name="clave" id="clave" placeholder="Clave">
-	<?php  } else { ?>
-	<input type="text"  value="<?php echo $data['data'][0]['clave'] ?>" required class="form-control" name="clave" id="clave" placeholder="Clave">
-	<?php } ?>
-	</div>
-	</div>
-	
-
-	
-
-
-</div>
-
-
-<div class="row">
-	
-<div class="col-xs-12 col-sm-4 i">
-<div class="form-group">
-<label>Tipo</label>
-<select id="tipo"  required name="tipo" class="js-select ">
- <option value="" >- Select -</option>
- 
-<option value="operador">OPERADOR</option>
- 
-<option value="administrador">ADMINISTRADOR</option>
- 
- 
-
-
-
-</select>
-</div>
-</div>
-
-
-
-
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Cargo</label>
-<input type="text" value="<?php echo $data['data'][0]['cargo'] ?>" required class="form-control" name="cargo" id="cargo" placeholder="Cargo">
-</div>
-</div>
-
-
-
-<div class="col-xs-12 col-sm-4 i">
-<div class="form-group">
-<label>Grupo</label>
-<select id="id_grupo"  required name="id_grupo" class="js-select ">
- <option value="" >- Select -</option>
- 
-<?php  echo $cat ?>
- 
-
-
-
-</select>
-</div>
-</div>
-
-
-
-
-
-</div>
 
 
 
@@ -480,7 +322,6 @@ $(document).ready(function() {
 
 	$('#tipo').val('<?php echo $data['data'][0]['tipo'] ?>').change();
 	$('#anulado').val('<?php echo $data['data'][0]['anulado'] ?>').change();
-	$('#id_grupo').val('<?php echo $data['data'][0]['id_grupo'] ?>').change();
 });
 
 

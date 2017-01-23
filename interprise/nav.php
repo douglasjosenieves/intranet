@@ -140,6 +140,35 @@
 						 
 					</ul>
 				</li>
+
+
+
+<?php if ($_SESSION['usuario']['Tipo'] == 'administrador'): ?>
+	
+
+
+
+	<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-accounts-add zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Usuarios<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_usuarios/index.php" title="Administracion de contactos">Nuevo</a> </li> 
+<li><a href="<?php echo BASE_URL ?>mod_usuarios/reporte.php" title="Administracion de contactos">Ver</a> </li> 
+	   <li class="sub js-submenu">
+					<div class="sub-menu"><i class="zmdi zmdi-layers zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Categorias<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_usuarios_cat/index.php" >Nuevo</a></li>
+<li><a href="<?php echo BASE_URL ?>mod_usuarios_cat/reporte.php" >Ver</a></li>
+
+			</ul>
+			</li>	
+			</ul>
+			</li>	
+<?php endif ?>
+
+
+
+
+
 			</ul>
 		</nav>
 		

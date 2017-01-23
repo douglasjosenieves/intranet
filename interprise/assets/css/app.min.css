@@ -114,3 +114,8 @@
 .label-prosenseguimiento {
   background-color: #9b59b6;
 }
+.sub-menu {
+    display: block;
+    font-weight: 700;
+    padding: 15px 18px 15px 15px;
+}
