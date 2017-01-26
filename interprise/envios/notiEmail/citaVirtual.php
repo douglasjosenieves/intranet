@@ -42,7 +42,7 @@ $ejecutivoTel = $_REQUEST['ejecutivoTel'];
 $id_contacto=$_REQUEST['id_contacto'];
 $elaborado_por =  $_REQUEST['elaborado_por'];
 $ejecutivoMadrid = 'Elvin Castillo';
-$montoCita = '45.000 BsF';
+$montoCita = '60.000 BsF';
 
 
 $nombrecompleto =  ucwords($nombres.' '.$apellidos);
