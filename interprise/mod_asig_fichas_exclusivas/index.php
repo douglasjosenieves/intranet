@@ -198,7 +198,7 @@ $id_asig[] = $row['id'];
 
 
 
-
+<?php if ($_GET['tipo']=='editar'): ?>
 <div class="box rte">
 	
 
@@ -279,6 +279,7 @@ $contact['contact'][] = $row;
 
 
 </div>
+<?php endif ?>
 
 <!--==============================
 =            COMANDOS            =
@@ -310,12 +311,7 @@ $contact['contact'][] = $row;
 
 <button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button>
 
-<?php else: ?>
-
-		<div class="alert alert-danger alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<strong>Complete el paso 1</strong> - Primero busque una opcion para asignar!
-					</div>
+ 
 
 <?php endif ?>
 
