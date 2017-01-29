@@ -1,6 +1,31 @@
 
 
 <?php 
+require_once __DIR__ . '../../../../db_connect.php';
+//sleep(2);
+ 
+// connecting to db
+$db = new DB_CONNECT();
+//sleep(10);
+mysql_query("SET NAMES utf8");
+mysql_query("SET CHARACTER_SET utf");   
+
+setlocale(LC_TIME, 'es_VE'); # Localiza en español es_Venezuela
+date_default_timezone_set('America/Caracas');
+$fecha = date("Y-m-d H:i:s");
+
+ 
+
+ 
+$nombres = 'Douglas';
+$apellidos = 'Nieves';
+$email = "douglasjosenieves@gmail.com";
+$fechaCita = '24/09/2016 09:00';
+$ejecutivoCaracas ='Sr. Erick Lárez';
+$ejecutivoMadrid = 'Sr. Elvin Castillo';
+$emailAsesor= 'erick.larez@cohenyaguirre.es';
+$montoCita = '45.000 BsF';
+$id_contacto= '5';
 
 
 require('../../envios/notiEmail/PHPMailer-master/PHPMailerAutoload.php');
@@ -66,7 +91,7 @@ $mail->Password = EMAIL_PASS;
 if(!$mail->Send()) {
 echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {
-//echo 'Message sent!';
+$resul = 1;
 
 /*====================================================================
 =            Aqui va el inser del mensaje en seguimientos            =
@@ -95,7 +120,7 @@ VALUES (
 '$elaborado_por');";
 
 
-//$resul = mysql_query($qry);
+$resul += mysql_query($qry);
 
 //echo $qry;
 
@@ -105,7 +130,7 @@ VALUES (
 
 }
 
-
+echo $resul;
 
 
 
