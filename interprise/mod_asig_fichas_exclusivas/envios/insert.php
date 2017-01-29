@@ -48,7 +48,17 @@ VALUES
 $resul = mysql_query($qry);
 	
 
+ if ($notificar[$key]!='') {
  
+ /*$nombres = $nombres_cliente[$key];
+ $apellidos = $apellidos_cliente[$key];
+ $email = $email_cliente[$key];
+ $id_contacto = $id_cliente[$key];
+ $elaborado_por= $ins_user;
+ require_once 'notificacion.php';
+ */
+ 	
+ }
 
 
 
