@@ -25,8 +25,12 @@
 							<li><a href="<?php echo BASE_URL ?>attClientes.php" title="Atencion al cliente">Att al cliente</a>
 							<li><a href="<?php echo BASE_URL ?>seguimiento.php" title="#">Seguimientos</a>
 						<li><a href="<?php echo BASE_URL ?>forms-cotizaciones.php" title="#">Cotizaciones online</a>
-				<li><a href="<?php echo BASE_URL ?>forms-fichas-opciones.php" title="#">Fichas de Opciones</a>
+<li><a href="<?php echo BASE_URL ?>forms-fichas-opciones.php" title="#">Fichas de Opciones</a>
 				<li><a href="<?php echo BASE_URL ?>forms-fichas-opciones-franquicias.php" title="#">F.D.O Franquicias</a>
+
+<li><a href="<?php echo BASE_URL ?>mod_asig_fichas_exclusivas/index.php" title="#">Asig F Exclusivas</a>
+
+
 				<!-- <li><a href="<?php// echo BASE_URL ?>documentos.php" title="#">Documentos</a>  -->
 <li><a href="<?php echo BASE_URL ?>listado-whatsapp.php" title="#">Listado whatsapp</a>   
 
