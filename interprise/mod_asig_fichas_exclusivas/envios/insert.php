@@ -114,10 +114,10 @@ $mail->MsgHTML($body);
  
 /* Sustituye  (CuentaDestino )  por la cuenta a la que deseas enviar por ejem. admin@domitienda.com  */
 $mail->AddAddress($email, $nombrecompleto);
-/*$mail->AddBCC("info@cohenyaguirre.tk");
+$mail->AddBCC("info@cohenyaguirre.tk");
 $mail->AddBCC("info@cohenyaguirre.es");
 $mail->AddBCC("ruben.arismendi@cohenyaguirre.es");
-$mail->addReplyTo('info@cohenyaguirre.es', 'Cohen y Aguirre');*/
+$mail->addReplyTo('info@cohenyaguirre.es', 'Cohen y Aguirre');
 $mail->SMTPAuth = true;
 
 /* Sustituye (CuentaDeEnvio )  por la misma cuenta que usaste en la parte superior en este caso  prueba@domitienda.com  y sustituye (ContraseñaDeEnvio)  por la contraseña que tenga dicha cuenta VxjjYi*/

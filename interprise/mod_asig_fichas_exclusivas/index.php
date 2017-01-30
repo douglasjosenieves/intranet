@@ -224,7 +224,7 @@ $id_asig[] = $row['id'];
 
 <?php  
 $x= 0;
-$resul1 =  mysql_query("SELECT * FROM  contactos_web where status = 'CLIENTE' and anulado <> 1");
+$resul1 =  mysql_query("SELECT * FROM  contactos_web where status = 'CLIENTE' OR status =  'ESTUDIO' and anulado <> 1");
 $contact = array();
 while($row =  mysql_fetch_array($resul1) ) {
 $contact['contact'][] = $row;
