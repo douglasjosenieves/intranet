@@ -235,9 +235,12 @@ $contact['contact'][] = $row;
 								<tr >
 									<th scope="row"><?php echo $contact['contact'][$x]['id'] ?></th>
 									<td><?php echo $contact['contact'][$x]['nombres'].' '. $contact['contact'][$x]['apellidos']   ?>
-										
+
+
+
+<input type="hidden" name="id_cliente[]" value="<?php echo $contact['contact'][$x]['id'] ?>">										
 <input type="hidden" name="nombre_cliente[]" value="<?php echo $contact['contact'][$x]['nombres'] ?>">
-<input type="hidden" name="apellido_cliente[]" value="<?php echo $contact['contact'][$x]['apellido'] ?>">
+<input type="hidden" name="apellido_cliente[]" value="<?php echo $contact['contact'][$x]['apellidos'] ?>">
 
 <input type="hidden" name="email_cliente[]" value="<?php echo $contact['contact'][$x]['email']   ?>">
 
@@ -250,7 +253,7 @@ $contact['contact'][] = $row;
 									<td class="hidden"><?php echo $contact['contact'][$x]['email'] ?></td>
 									<td class="checkboxes checkboxes-sm">
 										<label>
-											<input class="imput_checkbox"  name="id_cliente[]" data-cliente="<?php echo $contact['contact'][$x]['id'] ?>" value="<?php echo $contact['contact'][$x]['id'] ?>" type="checkbox">
+											<input class="imput_checkbox" value="<?php echo $contact['contact'][$x]['id'] ?>"  name="asignar[]" data-cliente="<?php echo $contact['contact'][$x]['id'] ?>" value="" type="checkbox">
 
 
 
