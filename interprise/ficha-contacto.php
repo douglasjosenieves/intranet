@@ -1125,7 +1125,7 @@ myDropzone = new Dropzone("#dZUpload", {
     url: 'upload-documentos-contactos.php',
     dictDefaultMessage: "your custom message",
     autoProcessQueue:true, //BARRRA DE CARGA 
-    maxFilesize: 30, // MB
+    maxFilesize: 500, // MB
     maxFiles: 200, //CANTIDAD DE ARCHIVOS PERMITIDOS
     addRemoveLinks: true, ///MOSTRAR EL LINK DE REMOVER IMAGEN
     acceptedFiles: 'image/*,.pdf,.doc,.docx,.xlsx,.xls', //SOLO ACEPTAR IMAGEN FORMATO

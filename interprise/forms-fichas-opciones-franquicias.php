@@ -561,7 +561,7 @@ jQuery(document).ready(function() {
     url: 'upload.php',
     dictDefaultMessage: "your custom message",
     autoProcessQueue:true, //BARRRA DE CARGA 
-    maxFilesize: 1, // MB
+    maxFilesize: 500, // MB
     maxFiles: 2, //CANTIDAD DE ARCHIVOS PERMITIDOS
     addRemoveLinks: true, ///MOSTRAR EL LINK DE REMOVER IMAGEN
     acceptedFiles: 'image/*', //SOLO ACEPTAR IMAGEN FORMATO
