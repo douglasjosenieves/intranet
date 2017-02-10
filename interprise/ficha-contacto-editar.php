@@ -879,6 +879,69 @@ foreach ($pre_hijos as $key => $value) {
 
 <div class="doc_ajuntos">
 <h3>Documentos adjuntos</h3>
+
+<!--==============================================
+=            CARGA DE DOCUMENTOS 2017            =
+===============================================-->
+<?php 
+ $nombre = $contactos_web[0]['nombres'] ;
+ $apellido = $contactos_web[0]['apellidos'] ;
+$nombre_carpeta= $id;
+$carpeta = 'file-upload/Documentos-contactos2017/'.$nombre_carpeta.'';
+if (!file_exists($carpeta)) {
+    mkdir($carpeta, 0777, true);
+
+$carpetas_raiz = ['Pagos', 'Contratos', 'Fichas - Perfil y prioridades', 'Documentacion personal', 'Residencia legal', 'Asesoramiento de inversion', 'Otros'];
+
+$subcarpetas_doc_legal = ['Antecedentes penales', 'Acta de matrimonio', 'Partidas de nacimiento', 'Pasaportes', 'Titulos universitarios o formacion'];
+
+
+
+foreach ($carpetas_raiz as $key => $value) {
+$carpetaRaiz = 'file-upload/Documentos-contactos2017/'.$nombre_carpeta.'/'.$value.'';
+mkdir($carpetaRaiz, 0777, true);
+
+}
+foreach ($subcarpetas_doc_legal as $key => $value) {
+$carpetasSub = 'file-upload/Documentos-contactos2017/'.$nombre_carpeta.'/Documentacion personal/'.$value.'';
+mkdir($carpetasSub, 0777, true);
+
+}
+
+
+
+$file=fopen("".$carpeta."/info.txt","a") or die("Problemas");
+  //vamos añadiendo el contenido
+fputs($file,"Id:".$id." ");
+fputs($file,"\n");
+fputs($file,"Nombre: ".$nombre.' '.$apellido."");
+fputs($file,"\n");
+fputs($file,"CRM");
+fclose($file);
+chmod("".$carpeta."/info.txt", 0600);
+}
+
+
+
+ ?>
+
+
+
+
+
+<?php if ($_SESSION['usuario']['Tipo'] == 'administrador'): ?>
+<iframe width="100%" height="300px" src="file-upload/Documentos-contactos2017/index.php#<?php echo $nombre_carpeta ?>"
+></iframe>
+<?php else: ?>
+<iframe width="100%" height="300px" src="file-upload/Documentos-contactos2017/index_lectura.php#<?php echo $nombre_carpeta ?>"
+></iframe>	
+<?php endif ?>
+
+ 
+<!--====  End of CARGA DE DOCUMENTOS 2017  ====-->
+
+
+
 <?php $pre_adjunto = unserialize($contactos_web[0]['imagenes']) ;
 
 if  (is_array($pre_adjunto )){
