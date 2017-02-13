@@ -370,6 +370,20 @@ header('Location: ../index.php');
 				<h2 class="boxHeadline">Datos personales y profesionales</h2>
 					<h3 class="boxHeadlineSub">Formulario.</h3>
 
+
+
+<div class="row">
+	
+
+	
+	<div class="col-xs-12 col-sm-4">
+	<div class="form-group">
+	<label for="basicInput">Fecha Contratación</label>
+	<input type="date" value="<?php echo $ficha['ficha_contacto'][0]['fecha_contratacion'] ?>"  class="form-control" name="fecha_contratacion" id="fecha_contratacion" placeholder="Fecha Contratación">
+	</div>
+	</div>
+		
+</div>
 					<div class="row">
 						
 

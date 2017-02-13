@@ -416,6 +416,19 @@ $data['data'][] = $row;
 				<h2 class="boxHeadline">Datos personales y profesionales</h2>
 					<h3 class="boxHeadlineSub">Formulario.</h3>
 
+					
+<div class="row">
+	
+
+	
+	<div class="col-xs-12 col-sm-4">
+	<div class="form-group">
+	<label for="basicInput">Fecha Contratación</label>
+	<input type="date" value="<?php echo $data['data'][0]['fecha_contratacion'] ?>"  class="form-control" name="fecha_contratacion" id="fecha_contratacion" placeholder="Fecha Contratación">
+	</div>
+	</div>
+		
+</div>
 					<div class="row">
 						
 
@@ -791,7 +804,7 @@ foreach ($pre_hijos as $key => $value) {
 <hr>
 
 <div class="doc_ajuntos">
-<h3>Documentos adjuntos</h3>
+<h3>Documentos adjuntos PUBLICOS</h3>
 
  
 <!--==============================================
@@ -840,9 +853,6 @@ chmod("".$carpeta."/info.txt", 0600);
  ?>
 
 
-
-
-
 <?php if ($_SESSION['usuario']['Tipo'] == 'administrador'): ?>
 <iframe width="100%" height="300px" src="../file-upload/Documentos-contactos2017/index.php#<?php echo $nombre_carpeta ?>"
 ></iframe>
@@ -856,6 +866,72 @@ chmod("".$carpeta."/info.txt", 0600);
 
  
 <!--====  End of CARGA DE DOCUMENTOS 2017  ====-->
+
+<h3>Documentos adjuntos PRIVADOS</h3>
+
+<!--==============================================
+=            CARGA DE DOCUMENTOS 2017            =
+===============================================-->
+<?php 
+ $nombre = $contactos_web[0]['nombres'] ;
+ $apellido = $contactos_web[0]['apellidos'] ;
+$nombre_carpeta= $id;
+$carpeta = '../file-upload/Documentos-contactos2017-privados/'.$nombre_carpeta.'';
+if (!file_exists($carpeta)) {
+    mkdir($carpeta, 0777, true);
+
+$carpetas_raiz = ['Pagos', 'Contratos', 'Fichas - Perfil y prioridades', 'Documentacion personal', 'Residencia legal', 'Asesoramiento de inversion', 'Otros'];
+
+$subcarpetas_doc_legal = ['Antecedentes penales', 'Acta de matrimonio', 'Partidas de nacimiento', 'Pasaportes', 'Titulos universitarios o formacion'];
+
+
+
+foreach ($carpetas_raiz as $key => $value) {
+$carpetaRaiz = '../file-upload/Documentos-contactos2017-privados/'.$nombre_carpeta.'/'.$value.'';
+mkdir($carpetaRaiz, 0777, true);
+
+}
+foreach ($subcarpetas_doc_legal as $key => $value) {
+$carpetasSub = '../file-upload/Documentos-contactos2017-privados/'.$nombre_carpeta.'/Documentacion personal/'.$value.'';
+mkdir($carpetasSub, 0777, true);
+
+}
+
+
+
+$file=fopen("".$carpeta."/info.txt","a") or die("Problemas");
+  //vamos añadiendo el contenido
+fputs($file,"Id:".$id." ");
+fputs($file,"\n");
+fputs($file,"Nombre: ".$nombre.' '.$apellido."");
+fputs($file,"\n");
+fputs($file,"CRM");
+fclose($file);
+chmod("".$carpeta."/info.txt", 0600);
+}
+
+
+
+ ?>
+
+<?php if ($_SESSION['usuario']['Tipo'] == 'administrador'): ?>
+<iframe width="100%" height="300px" src="../file-upload/Documentos-contactos2017-privados/index.php#<?php echo $nombre_carpeta ?>"
+></iframe>
+<?php else: ?>
+<!-- <iframe width="100%" height="300px" src="../file-upload/Documentos-contactos2017/index_lectura.php#<?php echo $nombre_carpeta ?>" -->
+<iframe width="100%" height="300px" src="../file-upload/Documentos-contactos2017-privados/index.php#<?php echo $nombre_carpeta ?>"
+></iframe>
+></iframe>	
+<?php endif ?>
+
+
+
+
+ 
+<!--====  End of CARGA DE DOCUMENTOS 2017  ====-->
+
+
+
 
 
 

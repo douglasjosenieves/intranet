@@ -10,9 +10,9 @@ Liscense: MIT
 error_reporting( error_reporting() & ~E_NOTICE );
 
 //Security options
-$allow_delete = true; // Set to false to disable delete button and delete POST request.
-$allow_create_folder = true; // Set to false to disable folder creation
-$allow_upload = true; // Set to true to allow upload files
+$allow_delete = false; // Set to false to disable delete button and delete POST request.
+$allow_create_folder = false; // Set to false to disable folder creation
+$allow_upload = false; // Set to true to allow upload files
 $allow_direct_link = true; // Set to false to only allow downloads and not direct link
 
 

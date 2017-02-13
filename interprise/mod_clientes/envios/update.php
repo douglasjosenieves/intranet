@@ -95,6 +95,8 @@ $mes_viaje=$_REQUEST['mes_viaje'];
 $anio_viaje=$_REQUEST['anio_viaje'];
 $movil2=$_REQUEST['movil2'];
 
+$fecha_contratacion=$_REQUEST['fecha_contratacion'];
+
 
 $opcion1=$_REQUEST['opcion1'];
 $opcion2=$_REQUEST['opcion2'];
@@ -149,6 +151,7 @@ $qry = "UPDATE `contactos_web` SET
 `editado_por`= '$editado_por', 
 `editado_fecha`= '$editado_fecha', 
 `anulado`= '$anulado', 
+`fecha_contratacion`= '$fecha_contratacion', 
 `documento`= '$documento', 
 `cliente`= '$cliente', 
 `fecha_nacimiento`= '$fecha_nacimiento', 

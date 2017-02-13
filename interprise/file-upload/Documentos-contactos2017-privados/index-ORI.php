@@ -376,7 +376,7 @@ $(function(){
 	}
 	function renderBreadcrumbs(path) {
 		var base = "",
-			$html = $('<div/>').append( $('<a href=#></a></div>') );
+			$html = $('<div/>').append( $('<a href=#>Home</a></div>') );
 		$.each(path.split('/'),function(k,v){
 			if(v) {
 				$html.append( $('<span/>').text(' ▸ ') )

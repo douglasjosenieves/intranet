@@ -90,7 +90,7 @@ $clave=$_REQUEST['clave'];
 
 $tipo_acceso=$_REQUEST['tipo_acceso'];
 $tipo_cartera=$_REQUEST['tipo_cartera'];
-
+$fecha_contratacion=$_REQUEST['fecha_contratacion'];
 
 
 $opcion1=$_REQUEST['opcion1'];
@@ -140,6 +140,7 @@ $qry = "INSERT INTO `contactos_web` (
 `ip`,
 `elaborado_por`,
 `anulado`,
+`fecha_contratacion`,
 `documento`,
 `cliente`,
 `fecha_nacimiento`,
@@ -207,6 +208,7 @@ $qry = "INSERT INTO `contactos_web` (
  '$elaborado_por',
 
  '$anulado',
+  '$fecha_contratacion',
   '$documento',
   '$cliente',
  '$fecha_nacimiento',
