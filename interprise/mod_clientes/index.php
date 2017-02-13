@@ -839,8 +839,11 @@ chmod("".$carpeta."/info.txt", 0600);
 <iframe width="100%" height="300px" src="../file-upload/Documentos-contactos2017/index.php#<?php echo $nombre_carpeta ?>"
 ></iframe>
 <?php else: ?>
-<iframe width="100%" height="300px" src="../file-upload/Documentos-contactos2017/index_lectura.php#<?php echo $nombre_carpeta ?>"
-></iframe>	
+<!-- <iframe width="100%" height="300px" src="../file-upload/Documentos-contactos2017/index_lectura.php#<?php echo $nombre_carpeta ?>"
+></iframe>	 -->
+
+<iframe width="100%" height="300px" src="../file-upload/Documentos-contactos2017/index.php#<?php echo $nombre_carpeta ?>"
+></iframe>
 <?php endif ?>
 
  
