@@ -1,0 +1,12 @@
+{
+    "name": "tuweblink/intranet",
+    "description": "crm",
+    "type": "y",
+    "require": {
+        "raveren/kint": "^1.0",
+        "monolog/monolog": "^1.22",
+        "dompdf/dompdf": "^0.7.0"
+    },
+    "license": "project",
+    "minimum-stability": "beta"
+}
