@@ -133,7 +133,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-4 col-sm-offset-2">
 <div class="form-group">
 <label for="basicInput">Buscar:</label>
-<input type="text" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
+<input type="text" autocomplete="off" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
 </div>
 
 <div >
@@ -713,27 +713,30 @@ $data['data'][] = $row;
 <h2 class="boxHeadline">Numero de hijos.</h2>
 <button type="button" id="agregar_hijos" class="btn bg-green">Agregar <i class="fa fa-plus"></i></button>
 <button type="button" id="remove_hijos" class="btn bg-red">Remover <i class="fa fa-eraser"></i></button>
-<div id="hijos" class="row">
-	
 
-<?php if ($_GET['tipo']=='editar') {
-	
-require_once 'hijos.php';
+<?php 
 
-}
+$pre_hijos = unserialize($data['data'][0]['hijos_nombre']) ;
+$pre_apellidos = unserialize($data['data'][0]['hijos_apellidos']) ;
+$pre_nacimiento = unserialize($data['data'][0]['hijos_fecha_nacimiento']) ;
+$pre_documentos = unserialize($data['data'][0]['hijos_documentos']) ;
 
-else {
+//print_r($pre_hijos);
+if (is_array($pre_hijos)){
+foreach ($pre_hijos as $key => $value) {
+//	echo $pre_hijos[$key];
+//	echo $pre_apellidos[$key];
+	//echo $pre_nacimiento[$key];
+	//echo $pre_documentos[$key];
+
+			?>
 
 
- ?>
-
-
-
-<div class="item_hijos">
+			<div class="phpconsulta item_hijos">
 	<div class="col-xs-12 col-sm-3">
 								<div class="form-group">
 									<label for="basicInput">Hijo Nombre</label>
-			<input type="text" value=""  class="form-control" name="hijos_nombre[]" id="hijos_nombre[]" placeholder="Hijo Nombre">
+			<input type="text" value="<?php echo $pre_hijos[$key]; ?>"  class="form-control" name="hijos_nombre[]" id="hijos_nombre[]" placeholder="Hijo Nombre">
 								</div>
 							</div>
 
@@ -742,7 +745,7 @@ else {
 								<div class="col-xs-12 col-sm-3">
 															<div class="form-group">
 																<label for="basicInput">Hijo Apellido</label>
-										<input type="text" value=""  class="form-control" name="hijos_apellidos[]" id="hijos_apellidos[]" placeholder="Hijo Apellido">
+										<input type="text" value="<?php echo $pre_apellidos[$key]; ?>"  class="form-control" name="hijos_apellidos[]" id="hijos_apellidos[]" placeholder="Hijo Apellido">
 															</div>
 														</div>
 							
@@ -752,7 +755,7 @@ else {
 	<div class="col-xs-12 col-sm-3">
 								<div class="form-group">
 									<label for="basicInput">Hijo fecha de nacimiento</label>
-			<input type="date" value=""  class="form-control" name="hijos_fecha_nacimiento[]" id="hijos_fecha_nacimiento[]" placeholder="Hijo fecha de nacimiento">
+			<input type="date" value="<?php echo $pre_nacimiento[$key]; ?>"  class="form-control" name="hijos_fecha_nacimiento[]" id="hijos_fecha_nacimiento[]" placeholder="Hijo fecha de nacimiento">
 								</div>
 							</div>
 
@@ -762,15 +765,20 @@ else {
 								<div class="col-xs-12 col-sm-3">
 															<div class="form-group">
 																<label for="basicInput">Hijo documento</label>
-										<input type="text" value=""  class="form-control" name="hijos_documentos[]" id="hijos_documentos[]" placeholder="Hijo documento">
+										<input type="text" value="<?php echo $pre_documentos[$key]; ?>"  class="form-control" name="hijos_documentos[]" id="hijos_documentos[]" placeholder="Hijo documento">
 															</div>
 														</div>
 
+
+</div><!-- php consual -->
+
+
+<?php }}
+ ?>
+
+<div id="hijos" class="row">
 </div>
 
-<?php  } ?>
-
-</div>
 							
 <div class="row" id="mas_hijos">
 	
@@ -1473,8 +1481,8 @@ $('#agregar_hijos').on('click',  function(event) {
 console.log('Le di clck a agregar hijos');
 
 
-var data = $('#hijos').html();
-$('#mas_hijos').append(data).show('slow');
+$.get("forms-contacto-hijos.php"   ,function (dados) { 
+$("#hijos").append(dados);});
 	/* Act on the event */
 });
 
@@ -1488,11 +1496,10 @@ console.log('Le di clck a remove hijos');
  
 console.log(n);
 
-if (n>1) {
-$('.item_hijos:last').remove();
-}
-});
 
+$('.item_hijos:last').remove();
+
+});
 	
 });
  
