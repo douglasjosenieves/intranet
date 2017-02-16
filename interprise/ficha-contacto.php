@@ -382,8 +382,23 @@ header('Location: ../index.php');
 	<input type="date" value="<?php echo $ficha['ficha_contacto'][0]['fecha_contratacion'] ?>"  class="form-control" name="fecha_contratacion" id="fecha_contratacion" placeholder="Fecha Contratación">
 	</div>
 	</div>
+
+
+<div class="col-md-6">
+<div class="form-field-wrapper">
+<label for="basicInput">Nacionalidad:</label>
+<select name="nacionalidad" id="nacionalidad" class="form-control">
+<option value="">- Nacionalidad -</option>
+<option value="EUROPEO">EUROPEO</option>
+<option value="NOEUROPEO">NOEUROPEO</option>
+ 
+</select>
+</div>
+</div>
+
 		
 </div>
+
 					<div class="row">
 						
 

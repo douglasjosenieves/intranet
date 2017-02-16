@@ -427,6 +427,18 @@ $data['data'][] = $row;
 	<input type="date" value="<?php echo $data['data'][0]['fecha_contratacion'] ?>"  class="form-control" name="fecha_contratacion" id="fecha_contratacion" placeholder="Fecha Contratación">
 	</div>
 	</div>
+
+	<div class="col-md-6">
+<div class="form-field-wrapper">
+<label for="basicInput">Nacionalidad:</label>
+<select name="nacionalidad" id="nacionalidad" class="form-control">
+<option value="">- Nacionalidad -</option>
+<option value="EUROPEO">EUROPEO</option>
+<option value="NOEUROPEO">NOEUROPEO</option>
+ 
+</select>
+</div>
+</div>
 		
 </div>
 					<div class="row">
@@ -1404,6 +1416,7 @@ $(document).ready(function() {
 $('#procedencia_publicitaria').val('<?php echo $data['data'][0]['procedencia_publicitaria'] ?>').change();	
 $('#tipo_acceso').val('<?php echo $data['data'][0]['tipo_acceso'] ?>').change();
 $('#tipo_cartera').val('<?php echo $data['data'][0]['tipo_cartera'] ?>').change();
+$('#nacionalidad').val('<?php echo $data['data'][0]['nacionalidad'] ?>').change();
 
 try {
 

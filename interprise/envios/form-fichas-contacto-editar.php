@@ -91,7 +91,7 @@ $clave=$_REQUEST['clave'];
 $tipo_acceso=$_REQUEST['tipo_acceso'];
 $tipo_cartera=$_REQUEST['tipo_cartera'];
 $fecha_contratacion=$_REQUEST['fecha_contratacion'];
-
+$nacionalidad=$_REQUEST['nacionalidad'];
 $mes_viaje=$_REQUEST['mes_viaje'];
 $anio_viaje=$_REQUEST['anio_viaje'];
 $movil2=$_REQUEST['movil2'];
@@ -150,6 +150,7 @@ $qry = "UPDATE `contactos_web` SET
 `editado_por`= '$editado_por', 
 `editado_fecha`= '$editado_fecha', 
 `fecha_contratacion`= '$fecha_contratacion', 
+`nacionalidad`= '$nacionalidad', 
 `anulado`= '$anulado', 
 `documento`= '$documento', 
 `cliente`= '$cliente', 

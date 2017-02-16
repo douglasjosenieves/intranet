@@ -49,3 +49,5 @@ db_config.php
 *.jpg
 
 /vendor/
+/interprise/logs/
+
