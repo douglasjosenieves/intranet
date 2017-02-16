@@ -25,7 +25,7 @@ require_once '../../vendor/autoload.php';
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Documentos Auto Demo</title>
+	<title>Documentos</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -87,8 +87,8 @@ require_once '../../vendor/autoload.php';
 				</ol>
 				
 				<div class="box rte">
-					<h2 class="boxHeadline">Titulo</h2>
-					<h3 class="boxHeadlineSub">Subtitulo</h3>
+					<h2 class="boxHeadline">Documentos</h2>
+					<h3 class="boxHeadlineSub">Generador de documentos</h3>
 <div class="row">
 
 
@@ -136,24 +136,24 @@ require_once '../../vendor/autoload.php';
                 <ul class="nav nav-tabs" role="tablist">
 
                     <li role="presentation" class="active">
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Paso 1">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-folder-open"></i>
+                                <i class="glyphicon glyphicon-user "></i>
                             </span>
                         </a>
                     </li>
 
                     <li role="presentation" class="disabled">
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Paso 2">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-pencil"></i>
+                                <i class="glyphicon glyphicon-folder-open"></i>
                             </span>
                         </a>
                     </li>
                     <li role="presentation" class="disabled">
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Paso 3">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-picture"></i>
+                                <i class="glyphicon glyphicon-send"></i>
                             </span>
                         </a>
                     </li>
@@ -171,14 +171,30 @@ require_once '../../vendor/autoload.php';
             <form role="form">
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
-                        <h3>Step 1</h3>
-                        <p>This is step 1</p>
+                        <h3>Paso 1</h3>
+                        <p>Seleccione un contacto!</p>
+                        <div>
+   <div class="row"> 
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Buscar:</label>
+<input type="text" autocomplete="off" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
+</div>
+
+<div >
+	<ul id="resultado_busqueda">
+		 
+	</ul>
+</div>
+</div>
+</div>                     	
+                        </div>
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step2">
-                        <h3>Step 2</h3>
+                        <h3>Paso 2</h3>
                         <p>This is step 2</p>
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
@@ -186,7 +202,7 @@ require_once '../../vendor/autoload.php';
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step3">
-                        <h3>Step 3</h3>
+                        <h3>Paso 3</h3>
                         <p>This is step 3</p>
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
@@ -303,7 +319,72 @@ function prevTab(elem) {
 </script>
 
 
+ <script type="text/javascript">
+ 	
+/*========================================
+=            Buscar             =
+========================================*/
+
+
+$(document).ready(function() {
+
+$('#buscar').on('keyup',  function(event) {
+	event.preventDefault();
+	buscarArticulos($(this).val());
+	/* Act on the event */
+});
+
+
+
+
+
+function buscarArticulos(texto) {
+
+
+$.ajax({
+	url: '../mod_clientes/async/buscar_contacto_doc.php',
+	type: 'POST',
  
+	data: {parametro: texto},
+})
+.done(function(data) {
+	console.log("success");
+	$('#resultado_busqueda').html(data);
+//alert(data);
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+	
+}
+
+});
+/*=====  End of Buscar   ======*/
+
+
+/*==============================================
+=            DETECTO CUAL LI APRETE            =
+==============================================*/
+
+$('body').on('click', '.contactos', function(event) {
+	event.preventDefault();
+	/* Act on the event */
+nombre = $(this).attr('data-nombre');
+
+	alert(nombre);
+
+$('.contactos').remove();
+});
+
+/*=====  End of DETECTO CUAL LI APRETE  ======*/
+
+
+ </script>
  
 </body>
 
