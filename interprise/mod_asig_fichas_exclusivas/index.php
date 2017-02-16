@@ -16,7 +16,18 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  ".ASYNC." where ref =$id");
+
+if ($_GET['ficha']=='normal') {
+	$tablas ='form_fichas_opciones';
+	$ftipo= 'DIARIAS';
+} else {
+	$tablas ='form_fichas_opciones_franquicias';
+		$ftipo= 'FRANQUICIAS';
+}
+
+
+
+ $resul =  mysql_query("SELECT * FROM  ".$tablas." where ref =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
@@ -27,7 +38,7 @@ $anulado = unserialize($data['data'][0]['anulado']);
 
 
 $id_asig = array();
- $asig =  mysql_query("SELECT c.id, c.nombres, f.nombre_opcion FROM asing_fichas_exclusivas fd, form_fichas_opciones f, contactos_web c where fd.id_opcion = f.ref and c.id = fd.id_cliente  and fd.id_opcion =$id and fd.categoria = 'DIARIAS'" );
+ $asig =  mysql_query("SELECT c.id, c.nombres, f.nombre_opcion FROM asing_fichas_exclusivas fd, $tablas f, contactos_web c where fd.id_opcion = f.ref and c.id = fd.id_cliente  and fd.id_opcion =$id and fd.categoria = '".$ftipo."'" );
 $asignado = array();
 while($row =  mysql_fetch_array($asig) ) {
 $id_asig[] = $row['id'];
@@ -141,6 +152,18 @@ $id_asig[] = $row['id'];
 </div>
 
 <div class="col-xs-12 col-sm-4 col-sm-offset-2">
+	<div class="radiobuttons">
+							<label>
+								<input type="radio" name="radio" data-nombre="franquicias" class="radio">
+								<span>Franquicias</span>
+							</label>
+							<label>
+								<input type="radio" name="radio" data-nombre="comercio" class="radio" checked>
+								<span>Fondos de Comercio</span>
+							</label>
+						 
+						</div>
+
 <div class="form-group">
 <label for="basicInput">Buscar:</label>
 <input type="text" autocomplete="off" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
@@ -180,7 +203,7 @@ $id_asig[] = $row['id'];
 															</div>
 
 
- <input type="hidden" value="DIARIAS" required class="form-control" name="categoria" id="categoria" placeholder="categoria:">
+ <input type="hidden" value="<?php echo $ftipo; ?>" required class="form-control" name="categoria" id="categoria" placeholder="categoria:">
 
 
 							</div>
@@ -465,7 +488,19 @@ $(document).ready(function() {
 
 $('#buscar').on('keyup',  function(event) {
 	event.preventDefault();
-	buscarArticulos($(this).val());
+
+franquicias = $('.radio[data-nombre="franquicias"]').prop( "checked");
+
+console.log(franquicias);
+if (franquicias== true) {
+
+
+		buscarFichasE($(this).val());
+} else {
+
+		buscarFichas($(this).val());
+}
+
 	/* Act on the event */
 });
 
@@ -479,7 +514,7 @@ $('#buscar_cliente').on('keyup',  function(event) {
 
 
 
-function buscarArticulos(texto) {
+function buscarFichas(texto) {
 
 
 $.ajax({
@@ -503,6 +538,34 @@ $.ajax({
 
 	
 }
+
+
+function buscarFichasE(texto) {
+
+
+$.ajax({
+	url: 'async/buscarE.php',
+	type: 'POST',
+ 
+	data: {parametro: texto},
+})
+.done(function(data) {
+	console.log("success");
+	$('#resultado_busqueda').html(data);
+//alert(data);
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+	
+}
+
+
 
 function buscarClientes(texto) {
 
