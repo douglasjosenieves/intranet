@@ -390,7 +390,7 @@ header('Location: ../index.php');
 <select name="nacionalidad" id="nacionalidad" class="form-control">
 <option value="">- Nacionalidad -</option>
 <option value="EUROPEO">EUROPEO</option>
-<option value="NOEUROPEO">NOEUROPEO</option>
+<option value="NOEUROPEO">NO EUROPEO</option>
  
 </select>
 </div>

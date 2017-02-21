@@ -1,19 +1,51 @@
-<?php $fecha = date("Y-m-d H:i:s");
-$editado_fecha = date("Y-m-d H:i:s");
-$ip=$_SERVER['REMOTE_ADDR'];
-extract ($_POST);
+<?php 
 
-setlocale(LC_TIME, 'es_VE'); # Localiza en español es_Venezuela
-date_default_timezone_set('America/New_York');
-$anio=date("Y");
-$mes=date("m");
-$dia=date("d");
-$hora=date("H");
-$nuevafecha = strtotime ( '+1 hour' , strtotime ( $hora ) ) ;
+$total = 48000;
 
-echo $nuevafecha;
+	switch($total)
+    {
+    case ($total >= 25000 and $total <= 40000):
+    $porcentaje_aplicado = "3";
+    break;
+
+    case ($total >= 40001 and $total <= 100000):
+    $porcentaje_aplicado = "3";
+    break;
+
+   case ($total >= 100001 and $total <= 200000):
+    $porcentaje_aplicado = "2";
+    break;
+
+      case ($total >= 200001 and $total <= 300000):
+    $porcentaje_aplicado = "1";
+    break;
+
+       case ($total >= 300001 and $total <= 400000):
+    $porcentaje_aplicado = "2";
+    break;
+
+       case ($total >= 400001 and $total <= 500000):
+    $porcentaje_aplicado = "1.5";
+    break;
+
+
+    case ($total >= 500001):
+    $porcentaje_aplicado = "1";
+    break;
+
+   
+    }
+
+   
+     
+$importe = $total * $porcentaje_aplicado /100;;
+$iva= $importe*21/100;
+
+echo $porcentaje_aplicado;
 echo '<br>';
-echo $hora;
+echo $importe ;
 echo '<br>';
-echo $nuevafecha;
+echo $iva;
+
  ?>
+

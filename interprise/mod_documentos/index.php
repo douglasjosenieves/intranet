@@ -168,7 +168,7 @@ require_once '../../vendor/autoload.php';
                 </ul>
             </div>
 
-            <form role="form">
+            <form role="form"  id="form">
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
                         <h3>Paso 1</h3>
@@ -178,7 +178,7 @@ require_once '../../vendor/autoload.php';
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Buscar:</label>
-<input type="text" autocomplete="off" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
+<input type="text" autocomplete="off" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar"  id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
 </div>
 
 <div >
@@ -186,33 +186,92 @@ require_once '../../vendor/autoload.php';
 		 
 	</ul>
 </div>
+
+<div id="contactoSelect">
+	
+
+</div>
 </div>
 </div>                     	
                         </div>
                         <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                            <li><button disabled="true" id="paso1" type="button" class="btn btn-primary next-step">Save and continue</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step2">
                         <h3>Paso 2</h3>
-                        <p>This is step 2</p>
+                        <p>Seleccione una opción de negocio!</p><br>
+
+                           <div class="row"> 
+
+                           <div class="radiobuttons">
+							<label>
+								<input type="radio" name="radio" data-nombre="franquicias" class="radio">
+								<span>Franquicias</span>
+							</label>
+							<label>
+								<input type="radio" name="radio" data-nombre="comercio" class="radio" checked>
+								<span>Fondos de Comercio</span>
+							</label>
+						 
+						</div>
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Buscar opción:</label>
+<input type="text" autocomplete="off" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar_opcion" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
+</div>
+
+<div >
+	<ul id="resultado_busqueda_opcion">
+		 
+	</ul>
+</div>
+
+<div id="contactoSelect_opcion">
+	
+
+</div>
+</div>
+</div>        
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                            <li><button  disabled="true" id="paso2" type="button" class="btn btn-primary next-step">Save and continue</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step3">
                         <h3>Paso 3</h3>
-                        <p>This is step 3</p>
+                        
+<div class="row">
+                        <div class="col-xs-12 col-sm-6 i">
+								<div class="form-group">
+									<label>Documento a generar</label>
+									<select name="contrato"  id="contrato" class="form-control ">
+										<option value="">- Documento -</option>
+										<option value="DUE DILLIGENCE">Due Dilligence</option>
+									 
+								 
+									</select>
+								</div>
+							</div>
+<div class="col-xs-12 col-sm-12 i">
+                        	<div class="form-group checkboxes">
+							<label>
+								<input type="checkbox" name="email" value="si">
+								<span>Notificar por Email al cliente.</span>
+							</label>
+						</div>
+</div>
+						</div>
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                            <!-- <li><button type="button" class="btn btn-default next-step">Skip</button></li> -->
+                            <li><button disabled="true" id="paso3" disabled="true"  type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane text-success" role="tabpanel" id="complete">
-                        <h3>Complete</h3>
-                        <p>You have successfully completed all steps.</p>
+                        <h3>Completado</h3>
+                        <p>Descarge el documento en el boton Descargar.</p>
+                        <a id="descargar" class="btn btn-primary" href="#" role="button"> <i class="fa fa-download"></i> Descargar</a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -334,7 +393,24 @@ $('#buscar').on('keyup',  function(event) {
 	/* Act on the event */
 });
 
+$('#buscar_opcion').on('keyup',  function(event) {
+	event.preventDefault($(this).val());
 
+franquicias = $('.radio[data-nombre="franquicias"]').prop( "checked");
+
+console.log(franquicias);
+if (franquicias== true) {
+
+
+		fichas_ex($(this).val());
+} else {
+
+		fichas_nor($(this).val());
+}
+
+
+	/* Act on the event */
+});
 
 
 
@@ -363,8 +439,59 @@ $.ajax({
 	
 }
 
+
 });
 /*=====  End of Buscar   ======*/
+function fichas_nor(texto) {
+
+
+$.ajax({
+	url: '../mod_asig_fichas_exclusivas/async/fichasNormales.php',
+	type: 'POST',
+ 
+	data: {parametro: texto},
+})
+.done(function(data) {
+	console.log("success");
+	$('#resultado_busqueda_opcion').html(data);
+//alert(data);
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+	
+}
+
+
+function fichas_ex(texto) {
+
+
+$.ajax({
+	url: '../mod_asig_fichas_exclusivas/async/fichasFranquicias.php',
+	type: 'POST',
+ 
+	data: {parametro: texto},
+})
+.done(function(data) {
+	console.log("success");
+	$('#resultado_busqueda_opcion').html(data);
+//alert(data);
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+	
+}
 
 
 /*==============================================
@@ -373,19 +500,235 @@ $.ajax({
 
 $('body').on('click', '.contactos', function(event) {
 	event.preventDefault();
+$('#contactoSelect').html('');
+
 	/* Act on the event */
-nombre = $(this).attr('data-nombre');
+$don = $(this).attr('data-nombre');
+ 
+//alert(nombre);
+ 
+$pasaporte = $(this).attr('data-documento');
+$direccion = $(this).attr('data-direccion');
+$tel = $(this).attr('data-tel');
+$email = $(this).attr('data-email');
+$fecha_contratacion= $(this).attr('data-fechacontratacion');
+$nacionalidad= $(this).attr('data-nacionalidad');
 
-	alert(nombre);
 
+
+
+$('#contactoSelect').append('A nombre de:<input type="text" readonly value="'+$don+'" name="don" required class="form-control">');
+$('#contactoSelect').append('Pasaporte:<input type="text" readonly value="'+$pasaporte+'" name="pasaporte" required class="form-control">');
+$('#contactoSelect').append('Dirección:<input type="text" readonly value="'+$direccion+'" name="direccion" required class="form-control">');
+$('#contactoSelect').append('Teléfono:<input type="text" readonly value="'+$tel+'" name="tel" required class="form-control">');
+$('#contactoSelect').append('Email:<input type="text" readonly value="'+$email+'" name="email" required class="form-control">');
+$('#contactoSelect').append('Fecha de Contratación:<input type="text" readonly value="'+$fecha_contratacion+'" name="fecha_contratacion" required class="form-control">');
+
+$('#contactoSelect').append('Nacionalidad:<input type="text" readonly value="'+$nacionalidad+'" name="nacionalidad" required class="form-control">');
 $('.contactos').remove();
+$('#contactoSelect input').each(function(index, el) {
+	
+var i = 0;
+	if ($(this).val()=='') {
+
+alert('El dato "'+ $(this).attr('name')+ '" esta en blanco, complete para continuar');
+ i++;
+	}
+
+
+if (i==0) {
+
+	$('#paso1').removeAttr("disabled");
+}
+else {
+
+$('#paso1').attr("disabled", 'true');;
+
+}
+
+	//alert($(this).val());
+
+
 });
+
+});
+
+
 
 /*=====  End of DETECTO CUAL LI APRETE  ======*/
 
 
- </script>
+
+
+
+/*==============================================
+=            DETECTO CUAL LI APRETE  OPCION           =
+==============================================*/
+
+$('body').on('click', '.contactos_opcion', function(event) {
+	event.preventDefault();
+$('#contactoSelect_opcion').html('');
+
+	/* Act on the event */
+$don = $(this).attr('data-nombre');
  
+//alert(nombre);
+ 
+$pasaporte = $(this).attr('data-documento');
+$direccion = $(this).attr('data-direccion');
+$tel = $(this).attr('data-tel');
+$email = $(this).attr('data-email');
+$fecha_contratacion= $(this).attr('data-fechacontratacion');
+
+
+
+
+
+$('#contactoSelect').append('A nombre de:<input type="text" readonly value="'+$don+'" name="don" required class="form-control">');
+$('#contactoSelect').append('Pasaporte:<input type="text" readonly value="'+$pasaporte+'" name="pasaporte" required class="form-control">');
+$('#contactoSelect').append('Dirección:<input type="text" readonly value="'+$direccion+'" name="direccion" required class="form-control">');
+$('#contactoSelect').append('Teléfono:<input type="text" readonly value="'+$tel+'" name="tel" required class="form-control">');
+$('#contactoSelect').append('Email:<input type="text" readonly value="'+$email+'" name="email" required class="form-control">');
+$('#contactoSelect').append('Fecha de Contratación:<input type="text" readonly value="'+$fecha_contratacion+'" name="fecha_contratacion" required class="form-control">');
+$('.contactos').remove();
+$('#contactoSelect input').each(function(index, el) {
+	
+var i = 0;
+	if ($(this).val()=='') {
+
+alert('El dato "'+ $(this).attr('name')+ '" esta en blanco, complete para continuar');
+ i++;
+	}
+
+
+if (i==0) {
+
+	$('#paso2').removeAttr("disabled");
+}
+else {
+
+$('#paso2').attr("disabled", 'true');;
+
+}
+
+	//alert($(this).val());
+
+
+});
+
+});
+
+
+
+/*=====  End of DETECTO CUAL LI APRETE  ======*/
+
+
+
+
+/*==============================================
+=            DETECTO CUAL LI APRETE  OPCION           =
+==============================================*/
+
+$('body').on('click', '.fichasli', function(event) {
+	event.preventDefault();
+$('#contactoSelect_opcion').html('');
+
+	/* Act on the event */
+
+ 
+
+$sector = $(this).attr('data-sector');
+$refOpcion= $(this).attr('data-id')+' '+$(this).attr('data-opcion');
+$total= $(this).attr('data-inversion');
+$importe = '20';
+$iva= '10';
+
+
+
+$('#contactoSelect_opcion').append('Sector:<input type="text" readonly value="'+$sector+'" name="sector" required class="form-control">');
+
+$('#contactoSelect_opcion').append('Refº Opción:<input type="text" readonly value="'+$refOpcion+'" name="refOpcion" required class="form-control">');
+
+$('#contactoSelect_opcion').append('Inversión:<input type="text" readonly value="'+$total+'" name="total" required class="form-control">');
+
+$('.fichasli').remove();
+
+
+$('#contactoSelect_opcion input').each(function(index, el) {
+	
+var ii = 0;
+	if ($(this).val()=='') {
+
+alert('El dato "'+ $(this).attr('name')+ '" esta en blanco, complete para continuar');
+ i++;
+	}
+
+
+if (ii==0) {
+
+	$('#paso2').removeAttr("disabled");
+}
+else {
+
+$('#paso2').attr("disabled", 'true');;
+
+}
+
+	//alert($(this).val());
+
+
+});
+
+});
+
+$(document).ready(function() {
+	
+
+
+
+$('#contrato').on('change',  function(event) {
+	event.preventDefault();
+
+
+
+	contrato = $(this).val();
+
+	if (contrato!= '') {
+		$('#paso3').removeAttr("disabled");
+	}
+	else {
+
+$('#paso3').attr("disabled", 'true');;
+
+	}
+
+
+
+if (contrato == 'DUE DILLIGENCE') {
+
+ 
+
+$('#descargar').attr('href', 'demo_sys.php?contrato='+contrato+'&don='+$don+'&pasaporte='+$pasaporte+'&direccion='+$direccion+'&tel='+$tel+'&email='+$email+'&fecha_contratacion='+$fecha_contratacion+'&sector='+$sector+'&refOpcion='+$refOpcion+'&total='+$total+'&nacionalidad='+$nacionalidad+'                  ');
+
+
+}
+	/* Act on the event */
+});
+
+
+
+
+
+ 
+
+});
+
+
+
+/*=====  End of DETECTO CUAL LI APRETE  ======*/
+
+ </script>
+
 </body>
 
 <!-- Mirrored from sharpen.tomaj.sk/v1.7/html5/forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 May 2016 19:06:56 GMT -->

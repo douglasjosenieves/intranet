@@ -38,9 +38,9 @@
 
 
 <li><a href="<?php echo BASE_URL ?>contactos_admon.php" title="Administracion de contactos">Admon Contactos</a>  
-<li><a href="<?php echo BASE_URL ?>/mod_servicios/index.php" title="Servicios">Servicios</a>  	
-<li><a href="<?php echo BASE_URL ?>/mod_documentos/index.php" title="Crear Documentos">Documentos<span   class="label label-info">Beta</span></a>  </li>	
-<li><a href="<?php echo BASE_URL ?>/mod_facturacion/index.php" title="Servicios">Facturación</a>  						
+<li><a href="<?php echo BASE_URL ?>mod_servicios/index.php" title="Servicios">Servicios</a>  	
+<li><a href="<?php echo BASE_URL ?>mod_documentos/index.php" title="Crear Documentos">Documentos<span   class="label label-info">Beta</span></a>  </li>	
+<li><a href="<?php echo BASE_URL ?>mod_facturacion/index.php" title="Servicios">Facturación</a>  						
 
 						<?php } ?>
 
