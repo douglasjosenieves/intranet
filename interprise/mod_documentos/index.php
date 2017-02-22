@@ -639,7 +639,8 @@ $('#contactoSelect_opcion').html('');
 
 $sector = $(this).attr('data-sector');
 $refOpcion= $(this).attr('data-id')+' '+$(this).attr('data-opcion');
-$total= $(this).attr('data-inversion');
+$total= $(this).attr('data-ofrecemos');
+
 $importe = '20';
 $iva= '10';
 

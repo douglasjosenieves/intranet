@@ -118,6 +118,7 @@ function round_up($number, $precision = 3)
 $importe = round_up($total * $porcentaje_aplicado /100);;
 $iva= round_up($importe*21/100);
 
+$total = round_up($importe + $iva);
 
 
 

@@ -23,7 +23,7 @@ $resul =  mysql_query("SELECT * FROM form_fichas_opciones where    anulado <> 1 
 				 //$imagen = explode(';',$opciones['opciones'][0]['capture1']) ;
 				 ?>
 				
-	<li class="fichasli manito" data-id="<?php echo $opciones['contacto'][$i]['ref']  ?>" data-sector="<?php echo $opciones['contacto'][$i]['sector']  ?> " data-opcion="<?php echo $opciones['contacto'][$i]['nombre_opcion']  ?>" data-inversion="<?php echo $opciones['contacto'][$i]['nosotros_ofrecemos']  ?>" ><?php echo $opciones['contacto'][$i]['ref']  ?> <?php echo $opciones['contacto'][$i]['nombre_opcion']  ?></li>
+	<li class="fichasli manito" data-id="<?php echo $opciones['contacto'][$i]['ref']  ?>" data-sector="<?php echo $opciones['contacto'][$i]['sector']  ?> " data-opcion="<?php echo $opciones['contacto'][$i]['nombre_opcion']  ?>" data-ofrecemos="<?php echo $opciones['contacto'][$i]['nosotros_ofrecemos']  ?>" data-inversion="<?php echo $opciones['contacto'][$i]['nosotros_ofrecemos']  ?>" ><?php echo $opciones['contacto'][$i]['ref']  ?> <?php echo $opciones['contacto'][$i]['nombre_opcion']  ?></li>
 
 			 
 															
