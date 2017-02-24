@@ -237,6 +237,7 @@ console.log('Error de loging');
     })
     .fail(function(data) {
         console.log("error");
+        console.log(data);
 
     })
     .always(function() {

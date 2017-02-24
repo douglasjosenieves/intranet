@@ -1,4 +1,4 @@
-<?php 
+<?php session_start(); 
 require_once '../../vendor/autoload.php';	
 
 use Dompdf\Dompdf;
@@ -30,7 +30,7 @@ if ($nacionalidad=='EUROPEO') {
 
 	switch($total)
     {
-    case ($total >= 25000 and $total <= 40000):
+    case ($total >= 0 and $total <= 40000):
     $porcentaje_aplicado = "3";
     break;
 
@@ -73,7 +73,7 @@ if ($nacionalidad=='EUROPEO') {
 
 switch($total)
     {
-    case ($total >= 25000 and $total <= 40000):
+    case ($total >= 0 and $total <= 40000):
     $porcentaje_aplicado = "3";
     break;
 
@@ -143,6 +143,22 @@ $hoys = date("Y-m-d H:i:s");
 // Output the generated PDF to Browser
 $dompdf->stream('due dilligence-'.$hoys.'.pdf');
 
+
+
+
+setlocale(LC_TIME, 'es_VE'); # Localiza en español es_Venezuela
+date_default_timezone_set('America/Puerto_Rico');
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+// create a log channel
+$log = new Logger('due_dilligence_create');
+$log->pushHandler(new StreamHandler('../logs/mod_documentos.log', Logger::NOTICE));
+$username =  $_SESSION['usuario']['Nombre'].' '. $_SESSION['usuario']['Apellido'];
+$ip=$_SERVER['REMOTE_ADDR'];
+// add records to the log
+$log->notice('Due Dilligence Create '.$don.' '.$refOpcion, array('userid' => $user, 'userneme' => $username,'ip' => $ip));
+ 
 		
 
  ?>

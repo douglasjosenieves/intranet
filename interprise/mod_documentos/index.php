@@ -650,7 +650,7 @@ $('#contactoSelect_opcion').append('Sector:<input type="text" readonly value="'+
 
 $('#contactoSelect_opcion').append('Refº Opción:<input type="text" readonly value="'+$refOpcion+'" name="refOpcion" required class="form-control">');
 
-$('#contactoSelect_opcion').append('Inversión:<input type="text" readonly value="'+$total+'" name="total" required class="form-control">');
+$('#contactoSelect_opcion').append('Inversión:<input id="input_total" type="text"  value="'+$total+'" name="total" required class="form-control">');
 
 $('.fichasli').remove();
 
@@ -706,10 +706,10 @@ $('#paso3').attr("disabled", 'true');;
 
 
 if (contrato == 'DUE DILLIGENCE') {
-
+$user = '<?php echo $_SESSION['usuario']['Id']?>';
  
-
-$('#descargar').attr('href', 'demo_sys.php?contrato='+contrato+'&don='+$don+'&pasaporte='+$pasaporte+'&direccion='+$direccion+'&tel='+$tel+'&email='+$email+'&fecha_contratacion='+$fecha_contratacion+'&sector='+$sector+'&refOpcion='+$refOpcion+'&total='+$total+'&nacionalidad='+$nacionalidad+'                  ');
+$total = $('#input_total').val();
+$('#descargar').attr('href', 'demo_sys.php?contrato='+contrato+'&don='+$don+'&pasaporte='+$pasaporte+'&direccion='+$direccion+'&tel='+$tel+'&email='+$email+'&fecha_contratacion='+$fecha_contratacion+'&sector='+$sector+'&refOpcion='+$refOpcion+'&total='+$total+'&nacionalidad='+$nacionalidad+'&user='+$user+'                  ');
 
 
 }

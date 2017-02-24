@@ -12,8 +12,9 @@ header('Content-type: application/json');
 // include db connect class
 
 require_once __DIR__ . '/db_connect.php';
-
- 
+require_once __DIR__ .  '/vendor/autoload.php';
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler; 
 // connecting to db
 $db = new DB_CONNECT();
 
@@ -22,7 +23,7 @@ mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");   
 
 setlocale(LC_TIME, 'es_VE'); # Localiza en español es_Venezuela
-date_default_timezone_set('America/Caracas');
+date_default_timezone_set('America/Puerto_Rico');
 $fechaphp = date("Y-m-d H:i:s");
 
 $email=$_REQUEST['email'];
@@ -93,11 +94,18 @@ $status = array(
 
 
 else {
-require_once 'crear-log.php';
-  write_log($email,'success');
+// create a log channel
+$log = new Logger('loging');
+$log->pushHandler(new StreamHandler('interprise/logs/mod_login.log', Logger::INFO));
+$username =  $nombre.' '.$apellido;
+$user = $id;
+$ip=$_SERVER['REMOTE_ADDR'];
+// add records to the log
+$log->info('Inicio de session '.$email, array('userid' => $user, 'userneme' => $username ,'tipo' => $tipo, 'ip' => $ip));
 
-  $_SESSION['usuario'] = $arreglo;
+  
 
+$_SESSION['usuario'] = $arreglo;
 $status = array(
     'type'=>'success',
     'message'=>$nombre. ' Bienvenido!',

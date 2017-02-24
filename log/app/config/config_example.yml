@@ -1,0 +1,15 @@
+debug: true
+timezone: "Europe/Zurich"
+dateFormat: d.m.Y, H:i:s
+logs:
+    Demo:
+        Demo-Log-File:
+            type: local
+            path: http://127.0.0.1/log/monolog-viewer/test/SyonixLogViewer/res/test.log
+    Acme:
+        Acme App:
+            type: ftp
+            host: acme.com
+            username: logs
+            password: $upersecur3
+            path: app/logs/prod.log
