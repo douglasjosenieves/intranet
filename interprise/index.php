@@ -237,6 +237,43 @@ $teleoid[] = $rowv['id'];
 	     <div class="statsBar2">
 	     	<div class="row">
 
+	     		<div class="col-xs-12 col-md-4 i pagado">
+							<a href="reporte-clientes-usuario.php?status=PROSPECTO PAGADO" title="#" class="c">
+								<h3 class="title">Pros. Pagados</h3>
+								<div class="num" id="repProsPagados"><?php  echo (isset($status['PROSPECTO PAGADO'])) ? $status['PROSPECTO PAGADO']  :  '0';  ?></div>
+								<i class="icon zmdi zmdi-check-all"></i>
+							</a>
+						</div>
+
+
+						<div class="col-xs-12 col-md-4 i yellow2">
+							<a href="reporte-clientes-usuario.php?status=prospecto en seguimiento" title="#" class="c">
+								<h3 class="title">Pros. Seguimiento</h3>
+								<div class="num" id="clientes"><?php  echo (isset($status['PROSPECTO EN SEGUIMIENTO'])) ? $status['PROSPECTO EN SEGUIMIENTO']  :  '0';  ?></div>
+								<i class="icon zmdi zmdi-eye"></i>
+							</a>
+						</div>
+					
+						<div class="col-xs-12 col-md-4 i yellow">
+							<a href="reporte-clientes-usuario.php?status=cliente" title="#" class="c">
+								<h3 class="title">Clientes</h3>
+								<div class="num" id="clientes"><?php  echo (isset($status['CLIENTE'])) ? $status['CLIENTE']  :  '0';  ?></div>
+								<i class="icon zmdi zmdi-account-box"></i>
+							</a>
+						</div>
+		 
+					
+				</div>
+</div>
+
+
+
+
+
+
+<div class="statsBar3">
+	     	<div class="row">
+
 	     		<div class="col-xs-12 col-md-3 i pagado">
 							<a href="reporte-clientes-usuario.php?status=PROSPECTO PAGADO" title="#" class="c">
 								<h3 class="title">Pros. Pagados</h3>
@@ -272,6 +309,7 @@ $teleoid[] = $rowv['id'];
 					
 				</div>
 </div>
+
 
 
 	     <div class="statsBar2">
