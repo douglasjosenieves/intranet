@@ -40,6 +40,7 @@ $start=$_REQUEST['start'];
 $end=$_REQUEST['end'];
 
 $titulo=$_REQUEST['titulo'];
+$titulo_tipo=$_REQUEST['titulo_tipo'];
 $tipo=$_REQUEST['tipo'];
 $descripcion=$_REQUEST['descripcion'];
  
@@ -72,6 +73,7 @@ $inicio = $dia.' '.$horaInicio;
  `end`='$final', 
  `color`='$color', 
  `titulo`='$titulo', 
+ `titulo_tipo`='$titulo_tipo', 
  `tipo`='$tipo', 
  `descripcion`='$descripcion', 
  `allDay`='$allDay' 

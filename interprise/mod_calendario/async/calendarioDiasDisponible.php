@@ -23,6 +23,7 @@ $boolean = $mysql_data ? true : false;
 			 $event_array[] = array(
             'id' => $row['id'],
             'title' => $row['titulo'],
+            'titulo_tipo' => $row['titulo_tipo'],
             'start' => $row['start'],
             'end' => $row['end'],
             'color' => $row['color'],
@@ -31,7 +32,7 @@ $boolean = $mysql_data ? true : false;
 				
 
 
-echo $row['titulo'].' Inicio:'.$row['ini'].' Fin:'.$row['fin'].'<br>';
+echo $row['titulo_tipo'].$row['titulo'].' Inicio:'.$row['ini'].' Fin:'.$row['fin'].'<br>';
 				}
 				 //$imagen = explode(';',$opciones['opciones'][0]['capture1']) ;
 			

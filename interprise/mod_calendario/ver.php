@@ -284,15 +284,14 @@ $('.btnmuestra').hide();
         	 
 
         	
-        	$('#myModalLabel').html('<a href="<?php echo BASE_URL ?>ficha-contacto-editar.php?id='+event.id_contacto+'" target="_blank">'+event.id_contacto+' '+event.nombre+'</a>');
-        	$('#tipo').val(event.tipo).change();
-        	$('#descripcion').val(event.descripcion);
-        		$('#id_calendar').val(event.id);
+$('#myModalLabel').html('<a href="<?php echo BASE_URL ?>ficha-contacto-editar.php?id='+event.id_contacto+'" target="_blank">'+event.id_contacto+' '+event.nombre+'</a>');
+$('#tipo').val(event.tipo).change();
+$('#descripcion').val(event.descripcion);
+$('#id_calendar').val(event.id);
 $('#async_titulo').val(event.title);
 $('#async_nombre').val(event.nombre);
 $('#async_contacto').val(event.id_contacto);
-        		
-             $('#etiqueta_dia').text(event.start);
+$('#etiqueta_dia').text(event.start);
 $('#etiqueta_start').text(event.start);
 $('#etiqueta_end').text(event.end);
         	/*$('.modal-body').html('<i class="fa fa-clock-o"></i> Inicio: ');
@@ -400,7 +399,7 @@ $.ajax({
 		$('#agendados').html(data);
 
 		$('#agendar').removeAttr('disabled');
-$('')
+$('');
 
 })
 .fail(function() {

@@ -227,11 +227,32 @@ $data['data'][] = $row;
 									<br><br>
 
 									<hr>
+<div class="row">
+
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Titulo:</label>
 <input type="text" value="<?php echo $data['data'][0]['titulo'] ?>" required class="form-control" name="titulo" id="titulo" placeholder="Titulo:">
 </div>
+</div>
+
+
+<div class="col-xs-12 col-sm-8">
+<div class="form-group">
+<label for="basicInput">Titulo prefijo:</label>
+<select name="titulo_tipo" id="titulo_tipo" required class="js-select" required style="width:100%;">
+
+<option value="" >- Seleccione -</option>
+<option value="C">(C)Cita</option>
+<option value="P">(P)Pago</option>
+<option value="SC">(SC)Segunda cita</option>
+<option value="PE">(PE)Presentación estudio</option>
+<option value="O">(O)Otros</option>		 
+ 
+</select>
+</div>
+</div>
+
 </div>
 
 <div class="form-group">

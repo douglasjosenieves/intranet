@@ -148,10 +148,23 @@
 					</ul>
 				</li>
 
+	<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-face zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Talento humano <i class="zmdi zmdi-plus plus"></i></span></div>
+
+					<ul >
+						<li><a href="#" title="">Menu1</a></li>
+						<li><a  href="#" title="">Menu2</a></li>
+
+							 
+
+						 
+					</ul>
+				</li>
 
 
 <?php if ($_SESSION['usuario']['Tipo'] == 'administrador'): ?>
 	
+
 
 
 
