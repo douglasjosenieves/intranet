@@ -170,7 +170,7 @@ $contactos_web[] = $row;
 	
 
 
-						<div class="col-xs-12 col-sm-2 i">
+						<div class="col-xs-12 col-sm-4 i">
 								<div class="form-group">
 									<label>Status</label>
 									<select name="status" class="js-select ">
@@ -183,7 +183,12 @@ $contactos_web[] = $row;
 										<option value="PROSPECTO PAGADO">PROSPECTO PAGADO</option>
 									    <option value="PROSPECTO EN SEGUIMIENTO">PROSPECTO EN SEGUIMIENTO</option>
 									    <option value="CLIENTE">CLIENTE</option>
-									    <option value="ESTUDIO">ESTUDIO</option>
+									  
+									   <option value="CFEXITO">C.F.EXITO</option>
+									    <option value="CFDESCARTADO">C.F.DESCARTADO</option>
+									     <option value="TRAMITELEGAL">TRAMITE LEGAL</option>
+
+
 									    <option value="NO CONTACTADO">NO CONTACTADO</option>
 									    <option value="FORMULARIO DEFECTUOSO">FORMULARIO DEFECTUOSO</option>
 									    <option value="DESCARTADO">DESCARTADO</option>

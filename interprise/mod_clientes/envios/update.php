@@ -1,4 +1,6 @@
-<?php  session_start();  
+<?php  session_start(); 
+
+require_once '../../../vendor/autoload.php';	 
 //error_reporting(0);
 //header('Content-type: application/json');
 /*
@@ -241,6 +243,18 @@ $resul2 = mysql_query($qry2);
 //echo $qry;
 
 
+setlocale(LC_TIME, 'es_VE'); # Localiza en español es_Venezuela
+date_default_timezone_set('America/Puerto_Rico');
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+// create a log channel
+$log = new Logger('Ficha_de_contacto');
+$log->pushHandler(new StreamHandler('../../logs/mod_clientes_edit.log', Logger::NOTICE));
+$username =  $_SESSION['usuario']['Nombre'].' '. $_SESSION['usuario']['Apellido'];
+$ip=$_SERVER['REMOTE_ADDR'];
+// add records to the log
+$log->warning('Ficha de contacto editada '.$referencia.' '.$nombres.' '.$apellidos, array('userid' => $editado_por, 'userneme' => $username,'ip' => $ip));
  
 
 if ($resul==1) {

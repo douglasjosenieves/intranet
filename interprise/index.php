@@ -274,37 +274,31 @@ $teleoid[] = $rowv['id'];
 <div class="statsBar3">
 	     	<div class="row">
 
-	     		<div class="col-xs-12 col-md-3 i pagado">
-							<a href="reporte-clientes-usuario.php?status=PROSPECTO PAGADO" title="#" class="c">
-								<h3 class="title">Pros. Pagados</h3>
-								<div class="num" id="repProsPagados"><?php  echo (isset($status['PROSPECTO PAGADO'])) ? $status['PROSPECTO PAGADO']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-check-all"></i>
+	     		<div class="col-xs-12 col-md-4 i cfexito" title="cliente finalizado con exito">
+							<a href="reporte-clientes-usuario.php?status=CFEXITO" title="cliente finalizado con exito" class="c">
+								<h3 class="title">C.F con éxito</h3>
+								<div class="num" id="repProsPagados"><?php  echo (isset($status['CFEXITO'])) ? $status['CFEXITO']  :  '0';  ?></div>
+								<i class="icon zmdi zmdi-accounts-list-alt"></i>
 							</a>
 						</div>
 
 
-						<div class="col-xs-12 col-md-3 i yellow2">
-							<a href="reporte-clientes-usuario.php?status=prospecto en seguimiento" title="#" class="c">
-								<h3 class="title">Pros. Seguimiento</h3>
-								<div class="num" id="clientes"><?php  echo (isset($status['PROSPECTO EN SEGUIMIENTO'])) ? $status['PROSPECTO EN SEGUIMIENTO']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-eye"></i>
+						<div class="col-xs-12 col-md-4 i cfdescartado" title="Cliente finalizado descartado">
+							<a href="reporte-clientes-usuario.php?status=CFDESCARTADO" title="Cliente finalizado descartado" class="c">
+								<h3 class="title">C.F descartado</h3>
+								<div class="num" id="clientes"><?php  echo (isset($status['CFDESCARTADO'])) ? $status['CFDESCARTADO']  :  '0';  ?></div>
+								<i class="icon zmdi zmdi-close"></i>
 							</a>
 						</div>
 					
-						<div class="col-xs-12 col-md-3 i yellow">
-							<a href="reporte-clientes-usuario.php?status=cliente" title="#" class="c">
-								<h3 class="title">Clientes</h3>
-								<div class="num" id="clientes"><?php  echo (isset($status['CLIENTE'])) ? $status['CLIENTE']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-account-box"></i>
+						<div class="col-xs-12 col-md-4 i tramitelegal">
+							<a href="reporte-clientes-usuario.php?status=TRAMITELEGAL" title="Tramite legal" class="c">
+								<h3 class="title">Tramite legal</h3>
+								<div class="num" id="TRAMITELEGAL"><?php  echo (isset($status['TRAMITELEGAL'])) ? $status['TRAMITELEGAL']  :  '0';  ?></div>
+								<i class="icon zmdi zmdi-assignment"></i>
 							</a>
 						</div>
-						<div class="col-xs-12 col-md-3 i pink">
-							<a href="reporte-clientes-usuario.php?status=estudio" title="#" class="c">
-								<h3 class="title">Estudios</h3>
-								<div class="num" id="estudios"><?php  echo (isset($status['ESTUDIO'])) ? $status['ESTUDIO']  :  '0';  ?></div>
-								<i class="icon zmdi zmdi-folder-outline"></i>
-							</a>
-						</div>
+				 
 						
 					
 				</div>

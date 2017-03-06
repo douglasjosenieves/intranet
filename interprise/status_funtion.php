@@ -66,6 +66,24 @@ if ($status == 'PROSPECTO EN SEGUIMIENTO') {
 
 	$noti = '<span class="label label-prosenseguimiento">'.$status.'</span>';
 }
+
+if ($status == 'CFEXITO') {
+
+	$noti = '<span class="label label-cexito">'.$status.'</span>';
+}
+
+
+if ($status == 'CFDESCARTADO') {
+
+	$noti = '<span class="label label-cdescartado">'.$status.'</span>';
+}
+
+
+if ($status == 'TRAMITELEGAL') {
+
+	$noti = '<span class="label label-tramitelegal">'.$status.'</span>';
+}
+
 return $noti;
 }
 
