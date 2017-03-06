@@ -50,6 +50,7 @@ $tipo = $row['tipo'];
 $foto = $row['foto'];
 $color = $row['color'];
 $anulado =  $row['anulado'];
+$cargo =  $row['cargo'];
 //echo $row['nombre'];
 }
 
@@ -67,6 +68,7 @@ $anulado =  $row['anulado'];
 'Tipo' =>$tipo,
 'Foto' =>$foto,
 'Color' =>$color,
+'Cargo' =>$cargo,
 'Anulado' =>$anulado);
 
 
@@ -116,6 +118,7 @@ $status = array(
     
     'telefono'=>$telefono,
     'documento'=>$documento,
+     'cargo'=>$cargo,
     'anulado'=>$anulado
 
   );
