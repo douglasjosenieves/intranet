@@ -155,7 +155,7 @@
 						<li><a href="<?php echo BASE_URL ?>mod_formatos/index.php" title="">Formatos</a></li>
 						<li><a  href="" title="">Organigrama</a></li>
 
-							 
+						<li><a href="<?php echo BASE_URL ?>mod_empleados/index.php" title="">Ficha empleados</a></li>	 
 
 						 
 					</ul>
@@ -170,6 +170,7 @@
 
 	<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-accounts-add zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Usuarios<i class="zmdi zmdi-plus plus"></i></span></div>
+
 					<ul>
 <li><a href="<?php echo BASE_URL ?>mod_usuarios/index.php" title="Administracion de contactos">Nuevo</a> </li> 
 <li><a href="<?php echo BASE_URL ?>mod_usuarios/reporte.php" title="Administracion de contactos">Ver</a> </li> 
