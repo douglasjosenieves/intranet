@@ -23,6 +23,8 @@
 					<ul>
 							<li><a href="<?php echo BASE_URL ?>contactosNuevos.php" title="#">Contactos Nuevos<span  id="contactos_nuevos_total1" class="label label-info"></span></a>
 							<li><a href="<?php echo BASE_URL ?>attClientes.php" title="Atencion al cliente">Att al cliente</a>
+								<li><a href="<?php echo BASE_URL ?>mod_pagos/index.php" title="#">Validación de pagos<span  id="contactos_nuevos_total1" class="label label-danger">Nuevo</span></a>
+
 							<li><a href="<?php echo BASE_URL ?>seguimiento.php" title="#">Seguimientos</a>
 						<li><a href="<?php echo BASE_URL ?>forms-cotizaciones.php" title="#">Cotizaciones online</a>
 <li><a href="<?php echo BASE_URL ?>forms-fichas-opciones.php" title="#">Fichas de Opciones</a>
@@ -154,9 +156,10 @@
 					<ul >
 						<li><a href="<?php echo BASE_URL ?>mod_formatos/index.php" title="">Formatos</a></li>
 						<li><a  href="" title="">Organigrama</a></li>
-
-						<li><a href="<?php echo BASE_URL ?>mod_empleados/index.php" title="">Ficha empleados</a></li>	 
-
+<?php if ($_SESSION['usuario']['Tipo'] == 'administrador'): ?>
+	
+						<li><a href="<?php echo BASE_URL ?>mod_empleados/index.php" title="">Ficha colaboradores</a></li>	 
+<?php endif ?>
 						 
 					</ul>
 				</li>

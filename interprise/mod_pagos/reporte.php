@@ -90,8 +90,8 @@ mysql_query("SET CHARACTER_SET utf");
 									<th >Id</th>
 									<th>Nombre Apellido</th>
 								   
-									<th>Cedula</th>
-									<th>Cargo</th>
+									<th>cedula</th>
+									<th>Carago</th>
 									<th>Anulado</th>
 									<th>Gestionar</th>
 								 

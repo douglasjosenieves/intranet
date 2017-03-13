@@ -35,7 +35,7 @@ $anulado = unserialize($data['data'][0]['anulado']);*/
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Ficha de empleados</title>
+	<title>Ficha de pagos</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -88,7 +88,7 @@ $anulado = unserialize($data['data'][0]['anulado']);*/
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Ficha de empleados</a>
+					<a href="#" title="#">Ficha de pagos</a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="../index.php">Panel de controlo</a></li>
@@ -97,7 +97,7 @@ $anulado = unserialize($data['data'][0]['anulado']);*/
 				
 				<div class="box rte">
 					<h2 class="boxHeadline">Ficha</h2>
-					<h3 class="boxHeadlineSub">Empleado</h3>
+					<h3 class="boxHeadlineSub">Pagos</h3>
 					<form id="formulario">
 <div class="row">
 
@@ -450,8 +450,8 @@ $anulado = unserialize($data['data'][0]['anulado']);*/
 	
 	<div class="col-xs-12 col-sm-4">
 	<div class="form-group">
-	<label for="basicInput">Grupo sanguíneo</label>
-	<input type="text" value="<?php echo $data['data'][0]['tipo_sagre'] ?>" required class="form-control" name="tipo_sagre" id="tipo_sagre" placeholder="Grupo sanguineo">
+	<label for="basicInput">Tipo de sangre</label>
+	<input type="text" value="<?php echo $data['data'][0]['tipo_sagre'] ?>" required class="form-control" name="tipo_sagre" id="tipo_sagre" placeholder="Tipo de sangre">
 	</div>
 	</div>
 	
