@@ -473,7 +473,7 @@ $anulado = unserialize($data['data'][0]['anulado']);*/
 					 	
 					 	<div class="col-xs-12 col-sm-4">
 					 	<div class="form-group">
-					 	<label for="basicInput">Usuario Id</label>
+					 	<label for="basicInput">Usuario Gea #Id</label>
 					 	<input type="text" value="<?php echo $data['data'][0]['usuario_id'] ?>" required class="form-control" name="usuario_id" id="usuario_id" placeholder="Usuario Id">
 					 	</div>
 					 	</div>
@@ -482,7 +482,7 @@ $anulado = unserialize($data['data'][0]['anulado']);*/
 					 	
 					 	<div class="col-xs-12 col-sm-4">
 					 	<div class="form-group">
-					 	<label for="basicInput">Entrada Id</label>
+					 	<label for="basicInput">Entrada Biometrico #Id</label>
 					 	<input type="text" value="<?php echo $data['data'][0]['hand_id'] ?>" required class="form-control" name="hand_id" id="hand_id" placeholder="Entrada Id">
 					 	</div>
 					 	</div>
@@ -520,7 +520,7 @@ $anulado = unserialize($data['data'][0]['anulado']);*/
 <?php 
 
  if ($_GET['tipo']=='editar') {
- 	$botonNombre= 'Editar';
+ 	$botonNombre= 'Guardar';
  	$url= 'envios/update.php';
  }
 
@@ -533,9 +533,9 @@ $anulado = unserialize($data['data'][0]['anulado']);*/
  
 
 <input type="reset" value="Reset" class="btn bg-gray">
-<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button>
+<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"> <?php echo $botonNombre; ?> <i class="fa fa-save"></i> </button>
 <?php if ($_GET['tipo']=='editar'): ?>
-<input type="button" value="Nuevo" onclick="window.location='index.php';" class="btn bg-blue">	
+<a class="btn bg-green" href="index.php" role="button">Nuevo <i class="fa fa-plus"></i></a>	
 <?php endif ?>
 
 <span class="cargando"><i class='fa fa-circle-o-notch fa-spin'></i>Loading...</span>
