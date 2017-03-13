@@ -79,7 +79,7 @@ mysql_query("SET CHARACTER_SET utf");
 					<h2 class="boxHeadline">Table</h2>
 					<h3 class="boxHeadlineSub"><?php echo TITULO ?></h3>
 				 
-						<a class="btn bg-blue" href="index.php" role="button">Nuevo</a>	
+						<a class="btn bg-blue" href="index.php" role="button">Nuevo <i class="fa fa-plus"></i></a>	
 						<hr>
 					<div class="tableWrap dataTable table-responsive js-select">
 					

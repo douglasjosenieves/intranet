@@ -133,7 +133,7 @@ $anulado = unserialize($data['data'][0]['anulado']);*/
 					 =====================================================-->
 
 
-				<a  href="reporte.php" class="btn bg-blue">Ver todo los registros</a>
+				<a  href="reporte.php" class="btn bg-blue">Ver todo los registros <i class="fa fa-eye"></i></a>
 
 					 <hr>
 		<div class="row">
