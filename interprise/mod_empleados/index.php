@@ -10,6 +10,17 @@ $con = new DB_CONNECT();
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");  
 
+$id=$_GET['id'];
+ 
+if (isset($id)) {
+	# code...
+
+ $resul =  mysql_query("SELECT * FROM  ".TABLA." where id =$id");
+$data = array();
+while($row =  mysql_fetch_array($resul) ) {
+$data['data'][] = $row;
+}
+}
 
 
 
@@ -116,12 +127,17 @@ mysql_query("SET CHARACTER_SET utf");
 				 <!--====================================================
 					 =            AQUI VA EL CONTENIDO DEL SITE-            =
 					 =====================================================-->
+
+<form id="formulario">
+				<a  href="reporte.php" class="btn bg-blue">Ver Empleados</a>
+
+					 <hr>
 		<div class="row">
 					 
 					 <div class="col-xs-12 col-sm-3">
 					 <div class="form-group">
 					 <label for="basicInput">Primer Nombre</label>
-					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['pnombre'] ?>" required class="form-control" name="pnombre" id="pnombre" placeholder="Primer Nombre">
+					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['primer_nombre'] ?>" required class="form-control" name="primer_nombre" id="primer_nombre" placeholder="Primer Nombre">
 					 </div>
 					 </div>
 					 			 
@@ -132,7 +148,7 @@ mysql_query("SET CHARACTER_SET utf");
 					 <div class="col-xs-12 col-sm-3">
 					 <div class="form-group">
 					 <label for="basicInput">Segundo Nombre</label>
-					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['snombre'] ?>" required class="form-control" name="snombre" id="snombre" placeholder="Segundo Nombre">
+					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['segundo_nombre'] ?>" required class="form-control" name="segundo_nombre" id="segundo_nombre" placeholder="Segundo Nombre">
 					 </div>
 					 </div>
 					 
@@ -142,7 +158,7 @@ mysql_query("SET CHARACTER_SET utf");
 					 <div class="col-xs-12 col-sm-3">
 					 <div class="form-group">
 					 <label for="basicInput">Primer Apellido</label>
-					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['papellido'] ?>" required class="form-control" name="papellido" id="papellido" placeholder="Primer Apellido">
+					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['primer_apellido'] ?>" required class="form-control" name="primer_apellido" id="primer_apellido" placeholder="Primer Apellido">
 					 </div>
 					 </div>
 
@@ -151,7 +167,7 @@ mysql_query("SET CHARACTER_SET utf");
 					 <div class="col-xs-12 col-sm-3">
 					 <div class="form-group">
 					 <label for="basicInput">Segundo Apellido</label>
-					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['sapellido'] ?>" required class="form-control" name="sapellido" id="sapellido" placeholder="Segundo Apellido">
+					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['segundo_apellido'] ?>" required class="form-control" name="segundo_apellido" id="segundo_apellido" placeholder="Segundo Apellido">
 					 </div>
 					 </div>
 					 
@@ -438,8 +454,68 @@ mysql_query("SET CHARACTER_SET utf");
 	
 </div>
 
+<div class="row">
+	<div class="col-md-12">
+<div class="form-group">
+									<label for="textarea-autosize">Nucleo Familiar</label>
+									<textarea id="textarea-autosize" name="nucleo_familiar" class="js-autogrow form-control" placeholder="Please start typing and press few times 'enter'..." rows="2" style="overflow: hidden; word-wrap: break-word; height: 74px;"></textarea>
+								</div></div>
+
+</div>
+
+	 <div class="row">
+					 	
+					 
+					 	
+					 	<div class="col-xs-12 col-sm-4">
+					 	<div class="form-group">
+					 	<label for="basicInput">Usuario Id</label>
+					 	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['user_id'] ?>" required class="form-control" name="user_id" id="user_id" placeholder="Usuario Id">
+					 	</div>
+					 	</div>
+
+
+					 	
+					 	<div class="col-xs-12 col-sm-4">
+					 	<div class="form-group">
+					 	<label for="basicInput">Entrada Id</label>
+					 	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['hand_id'] ?>" required class="form-control" name="hand_id" id="hand_id" placeholder="Entrada Id">
+					 	</div>
+					 	</div>
+					 	
+					 	
+					 </div>
+
+<div class="box rte">
+			 
+<?php 
+
+ if ($_GET['tipo']=='editar') {
+ 	$botonNombre= 'Editar';
+ 	$url= 'envios/update.php';
+ }
+
+ else{
+	$botonNombre= 'Guardar';
+	$url= 'envios/insert.php';
+
+ }
+ ?>
+ 
+
+<input type="reset" value="Reset" class="btn bg-gray">
+<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button><span class="cargando"><i class='fa fa-circle-o-notch fa-spin'></i>Loading...</span>
+					 
+
+
+
+					
+				</div> <!-- box  -->
+
 
 					  </div>
+
+					 </form> 
 					 <!--====  End of AQUI VA EL CONTENIDO DEL SITE-  ====-->
   
 				
@@ -491,7 +567,116 @@ mysql_query("SET CHARACTER_SET utf");
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
 
+<script type="text/javascript">
+		
+$(document).ready(function() {
+	$('.cargando').hide();
+   $('#sexo').val('<?php echo $data['data'][0]['sexo'] ?>').change();
 
+	$('#tipo').val('<?php echo $data['data'][0]['tipo'] ?>').change();
+	$('#anulado').val('<?php echo $data['data'][0]['anulado'] ?>').change();
+	$('#id_grupo').val('<?php echo $data['data'][0]['id_grupo'] ?>').change();
+});
+
+
+
+$('#formulario').on('submit', function(e){
+e.preventDefault();
+$('.cargando').show();
+console.log('Envio el formulario');
+
+$.ajax({
+	 url: '<?php echo $url; ?>',
+	type: 'POST',
+	//dataType: 'json',
+	data: $('#formulario').serialize(),
+})
+.done(function(data) {
+	console.log(data);
+	//console.log("success");
+if (data==1) {
+
+swal({ 
+  title: "Enviado!",
+   text: "Se ha procesado con éxito!",
+    type: "success" 
+  },
+  function(){
+ $('#formulario')[0].reset();
+location.reload();
+});
+
+}
+
+ 
+
+else {
+
+sweetAlert("Oops...", "Consulte este error con su programador!", "error");
+}
+
+ 
+})
+.fail(function(data) {
+	console.log("error");
+	console.log(data);
+
+})
+.always(function() {
+	console.log("complete");
+	$('.cargando').hide();
+});
+
+});
+
+/*========================================
+=            Buscar             =
+========================================*/
+
+
+$(document).ready(function() {
+
+$('#buscar').on('keyup',  function(event) {
+	event.preventDefault();
+	buscarArticulos($(this).val());
+	/* Act on the event */
+});
+
+
+
+
+
+function buscarArticulos(texto) {
+
+
+$.ajax({
+	url: 'async/buscar.php',
+	type: 'POST',
+ 
+	data: {parametro: texto},
+})
+.done(function(data) {
+	console.log("success");
+	$('#resultado_busqueda').html(data);
+//alert(data);
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+	
+}
+
+});
+/*=====  End of Buscar   ======*/
+
+	</script>
+	
+ 
 	
  
  
