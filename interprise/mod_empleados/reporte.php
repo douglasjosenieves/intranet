@@ -79,16 +79,19 @@ mysql_query("SET CHARACTER_SET utf");
 					<h2 class="boxHeadline">Table</h2>
 					<h3 class="boxHeadlineSub"><?php echo TITULO ?></h3>
 				 
-					
+						<a class="btn bg-blue" href="index.php" role="button">Nuevo</a>	
+						<hr>
 					<div class="tableWrap dataTable table-responsive js-select">
+					
 								<table  id="tabla" class="table">
+
 							<thead>
 								<tr>
 									<th >Id</th>
-									<th>Nombre</th>
-								   <th>Apellido</th>
-									<th>Email-Usuario</th>
-									<th>Tipo</th>
+									<th>Nombre Apellido</th>
+								   
+									<th>cedula</th>
+									<th>Carago</th>
 									<th>Anulado</th>
 									<th>Gestionar</th>
 								 
@@ -133,10 +136,10 @@ require_once '../asesor_funtion.php';
 					
 					<tr>
 						<td> <?php echo $opciones['opciones'][$i]['id']; ?></td>
-						<td><?php echo $opciones['opciones'][$i]['nombre']; ?></td>
-						<td><?php echo $opciones['opciones'][$i]['apellido']; ?></td>
-					    <td><?php echo $opciones['opciones'][$i]['email']; ?></td>
-					      <td><?php echo $opciones['opciones'][$i]['tipo']; ?></td>
+						<td><?php echo $opciones['opciones'][$i]['primer_nombre'].' '.$opciones['primer_apellido'][$i]['nombre']; ?></td>
+					 
+					    <td><?php echo $opciones['opciones'][$i]['numero_cedula']; ?></td>
+					      <td><?php echo $opciones['opciones'][$i]['cargo']; ?></td>
 					    <td><?php echo statusestado($estado) ?></td>
 					    <td>
 					    	

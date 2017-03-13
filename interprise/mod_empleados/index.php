@@ -4,6 +4,7 @@ header('Location: ../index.php');
 }
 
 require_once '../../db_connect.php';
+require_once 'config.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -21,9 +22,11 @@ while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
 }
 }
+/*$estado_civil = unserialize($data['data'][0]['estado_civil']);
+$des_cliente = unserialize($data['data'][0]['des_cliente']);
+$anulado = unserialize($data['data'][0]['anulado']);*/
 
-
-
+ 
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -95,13 +98,14 @@ $data['data'][] = $row;
 				<div class="box rte">
 					<h2 class="boxHeadline">Ficha</h2>
 					<h3 class="boxHeadlineSub">Empleado</h3>
+					<form id="formulario">
 <div class="row">
 
 
 <div class="col-xs-12 col-sm-2">
 <div class="form-group">
 <label for="referencia">Nº Referencia</label>
-<input type="text" readonly required class="form-control" name="referencia" id="referencia" placeholder="Nº Referencia">
+<input type="text" readonly value="<?php echo $data['data'][0]['id'] ?>"  required class="form-control" name="referencia" id="referencia" placeholder="Nº Referencia">
 </div>
 </div>
 
@@ -117,7 +121,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Elaborado:</label>
-<input type="text" disabled value="<?php echo nombreAsessor($_SESSION['usuario']['Id'])?>" required class="form-control" name="elaborado" id="elaborado" placeholder="Elaborado:">
+<input type="text" disabled value="<?php echo nombreAsessor($_SESSION['usuario']['Id'])?>" required class="form-control" name="elaborado_por" id="elaborado_por" placeholder="Elaborado:">
 </div>
 </div>
 
@@ -128,8 +132,8 @@ $data['data'][] = $row;
 					 =            AQUI VA EL CONTENIDO DEL SITE-            =
 					 =====================================================-->
 
-<form id="formulario">
-				<a  href="reporte.php" class="btn bg-blue">Ver Empleados</a>
+
+				<a  href="reporte.php" class="btn bg-blue">Ver todo los registros</a>
 
 					 <hr>
 		<div class="row">
@@ -137,7 +141,7 @@ $data['data'][] = $row;
 					 <div class="col-xs-12 col-sm-3">
 					 <div class="form-group">
 					 <label for="basicInput">Primer Nombre</label>
-					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['primer_nombre'] ?>" required class="form-control" name="primer_nombre" id="primer_nombre" placeholder="Primer Nombre">
+					 <input type="text" value="<?php echo $data['data'][0]['primer_nombre'] ?>" required class="form-control" name="primer_nombre" id="primer_nombre" placeholder="Primer Nombre">
 					 </div>
 					 </div>
 					 			 
@@ -148,7 +152,7 @@ $data['data'][] = $row;
 					 <div class="col-xs-12 col-sm-3">
 					 <div class="form-group">
 					 <label for="basicInput">Segundo Nombre</label>
-					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['segundo_nombre'] ?>" required class="form-control" name="segundo_nombre" id="segundo_nombre" placeholder="Segundo Nombre">
+					 <input type="text" value="<?php echo $data['data'][0]['segundo_nombre'] ?>" required class="form-control" name="segundo_nombre" id="segundo_nombre" placeholder="Segundo Nombre">
 					 </div>
 					 </div>
 					 
@@ -158,7 +162,7 @@ $data['data'][] = $row;
 					 <div class="col-xs-12 col-sm-3">
 					 <div class="form-group">
 					 <label for="basicInput">Primer Apellido</label>
-					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['primer_apellido'] ?>" required class="form-control" name="primer_apellido" id="primer_apellido" placeholder="Primer Apellido">
+					 <input type="text" value="<?php echo $data['data'][0]['primer_apellido'] ?>" required class="form-control" name="primer_apellido" id="primer_apellido" placeholder="Primer Apellido">
 					 </div>
 					 </div>
 
@@ -167,7 +171,7 @@ $data['data'][] = $row;
 					 <div class="col-xs-12 col-sm-3">
 					 <div class="form-group">
 					 <label for="basicInput">Segundo Apellido</label>
-					 <input type="text" value="<?php echo $ficha['ficha_contacto'][0]['segundo_apellido'] ?>" required class="form-control" name="segundo_apellido" id="segundo_apellido" placeholder="Segundo Apellido">
+					 <input type="text" value="<?php echo $data['data'][0]['segundo_apellido'] ?>" required class="form-control" name="segundo_apellido" id="segundo_apellido" placeholder="Segundo Apellido">
 					 </div>
 					 </div>
 					 
@@ -181,7 +185,7 @@ $data['data'][] = $row;
 					  	<div class="col-xs-12 col-sm-4">
 					  	<div class="form-group">
 					  	<label for="basicInput">Numero de Cedula</label>
-					  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['numero_cedula'] ?>" required class="form-control" name="numero_cedula" id="numero_cedula" placeholder="Numero de Cedula">
+					  	<input type="text" value="<?php echo $data['data'][0]['numero_cedula'] ?>" required class="form-control" name="numero_cedula" id="numero_cedula" placeholder="Numero de Cedula">
 					  	</div>
 					  	</div>
 
@@ -208,7 +212,7 @@ $data['data'][] = $row;
 					  	<div class="col-xs-12 col-sm-4">
 					  	<div class="form-group">
 					  	<label for="basicInput">Fecha de Nacimiento</label>
-					  	<input type="date" value="<?php echo $ficha['ficha_contacto'][0]['fecha_nacimiento'] ?>" required class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de Nacimiento">
+					  	<input type="date" value="<?php echo $data['data'][0]['fecha_nacimiento'] ?>" required class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de Nacimiento">
 					  	</div>
 					  	</div>
 					  	
@@ -228,7 +232,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Fecha de ingreso</label>
-<input type="date" value="<?php echo $ficha['ficha_contacto'][0]['fecha_ingreso'] ?>" required class="form-control" name="fecha_ingreso" id="fecha_ingreso" placeholder="Fecha de ingreso">
+<input type="date" value="<?php echo $data['data'][0]['fecha_ingreso'] ?>" required class="form-control" name="fecha_ingreso" id="fecha_ingreso" placeholder="Fecha de ingreso">
 </div>
 </div>
 
@@ -237,7 +241,7 @@ $data['data'][] = $row;
 		  	<div class="col-xs-12 col-sm-8">
 					  	<div class="form-group">
 					  	<label for="basicInput">Domicilio</label>
-					  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['domicilio'] ?>" required class="form-control" name="domicilio" id="domicilio" placeholder="Domicilio">
+					  	<input type="text" value="<?php echo $data['data'][0]['domicilio'] ?>" required class="form-control" name="domicilio" id="domicilio" placeholder="Domicilio">
 					  	</div>
 					  	</div>
 
@@ -251,7 +255,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Email personal</label>
-<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['email_personal'] ?>" required class="form-control" name="email_personal" id="email_personal" placeholder="Email personal">
+<input type="text" value="<?php echo $data['data'][0]['email_personal'] ?>" required class="form-control" name="email_personal" id="email_personal" placeholder="Email personal">
 </div>
 </div>
 
@@ -261,7 +265,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-2">
 <div class="form-group">
 <label for="basicInput">Rif</label>
-<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['rif'] ?>" required class="form-control" name="rif" id="rif" placeholder="Rif">
+<input type="text" value="<?php echo $data['data'][0]['rif'] ?>" required class="form-control" name="rif" id="rif" placeholder="Rif">
 </div>
 </div>
 
@@ -270,7 +274,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-6">
 <div class="form-group">
 <label for="basicInput">Dirección fiscal</label>
-<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['direccion_fiscal'] ?>" required class="form-control" name="direccion_fiscal" id="direccion_fiscal" placeholder="Direccion fiscal">
+<input type="text" value="<?php echo $data['data'][0]['direccion_fiscal'] ?>" required class="form-control" name="direccion_fiscal" id="direccion_fiscal" placeholder="Direccion fiscal">
 </div>
 </div>
 
@@ -287,7 +291,7 @@ $data['data'][] = $row;
 					  	<div class="col-xs-12 col-sm-6">
 					  	<div class="form-group">
 					  	<label for="basicInput">Cargo</label>
-					  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['cargo'] ?>" required class="form-control" name="cargo" id="cargo" placeholder="Cargo">
+					  	<input type="text" value="<?php echo $data['data'][0]['cargo'] ?>" required class="form-control" name="cargo" id="cargo" placeholder="Cargo">
 					  	</div>
 					  	</div>
 
@@ -296,7 +300,7 @@ $data['data'][] = $row;
 					  	<div class="col-xs-12 col-sm-6">
 					  	<div class="form-group">
 					  	<label for="basicInput">Salario</label>
-					  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['salario'] ?>" required class="form-control" name="salario" id="salario" placeholder="Salario">
+					  	<input type="number" step="0.01"  value="<?php echo $data['data'][0]['salario'] ?>" required class="form-control" name="salario" id="salario" placeholder="Salario">
 					  	</div>
 					  	</div>
 					  	
@@ -312,7 +316,7 @@ $data['data'][] = $row;
 	<div class="col-xs-12 col-sm-2">
 					  	<div class="form-group">
 					  	<label for="basicInput">Acumulado PSS</label>
-					  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['acumulado_pss'] ?>" required class="form-control" name="acumulado_pss" id="acumulado_pss" placeholder="Acumulado PSS">
+					  	<input type="number" step="0.01" " value="<?php echo $data['data'][0]['acumulado_pss'] ?>" required class="form-control" name="acumulado_pss" id="acumulado_pss" placeholder="Acumulado PSS">
 					  	</div>
 					  	</div>
 
@@ -320,7 +324,7 @@ $data['data'][] = $row;
 					  		<div class="col-xs-12 col-sm-2">
 					  	<div class="form-group">
 					  	<label for="basicInput">Disponible 75%</label>
-					  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['disponible75'] ?>" required class="form-control" name="disponible75" id="disponible75" placeholder="Disponible 75%">
+					  	<input type="number" step="0.01" value="<?php echo $data['data'][0]['disponible_75'] ?>" required class="form-control" name="disponible_75" id="disponible_75" placeholder="Disponible 75%">
 					  	</div>
 					  	</div>
 
@@ -328,7 +332,7 @@ $data['data'][] = $row;
   	<div class="col-xs-12 col-sm-2">
 					  	<div class="form-group">
 					  	<label for="basicInput">Interés A. base PSS</label>
-					  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['interes_acumulado'] ?>" required class="form-control" name="interes_acumulado" id="interes_acumulado" placeholder="Interes Acumulado base PSS">
+					  	<input type="number" step="0.01"  value="<?php echo $data['data'][0]['interes_acumulado'] ?>" required class="form-control" name="interes_acumulado" id="interes_acumulado" placeholder="Interes Acumulado base PSS">
 					  	</div>
 					  	</div>
 
@@ -337,7 +341,7 @@ $data['data'][] = $row;
 					  	<div class="col-xs-12 col-sm-3">
 					  	<div class="form-group">
 					  	<label for="basicInput">Adelanto Sobre PSS</label>
-					  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['adelanto_pss'] ?>" required class="form-control" name="adelanto_pss" id="adelanto_pss" placeholder="Adelanto Sobre PSS">
+					  	<input type="number" step="0.01"  value="<?php echo $data['data'][0]['adelanto_pss'] ?>" required class="form-control" name="adelanto_pss" id="adelanto_pss" placeholder="Adelanto Sobre PSS">
 					  	</div>
 					  	</div>
 
@@ -346,7 +350,7 @@ $data['data'][] = $row;
 					  	<div class="col-xs-12 col-sm-3">
 					  	<div class="form-group">
 					  	<label for="basicInput">Adelanto de interés sobre PSS</label>
-					  	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['adelanto_interes_sobre_pss'] ?>" required class="form-control" name="adelanto_interes_sobre_pss" id="adelanto_interes_sobre_pss" placeholder="Adelanto de interes sobre PSS">
+					  	<input type="number" step="0.01" value="<?php echo $data['data'][0]['adelanto_interes_sobre_pss'] ?>" required class="form-control" name="adelanto_interes_sobre_pss" id="adelanto_interes_sobre_pss" placeholder="Adelanto de interes sobre PSS">
 					  	</div>
 					  	</div>
 					  	
@@ -380,7 +384,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-6">
 <div class="form-group">
 <label for="basicInput">Banco</label>
-<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['banco'] ?>" required class="form-control" name="banco" id="banco" placeholder="Banco">
+<input type="text" value="<?php echo $data['data'][0]['banco'] ?>" required class="form-control" name="banco" id="banco" placeholder="Banco">
 </div>
 </div>
 
@@ -389,7 +393,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-6">
 <div class="form-group">
 <label for="basicInput">Numero de cuenta</label>
-<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['Numero_cuenta'] ?>" required class="form-control" name="Numero_cuenta" id="Numero_cuenta" placeholder="Numero de cuenta">
+<input type="text" value="<?php echo $data['data'][0]['numero_cuenta'] ?>" required class="form-control" name="numero_cuenta" id="numero_cuenta" placeholder="Numero de cuenta">
 </div>
 </div>
 
@@ -406,7 +410,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Teléfono Movil</label>
-<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['telefono_movil'] ?>" required class="form-control" name="telefono_movil" id="telefono_movil" placeholder="Telefono Movil">
+<input type="text" value="<?php echo $data['data'][0]['telefono_movil'] ?>" required class="form-control" name="telefono_movil" id="telefono_movil" placeholder="Telefono Movil">
 </div>
 </div>
 
@@ -415,7 +419,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Teléfono Fijo</label>
-<input type="text" value="<?php echo $ficha['ficha_contacto'][0][''] ?>" required class="form-control" name="telefono_fijo" id="telefono_fijo" placeholder="Telefono Fijo">
+<input type="text" value="<?php echo $data['data'][0]['telefono_fijo'] ?>" required class="form-control" name="telefono_fijo" id="telefono_fijo" placeholder="Telefono Fijo">
 </div>
 </div>
 	
@@ -424,7 +428,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Persona contacto emergencia</label>
-<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['persona_contacto_emergencia'] ?>" required class="form-control" name="persona_contacto_emergencia" id="persona_contacto_emergencia" placeholder="Persona contacto emergencia">
+<input type="text" value="<?php echo $data['data'][0]['persona_contacto_emergencia'] ?>" required class="form-control" name="persona_contacto_emergencia" id="persona_contacto_emergencia" placeholder="Persona contacto emergencia">
 </div>
 </div>
 
@@ -438,7 +442,7 @@ $data['data'][] = $row;
 	<div class="col-xs-12 col-sm-4">
 	<div class="form-group">
 	<label for="basicInput">Teléfono emergencia</label>
-	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['telefono_emergencia'] ?>" required class="form-control" name="telefono_emergencia" id="telefono_emergencia" placeholder="Telefono emergencia">
+	<input type="text" value="<?php echo $data['data'][0]['telefono_emergencia'] ?>" required class="form-control" name="telefono_emergencia" id="telefono_emergencia" placeholder="Telefono emergencia">
 	</div>
 	</div>
 
@@ -447,7 +451,7 @@ $data['data'][] = $row;
 	<div class="col-xs-12 col-sm-4">
 	<div class="form-group">
 	<label for="basicInput">Tipo de sangre</label>
-	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['tipo_sangre'] ?>" required class="form-control" name="tipo_sangre" id="tipo_sangre" placeholder="Tipo de sangre">
+	<input type="text" value="<?php echo $data['data'][0]['tipo_sagre'] ?>" required class="form-control" name="tipo_sagre" id="tipo_sagre" placeholder="Tipo de sangre">
 	</div>
 	</div>
 	
@@ -458,7 +462,7 @@ $data['data'][] = $row;
 	<div class="col-md-12">
 <div class="form-group">
 									<label for="textarea-autosize">Nucleo Familiar</label>
-									<textarea id="textarea-autosize" name="nucleo_familiar" class="js-autogrow form-control" placeholder="Please start typing and press few times 'enter'..." rows="2" style="overflow: hidden; word-wrap: break-word; height: 74px;"></textarea>
+									<textarea id="textarea-autosize" name="nucleo_familiar" class="js-autogrow form-control" placeholder="Please start typing and press few times 'enter'..." rows="2" style="overflow: hidden; word-wrap: break-word; height: 74px;"><?php echo $data['data'][0]['nucleo_familiar'] ?></textarea>
 								</div></div>
 
 </div>
@@ -470,7 +474,7 @@ $data['data'][] = $row;
 					 	<div class="col-xs-12 col-sm-4">
 					 	<div class="form-group">
 					 	<label for="basicInput">Usuario Id</label>
-					 	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['user_id'] ?>" required class="form-control" name="user_id" id="user_id" placeholder="Usuario Id">
+					 	<input type="text" value="<?php echo $data['data'][0]['usuario_id'] ?>" required class="form-control" name="usuario_id" id="usuario_id" placeholder="Usuario Id">
 					 	</div>
 					 	</div>
 
@@ -479,12 +483,37 @@ $data['data'][] = $row;
 					 	<div class="col-xs-12 col-sm-4">
 					 	<div class="form-group">
 					 	<label for="basicInput">Entrada Id</label>
-					 	<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['hand_id'] ?>" required class="form-control" name="hand_id" id="hand_id" placeholder="Entrada Id">
+					 	<input type="text" value="<?php echo $data['data'][0]['hand_id'] ?>" required class="form-control" name="hand_id" id="hand_id" placeholder="Entrada Id">
 					 	</div>
 					 	</div>
 					 	
 					 	
 					 </div>
+
+					 <hr>
+<div class="row">
+	<div class="col-xs-12 col-sm-4 i">
+<div class="form-group">
+<label>Status</label>
+<select id="anulado" required name="anulado" class="js-select ">
+ 
+<option value="" >- Select Status -</option>
+<option value="0">ACTIVO</option>
+ <option value="1">INACTIVO</option>								
+ 
+
+
+</select>
+</div>
+</div>
+
+
+ 
+
+
+
+
+</div>
 
 <div class="box rte">
 			 
@@ -504,7 +533,12 @@ $data['data'][] = $row;
  
 
 <input type="reset" value="Reset" class="btn bg-gray">
-<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button><span class="cargando"><i class='fa fa-circle-o-notch fa-spin'></i>Loading...</span>
+<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button>
+<?php if ($_GET['tipo']=='editar'): ?>
+<input type="button" value="Nuevo" onclick="window.location='index.php';" class="btn bg-blue">	
+<?php endif ?>
+
+<span class="cargando"><i class='fa fa-circle-o-notch fa-spin'></i>Loading...</span>
 					 
 
 
@@ -515,11 +549,12 @@ $data['data'][] = $row;
 
 					  </div>
 
-					 </form> 
+					
 					 <!--====  End of AQUI VA EL CONTENIDO DEL SITE-  ====-->
   
 				
-				</div>
+				</div> 
+				</form> 
 				</div>
 				
 			
@@ -571,13 +606,17 @@ $data['data'][] = $row;
 		
 $(document).ready(function() {
 	$('.cargando').hide();
-   $('#sexo').val('<?php echo $data['data'][0]['sexo'] ?>').change();
-
-	$('#tipo').val('<?php echo $data['data'][0]['tipo'] ?>').change();
+	<?php if ($_GET['tipo']=='editar'): ?>
+	$('#estado_civil').val('<?php echo $data['data'][0]['estado_civil'] ?>').change();
+	$('#sede').val('<?php echo $data['data'][0]['sede'] ?>').change();
 	$('#anulado').val('<?php echo $data['data'][0]['anulado'] ?>').change();
-	$('#id_grupo').val('<?php echo $data['data'][0]['id_grupo'] ?>').change();
+	$('#dependiente').val('<?php echo $data['data'][0]['dependiente'] ?>').change();
+	<?php endif ?>
+
 });
 
+
+ 
 
 
 $('#formulario').on('submit', function(e){
@@ -591,10 +630,11 @@ $.ajax({
 	//dataType: 'json',
 	data: $('#formulario').serialize(),
 })
-.done(function(data) {
-	console.log(data);
-	//console.log("success");
-if (data==1) {
+ .done(function(data) {
+  console.log(data);
+  response = data.split('-');
+  //console.log(response[0]);
+if (response[0]==1) {
 
 swal({ 
   title: "Enviado!",
@@ -603,7 +643,13 @@ swal({
   },
   function(){
  $('#formulario')[0].reset();
-location.reload();
+ <?php if ($_GET['tipo']!='editar'): ?>
+ window.location.replace(window.location.href + "?tipo=editar&id="+response[1]+""); 
+ <?php else: ?>
+location.reload();  
+<?php endif ?>
+
+
 });
 
 }
@@ -642,6 +688,12 @@ $('#buscar').on('keyup',  function(event) {
 	/* Act on the event */
 });
 
+$('#buscar_cliente').on('keyup',  function(event) {
+	event.preventDefault();
+	buscarClientes($(this).val());
+	/* Act on the event */
+});
+
 
 
 
@@ -670,6 +722,32 @@ $.ajax({
 
 	
 }
+
+function buscarClientes(texto) {
+
+
+$.ajax({
+	url: '../mod_clientes/async/buscar2.php',
+	type: 'POST',
+ 
+	data: {parametro: texto},
+})
+.done(function(data) {
+	console.log("success");
+	$('#resultado_busqueda2').html(data);
+//alert(data);
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+	
+}
+
 
 });
 /*=====  End of Buscar   ======*/
